@@ -17,7 +17,7 @@
                 <br><br>
                 Mot de passe : <input type="password" name="motDePasse">
                 <br><br>
-                <button type="submit"><a href="iGAPET.php"><?php echo "Se connecter"?></a></button>
+                <input type="submit"><a href="iGAPET.php"><?php echo "Se connecter"?></a></input>
             </form>
         </div>
         <div class="inscription">
