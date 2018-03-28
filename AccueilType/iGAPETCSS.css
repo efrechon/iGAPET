@@ -42,8 +42,8 @@ header #nomClient{
 
 .off{
     margin: 1%;
-    width: 0.5%;
-    height: 0.5%;
+    padding: 0.5%;
+    height: 2%;
 }
 
 nav{
