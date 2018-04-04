@@ -10,7 +10,7 @@
         <li>Gérer les maisons</li>
         <li>Informations</li>
         <li>SAV</li>
-        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br>
         <li class="other">FAQ</li>
         <li class="other">A propos</li>
         <li class="other">Nous contacter</li>

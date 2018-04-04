@@ -10,8 +10,6 @@
         <?php include 'header.php'?>
         <?php include 'menu.php'?>
         <div class="contain">
-            <p>Bienvenue dans la maison de
-            </p>
         </div>
     </div>
 </body>
