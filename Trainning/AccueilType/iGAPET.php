@@ -11,12 +11,6 @@
         <?php include 'menu.php'?>
         <div class="contain">
             <p>Bienvenue dans la maison de
-                <?php if (!empty($_POST['nom'])) {
-                    echo $_POST['nom'];
-                }
-                else{
-                    echo " ";
-                }?>
             </p>
         </div>
     </div>
