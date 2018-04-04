@@ -75,6 +75,12 @@ function get(PDO $db,$sql)
     return $result;
 }
 
+function dosql(PDO $db,$sql)
+{
+	$req = $db->prepare($sql);
+	$req->execute();
+}
+
 function getMaster($a)
 {
     if ($a == "rooms")

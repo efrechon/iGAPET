@@ -58,7 +58,7 @@ foreach($Rooms as $Room)
 
 <body>
 <div id="drawing" style="position:relative;Width:1000px;Height:800px;margin:10px;border-style: dashed;border-color:Black"></div>
-<div ></div><form id="SendBox" action="SaveFloor.php" method="post"><input type="button" onclick="saveToForm()"><input type="submit"></form>
+<div ></div><form id="SendBox" action="SaveFloor.php" method="post"><input id="sav" type="hidden" name="Save" value="error"><input type="submit" onclick="saveToForm()"></form>
 </body>
 
 <script> // dessine la pièce avec les capteurs et actionneurs correspondant et stocke les valeurs
@@ -177,16 +177,25 @@ foreach($Rooms as $Room)
             document.onmousemove = null;
         }
     }
-    function saveToForm()
+    function saveToForm2()
     {
 		
 		var xhr = new XMLHttpRequest();
 		var url = "SaveFloor.php";
+		/*
 		var param = new Array();
 		for (var i=0;i<Rooms.length;i++)
 		{
 			param[i] = JSON.stringify(Rooms[i]);
 		}
+		*/
+		param = "";
+		for (var i= 0;i<Rooms.length;i++)
+		{
+			param += Rooms[i]["Name"] + "," + Rooms[i]["xPosition"] + "," + Rooms[i]["yPosition"] + ",";
+		}
+		param = JSON.stringify(param);
+		console.log(param);
 		xhr.open("POST",url,true);
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhr.onreadystatechange = function() {//Call a function when the state changes.
@@ -194,12 +203,25 @@ foreach($Rooms as $Room)
 				alert(xhr.responseText);
 			}
 		}
+		/*
 		for (var i=0;i<param.length;i++)
 		{
 			xhr.send(param);
-		}		
+		}
+		*/
+		xhr.send(param);		
 		
     }
+	function saveToForm()
+	{
+		e = document.getElementById("SendBox");
+		param = "";
+		for (var i= 0;i<Rooms.length;i++)
+		{
+			param += Rooms[i]["RoomID"] + "," + Rooms[i]["xPosition"] + "," + Rooms[i]["yPosition"] + ";";
+		}
+		e.childNodes[0].defaultValue = param;		
+	}
 </script>
 
 </html>
