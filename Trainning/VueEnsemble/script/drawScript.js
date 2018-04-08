@@ -1,61 +1,3 @@
-<!DOCTYPE html>
-
-<?php include 'conf/LoadRoom.php'?>
-
-<html>
-	<head>
-		<link rel="stylesheet" href="style/style.css"/>
-	</head>
-<body>
-	<div id=drawingctrl>
-		<form id="SendBox" action="conf/SaveFloor.php" method="post">
-			<input id="sav" type="hidden" name="Save" value="error">
-			<input type="submit" onclick="saveToForm()">
-		</form>
-	</div>
-	<div id="drawing"></div>
-</body>
-<script>
-var Rooms = <?php echo json_encode($Rooms); ?>;
-var captors = <?php echo json_encode($captorArray); ?>;
-var r;
-var c;
-var a;
-var k = 0;
-var str ="";
-for(var i=0;i<Rooms.length;i++)
-{
-	r = Rooms[i];
-	str += '<div class="Room" name='+ r["Name"]+ ' style="left:'+r["xPosition"]+'px;top:'+r["yPosition"]+'px;Width:'+r["width"]+'px;Height:'+r["height"]+'px;">';
-	while(captors[k]!= null)
-	{
-		c= captors[k];
-		str += '<div class="Captor"></div>';
-		k +=1;
-		if (captors[k] != null && captors[k]["RoomID"] != r["RoomID"]) { break; }
-	}
-	str += r["Name"];
-	str += "</div>"
-}
-document.getElementById("drawing").innerHTML = str;
-var es = document.body.querySelectorAll("div.Room");
-var k=0
-
-var anchorPoint1 = new Array();
-var anchorPoint2 = new Array();
-var i=0;
-while(es[i] != null)
-{
-	anchorPoint1[i] = {x:Rooms[i]["xPosition"],y:Rooms[i]["yPosition"]};
-	anchorPoint2[i] = {x:(+Rooms[i]["xPosition"] + +Rooms[i]["width"]),y:(+Rooms[i]["yPosition"] + +Rooms[i]["height"])};
-	i+=1;
-}
-
-while(es[k] != null)
-{
-	dragElement(es[k],k,Rooms);
-	k+=1;
-}
 function dragElement(elmnt,k,Rooms) {
 	var pos1 = 0, pos2 = 0;
 	elmnt.onmousedown = dragMouseDown;
@@ -68,10 +10,8 @@ function dragElement(elmnt,k,Rooms) {
 		var rad = 20;
 		e = e || window.event;
 		// calculate the new cursor position:
-
-		posX = e.clientX-getOffsetLeft(elmnt.parentElement);
-		posY = e.clientY-getOffsetTop(elmnt.parentElement);
-		//posY = +posY + + parseInt(elmnt.style.height);
+		posX = e.clientX-elmnt.parentElement.offsetLeft;
+		posY = e.clientY-elmnt.parentElement.offsetTop;
 		// set the element's new position:
 		for (var i = 0; i < anchorPoint1.length; i++) {
 			if (i == k)
@@ -116,26 +56,9 @@ function dragElement(elmnt,k,Rooms) {
 			{
 				posY= +b.y - +halfHeight;
 			}
-			if (C1.x < 0)
-			{
-				posX=halfWidth;
-			}
-			else if (C2.x > elmnt.parentElement.offsetWidth)
-			{
-				posX = +elmnt.parentElement.offsetWidth - +halfWidth;
-			}
-			console.log(elmnt.parentElement.offsetHeight);
-			if (C1.y < 0)
-			{
-				posY = halfHeight;
-			}
-			else if( C2.y > elmnt.parentElement.offsetHeight)
-			{
-				posY = +elmnt.parentElement.offsetHeight - +halfHeight;
-			}
 		}
-		posX = posX - halfWidth ;
-		posY = posY - halfHeight ;
+		posX = posX - parseInt(elmnt.style.width) / 2 ;
+		posY = posY - parseInt(elmnt.style.height) / 2 ;
 		elmnt.style.left = posX + "px";
 		elmnt.style.top = posY + "px";
 		Rooms[k]["xPosition"] = posX;
@@ -195,33 +118,3 @@ function saveToForm()
 	}
 	e.childNodes[0].defaultValue = param;		
 }
-
-
-function getOffsetLeft( elem )
-{
-    var offsetLeft = 0;
-    do {
-      if ( !isNaN( elem.offsetLeft ) )
-      {
-          offsetLeft += elem.offsetLeft;
-      }
-    } while( elem = elem.offsetParent );
-    return offsetLeft;
-	
-}
-function getOffsetTop( elem )
-{
-    var offsetTop = 0;
-    do {
-      if ( !isNaN( elem.offsetTop ) )
-      {
-          offsetTop += elem.offsetTop;
-      }
-    } while( elem = elem.offsetParent );
-    return offsetTop;
-	
-}
-
-</script>
-
-</html>
