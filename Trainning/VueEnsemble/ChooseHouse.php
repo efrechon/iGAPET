@@ -1,6 +1,6 @@
 <?php
 
-require('Home.php');
+require('conf/Home.php');
 
 $UserID  ="";
 
