@@ -7,7 +7,7 @@ $Rooms= "";
 
 //var_dump($_POST);
 
-if (isset($_POST['Save'])) {
+if (isset($_POST['Save']) && $_POST['Save'] != "error") {
     $Rooms = $_POST['Save'];
 	
 	$str = str_split($Rooms);
@@ -48,4 +48,3 @@ else
 }
 
 ?>
-<meta http-equiv="refresh" content="0;URL=../DrawFloor.php" />

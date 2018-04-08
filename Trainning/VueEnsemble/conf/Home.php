@@ -67,18 +67,30 @@ function selectID(PDO $db,$A,$ID){
 
 function get(PDO $db,$sql)
 {
-    $req = $db->prepare($sql);
-    $req->execute();
+	try
+	{
+		$req = $db->prepare($sql);
+		$req->execute();
 
-    $result = $req->fetchAll(PDO::FETCH_ASSOC);
-
+		$result = $req->fetchAll(PDO::FETCH_ASSOC);
+	}
+	catch(PDOException $e) 
+	{
+		echo $e->getMessage();
+	}
     return $result;
 }
 
 function dosql(PDO $db,$sql)
 {
-	$req = $db->prepare($sql);
-	$req->execute();
+	try{
+		$req = $db->prepare($sql);
+		$req->execute();
+	}
+	catch(PDOException $e) 
+	{
+		echo $e->getMessage();
+	}
 }
 
 function getMaster($a)
