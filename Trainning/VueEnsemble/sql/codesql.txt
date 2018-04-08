@@ -76,10 +76,30 @@ CREATE TABLE userType(
 	EditionAdmin int,
 	GererSousCompte int,
 	Ajouts int
-	
+
+);
+
+CREATE TABLE captorType(
+	captorTypeID int PRIMARY KEY AUTO_INCREMENT,
+	captorName VARCHAR(255),
+	unite VARCHAR(255),
+);
+
+CREATE TABLE actuatorType(
+	captorTypeID int PRIMARY KEY AUTO_INCREMENT,
+	captorName VARCHAR(255),
+	min VARCHAR(255),
+	max VARCHAR(255),
 );
 
 CREATE TABLE page(
 	PageID int PRIMARY KEY AUTO_INCREMENT,
 	PageContent BloB
+);
+
+CREATE TABLE Historic(
+    HistoicID int PRIMARY KEY AUTO_INCREMENT,
+    CaptorID int,
+    Value VARCHAR(255),
+    Date date,
 );
