@@ -5,7 +5,6 @@ require('Home.php');
 
 $Rooms= "";
 
-var_dump($_POST);
 
 if (isset($_POST['Save']) && $_POST['Save'] != "error") {
     $Rooms = $_POST['Save'];
@@ -41,6 +40,7 @@ if (isset($_POST['Save']) && $_POST['Save'] != "error") {
 		dosql($db,$sql);
 	}
 	
+	
 }
 else
 {
@@ -48,3 +48,4 @@ else
 }
 
 ?>
+<meta http-equiv="refresh" content="0;URL='../vues/Igapet.php'" />
