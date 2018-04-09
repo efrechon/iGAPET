@@ -73,7 +73,7 @@ if (isset($_POST['Table']))
 			$query = $db->prepare($sql);
 			$query->execute();
 		}
-		catch(PDOException $e) 
+		catch(PDOException $e)
 		{
 			echo $e->getMessage();
 		}
@@ -85,9 +85,9 @@ if (isset($_POST['Table']))
 	}
 }
 else
-{
+{	
 	echo "Error, table not found";
 }
 
-echo "return:<a href='http://localhost/Home/Site.php'>Click Here to Continue</a>";
+echo "return:<a href='http://localhost/Igapet/vues/Site.php'>Click Here to Continue</a>";
 ?>
