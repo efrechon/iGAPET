@@ -68,7 +68,7 @@ if (isset($_POST['Table']))
 		{
 			$RoomID = $_POST['RoomID'];
 			$CaptorType = $_POST['CaptorType'];
-			$sql = "INSERT INTO captor (RoomID,CaptorTypeID) 
+			$sql = "INSERT INTO Captors (RoomID,CaptorTypeID) 
 			VALUES ('$RoomID','$CaptorType')";
 			$query = $db->prepare($sql);
 			$query->execute();
