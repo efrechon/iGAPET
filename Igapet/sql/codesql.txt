@@ -18,7 +18,7 @@ CREATE TABLE Houses(
 	UserID int,			-- foreign key
 	Name varchar(50) NOT NULL,
 	Address varchar(255) NOT NULL,     -- change varcharSize
-	CodePostal varchar(10) NOT NULL,
+	PostalCode varchar(10) NOT NULL,
 	Country varchar(30) NOT NULL,
 	NumberOfFloor tinyint NOT NULL,
 	Width real NOT NULL,
