@@ -1,105 +1,101 @@
-CREATE TABLE users(
-    UserID int PRIMARY KEY AUTO_INCREMENT,
-    FirstName VARCHAR(255),
-    LastName VARCHAR(255),
-    Mail VARCHAR(255),
-	CreationDate VARCHAR(255),
-	UserPassword VARCHAR(255),
-	userTypeID int,
-	PhoneNumber int
+CREATE DATABASE IGAPET;		-- nom temporaire pour pas supprimer IGAPET
 
+USE IGAPET;
+
+CREATE TABLE Users(
+	UserID int PRIMARY KEY AUTO_INCREMENT, -- principal key
+	FirstName varchar(70) NOT NULL,
+	LastName varchar(70) NOT NULL,
+	Mail varchar(70) NOT NULL,			-- should be unique
+	CreationDate datetime,		-- automatic
+	UserPassword varchar(255) NOT NULL,		-- should be crypted + condition
+	UserTypeID tinyint,
+	Phone varchar(15) NOT NULL			-- should be unique
 );
 
 CREATE TABLE Houses(
-    HouseID int PRIMARY KEY AUTO_INCREMENT,
-    UserID int,
-    Name VARCHAR(255),
-    address VARCHAR(255),
-    Postal VARCHAR(255),
-	Pays VARCHAR(255),
-    NumberOfFloor int,
-	Superficie int
+	HouseID int PRIMARY KEY AUTO_INCREMENT, -- primary key
+	UserID int,			-- foreign key
+	Name varchar(50) NOT NULL,
+	Address varchar(255) NOT NULL,     -- change varcharSize
+	PostalCode varchar(10) NOT NULL,
+	Country varchar(30) NOT NULL,
+	NumberOfFloor tinyint NOT NULL,
+	Width real NOT NULL,
+	Height real NOT NULL
 );
 
 CREATE TABLE Rooms(
-    RoomID int PRIMARY KEY AUTO_INCREMENT,
-    HouseID int,
-    Name VARCHAR(255),
-    xPosition float,
-    yPosition float,
-    width float,
-    height float,
-    floor int
+	RoomID int PRIMARY KEY AUTO_INCREMENT, -- primary key
+	HouseID int,			-- foreign key
+	Name varchar(30) NOT NULL,
+	xPosition real NOT NULL,
+	yPosition real NOT NULL,
+	Width real NOT NULL,
+	Height real NOT NULL,
+	Floor tinyint			-- must be < HouseID->NumberOfFloor -1
 );
 
-CREATE TABLE Captor(
-    CaptorID int PRIMARY KEY AUTO_INCREMENT,
-    RoomID int,
-	Value VARCHAR(255),
-    CaptorType VARCHAR(255)
+CREATE TABLE Captors(
+	CaptorID int PRIMARY KEY AUTO_INCREMENT, -- primary key
+	RoomID int, 					-- foreign key
+	CaptorTypeID int,  				-- foreign key
+	Value varchar(255) 			-- modify according to precision
   
 );
 
-CREATE TABLE Actuator(
-    ActuatorID int PRIMARY KEY AUTO_INCREMENT,
-    RoomID int,
-	State VARCHAR(255),
-    CaptorType VARCHAR(255)
-  
+CREATE TABLE Actuators(
+	ActuatorID int PRIMARY KEY AUTO_INCREMENT,	-- primary key
+	RoomID int,						-- foreign key
+	ActuatorTypeID int,				 -- foreign key
+	State varchar(255)			-- modify according to precision
 );
 
-CREATE TABLE Scenario(
-	ScenarioID int PRIMARY KEY AUTO_INCREMENT,
-	UserID int,
-	HouseID int,
-	RoomID int,
-	ActuatorID int,
-	floor int,
-	ActuatorType int,
-	CibleState VARCHAR(255),
-	ActionDate VARCHAR(255)
+CREATE TABLE Scenarios(
+	ScenarioID int PRIMARY KEY AUTO_INCREMENT, -- primary key
+	ActuatorID int,					-- foreign key
+	CibleState varchar(255),		-- modify according to precision
+	ActionDate datetime
 );
 
-CREATE TABLE Notification(
-	NotificationID int PRIMARY KEY AUTO_INCREMENT,
-	UserID int,
-	HouseID int,
-	RoomID int,
-	CaptorID int,
-	floor int,
-	threshold int,
-	thresholdType int
+CREATE TABLE Notifications(
+	NotificationID int PRIMARY KEY AUTO_INCREMENT, -- primary key
+	CaptorID int,					-- foreign key
+	Threshold varchar(255),				-- modify according to precision	
+	ThresholdType varchar(1)			-- < or >
 );
 
-CREATE TABLE userType(
-	userTypeID int PRIMARY KEY AUTO_INCREMENT,
-	EditionAdmin int,
-	GererSousCompte int,
-	Ajouts int
-
+CREATE TABLE UserTypes(
+	UserTypeID int PRIMARY KEY AUTO_INCREMENT,	 -- primary key
+	EditionAdmin varchar(1),		
+	GererSousCompte varchar(1),
+	Ajouts varchar(1)
+							-- add more possibility? 
 );
 
-CREATE TABLE captorType(
-	captorTypeID int PRIMARY KEY AUTO_INCREMENT,
-	captorName VARCHAR(255),
-	unite VARCHAR(255),
+CREATE TABLE CaptorTypes(
+	CaptorTypeID int PRIMARY KEY AUTO_INCREMENT, -- primary key
+	CaptorName varchar(30),
+	Unit varchar(10)
+											-- add more information? price,size,ect 
 );
 
-CREATE TABLE actuatorType(
-	captorTypeID int PRIMARY KEY AUTO_INCREMENT,
-	captorName VARCHAR(255),
-	min VARCHAR(255),
-	max VARCHAR(255),
+CREATE TABLE ActuatorTypes(
+	ActuatorTypeID int PRIMARY KEY AUTO_INCREMENT, -- primary key
+	ActuatorName varchar(30),
+	Unit varchar(10),
+	MinimumValue varchar(255),					-- modify according to precision
+	MaximumValue varchar(255)					-- modify according to precision
 );
 
-CREATE TABLE page(
-	PageID int PRIMARY KEY AUTO_INCREMENT,
-	PageContent BloB
+CREATE TABLE PageContent(
+	PageID int PRIMARY KEY AUTO_INCREMENT,		-- primary key
+	PageContent TEXT
 );
 
 CREATE TABLE Historic(
-    HistoicID int PRIMARY KEY AUTO_INCREMENT,
-    CaptorID int,
-    Value VARCHAR(255),
-    Date date,
+	HistoicID int PRIMARY KEY AUTO_INCREMENT,	-- primary key (2,147,483,647 x 2  too small?)
+	CaptorID int,
+	Value varchar(255),				-- modify according to precision
+	Date datetime
 );

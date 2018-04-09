@@ -12,7 +12,7 @@ if (isset($_POST['Table']))
 			$FirstName = $_POST['LastName'];
 			$LastName = $_POST['FirstName'];
 			$Mail = $_POST['Mail'];
-			$sql = "INSERT INTO users (FirstName,LastName,Mail) 
+			$sql = "INSERT INTO Users (FirstName,LastName,Mail) 
 			VALUES ('$FirstName','$LastName','$Mail')";
 			$query = $db->prepare($sql);
 			$query->execute();
@@ -31,7 +31,7 @@ if (isset($_POST['Table']))
 			$Address = $_POST['Address'];
 			$City = $_POST['City'];
 			$NumberOfFloor = $_POST['NumberOfFloor'];
-			$sql = "INSERT INTO houses (UserID,Name,address,Postal,NumberOfFloor) 
+			$sql = "INSERT INTO Houses (UserID,Name,Address,PostalCode,NumberOfFloor) 
 			VALUES ('$UserID','$Name','$Address','$City','$NumberOfFloor')";
 			$query = $db->prepare($sql);
 			$query->execute();
@@ -52,7 +52,7 @@ if (isset($_POST['Table']))
 			$width = $_POST['Width'];
 			$height = $_POST['Height'];
 			$floor = $_POST['Floor'];
-			$sql = "INSERT INTO rooms (HouseID,Name,xPosition,yPosition,width,height,floor) 
+			$sql = "INSERT INTO Rooms (HouseID,Name,xPosition,yPosition,Width,Height,Floor) 
 			VALUES ('$HouseID','$Name','$xPosition','$yPosition','$width','$height','$floor')";
 			$query = $db->prepare($sql);
 			$query->execute();
@@ -62,13 +62,13 @@ if (isset($_POST['Table']))
 			echo $e->getMessage();
 		}
 	}
-	else if ($tab == 'captors')
+	else if ($tab == 'Captors')
 	{
 		try
 		{
 			$RoomID = $_POST['RoomID'];
 			$CaptorType = $_POST['CaptorType'];
-			$sql = "INSERT INTO captor (RoomID,CaptorType) 
+			$sql = "INSERT INTO Captors (RoomID,CaptorTypeID) 
 			VALUES ('$RoomID','$CaptorType')";
 			$query = $db->prepare($sql);
 			$query->execute();
