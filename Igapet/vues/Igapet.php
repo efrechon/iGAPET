@@ -8,10 +8,10 @@
 	<body>
 		<div id=wrapper>
 			<div id=header> 
-				<?php include 'header.php'?>
+				<?php include 'v_header.php' ?>
 			</div>
 			<div id=nav>
-				<?php include 'menu.php'?>
+				<?php include 'v_menu.php' ?>
 			</div>
 			<div id="contain">
 				<?php include 'DrawFloor.php'?>
