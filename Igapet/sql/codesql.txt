@@ -1,6 +1,6 @@
-CREATE DATABASE IGAPET2;		-- nom temporaire pour pas supprimer IGAPET
+CREATE DATABASE IGAPET;		-- nom temporaire pour pas supprimer IGAPET
 
-USE IGAPET2;
+USE IGAPET;
 
 CREATE TABLE Users(
 	UserID int PRIMARY KEY AUTO_INCREMENT, -- principal key
