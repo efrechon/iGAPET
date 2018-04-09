@@ -1,6 +1,6 @@
 <?php
 
-require('conf/Home.php');
+require('../controls/Home.php');
 
 $houseid  ="";
 
@@ -11,7 +11,7 @@ if (isset($_POST['HouseID'])) {
 
 <div style="width:300px;height:210px;">
     <h3> Captor </h3>
-    <form action="AddToDatabase.php" method="post">
+    <form action="../controls/AddToDatabase.php" method="post">
         Name: <input type="text" name="Name"><br>
         CaptorType: <input type="text" name="CaptorType"><br>
         xPosition: <input type="text" name="xPosition"><br>
@@ -54,6 +54,6 @@ if (isset($_POST['HouseID'])) {
     <input type="hidden" name="HouseID" value=<?php echo $houseid; ?>>
     <input type="submit">
 </form>
-<form action="Choose%20house.php" method="post">
+<form action="ChooseHouse.php" method="post">
     <input type="submit" value="return">
 </form>
