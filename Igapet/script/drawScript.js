@@ -138,8 +138,7 @@ function saveToForm()
 	{
 		param += Rooms[i]["RoomID"] + "," + Rooms[i]["xPosition"] + "," + Rooms[i]["yPosition"] + ";";
 	}
-	e.childNodes[0].defaultValue = param;
-	
+	e.childNodes[1].defaultValue = param;
 }
 
 
