@@ -1,0 +1,105 @@
+CREATE TABLE users(
+    UserID int PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(255),
+    LastName VARCHAR(255),
+    Mail VARCHAR(255),
+	CreationDate VARCHAR(255),
+	UserPassword VARCHAR(255),
+	userTypeID int,
+	PhoneNumber int
+
+);
+
+CREATE TABLE Houses(
+    HouseID int PRIMARY KEY AUTO_INCREMENT,
+    UserID int,
+    Name VARCHAR(255),
+    address VARCHAR(255),
+    Postal VARCHAR(255),
+	Pays VARCHAR(255),
+    NumberOfFloor int,
+	Superficie int
+);
+
+CREATE TABLE Rooms(
+    RoomID int PRIMARY KEY AUTO_INCREMENT,
+    HouseID int,
+    Name VARCHAR(255),
+    xPosition float,
+    yPosition float,
+    width float,
+    height float,
+    floor int
+);
+
+CREATE TABLE Captor(
+    CaptorID int PRIMARY KEY AUTO_INCREMENT,
+    RoomID int,
+	Value VARCHAR(255),
+    CaptorType VARCHAR(255)
+  
+);
+
+CREATE TABLE Actuator(
+    ActuatorID int PRIMARY KEY AUTO_INCREMENT,
+    RoomID int,
+	State VARCHAR(255),
+    CaptorType VARCHAR(255)
+  
+);
+
+CREATE TABLE Scenario(
+	ScenarioID int PRIMARY KEY AUTO_INCREMENT,
+	UserID int,
+	HouseID int,
+	RoomID int,
+	ActuatorID int,
+	floor int,
+	ActuatorType int,
+	CibleState VARCHAR(255),
+	ActionDate VARCHAR(255)
+);
+
+CREATE TABLE Notification(
+	NotificationID int PRIMARY KEY AUTO_INCREMENT,
+	UserID int,
+	HouseID int,
+	RoomID int,
+	CaptorID int,
+	floor int,
+	threshold int,
+	thresholdType int
+);
+
+CREATE TABLE userType(
+	userTypeID int PRIMARY KEY AUTO_INCREMENT,
+	EditionAdmin int,
+	GererSousCompte int,
+	Ajouts int
+
+);
+
+CREATE TABLE captorType(
+	captorTypeID int PRIMARY KEY AUTO_INCREMENT,
+	captorName VARCHAR(255),
+	unite VARCHAR(255),
+);
+
+CREATE TABLE actuatorType(
+	captorTypeID int PRIMARY KEY AUTO_INCREMENT,
+	captorName VARCHAR(255),
+	min VARCHAR(255),
+	max VARCHAR(255),
+);
+
+CREATE TABLE page(
+	PageID int PRIMARY KEY AUTO_INCREMENT,
+	PageContent BloB
+);
+
+CREATE TABLE Historic(
+    HistoicID int PRIMARY KEY AUTO_INCREMENT,
+    CaptorID int,
+    Value VARCHAR(255),
+    Date date,
+);
