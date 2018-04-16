@@ -3,9 +3,9 @@
 <nav>
     <ul>
         <li>Acceuil</li>
-        <li>Vue d'ensemble</li>
-        <li>Mes capteurs</li>
-        <li>Mes actionneurs</li>
+        <a href="Igapet.php"><li>Vue d'ensemble</li></a>
+        <a href="v_capteurs.php"><li>Mes capteurs</li></a>
+        <a href="v_actionneurs.php"><li>Mes actionneurs</li></a>
         <li>Scénarios</li>
         <li>Notifications</li>
         <li>Gérer les utilisateurs</li>

@@ -61,7 +61,7 @@ require('../controls/Home.php');
 <div class = "bloc" style="width:300px;height:1000px;">
     <div class="bloc" style="width:300px;height:210px;">
         <h3> User </h3>
-        <form action="../controls/AddToDatabase.php" method="post">
+        <form action="../models/AddToDatabase.php" method="post">
             LastName: <input type="text" name="LastName"><br>
             FirstName: <input type="text" name="FirstName"><br>
             Mail: <input type="text" name="Mail"><br>
@@ -71,7 +71,7 @@ require('../controls/Home.php');
     </div>
     <div class="bloc" style="width:300px;height:210px;">
         <h3> House </h3>
-        <form action="../controls/AddToDatabase.php" method="post">
+        <form action="../models/AddToDatabase.php" method="post">
             Name: <input type="text" name="Name"><br>
             Address: <input type="text" name="Address"><br>
             City: <input type="text" name="City"><br>

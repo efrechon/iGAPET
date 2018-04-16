@@ -11,7 +11,7 @@ if (isset($_POST['UserID'])) {
 <body>
 	<div style="width:500px;height:300px;position:relative;border-style:solid;border-color:black;">
 		<h3> Room </h3>
-		<form action="../controls/AddToDatabase.php" method="post">
+		<form action="../models/AddToDatabase.php" method="post">
 			Name: <input type="text" name="Name"><br>
 			xPosition: <input type="text" name="xPosition"><br>
 			yPosition: <input type="text" name="yPosition"><br>

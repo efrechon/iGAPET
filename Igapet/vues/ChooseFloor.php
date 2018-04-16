@@ -11,7 +11,7 @@ if (isset($_POST['HouseID'])) {
 
 <div style="width:300px;height:210px;">
     <h3> Captor </h3>
-    <form action="../controls/AddToDatabase.php" method="post">
+    <form action="../models/AddToDatabase.php" method="post">
         Name: <input type="text" name="Name"><br>
         CaptorType: <input type="text" name="CaptorType"><br>
         xPosition: <input type="text" name="xPosition"><br>

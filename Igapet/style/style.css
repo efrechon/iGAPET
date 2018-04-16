@@ -52,7 +52,7 @@ a.leftbutton{
 	overflow:scroll;
 	background-color:inherit;
 
-}*/
+}
 
 div.Captor {
 	position:relative;
@@ -63,6 +63,7 @@ div.Captor {
 	margin:5px;
 	float:left;
 }
+
 .Room{
 	position: absolute;
 	border: solid;
@@ -93,4 +94,4 @@ div.Captor {
 		-webkit-box-shadow:inset 0px 0px 0px 2px #000000;
 	-moz-box-shadow:inset 0px 0px 0px 2px #000000;
 	box-shadow:inset 0px 0px 0px 2px #000000;
-}
+}*/

@@ -16,7 +16,7 @@
     }
     else{
         // Page à afficher si problème d'URL
-        include ('controleurs/c_erreur.php');
+        //include ('controleurs/.php');
     }
 
 ?>

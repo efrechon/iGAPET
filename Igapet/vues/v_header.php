@@ -2,8 +2,8 @@
 
 <header>
     <img id="logo" src="../img/Logo.png" title="Logo">
-    <h3 id="nomSite">iGAPET</h3>
-    <h2 id="nomPage"><?php echo "Accueil"; ?></h2>
+    <div id="nomSite"><h3>iGAPET</h3><!--<h6>Produit DOMISEP</h6>--></div>
+    <h2 id="nomPage"><?php echo " "; ?></h2>
     <p id="nomClient" title="Mon profil"><?php if (!empty($_POST['nom'])) {
             echo $_POST['nom'];
         }
