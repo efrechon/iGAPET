@@ -35,6 +35,11 @@ html,body{
 	position:relative;
 }
 
+p{
+	padding-left: 3%;
+	padding-top: 1%;
+
+}
 /*
 a.leftbutton{
 	width:99%;

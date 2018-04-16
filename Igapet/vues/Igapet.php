@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../style/style.css"/>
-		<title>iGAPET</title>
+        <link rel="icon" href="../img/Logo.png">
+		<title>Vue d'ensemble</title>
 	</head>
 	<body>
 		<div id=wrapper>
