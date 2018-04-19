@@ -7,16 +7,15 @@
     session_start();
 
     // Connexion à la base de données
-
+    require ('controls/c_config.php');
 
     // Redirection en fonction de l'URL
-    if(!empty($_GET['page']) AND is_file('controleurs/'.$_GET['page'].'.php')){
+    if(!isset($_GET['page']) ){
         // Controleur de la page souhaitée
-        include ('controleurs/c_'.$_GET['page'].'.php');
+
     }
     else{
         // Page à afficher si problème d'URL
-        //include ('controleurs/.php');
     }
 
 ?>

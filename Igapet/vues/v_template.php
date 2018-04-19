@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style/template.css"/>
     <link rel="icon" href="../img/Logo.png">
-    <title><?= $titre ?></title> <!-- Changer le titre de chaque page -->
+    <title>iGAPET</title>
 </head>
 <body>
 <div id=wrapper>

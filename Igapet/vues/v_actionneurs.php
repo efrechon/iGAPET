@@ -1,5 +1,5 @@
 <!-- Nom de la page -->
-<?php $titre = "Mes actionneurs"; ?>
+<?php $nom_page = "Mes actionneurs"; ?>
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>

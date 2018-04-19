@@ -1,6 +1,7 @@
 <?php
 
-require('c_config.php');
+require('../controls/c_config.php');
+
 if (isset($_POST['Table']))
 {	
 	$tab = $_POST['Table'];
@@ -89,5 +90,5 @@ else
 	echo "Error, table not found";
 }
 
-echo "return:<a href='http://localhost/Igapet/vues/Site.php'>Click Here to Continue</a>";
+echo "return:<a href='http://localhost/iGAPET/Igapet/vues/Site.php'>Click Here to Continue</a>";
 ?>
