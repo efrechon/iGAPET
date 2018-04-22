@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="../style/header.css"/>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style/header.css"/>
+</head>
 
 <header>
     <img id="logo" src="../img/Logo.png" alt="Logo iGAPET">

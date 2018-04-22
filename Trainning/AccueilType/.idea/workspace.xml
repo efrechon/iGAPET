@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c41dafb7-318a-4609-a664-9f876067d236" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/../../Igapet/vues/v_accueil.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../../Igapet/vues/v_gestionssutilisateurs.php" />
-      <change beforePath="$PROJECT_DIR$/../../Igapet/index.php" afterPath="$PROJECT_DIR$/../../Igapet/index.php" />
-      <change beforePath="$PROJECT_DIR$/../../Igapet/models/AddToDatabase.php" afterPath="$PROJECT_DIR$/../../Igapet/models/AddToDatabase.php" />
-      <change beforePath="$PROJECT_DIR$/../../Igapet/vues/v_actionneurs.php" afterPath="$PROJECT_DIR$/../../Igapet/vues/v_actionneurs.php" />
-      <change beforePath="$PROJECT_DIR$/../../Igapet/vues/v_capteurs.php" afterPath="$PROJECT_DIR$/../../Igapet/vues/v_capteurs.php" />
-      <change beforePath="$PROJECT_DIR$/../../Igapet/vues/v_header.php" afterPath="$PROJECT_DIR$/../../Igapet/vues/v_header.php" />
-      <change beforePath="$PROJECT_DIR$/../../Igapet/vues/v_menu.php" afterPath="$PROJECT_DIR$/../../Igapet/vues/v_menu.php" />
-      <change beforePath="$PROJECT_DIR$/../../Igapet/vues/v_template.php" afterPath="$PROJECT_DIR$/../../Igapet/vues/v_template.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="c41dafb7-318a-4609-a664-9f876067d236" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +104,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -127,6 +115,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
@@ -276,11 +265,12 @@
       <workItem from="1522842048734" duration="1047000" />
       <workItem from="1522843911809" duration="112000" />
       <workItem from="1524144315480" duration="106000" />
+      <workItem from="1524416983822" duration="398000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63661000" />
+    <option name="totallyTimeSpent" value="64059000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
