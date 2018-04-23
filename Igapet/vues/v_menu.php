@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style/menu.css"/>
+    <link rel="stylesheet" href="style/menu.css"/>
 </head>
 
 <nav>

@@ -1,4 +1,5 @@
 <?php
+// Connexion BDD
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -12,3 +13,24 @@ catch(Exception $e)
     echo 'Erreur : '.$e->getMessage().'<br />';
     echo 'N° : '.$e->getCode();
 }
+
+// Toutes les possibilités pour pageAction dans l'URL
+$possibilitiesPA=array(
+    'profil',
+    'accueil',
+    'vueEns',
+    'capteurs',
+    'actionneurs',
+    'scenarios',
+    'notifs',
+    'gesutili',
+    'gesmaison',
+    'infos',
+    'sav',
+    'faq',
+    'apropos',
+    'contacter',
+    'cgu',
+    'mentionsl');
+
+?>
