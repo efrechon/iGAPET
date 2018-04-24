@@ -13,6 +13,9 @@
     // Redirection en fonction de l'URL
     if(isset($_GET['pageAction']) && in_array($_GET['pageAction'], $possibilitiesPA)){
         switch ($_GET['pageAction']){
+            case "connexion":
+                include('vues/v_connexion.php');
+            break;
             case "accueil":
                 include('vues/v_accueil.php');
             break;

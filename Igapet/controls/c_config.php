@@ -16,6 +16,7 @@ catch(Exception $e)
 
 // Toutes les possibilités pour pageAction dans l'URL
 $possibilitiesPA=array(
+    'connexion',
     'profil',
     'accueil',
     'vueEns',
