@@ -8,6 +8,7 @@
 
     // Connexion à la base de données
     require ('controls/c_config.php');
+    connexion_BDD();
 
 
     // Redirection en fonction de l'URL
@@ -15,6 +16,21 @@
         switch ($_GET['pageAction']){
             case "connexion":
                 include('vues/v_connexion.php');
+            break;
+            case "inscription":
+                include('controls/c_inscription.php');
+                affiche_premiere_inscription();
+                if(isset($_GET['type'])){
+                    if($_GET['type']=='utilisateur'){
+                        verification_mail();
+                    }
+                    else if($_GET['type'] == 'sousutilisateur'){
+                        ajouter_sous_utilisateur();
+                    }
+                    else{
+
+                    }
+                }
             break;
             case "accueil":
                 include('vues/v_accueil.php');
@@ -59,13 +75,14 @@
                 include ('vues/v_contacter.php');
             break;
             case "cgu":
-                include ('vues/v_cgu.php');
+                include ('controls/c_reglementation.php');
+                cgu();
             break;
             case "mentionsl":
-                include ('vues/v_mentionslegales.php');
+                include ('controls/c_reglementation.php');
+                mentions_legales();
             break;
         }
-
     }
     else{
         // Page à afficher si problème d'URL
