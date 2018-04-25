@@ -33,7 +33,7 @@
                 <input type="password" name="passwordI"><br/><br/>
                 <label for="verifpasswordI">Confirmer votre mot de passe : </label>
                 <input type="password" name="verifpasswordI"><br/><br/>
-                <input type="checkbox">J'accepte les Conditions Générales d'utilisation<br/><br/>
+                <input type="checkbox" name="cguOk">J'accepte les Conditions Générales d'utilisation<br/><br/>
                 <input type="submit" value="S'inscrire"><a href='index.php?pageAction=accueil'></a>
             </form>
         </div>

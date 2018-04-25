@@ -3,7 +3,7 @@
 include('models/m_inscription.php');
 
 function ajouter_utilisateur(){
-    if(verification_mail() && verification_password()){
+    if(verification_mail() && verification_password() && isset($_POST['cguOk'])){
 
     }
     else{
