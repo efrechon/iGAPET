@@ -3,14 +3,14 @@ CREATE DATABASE IGAPET;		-- nom temporaire pour pas supprimer IGAPET
 USE IGAPET;
 
 CREATE TABLE Users(
-	UserID int PRIMARY KEY AUTO_INCREMENT, -- principal key
-	FirstName varchar(70) NOT NULL,
-	LastName varchar(70) NOT NULL,
-	Mail varchar(70) NOT NULL,			-- should be unique
-	CreationDate datetime,		-- automatic
-	UserPassword varchar(255) NOT NULL,		-- should be crypted + condition
+	UserID int PRIMARY KEY AUTO_INCREMENT,      -- principal key
+	FirstName varchar(70),
+	LastName varchar(70),
+    Mail varchar(70),		            	    -- should be unique
+	CreationDate datetime,  		            -- automatic
+    UserPassword varchar(255),		            -- should be crypted + condition
 	UserTypeID tinyint,
-	Phone varchar(15) NOT NULL			-- should be unique
+    Phone varchar(15)                			-- should be unique
 );
 
 CREATE TABLE Houses(

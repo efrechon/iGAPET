@@ -26,7 +26,7 @@
             <h3>Inscription</h3><br/><br/>
             <form action='index.php?pageAction=inscription&type=utilisateur' method="post">
                 <label for="emailI">Email : </label>
-                <input type="text" name="emailI"><br/><br/>
+                <input type="email" name="emailI"><br/><br/>
                 <label for="verifemailI">Confirmer votre Email : </label>
                 <input type="text" name="verifemailI"><br/><br/>
                 <label for="passwordI">Mot de passe : </label>

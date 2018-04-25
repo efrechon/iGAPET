@@ -35,12 +35,7 @@ label{
     text-align: right;
 }
 
-input[type="text"]{
-    width: 200px;
-    margin-left: -100px;
-}
-
-input[type="password"]{
+input[type="text"], input[type="email"], input[type="password"] {
     width: 200px;
     margin-left: -100px;
 }

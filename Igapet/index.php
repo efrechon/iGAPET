@@ -6,9 +6,8 @@
     // Début de la session
     session_start();
 
-    // Connexion à la base de données
+    //Connexion à la base de données
     require ('controls/c_config.php');
-    connexion_BDD();
 
 
     // Redirection en fonction de l'URL
@@ -19,16 +18,15 @@
             break;
             case "inscription":
                 include('controls/c_inscription.php');
-                affiche_premiere_inscription();
                 if(isset($_GET['type'])){
                     if($_GET['type']=='utilisateur'){
-                        verification_mail();
+                        ajouter_utilisateur();
                     }
                     else if($_GET['type'] == 'sousutilisateur'){
                         ajouter_sous_utilisateur();
                     }
                     else{
-
+                        affiche_premiere_inscription();
                     }
                 }
             break;

@@ -1,6 +1,6 @@
 <?php
 
-require('models/m_inscription.php');
+include('models/m_inscription.php');
 
 function ajouter_utilisateur(){
     if(verification_mail() && verification_password()){
@@ -24,17 +24,18 @@ function verification_password(){
 }
 
 function verification_mail(){
-    affiche_premiere_inscription();
     if($_POST['passwordI'] != $_POST['verifpasswordI']){
         echo 'Les deux mots de passe doivent être identiques !';
+        return false;
     }
     else{
         echo 'Mot de passe OK';
+        return true;
     }
 }
 
 function affiche_premiere_inscription(){
-    include('../vues/v_connexion.php');
+    include('vues/v_accueil.php');
 }
 
 function ajouter_sous_utilisateur(){

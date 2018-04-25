@@ -1,12 +1,10 @@
 <?php
 
-include ('controls/c_config.php');
-connexion_BDD();
-
-$email = $_POST["emailI"];
-$password = $_POST["passwordI"];
-$sql= "INSERT INTO users VALUE(NULL, NULL, NULL, $email, date(d/m/Y), $password, NULL, NULL)";
+$email= $_POST["emailI"];
+$password= $_POST["passwordI"];
+$data= array(NULL, NULL, NULL, $email, date("Y-m-d"), $password, NULL, NULL);
+$sql= "INSERT INTO users VALUES(?,?,?,?,?,?,?,?)";
 $query=$db->prepare($sql); 
-$query->execute();
+$query->execute($data);
 
 ?>
