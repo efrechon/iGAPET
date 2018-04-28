@@ -1,5 +1,6 @@
 <?php
 
+function connexion_BDD(){
     $host = "localhost";
     $user = "root";
     $pass = "";
@@ -11,7 +12,7 @@
         echo 'Erreur : ' . $e->getMessage() . '<br />';
         echo 'N° : ' . $e->getCode();
     }
-
+}
 
 //Toutes les possibilités pour pageAction dans l'URL
 $possibilitiesPA=array(

@@ -4,9 +4,10 @@ include('models/m_inscription.php');
 
 function ajouter_utilisateur(){
     if(verification_mail() && verification_password() && isset($_POST['cguOk'])){
-
+        inscription();
     }
     else{
+        include ('vues/v_connexion.php');
         echo "Formulaire n'a pas été rempli correctement";
     }
 
