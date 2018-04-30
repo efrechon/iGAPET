@@ -9,7 +9,6 @@
     //Connexion à la base de données
     require ('controls/c_config.php');
 
-
     // Redirection en fonction de l'URL
     if(isset($_GET['pageAction']) && in_array($_GET['pageAction'], $possibilitiesPA)){
         switch ($_GET['pageAction']){

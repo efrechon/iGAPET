@@ -1,26 +1,25 @@
 <?php
 
 function inscription_utilisateur(){
+    // Connexion à la BDD
     $db= connexion_BDD();
 
-    $id= NULL;
-    $prenom= NULL;
-    $nom= NULL;
+    // Récupération des valeurs
     $email= $_POST["emailI"];
     $adhesion= date('Y-m-d');
     $password = $_POST['passwordI'];
     $type_uti= 2;
-    $phone= NULL;
 
-    $requete= $db->prepare('INSERT INTO users VALUES(:UserID,:prenom,:nom,:mail,:date_adhesion,:password,:type_uti,:phone)');
-    $requete->bindParam(':UserID',$id);
-    $requete->bindParam(':prenom',$prenom);
-    $requete->bindParam(':nom',$nom);
+    // Préparation de la requete SQL
+    $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID) VALUES(:mail,:date_adhesion,:password,:type_uti)');
+
+    // Affectation des valeurs
     $requete->bindParam(':mail',$email);
     $requete->bindParam(':date_adhesion',$adhesion);
     $requete->bindParam(':password',$password);
     $requete->bindParam(':type_uti',$type_uti);
-    $requete->bindParam(':phone',$phone);
+
+    // Execution de la requete
     $requete->execute();
 }
 

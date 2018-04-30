@@ -2,6 +2,7 @@
 
 include('models/m_inscription.php');
 
+// Fonctions
 function ajouter_utilisateur(){
     if(verification_mail() && verification_password() && isset($_POST['cguOk'])){
         inscription_utilisateur();
@@ -45,6 +46,7 @@ function ajouter_sous_utilisateur(){
 
 }
 
+// Affichages
 function affiche_page_inscription(){
     include('vues/v_connexion.php');
 }
@@ -53,10 +55,8 @@ function affiche_acceuil(){
     include('vues/v_accueil.php');
 }
 
-
 function affiche_inscription_sous_utilisateur(){
 
 }
-
 
 ?>
