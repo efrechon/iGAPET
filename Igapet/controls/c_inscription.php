@@ -4,23 +4,29 @@ include('models/m_inscription.php');
 
 function ajouter_utilisateur(){
     if(verification_mail() && verification_password() && isset($_POST['cguOk'])){
-        inscription();
+        inscription_utilisateur();
+        affiche_acceuil();
     }
     else{
-        include ('vues/v_connexion.php');
+        affiche_page_inscription();
         echo "Formulaire n'a pas été rempli correctement";
     }
 
 }
 
 function verification_password(){
-    if($_POST['emailI'] != $_POST['verifemailI']){
-        echo 'Les deux mails doivent être identiques !';
-        return false;
+    if(isset($_POST['emailI'])&& isset($_POST['verifemailI'])){
+        if ($_POST['emailI'] != $_POST['verifemailI']) {
+            echo 'Les deux mails doivent être identiques !';
+            return false;
+        } else {
+            echo 'Mail OK';
+            return true;
+        }
     }
     else{
-        echo 'Mail OK';
-        return true;
+            echo 'Remplir les mails';
+            return false;
     }
 }
 
@@ -35,13 +41,18 @@ function verification_mail(){
     }
 }
 
-function affiche_premiere_inscription(){
-    include('vues/v_accueil.php');
-}
-
 function ajouter_sous_utilisateur(){
 
 }
+
+function affiche_page_inscription(){
+    include('vues/v_connexion.php');
+}
+
+function affiche_acceuil(){
+    include('vues/v_accueil.php');
+}
+
 
 function affiche_inscription_sous_utilisateur(){
 

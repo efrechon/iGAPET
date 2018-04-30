@@ -14,10 +14,11 @@
     if(isset($_GET['pageAction']) && in_array($_GET['pageAction'], $possibilitiesPA)){
         switch ($_GET['pageAction']){
             case "connexion":
-                include('vues/v_connexion.php');
+                include ('controls/c_inscription.php');
+                affiche_page_inscription();
             break;
             case "inscription":
-                include('controls/c_inscription.php');
+                include ('controls/c_inscription.php');
                 if(isset($_GET['type'])){
                     if($_GET['type']=='utilisateur'){
                         ajouter_utilisateur();
@@ -26,12 +27,13 @@
                         ajouter_sous_utilisateur();
                     }
                     else{
-                        affiche_premiere_inscription();
+                        affiche_acceuil();
                     }
                 }
             break;
             case "accueil":
-                include('vues/v_accueil.php');
+                include ('controls/c_inscription.php');
+                affiche_acceuil();
             break;
             case "profil":
                 include ('vues/v_profil.php');
@@ -55,7 +57,22 @@
                 include ('vues/v_gestionssutilisateurs.php');
             break;
             case "gesmaison":
-                include ('vues/v_gestionmaison.php');
+                if ((isset($_GET['new']))){
+                    if ($_GET['new'] == 'maison'){
+                        include ('vues/v_ajoutermaison.php');
+                    }
+                    else if ($_GET['new'] == 'piece'){
+                        include ('vues/v_ajouterpiece.php');
+                    }
+                    else if ($_GET['new'] == 'capteur'){
+                        include ('vues/v_ajoutercapteur.php');
+                    }
+                    else if ($_GET['new'] == 'actionneur'){
+                        include ('vues/v_ajouteractionneur.php');
+                    }
+                }else{
+                    include ('vues/v_gestionmaison.php');
+                }
             break;
             case "infos":
                 include ('vues/v_informations.php');

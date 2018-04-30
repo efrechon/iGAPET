@@ -1,0 +1,26 @@
+#full{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-items: auto;
+    justify-content: center;
+    height: 96%;
+}
+
+#Informations{
+    padding: 5px;
+    width: 70%;
+    height: 96%;
+    border: 2px solid gray;
+}
+
+#other{
+    text-align: center;
+    width: 25%;
+    height: 15%;
+}
+
+#notifications{
+    width: 25%;
+    height: 80%;
+}

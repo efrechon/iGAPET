@@ -1,9 +1,24 @@
+<link rel="stylesheet" href="style/accueil.css">
+
 <!-- Nom de la page -->
 <?php $nom_page = "Accueil"; ?>
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<p>Bonjour, Bienvenue chez iGAPET produit de DOMISEP</p>
+<div id="full">
+    <div id="Informations">
+        Volets ouverts
+    </div>
+    <div id="other">
+        <p>Autres</p>
+    </div>
+    <div id="Notifications">
+        <fieldset>
+            <legend>Notifications</legend>
+        </fieldset>
+    </div>
+</div>
+
 
 <!-- Fin & Affectation du contenu de la page -->
 <?php $contenu=ob_get_clean(); ?>

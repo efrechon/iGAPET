@@ -12,6 +12,7 @@ function connexion_BDD(){
         echo 'Erreur : ' . $e->getMessage() . '<br />';
         echo 'N° : ' . $e->getCode();
     }
+    return $db;
 }
 
 //Toutes les possibilités pour pageAction dans l'URL
