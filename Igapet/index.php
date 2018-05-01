@@ -15,8 +15,14 @@
         switch ($_GET['pageAction']){
             case "connexion":
                 include ('controls/c_connexion.php');
-                affiche_page_inscription();
-                connect_iGAPET($db);
+                if(isset($_GET['new'])){
+                    if($_GET['new'] == 'visit'){
+                        connexion_iGAPET($db);
+                    }
+                }
+                else{
+                    affiche_page_inscription();
+                }
             break;
             case "inscription":
                 include ('controls/c_inscription.php');
@@ -28,7 +34,7 @@
                         ajouter_sous_utilisateur();
                     }
                     else{
-                        affiche_acceuil();
+                        affiche_page_inscription();
                     }
                 }
             break;

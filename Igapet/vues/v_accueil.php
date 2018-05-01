@@ -8,6 +8,10 @@
 <div id="full">
     <div id="Informations">
         Volets ouverts
+        <?php echo $_SESSION['id'].'<br/>';?>
+        <?php echo $_SESSION['nom'].'<br/>';?>
+        <?php echo $_SESSION['prenom'].'<br/>';?>
+        <?php echo $_SESSION['user_type'].'<br/>';?>
     </div>
     <div id="other">
         <p>Autres</p>

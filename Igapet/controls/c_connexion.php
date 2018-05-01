@@ -2,14 +2,15 @@
 
 include('models/m_connexion.php');
 
-function connect_iGAPET($db){
-    if(exists($db) == 'OK'){
+function connexion_iGAPET($db){
+    if(authentification($db) == 'OK'){
         header('Location:index.php?pageAction=accueil');
     }
     else{
-        affiche_page_inscription();
+        header('Location:index.php?pageAction=connexion');
     }
 }
+
 
 // Affichages
 function affiche_page_inscription(){

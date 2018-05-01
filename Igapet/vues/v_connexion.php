@@ -14,7 +14,7 @@
     <div id="contain">
         <div id="connexion">
             <h3>Connexion</h3><br/><br/>
-            <form action="index.php?pageAction=connexion" method="post">
+            <form action="index.php?pageAction=connexion&new=visit" method="post">
                 <label for="emailC">Email : </label>
                 <input type="text" name="emailC"><br/><br/>
                 <label for="passwordC">Mot de passe : </label>

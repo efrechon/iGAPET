@@ -6,10 +6,10 @@ include('models/m_inscription.php');
 function ajouter_utilisateur($db){
     if(verification_mail($db) && verification_password() && isset($_POST['cguOk'])){
         inscription_utilisateur($db);
-        affiche_acceuil();
+        header('Location:index.php?pageAction=accueil');
     }
     else{
-        affiche_page_inscription();
+        header('Location:index.php?pageAction=connexion');
         echo "Formulaire n'a pas été rempli correctement";
     }
 
@@ -58,7 +58,7 @@ function affiche_acceuil(){
 }
 
 function affiche_inscription_sous_utilisateur(){
-
+    include('vues/v_gestionssutilisateurs.php');
 }
 
 ?>
