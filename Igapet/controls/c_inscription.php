@@ -48,6 +48,16 @@ function ajouter_sous_utilisateur(){
 
 }
 
+function ajouter_maison($db){
+    if(isset($_POST['adresseV'], $_POST['adresseCDP'], $_POST['adresseP'])){
+        inscritption_maison($db);
+    }
+    else{
+        header('Location: index.php?pageAction=gesmaison&new=maison');
+
+    }
+}
+
 // Affichages
 function affiche_page_inscription(){
     include('vues/v_connexion.php');
@@ -59,6 +69,10 @@ function affiche_acceuil(){
 
 function affiche_inscription_sous_utilisateur(){
     include('vues/v_gestionssutilisateurs.php');
+}
+
+function affiche_ajouter_maison(){
+
 }
 
 ?>

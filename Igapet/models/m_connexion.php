@@ -1,6 +1,6 @@
 <?php
 
-function verification_existence_mail($db){
+function verifi_mail($db){
     $mailexist= 'OK';
     $email= $_POST['emailC'];
     $requete= $db->prepare('SELECT Mail FROM users ');
