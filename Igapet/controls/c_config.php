@@ -17,8 +17,8 @@ function connexion_BDD(){
 
 //Toutes les possibilités pour pageAction dans l'URL
 $possibilitiesPA=array(
-    "connexion",
-    "inscription",
+    'connexion',
+    'inscription',
     'profil',
     'accueil',
     'vueEns',
@@ -34,6 +34,7 @@ $possibilitiesPA=array(
     'apropos',
     'contacter',
     'cgu',
-    'mentionsl');
+    'mentionsl',
+    'deconnexion');
 
 ?>

@@ -1,5 +1,20 @@
 <?php
 
+function verification_existence_mail($db){
+    $mailexist= 'OK';
+    $email= $_POST['emailC'];
+    $requete= $db->prepare('SELECT Mail FROM users ');
+    $requete->bindParam(':mail',$email);
+    $requete->execute();
+    while($saved = $requete->fetch()){
+        if ($saved['Mail']== $email){
+            $mailexist= 'KO';
+            break;
+        }
+    }
+    return $mailexist;
+}
+
 function authentification($db){
     $mail=$_POST['emailC'];
     $password= md5($_POST['passwordC']);

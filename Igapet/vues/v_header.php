@@ -14,5 +14,5 @@
         else{
             echo "Nom du client";
         }?></p></a>
-    <a href='index.php?pageAction=connexion'><img class="off" src="img/Power.png" title="Deconnexion" alt="Bouton de deconnexion"></a>
+    <a href='index.php?pageAction=deconnexion'><img class="off" src="img/Power.png" title="Deconnexion" alt="Bouton de deconnexion"></a>
 </header>

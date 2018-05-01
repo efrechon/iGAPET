@@ -104,7 +104,15 @@
                 include ('controls/c_reglementation.php');
                 mentions_legales();
             break;
+            case "deconnexion":
+                include('controls/c_deconnexion.php');
+                deconnexion();
+            break;
         }
+    }
+    else if(empty($_GET['pageAction'])) {
+        include ('controls/c_inscription.php');
+        affiche_page_inscription();
     }
     else{
         // Page à afficher si problème d'URL

@@ -34,4 +34,5 @@ function verification_existence_mail($db){
     }
     return $mailexist;
 }
+
 ?>
