@@ -14,13 +14,15 @@
     <div id="contain">
         <div id="connexion">
             <h3>Connexion</h3><br/><br/>
-            <form action="" method="post">
+            <form action="index.php?pageAction=connexion" method="post">
                 <label for="emailC">Email : </label>
                 <input type="text" name="emailC"><br/><br/>
                 <label for="passwordC">Mot de passe : </label>
                 <input type="password" name="passwordC"><br/><br/>
                 <input type="submit" value="Se connecter"><a href='index.php?pageAction=accueil'></a>
             </form>
+            <br>
+            <a>Mot de passe oublié</a>
         </div>
         <div id="inscription">
             <h3>Inscription</h3><br/><br/>

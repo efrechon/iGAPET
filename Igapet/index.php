@@ -8,19 +8,21 @@
 
     //Connexion à la base de données
     require ('controls/c_config.php');
+    $db= connexion_BDD();
 
     // Redirection en fonction de l'URL
     if(isset($_GET['pageAction']) && in_array($_GET['pageAction'], $possibilitiesPA)){
         switch ($_GET['pageAction']){
             case "connexion":
-                include ('controls/c_inscription.php');
+                include ('controls/c_connexion.php');
                 affiche_page_inscription();
+                connect_iGAPET($db);
             break;
             case "inscription":
                 include ('controls/c_inscription.php');
                 if(isset($_GET['type'])){
                     if($_GET['type']=='utilisateur'){
-                        ajouter_utilisateur();
+                        ajouter_utilisateur($db);
                     }
                     else if($_GET['type'] == 'sousutilisateur'){
                         ajouter_sous_utilisateur();

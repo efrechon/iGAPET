@@ -3,9 +3,9 @@
 include('models/m_inscription.php');
 
 // Fonctions
-function ajouter_utilisateur(){
-    if(verification_mail() && verification_password() && isset($_POST['cguOk'])){
-        inscription_utilisateur();
+function ajouter_utilisateur($db){
+    if(verification_mail($db) && verification_password() && isset($_POST['cguOk'])){
+        inscription_utilisateur($db);
         affiche_acceuil();
     }
     else{
@@ -15,29 +15,31 @@ function ajouter_utilisateur(){
 
 }
 
-function verification_password(){
-    if(isset($_POST['emailI'])&& isset($_POST['verifemailI'])){
-        if ($_POST['emailI'] != $_POST['verifemailI']) {
-            echo 'Les deux mails doivent être identiques !';
-            return false;
+function verification_mail($db){
+        if (isset($_POST['emailI']) && isset($_POST['verifemailI'])) {
+            if ($_POST['emailI'] != $_POST['verifemailI']) {
+                echo 'Les deux mails doivent être identiques !';
+                return false;
+            } else {
+                if(verification_existence_mail($db)== 'OK'){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
         } else {
-            echo 'Mail OK';
-            return true;
-        }
-    }
-    else{
             echo 'Remplir les mails';
             return false;
-    }
+        }
 }
 
-function verification_mail(){
+function verification_password(){
     if($_POST['passwordI'] != $_POST['verifpasswordI']){
         echo 'Les deux mots de passe doivent être identiques !';
         return false;
     }
     else{
-        echo 'Mot de passe OK';
         return true;
     }
 }

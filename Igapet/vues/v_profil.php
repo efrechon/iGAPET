@@ -5,7 +5,7 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<form action="" method="post">
+<form action="index.php?pageAction=profil&" method="post">
     <label for="lastName">Prénom : </label>
     <input type="text" name="lastName"><br/><br/>
     <label for="firstName">Nom : </label>
