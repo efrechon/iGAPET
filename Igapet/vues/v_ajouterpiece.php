@@ -6,10 +6,19 @@
 <?php ob_start(); ?>
 <h2>Ajouter une pièce</h2>
 <form action="" method="post">
-    <label for="emplacement">Appartient à : </label>
-    <input type="text" name="emplacement"><br/><br/>
-    <label for="name">Renommer votre pièce : </label>
-    <input type="text" name="name"><br/><br/>
+    <label for="localisationM">Appartient à : </label>
+    <select name="localisationM">
+    <?php $db=connexion_BDD();
+    $id= $_SESSION['id'];
+    $requete= $db->query("SELECT Name FROM houses WHERE UserID=$id");
+    while($donnees= $requete->fetch()){
+        $nomM= $donnees['Name'];
+        echo '<option value= $nomM >'.$nomM.'</option>';
+    }
+    ?>
+    </select><br/><br/>
+    <label for="nameP">Renommer votre pièce : </label>
+    <input type="text" name="nameP"><br/><br/>
     <label for="largeur">Largeur : </label>
     <input type="number" name="largeur"><br/><br/>
     <label for="longueur">Longueur : </label>

@@ -1,24 +1,23 @@
 <?php
 
-function modifier_profil($db){
+function changement_profil($db){
     // Récupération des valeurs
-    $id= A ;
-    $nom= $_POST["lastName"];
-    $prenom= $_POST["firstName"];
-    $email= $_POST["emailI"];
-    $password = crypt($_POST['passwordI']);
-    $phone= $_POST['tel'];
+    $id= htmlspecialchars($_SESSION['id']);
+    $nom= htmlspecialchars($_POST["lastName"]);
+    $prenom= htmlspecialchars($_POST["firstName"]);
+    $email= htmlspecialchars($_POST["emailP"]);
+    $password = md5($_POST['passwordP']);
+    $phone= htmlspecialchars($_POST['phone']);
 
     // Préparation de la requete SQL
-    $requete= $db->prepare('UPDATE users SET LastName= :nom, FirstName= :prenom, Mail= :mail, Phone= :phone WHERE UserID= :id');
+    $requete= $db->prepare("UPDATE users SET LastName=:nom,FirstName=:prenom,Mail=:mail,UserPassword=:password,Phone=:phone WHERE UserID=$id");
 
     // Affectation des valeurs
-    $requete->bindParam(':id',$id);
-    $requete->bindParam(':nom',$nom);
-    $requete->bindParam(':prenom',$prenom);
-    $requete->bindParam(':mail',$email);
-    $requete->bindParam(':password',$password);
-    $requete->bindParam(':phone',$phone);
+    $requete->bindValue(':nom',$nom);
+    $requete->bindValue(':prenom',$prenom);
+    $requete->bindValue(':mail',$email);
+    $requete->bindValue(':password',$password);
+    $requete->bindValue(':phone',$phone);
 
     // Execution de la requete
     $requete->execute();

@@ -5,7 +5,7 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<form action="index.php?pageAction=profil&" method="post">
+<form action="index.php?pageAction=profil&modifier=yes" method="post">
     <label for="lastName">Prénom : </label>
     <input type="text" name="lastName"><br/><br/>
     <label for="firstName">Nom : </label>
@@ -15,7 +15,7 @@
     <label for="passwordP">Mot de passe : </label>
     <input type="password" name="passwordP"><br/><br/>
     <label for="phone">Nunéro de téléphone : </label>
-    <input type="tel" name="phone"><br/><br/>
+    <input type="text" name="phone"><br/><br/>
     <input type="submit" value="Modifier">
 </form>
 <!-- Fin & Affectation du contenu de la page -->

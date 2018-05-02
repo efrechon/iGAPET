@@ -44,17 +44,28 @@ function verification_password(){
     }
 }
 
-function ajouter_sous_utilisateur(){
+function ajouter_sous_utilisateur($db){
 
 }
 
 function ajouter_maison($db){
-    if(isset($_POST['adresseV'], $_POST['adresseCDP'], $_POST['adresseP'])){
+    if(isset($_POST['nameM'], $_POST['adresseV'], $_POST['adresseCDP'], $_POST['adresseP'], $_POST['etagesM'])){
         inscritption_maison($db);
         header('Location: index.php?pageAction=gesmaison');
     }
     else{
         header('Location: index.php?pageAction=gesmaison&new=maison');
+
+    }
+}
+
+function ajouter_piece($db){
+    if(isset($_POST['localisationM'], $_POST['nameP'], $_POST['largeur'], $_POST['longeur'], $_POST['positionX'], $_POST['positionY'], $_POST['etage'])){
+        inscritption_piece($db);
+        header('Location: index.php?pageAction=gesmaison');
+    }
+    else{
+        header('Location: index.php?pageAction=gesmaison&new=piece');
 
     }
 }
@@ -78,6 +89,10 @@ function affiche_gestion_maison(){
 
 function affiche_new_maison(){
     include('vues/v_ajoutermaison.php');
+}
+
+function affiche_new_piece(){
+    include('vues/v_ajouterpiece.php');
 }
 
 ?>

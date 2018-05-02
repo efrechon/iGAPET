@@ -43,7 +43,12 @@
                 affiche_acceuil();
             break;
             case "profil":
-                include ('vues/v_profil.php');
+                include ('controls/c_profil.php');
+                if(isset($_GET['modifier']) && $_GET['modifier'] == 'yes'){
+                    modifier_profil($db);
+                    affiche_mon_profil();
+                }
+                affiche_mon_profil();
             break;
             case "vueEns":
                 include ('vues/v_vueensemble.php');
@@ -71,7 +76,8 @@
                         inscritption_maison($db);
                     }
                     else if ($_GET['new'] == 'piece'){
-                        include ('vues/v_ajouterpiece.php');
+                        affiche_new_piece();
+                        inscription_piece($db);
                     }
                     else if ($_GET['new'] == 'capteur'){
                         include ('vues/v_ajoutercapteur.php');

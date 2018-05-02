@@ -14,7 +14,7 @@ label{
     margin: 10px 0 5px 10%;
 }
 
-input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="tel"] {
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="tel"], select {
     width: 200px;
     margin: 10px 0 5px -350px;
 }

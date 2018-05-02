@@ -5,6 +5,15 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
+<select>
+<?php $db=connexion_BDD();
+$id= $_SESSION['id'];
+$requete= $db->query("SELECT Name FROM houses WHERE UserID=$id");
+    while($donnees= $requete->fetch()){
+        echo '<option>'.$donnees['Name'].'</option>';
+    }
+?>
+</select>
 <a href='index.php?pageAction=gesmaison&new=maison'><p>Ajouter une maison</p></a><br/><br/>
 <a href='index.php?pageAction=gesmaison&new=piece'>Ajouter une pièce</a><br/><br/>
 <a href='index.php?pageAction=gesmaison&new=capteur'>Ajouter un capteur</a><br/><br/>
