@@ -1,5 +1,5 @@
 <!-- Nom de la page -->
-<?php $nom_page = "Gérer les sous-utilisateurs"; ?>
+<?php $nom_page = "Gérer les utilisateurs"; ?>
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>

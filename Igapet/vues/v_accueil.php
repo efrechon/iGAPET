@@ -8,9 +8,6 @@
 <div id="full">
     <div id="Informations">
         <p>Volets ouverts</p>
-        <?php echo $_SESSION['id']; ?>
-        <?php echo $_SESSION['nom']; ?>
-        <?php echo $_SESSION['prenom']; ?>
     </div>
     <div id="other">
         <p>Autres</p>

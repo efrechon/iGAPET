@@ -8,8 +8,8 @@
     <div id="nomSite"><h3>iGAPET</h3></div>
     <h2 id="nomPage"><?php echo $nom_page; ?></h2>
     <a href='index.php?pageAction=profil'><p id="nomClient" title="Mon profil">
-        <?php if (!empty($_POST['nom'])) {
-            echo $_POST['nom'];
+        <?php if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
+            echo $_SESSION['prenom'].' '.$_SESSION['nom'];
         }
         else{
             echo "Nom du client";

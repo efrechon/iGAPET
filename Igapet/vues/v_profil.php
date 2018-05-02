@@ -5,18 +5,6 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<?php
-    $mail= 'alain@yahoo.fr';
-    $requete=$db->query("SELECT * FROM users WHERE Mail=':mail'");
-    $requete->bindValue(':mail', $mail);
-    while($donnes=$requete->fetch()){
-        echo $donnes['FirstName'].'<br/>';
-        echo $donnes['LastName'].'<br/>';
-        echo $donnes['Mail'].'<br/>';
-        echo $donnes['Phone'].'<br/>';
-    }
-?>
-
 <form action="index.php?pageAction=profil&" method="post">
     <label for="lastName">Prénom : </label>
     <input type="text" name="lastName"><br/><br/>
