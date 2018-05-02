@@ -37,22 +37,23 @@ function verification_existence_mail($db){
 }
 
 function inscritption_maison($db){
-    $nom=$_POST['name'];
+    $nom=$_POST['nameM'];
     $voie=$_POST['adresseV'];
     $cp=$_POST['adresseCDP'];
     $pays=$_POST['adresseP'];
-    $nbretage=$_POST['etages'];
+    $nbretage=$_POST['etagesM'];
+    $id= $_SESSION['id'];
 
-    $requete=$db->query('INSERT INTO houses VALUES (:nom, :voie, :cp, :pays, :nbretage)');
+    $requeteM=$db->prepare('INSERT INTO houses(Name, Address, PostalCode, Country, NumberOfFloor, UserID) VALUES (:nom,:voie,:cp,:pays,:nbretages,:id)');
 
-    $requete->bindParam(':nom',$nom);
-    $requete->bindParam(':voie',$voie);
-    $requete->bindParam(':cp',$cp);
-    $requete->bindParam(':pays',$pays);
-    $requete->bindParam(':nbretage',$nbretage);
+    $requeteM->bindParam(':nom',$nom);
+    $requeteM->bindParam(':voie',$voie);
+    $requeteM->bindParam(':cp',$cp);
+    $requeteM->bindParam(':pays',$pays);
+    $requeteM->bindParam(':nbretages',$nbretage);
+    $requeteM->bindParam(':id',$id);
 
-    $requete->execute();
-
+    $requeteM->execute();
 }
 
 ?>

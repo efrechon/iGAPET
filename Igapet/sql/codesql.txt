@@ -20,9 +20,7 @@ CREATE TABLE Houses(
 	Address varchar(255) NOT NULL,                  -- change varcharSize
 	PostalCode varchar(10) NOT NULL,
 	Country varchar(30) NOT NULL,
-	NumberOfFloor tinyint NOT NULL,
-	Width real NOT NULL,
-	Height real NOT NULL
+	NumberOfFloor tinyint NOT NULL
 );
 
 CREATE TABLE Rooms(

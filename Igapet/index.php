@@ -64,9 +64,11 @@
                 include ('vues/v_gestionssutilisateurs.php');
             break;
             case "gesmaison":
+                include ('controls/c_inscription.php');
                 if ((isset($_GET['new']))){
                     if ($_GET['new'] == 'maison'){
-                        include ('vues/v_ajoutermaison.php');
+                        affiche_new_maison();
+                        inscritption_maison($db);
                     }
                     else if ($_GET['new'] == 'piece'){
                         include ('vues/v_ajouterpiece.php');
@@ -78,7 +80,7 @@
                         include ('vues/v_ajouteractionneur.php');
                     }
                 }else{
-                    include ('vues/v_gestionmaison.php');
+                    affiche_gestion_maison();
                 }
             break;
             case "infos":
