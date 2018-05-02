@@ -13,7 +13,7 @@
     $requete= $db->query("SELECT Name FROM houses WHERE UserID=$id");
     while($donnees= $requete->fetch()){
         $nomM= $donnees['Name'];
-        echo '<option value= $nomM >'.$nomM.'</option>';
+        echo '<option value='.'<?php $nomM ?>'.'>'.$nomM.'</option>';
     }
     ?>
     </select><br/><br/>
