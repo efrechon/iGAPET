@@ -7,14 +7,9 @@ function connexion_iGAPET($db){
         header('Location:index.php?pageAction=connexion');
     }
     else{
-        if(verifi_mail($db)== 'OK'){
-            if(authentification($db) == 'OK'){
-                recup_informations($db);
-                header('Location:index.php?pageAction=accueil');
-            }
-            else{
-                header('Location:index.php?pageAction=connexion');
-            }
+        if(authentification($db) == 'OK'){
+            recup_informations($db);
+            header('Location:index.php?pageAction=accueil');
         }
         else{
             header('Location:index.php?pageAction=connexion');

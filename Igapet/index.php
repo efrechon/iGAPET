@@ -116,7 +116,7 @@
     }
     else{
         // Page à afficher si problème d'URL
-        echo "Error, problème d'indexage";
+        echo "Erreur, problème d'indexage";
     }
 
 ?>

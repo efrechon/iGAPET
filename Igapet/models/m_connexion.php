@@ -18,13 +18,15 @@ function verifi_mail($db){
 function authentification($db){
     $mail=$_POST['emailC'];
     $password= md5($_POST['passwordC']);
-    $requete= $db->query("SELECT UserPassword FROM users WHERE Mail=':mail'");
-    $requete->bindParam(':mail', $mail);
-    if($requete->execute()== $password){
-        return 'OK';
-    }
-    else{
-        return'KO';
+    $requete= $db->query("SELECT UserPassword FROM users WHERE Mail='$mail'");
+    //$requete->bindValue(':mail', $mail);
+    while($donnees= $requete->fetch()){
+        if($donnees['UserPassword'] == $password){
+            return 'OK';
+        }
+        else{
+            return'KO';
+        }
     }
 }
 
