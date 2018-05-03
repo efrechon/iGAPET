@@ -15,6 +15,12 @@ function connexion_BDD(){
     return $db;
 }
 
+function connected(){
+    if(!$_SESSION['connect']){
+        header('Location: index.php?pageAction=connexion');
+    }
+}
+
 //Toutes les possibilités pour pageAction dans l'URL
 $possibilitiesPA=array(
     'connexion',

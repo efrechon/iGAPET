@@ -22,6 +22,22 @@ function changement_profil($db){
     // Execution de la requete
     $requete->execute();
 
+    if($_POST['firstName'] != $_SESSION['prenom']){
+        $_SESSION['prenom']= $_POST['firstName'];
+    }
+    if($_POST['lastName'] != $_SESSION['nom']){
+        $_SESSION['nom']= $_POST['lastName'];
+    }
+    if($_POST['emailP'] != $_SESSION['mail']){
+        $_SESSION['mail']= $_POST['emailP'];
+    }
+    if($_POST['passwordP'] != $_SESSION['passwordInit']){
+        $_SESSION['passwordInit']= $_POST['passwordP'];
+    }
+    if($_POST['phone'] != $_SESSION['tel']){
+        $_SESSION['tel']= $_POST['phone'];
+    }
+
 }
 
 function recuperation_donnees(){

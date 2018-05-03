@@ -18,17 +18,24 @@ function verifi_mail($db){
 function authentification($db){
     $mail=$_POST['emailC'];
     $password= md5($_POST['passwordC']);
-    $requete= $db->query("SELECT UserID, FirstName, LastName, UserPassword FROM users WHERE Mail='$mail'");
+    $requete= $db->query("SELECT UserID, FirstName, LastName, UserPassword, Phone FROM users WHERE Mail='$mail'");
     while($donnees= $requete->fetch()){
         if($donnees['UserPassword'] == $password){
             $_SESSION['connected']= true;
             $_SESSION['id']= $donnees['UserID'];
             $_SESSION['mail']= $_POST['emailC'];
+            $_SESSION['passwordInit']= $_POST['passwordC'];
             if($donnees['FirstName'] != NULL){
                 $_SESSION['prenom']= $donnees['FirstName'];
             }
             if($donnees['LastName'] != NULL){
                 $_SESSION['nom']= $donnees['LastName'];
+            }
+            if($donnees['Phone'] == NULL){
+                $_SESSION['tel']= "Vous n'avez pas indiqué votre numéro";
+            }
+            else{
+                $_SESSION['tel']= $donnees['Phone'];
             }
             return 'OK';
         }

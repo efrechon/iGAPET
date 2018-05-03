@@ -124,7 +124,7 @@
     }
     else{
         // Page à afficher si problème d'URL
-        echo "Erreur, problème d'indexage";
+        include ('vues/v_erreur.php');
     }
 
 ?>
