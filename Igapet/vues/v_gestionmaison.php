@@ -5,16 +5,24 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<select>
+
 <?php $db=connexion_BDD();
 $id= $_SESSION['id'];
-$requete= $db->query("SELECT Name FROM houses WHERE UserID=$id");
-    while($donnees= $requete->fetch()){
-        echo '<option>'.$donnees['Name'].'</option>';
+$requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
+    while($donneesM= $requeteM->fetch()){
+        $idhome= $donneesM['HouseID'];
+        echo '<fieldset class="tourmaison">';
+        echo '<legend class="maison">'.$donneesM['Name'].'</legend>';
+        $requeteP= $db->query("SELECT Name FROM rooms WHERE HouseID=$idhome");
+        while($donneesP = $requeteP->fetch()){
+            echo '<fieldset class="tourpiece">';
+            echo '<legend>'.$donneesP['Name'].'</legend>';
+            echo '</fieldset>';
+        }
+        echo '</fieldset>';
     }
 ?>
-</select>
-<a href='index.php?pageAction=gesmaison&new=maison'><p>Ajouter une maison</p></a><br/><br/>
+<a href='index.php?pageAction=gesmaison&new=maison'>Ajouter une maison</a><br/><br/>
 <a href='index.php?pageAction=gesmaison&new=piece'>Ajouter une pièce</a><br/><br/>
 <a href='index.php?pageAction=gesmaison&new=capteur'>Ajouter un capteur</a><br/><br/>
 <a href='index.php?pageAction=gesmaison&new=actionneur'>Ajouter un actionneur</a><br/><br/>

@@ -23,6 +23,7 @@ function authentification($db){
         if($donnees['UserPassword'] == $password){
             $_SESSION['connected']= true;
             $_SESSION['id']= $donnees['UserID'];
+            $_SESSION['mail']= $_POST['emailC'];
             if($donnees['FirstName'] != NULL){
                 $_SESSION['prenom']= $donnees['FirstName'];
             }

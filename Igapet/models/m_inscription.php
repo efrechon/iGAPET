@@ -43,11 +43,7 @@ function inscritption_maison($db){
 }
 
 function inscription_piece($db){
-    $inter=htmlspecialchars($_POST['localisationM']);
-    $requeteI=$db->query("SELECT HouseID FROM houses WHERE Name= $inter");
-    while($donneesI = $requeteI->fetch()){
-        $maisonid= $donneesI['HouseID'];
-    }
+    $maisonid=$_POST['localisationM'];
     $nom= htmlspecialchars($_POST['nameP']);
     $xpos= htmlspecialchars($_POST['positionX']);
     $ypos= htmlspecialchars($_POST['positionY']);
@@ -55,7 +51,7 @@ function inscription_piece($db){
     $largeur= htmlspecialchars($_POST['largeur']);
     $etage= htmlspecialchars($_POST['etage']);
 
-    $requeteP=$db->prepare("INSERT INTO rooms(HouseID, Name, xPosition, xPosition, Width, Height, Floor) VALUES (:maisonid,:nom,:xpos,:ypos,:longueur,:largeur,:etage)");
+    $requeteP=$db->prepare("INSERT INTO rooms(HouseID, Name, xPosition, yPosition, Width, Height, Floor) VALUES (:maisonid,:nom,:xpos,:ypos,:longueur,:largeur,:etage)");
 
     $requeteP->bindParam(':maisonid',$maisonid);
     $requeteP->bindParam(':nom',$nom);

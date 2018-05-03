@@ -10,25 +10,26 @@
     <select name="localisationM">
     <?php $db=connexion_BDD();
     $id= $_SESSION['id'];
-    $requete= $db->query("SELECT Name FROM houses WHERE UserID=$id");
+    $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
     while($donnees= $requete->fetch()){
         $nomM= $donnees['Name'];
-        echo '<option value='.'<?php $nomM ?>'.'>'.$nomM.'</option>';
+        $idhome= $donnees['HouseID'];
+        echo ('<option value='."$idhome".'>'.$nomM.'</option>');
     }
     ?>
     </select><br/><br/>
     <label for="nameP">Renommer votre pièce : </label>
     <input type="text" name="nameP"><br/><br/>
     <label for="largeur">Largeur : </label>
-    <input type="number" name="largeur"><br/><br/>
+    <input type="number" name="largeur" min="0"><br/><br/>
     <label for="longueur">Longueur : </label>
-    <input type="number" name="longueur"><br/><br/>
+    <input type="number" name="longueur" min="0"><br/><br/>
     <label for="positionX">Position en X : </label>
-    <input type="number" name="positionX"><br/><br/>
+    <input type="number" name="positionX" min="0"><br/><br/>
     <label for="positionY">Position en Y : </label>
-    <input type="number" name="positionY"><br/><br/>
+    <input type="number" name="positionY" min="0"><br/><br/>
     <label for="etage">Etage : </label>
-    <input type="number" name="etage"><br/><br/>
+    <input type="number" name="etage" min="0"><br/><br/>
     <input type="submit" value="Ajouter">
 </form>
 <!-- Fin & Affectation du contenu de la page -->

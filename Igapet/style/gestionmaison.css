@@ -1,3 +1,12 @@
-p{
+.maison{
     text-align: center;
+}
+
+.tourmaison{
+    border: 2px solid #00A4E1;
+    border-radius: 25px;
+}
+
+.tourpiece{
+    border: 1px solid #DDDDDD;
 }
