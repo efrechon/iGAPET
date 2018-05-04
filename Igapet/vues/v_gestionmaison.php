@@ -20,7 +20,7 @@ $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
             echo '<legend>'.$donneesP['Name'].'</legend>';
             $requeteC= $db->query("SELECT CaptorTypeID FROM captors WHERE RoomID=$idroom");
             while($donneesC= $requeteC->fetch()){
-                echo $donneesC['CaptorTypeID'].' ';
+                echo $donneesC['CaptorTypeID'].' Value : <br/>';
             }
             echo '</fieldset>';
         }
