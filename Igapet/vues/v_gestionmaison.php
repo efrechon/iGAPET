@@ -13,10 +13,15 @@ $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
         $idhome= $donneesM['HouseID'];
         echo '<fieldset class="tourmaison">';
         echo '<legend class="maison">'.$donneesM['Name'].'</legend>';
-        $requeteP= $db->query("SELECT Name FROM rooms WHERE HouseID=$idhome");
+        $requeteP= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
         while($donneesP = $requeteP->fetch()){
+            $idroom= $donneesP['RoomID'];
             echo '<fieldset class="tourpiece">';
             echo '<legend>'.$donneesP['Name'].'</legend>';
+            $requeteC= $db->query("SELECT CaptorTypeID FROM captors WHERE RoomID=$idroom");
+            while($donneesC= $requeteC->fetch()){
+                echo $donneesC['CaptorTypeID'].' ';
+            }
             echo '</fieldset>';
         }
         echo '</fieldset>';

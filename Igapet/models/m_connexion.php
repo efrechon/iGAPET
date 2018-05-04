@@ -18,9 +18,11 @@ function verifi_mail($db){
 function authentification($db){
     $mail=$_POST['emailC'];
     $password= md5($_POST['passwordC']);
+    //$password= $_POST['passwordC'];
     $requete= $db->query("SELECT UserID, FirstName, LastName, UserPassword, Phone FROM users WHERE Mail='$mail'");
     while($donnees= $requete->fetch()){
-        if($donnees['UserPassword'] == $password){
+        //if(password_verify($password,$donnees['UserPassword'])){
+        if($password == $donnees['UserPassword']){
             $_SESSION['connected']= true;
             $_SESSION['id']= $donnees['UserID'];
             $_SESSION['mail']= $_POST['emailC'];

@@ -66,7 +66,16 @@ function ajouter_piece($db){
     }
     else{
         header('Location: index.php?pageAction=gesmaison&new=piece');
+    }
+}
 
+function ajouter_capteur($db){
+    if (isset($_POST['maison'], $_POST['localisationP'], $_POST['typeC'])){
+        inscription_capteur($db);
+        header('Location: index.php?pageAction=gesmaison');
+    }
+    else{
+        header('Location: index.php?pageAction=gesmaison&new=piece');
     }
 }
 
@@ -93,6 +102,10 @@ function affiche_new_maison(){
 
 function affiche_new_piece(){
     include('vues/v_ajouterpiece.php');
+}
+
+function affiche_new_capteur(){
+    include ('vues/v_ajoutercapteur.php');
 }
 
 ?>

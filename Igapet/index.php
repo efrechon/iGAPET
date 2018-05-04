@@ -80,7 +80,8 @@
                         inscription_piece($db);
                     }
                     else if ($_GET['new'] == 'capteur'){
-                        include ('vues/v_ajoutercapteur.php');
+                        affiche_new_capteur();
+                        inscription_capteur($db);
                     }
                     else if ($_GET['new'] == 'actionneur'){
                         include ('vues/v_ajouteractionneur.php');

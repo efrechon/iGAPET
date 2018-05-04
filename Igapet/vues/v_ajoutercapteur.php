@@ -6,16 +6,18 @@
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
 <h2>Ajouter un capteur</h2>
-<form action="" method="post">
+<form action="index.php?pageAction=gesmaison&new=capteur" method="post">
     <?php $db=connexion_BDD();
     $id= $_SESSION['id'];
     $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
     while($donneesM= $requeteM->fetch()){
         $idhome= $donneesM['HouseID'];
-        $requeteP= $db->query("SELECT Name FROM rooms WHERE HouseID=$idhome");
-        echo '<input type="radio" name="maison" value='."$idhome".'>'.$donneesM['Name'].'<select id="Piece">';
+        $requeteP= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
+        echo '<input type="radio" name="maison" value='."$idhome".'>'.$donneesM['Name'].'<select id="Piece" name="localisationP">';
         while($donneesP = $requeteP->fetch()){
-            echo '<option>'.$donneesP['Name'].'</option><br/>';
+            $piece= $donneesP['Name'];
+            $idp= $donneesP['RoomID'];
+            echo '<option value='."$idp".'>'.$piece.'</option><br/>';
         }
     }
     echo '</select><br/>';

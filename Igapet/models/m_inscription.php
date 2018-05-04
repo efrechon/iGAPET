@@ -4,7 +4,7 @@ function inscription_utilisateur($db){
     // Récupération des valeurs
     $email= $_POST["emailI"];
     $adhesion= date('Y-m-d');
-    $password = md5($_POST['passwordI']);
+    $password = password_hash($_POST['passwordI'], PASSWORD_BCRYPT);
     $type_uti= 2;
 
     // Préparation de la requete SQL
@@ -66,10 +66,18 @@ function inscription_piece($db){
 }
 
 function inscription_capteur($db){
-    $requeteP=$db->prepare("INSERT INTO ");
-    $requeteP->execute();
-    $requeteP->closeCursor();
+    $localisationP= $_POST['localisationP'];
+    $type= $_POST['typeC'];
 
+    $requeteC=$db->prepare("INSERT INTO captors(RoomID, CaptorTypeID) VALUES (:piece, :type)");
+
+    $requeteC->bindParam(':piece', $localisationP);
+    $requeteC->bindParam(':type', $type);
+
+    $requeteC->execute();
+    $requeteC->closeCursor();
+
+    echo $type;
 }
 
 function inscription_actionneur($db){

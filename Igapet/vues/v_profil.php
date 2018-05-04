@@ -14,7 +14,7 @@
     <input type="text" name="emailP" value= <?php echo $_SESSION['mail']?>><br/><br/>
     <label for="passwordP">Mot de passe : </label>
     <input type="password" name="passwordP" value= <?php echo $_SESSION['passwordInit']?>><br/><br/>
-    <label for="phone">Nunéro de téléphone : </label>
+    <label for="phone">Numéro de téléphone : </label>
     <input type="text" name="phone" value= <?php echo $_SESSION['tel']?>><br/><br/>
     <input type="submit" value="Modifier">
 </form>
