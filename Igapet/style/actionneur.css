@@ -4,3 +4,17 @@
     border-bottom: 2px solid gray;
     padding: 0;
 }
+
+.actionneur{
+    border: 1px solid #00A4E1;
+    padding: 1%;
+    margin:0;
+    width: 8%;
+    text-align: center;
+    border-radius: 25px;
+}
+
+fieldset{
+    border: 2px solid #DDDDDD;
+    border-radius: 25px;
+}
