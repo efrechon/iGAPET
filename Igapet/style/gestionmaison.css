@@ -1,13 +1,41 @@
-.maison{
-    text-align: center;
+#gestionmaison{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
 }
 
-.tourmaison{
-    border: 2px solid #00A4E1;
-    border-radius: 25px;
+.identitemaison {
+    width: 70%;
+    height: 97%;
 }
 
-.tourpiece{
-    border: 1px solid #DDDDDD;
+.blocajout{
+    width: 30%;
+    height: 97%;
+}
+
+.blocajout a{
+    padding: 5%;
     border-radius: 25px;
+    border: 1px solid #00A4E1;
+}
+
+ul{
+    text-align: left;
+}
+
+li{
+    border: none;
+}
+
+.A{
+    list-style: url('../img/house.png');
+}
+
+.B{
+    list-style: circle;
+}
+
+.C{
+    list-style: inside;
 }

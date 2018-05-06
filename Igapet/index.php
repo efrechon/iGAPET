@@ -84,7 +84,8 @@
                         inscription_capteur($db);
                     }
                     else if ($_GET['new'] == 'actionneur'){
-                        include ('vues/v_ajouteractionneur.php');
+                        affiche_new_actionneur();
+                        inscription_actionneur($db);
                     }
                 }else{
                     affiche_gestion_maison();

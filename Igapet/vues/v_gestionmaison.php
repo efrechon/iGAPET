@@ -5,33 +5,42 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-
-<?php $db=connexion_BDD();
-$id= $_SESSION['id'];
-$requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
-    while($donneesM= $requeteM->fetch()){
-        $idhome= $donneesM['HouseID'];
-        echo '<fieldset class="tourmaison">';
-        echo '<legend class="maison">'.$donneesM['Name'].'</legend>';
-        $requeteP= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
-        while($donneesP = $requeteP->fetch()){
-            $idroom= $donneesP['RoomID'];
-            echo '<fieldset class="tourpiece">';
-            echo '<legend>'.$donneesP['Name'].'</legend>';
-            $requeteC= $db->query("SELECT CaptorTypeID FROM captors WHERE RoomID=$idroom");
-            while($donneesC= $requeteC->fetch()){
-                echo $donneesC['CaptorTypeID'].' Value : <br/>';
+<div id="gestionmaison">
+    <div class="identitemaison">
+        <ul>
+            <?php $db=connexion_BDD();
+            $id= $_SESSION['id'];
+            $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
+            while($donneesM= $requeteM->fetch()){
+                $idhome= $donneesM['HouseID'];
+                echo '<li class="A">'.$donneesM['Name'].'<ul>';
+                $requeteP= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
+                while($donneesP = $requeteP->fetch()){
+                    $idroom= $donneesP['RoomID'];
+                    echo '<li class="B">'.$donneesP['Name'].'<ul>';
+                    $requeteC= $db->query("SELECT CaptorTypeID FROM captors WHERE RoomID=$idroom");
+                    while($donneesC= $requeteC->fetch()){
+                        $nomcapteur= $donneesC['CaptorTypeID'];
+                        $requeteC2= $db->query("SELECT CaptorName FROM captortypes WHERE CaptorTypeID=$nomcapteur");
+                        while($donneesC2= $requeteC2->fetch()){
+                            echo '<li class="C">'.$donneesC2['CaptorName'].'</li>';
+                        }
+                    }
+                    echo '</ul></li>';
+                }
+                echo '</ul></li>';
             }
-            echo '</fieldset>';
-        }
-        echo '</fieldset>';
-    }
-?>
-<a href='index.php?pageAction=gesmaison&new=maison'>Ajouter une maison</a><br/><br/>
-<a href='index.php?pageAction=gesmaison&new=piece'>Ajouter une pièce</a><br/><br/>
-<a href='index.php?pageAction=gesmaison&new=capteur'>Ajouter un capteur</a><br/><br/>
-<a href='index.php?pageAction=gesmaison&new=actionneur'>Ajouter un actionneur</a><br/><br/>
-
+            echo '</ul></ul>';
+            ?>
+    </div>
+    <div class="blocajout">
+        <br/><br/>
+        <a href='index.php?pageAction=gesmaison&new=maison'>Ajouter une maison</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=gesmaison&new=piece'>Ajouter une pièce</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=gesmaison&new=capteur'>Ajouter un capteur</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=gesmaison&new=actionneur'>Ajouter un actionneur</a><br/><br/><br/><br/>
+    </div>
+</div>
 <!-- Fin & Affectation du contenu de la page -->
 <?php $contenu=ob_get_clean(); ?>
 

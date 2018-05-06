@@ -4,17 +4,17 @@
 </head>
 
 <nav>
-    <ul>
-        <a href='index.php?pageAction=accueil'><li>Accueil</li></a>
-        <a href='index.php?pageAction=vueEns'--><li>Vue d'ensemble</li></a>
-        <a href='index.php?pageAction=capteurs'--><li>Mes capteurs</li></a>
-        <a href='index.php?pageAction=actionneurs'--><li>Mes actionneurs</li></a>
-        <a href='index.php?pageAction=scenarios'--><li>Scénarios</li></a>
-        <a href='index.php?pageAction=notifs'--><li>Notifications</li></a>
-        <a href='index.php?pageAction=gesutili'--><li>Gérer les utilisateurs</li></a>
-        <a href='index.php?pageAction=gesmaison'--><li>Gérer les maisons</li></a>
-        <a href='index.php?pageAction=infos'--><li>Informations</li></a>
-        <a href='index.php?pageAction=sav'--> <li>SAV</li></a>
+    <ul class="conteneur">
+        <a href='index.php?pageAction=accueil'><li class="onglet">Accueil</li></a>
+        <a href='index.php?pageAction=vueEns'--><li class="onglet">Vue d'ensemble</li></a>
+        <a href='index.php?pageAction=capteurs'--><li class="onglet">Mes capteurs</li></a>
+        <a href='index.php?pageAction=actionneurs'--><li class="onglet">Mes actionneurs</li></a>
+        <a href='index.php?pageAction=scenarios'--><li class="onglet">Scénarios</li></a>
+        <a href='index.php?pageAction=notifs'--><li class="onglet">Notifications</li></a>
+        <a href='index.php?pageAction=gesutili'--><li class="onglet">Gérer les utilisateurs</li></a>
+        <a href='index.php?pageAction=gesmaison'--><li class="onglet">Gérer les maisons</li></a>
+        <a href='index.php?pageAction=infos'--><li class="onglet">Informations</li></a>
+        <a href='index.php?pageAction=sav'--> <li class="onglet">SAV</li></a>
         <br><br><br><br><br><br><br>
         <a href='index.php?pageAction=faq'--><li class="small">FAQ</li></a>
         <a href='index.php?pageAction=apropos'--><li class="small">A propos</li></a>

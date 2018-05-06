@@ -15,6 +15,10 @@
     <div id="Notifications">
         <fieldset>
             <legend>Notifications</legend>
+            <?php if(!isset($_SESSION['prenom'])){
+                echo "Veuillez compléter votre profil";
+            }
+            ?>
         </fieldset>
     </div>
 </div>

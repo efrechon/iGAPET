@@ -66,25 +66,28 @@ function inscription_piece($db){
 }
 
 function inscription_capteur($db){
-    $localisationP= $_POST['localisationP'];
-    $type= $_POST['typeC'];
+    $localisationPC= $_POST['localisationP'];
+    $typeCapteur= $_POST['typeC'];
 
     $requeteC=$db->prepare("INSERT INTO captors(RoomID, CaptorTypeID) VALUES (:piece, :type)");
 
-    $requeteC->bindParam(':piece', $localisationP);
-    $requeteC->bindParam(':type', $type);
+    $requeteC->bindParam(':piece', $localisationPC);
+    $requeteC->bindParam(':type', $typeCapteur);
 
     $requeteC->execute();
     $requeteC->closeCursor();
-
-    echo $type;
 }
 
 function inscription_actionneur($db){
-    $requeteP=$db->prepare("INSERT INTO ");
-    $requeteP->execute();
-    $requeteP->closeCursor();
+    $localisationPA=$_POST['localisationPA'];
+    $typeActionneur=$_POST['typeA'];
+    $requeteA=$db->prepare("INSERT INTO actuators(RoomID, ActuatorTypeId) VALUES (:piece, :type)");
 
+    $requeteA->bindParam(':piece', $localisationPA);
+    $requeteA->bindParam(':type', $typeActionneur);
+
+    $requeteA->execute();
+    $requeteA->closeCursor();
 }
 
 function verification_existence_mail($db){

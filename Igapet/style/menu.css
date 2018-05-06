@@ -4,26 +4,33 @@ nav {
     border-right: 2px gray solid;
 }
 
-ul{
+.conteneur{
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-li{
+.onglet{
     text-align: center;
     padding-top: 2%;
     padding-bottom: 2%;
     border-bottom: 1px gray solid;
 }
 
-li:hover{
+.onglet:hover{
+    background-color: #DDDDDD;
+    cursor: pointer;
+    font-style: italic;
+}
+
+.small:hover{
     background-color: #DDDDDD;
     cursor: pointer;
     font-style: italic;
 }
 
 .small{
+    text-align: center;
     font-size: small;
     margin-bottom: 3%;
     padding: 0;

@@ -17,12 +17,10 @@ function verifi_mail($db){
 
 function authentification($db){
     $mail=$_POST['emailC'];
-    $password= md5($_POST['passwordC']);
-    //$password= $_POST['passwordC'];
+    $password= $_POST['passwordC'];
     $requete= $db->query("SELECT UserID, FirstName, LastName, UserPassword, Phone FROM users WHERE Mail='$mail'");
     while($donnees= $requete->fetch()){
-        //if(password_verify($password,$donnees['UserPassword'])){
-        if($password == $donnees['UserPassword']){
+        if(password_verify($password,$donnees['UserPassword'])){
             $_SESSION['connected']= true;
             $_SESSION['id']= $donnees['UserID'];
             $_SESSION['mail']= $_POST['emailC'];
@@ -34,9 +32,6 @@ function authentification($db){
                 $_SESSION['nom']= $donnees['LastName'];
             }
             if($donnees['Phone'] == NULL){
-                $_SESSION['tel']= "Vous n'avez pas indiqué votre numéro";
-            }
-            else{
                 $_SESSION['tel']= $donnees['Phone'];
             }
             return 'OK';

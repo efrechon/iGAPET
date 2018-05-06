@@ -12,7 +12,7 @@
             echo $_SESSION['prenom'].' '.$_SESSION['nom'];
         }
         else{
-            echo "Nom du client";
+            echo $_SESSION['mail'];
         }?></p></a>
     <a href='index.php?pageAction=deconnexion'><img class="off" src="img/Power.png" title="Deconnexion" alt="Bouton de deconnexion"></a>
 </header>
