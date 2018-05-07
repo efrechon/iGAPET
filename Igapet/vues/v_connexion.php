@@ -11,9 +11,9 @@
     <div id=header>
         <h1>iGAPET</h1>
     </div>
-    <br/><p> Soyez capable de rÃ©pondre &agrave; vos besoins du quotidien sans bouger de votre lit ! </p>
-    <div id="contain">
+    <br/><p> Soyez capable de répondre à vos besoins du quotidien sans bouger de votre lit ! </p>
     
+    <div id="contain">
         <div id="connexion">
             <h2>Connexion</h2><br/><br/>
             <form action="index.php?pageAction=connexion&new=visit" method="post">
@@ -41,29 +41,36 @@
             </form>
         </div>
         <div id="notreconcept">
-        	<h2>DÃ©couvrez notre Concept</h2><br/><br/>
-        		<div class="concept">
-       					 <a>Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
-        					ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert marito</a>
-        		</div>
-        
-       			<div class="concept">
-       					 <a>Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
-       						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert marito</a>
-       			</div>
-       			
-           		<div class="concept">
-       					 <a>Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
-        					ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert marito</a>
-        		</div>
-        
-       			<div class="concept">
-       					 <a>Vita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
-       						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert marito</a>
-       			</div>             
-
-               
+         	<a href="#lien"><br/><img id="fleche" src="img/fleche.png" alt="Flèche bas"></a>
+        	<h1 id="lien">Découvrez notre concept</h1><br/>
         </div>
+        
+        <div class="wrapper">
+        	<div class="one"><img id="icone" src="img/wifi.png" alt="Symbole Wi-Fi">
+        		<h3 id="categories">Communication</h3></div>
+  			<div class="two"><img id="icone" src="img/cloud.png" alt="Symbole Nuage">
+  				<h3 id="categories">Cloud</h3><br/></div>
+  			<div class="three"><img id="icone" src="img/lampe.png" alt="Symbole Lampe">
+  				<h3 id="categories">Confort</h3><br/></div>
+  			<div class="four"><img id="icone" src="img/cadenas.png" alt="Symbole Cadenas">
+  				<h3 id="categories">Sécurité</h3><br/></div>
+  			<div class="five"><a>wifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						 ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						 ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						 ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert marito</a></div>
+  			<div class="six"><a>cloudVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert marito</a></div>
+  			<div class="seven"><a>lampeVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert marito</a></div>
+  			<div class="eight"><a>cadenasVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
+        						ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert marito</a></div>
+		</div>
     </div>
 </div>
 </body>
