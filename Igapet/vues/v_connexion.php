@@ -22,7 +22,6 @@
                 <input type="submit" value="Se connecter"><a href='index.php?pageAction=accueil'></a>
             </form>
             <br>
-            <a>Mot de passe oublié</a>
         </div>
         <div id="inscription">
             <h3>Inscription</h3><br/><br/>
