@@ -1,20 +1,31 @@
 #selection{
-    width: 100%;
     height: 5%;
     border-bottom: 2px solid gray;
     padding: 0;
 }
 
-.actionneur{
+.actionneurM{
+    font-size: medium;
     border: 1px solid #00A4E1;
     padding: 1%;
-    margin:0;
+    margin:1%;
     width: 8%;
     text-align: center;
     border-radius: 25px;
 }
 
-fieldset{
+h4{
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.pieceP, .actionneurP {
+    width: 98%;
+    display: flex;
     border: 2px solid #DDDDDD;
     border-radius: 25px;
+}
+
+img{
+    width: 25%;
 }

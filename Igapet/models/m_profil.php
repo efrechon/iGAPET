@@ -6,7 +6,7 @@ function changement_profil($db){
     $nom= htmlspecialchars($_POST["lastName"]);
     $prenom= htmlspecialchars($_POST["firstName"]);
     $email= htmlspecialchars($_POST["emailP"]);
-    $password = md5($_POST['passwordP']);
+    $password = password_hash($_POST['passwordP'], PASSWORD_BCRYPT);
     $phone= htmlspecialchars($_POST['phone']);
 
     // Préparation de la requete SQL
