@@ -21,32 +21,35 @@ p{
 }
 
 #connexion{
-    margin-right : 50px;
-    margin-left : 50px;
-    background-color: #F2F2F2;
+    margin-right : 7%;
+    margin-left : 5%;
+    background-color: #F7F7F7;
+    border: 1px solid white;
     justify-content: center;
     text-align: center;
-    width: 44%;
+    width: 38%;
 }
 
-    #connexion:hover {
+#connexion:hover {
     border: 1px solid #00A4E1;
 }
 
 #inscription{
-	margin-right : 50px;
+	margin-left : 6.5%;
 	background-color: #F7F7F7;
+    border: 1px solid white;
     justify-content: center;
     text-align: center;
-    width: 44%;
+    width: 40%;
 }
 
-    #inscription:hover {
+#inscription:hover {
     border: 1px solid #00A4E1;
 }
 
 label{
-    margin-left: 5%;
+    margin-left: auto;
+    margin-right: auto;
     width: 250px;
     float: left;
     text-align: right;
@@ -74,9 +77,48 @@ input[type="submit"]:hover {
     border: 1px solid #E3E3E3;
 }
 
-
 #notreconcept{
-	width: 100%;
-	
-	
+	display:grid;
+	grid-template-columns: 100%;
+	margin-top: 10px;
+	width : 100%;
+	grid-template-rows: auto auto;
+	text-align: center;
+	margin-left : auto;
+	margin-right : auto;
+}
+
+#fleche {
+	width: 5%;
+}
+
+.concept {
+	display : block ;
+	margin-top : 5% ;
+}
+
+#icone{
+	display: block;
+	width: 35%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+h3{
+    text-align: center;
+    color: #00A4E1;
+    border-bottom: 2px solid #00A4E1;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-row : auto;
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  text-align: justify;
+  grid-column-gap : 50px;
+  margin: 50px 50px 90px 50px;
 }
