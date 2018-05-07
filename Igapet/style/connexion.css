@@ -10,22 +10,39 @@ h1{
     border-bottom: 2px solid #00A4E1;
 }
 
+p{
+	 text-align: center;
+}
+
 #contain{
     display: flex;
     padding-top: 6%;
+    flex-wrap: wrap;
 }
 
 #connexion{
-    border-right: 1px solid #00A4E1;
+    margin-right : 50px;
+    margin-left : 50px;
+    background-color: #F2F2F2;
     justify-content: center;
     text-align: center;
-    width: 49%;
+    width: 44%;
+}
+
+    #connexion:hover {
+    border: 1px solid #00A4E1;
 }
 
 #inscription{
+	margin-right : 50px;
+	background-color: #F7F7F7;
     justify-content: center;
     text-align: center;
-    width: 50%;
+    width: 44%;
+}
+
+    #inscription:hover {
+    border: 1px solid #00A4E1;
 }
 
 label{
@@ -40,7 +57,26 @@ input[type="text"], input[type="email"], input[type="password"] {
     margin-left: -100px;
 }
 
-h3{
+h2{
     text-align: center;
     color: #00A4E1;
+    border-bottom: 2px solid #00A4E1;
+    width: 50%;
+    margin-left: 25%;
+}
+
+input[type="submit"] {
+	margin-bottom: 5%;
+}
+
+input[type="submit"]:hover {
+    box-shadow: 1px 1px 2px #838383;
+    border: 1px solid #E3E3E3;
+}
+
+
+#notreconcept{
+	width: 100%;
+	
+	
 }
