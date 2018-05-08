@@ -18,6 +18,7 @@
                 if(isset($_GET['new'])){
                     if($_GET['new'] == 'visit'){
                         connexion_iGAPET($db);
+                        affiche_acceuil();
                     }
                 }
                 else{
@@ -104,7 +105,9 @@
                 include ('vues/v_apropos.php');
             break;
             case "contacter":
-                include ('vues/v_contacter.php');
+                include ('controls/c_contacter.php');
+                affiche_contact();
+                envoyer_mail();
             break;
             case "cgu":
                 include ('controls/c_reglementation.php');

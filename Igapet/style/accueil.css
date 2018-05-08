@@ -17,10 +17,16 @@
 #other{
     text-align: center;
     width: 25%;
-    height: 15%;
+    height: 25%;
+    justify-content: center;
+}
+
+#other img{
+    width: 48%;
 }
 
 #notifications{
     width: 25%;
-    height: 80%;
+    height: 70%;
+    margin-top: 2%;
 }
