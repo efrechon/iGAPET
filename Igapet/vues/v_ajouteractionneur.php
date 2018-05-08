@@ -13,14 +13,14 @@
     while($donneesM= $requeteM->fetch()){
         $idhome= $donneesM['HouseID'];
         $requeteP= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
-        echo '<input type="radio" name="maison" value='."$idhome".'>'.$donneesM['Name'].'<br/><select id="Piece" name="localisationPA">';
+        echo '<input type="radio" name="maison" value='."$idhome".'>'.$donneesM['Name'].'<select id="Piece" name="localisationPA">';
         while($donneesP = $requeteP->fetch()){
             $piece= $donneesP['Name'];
             $idp= $donneesP['RoomID'];
-            echo '<option value='."$idp".'>'.$piece.'</option><br/>';
+            echo '<option value='."$idp".'>'.$piece.'</option>';
         }
+        echo '</select><br/>';
     }
-    echo '</select><br/>';
     ?>
     <label for="typeA">Type d'actionneur</label><br/><br/>
     <?php $db= connexion_BDD();

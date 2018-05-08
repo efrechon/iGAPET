@@ -1,7 +1,20 @@
 #catalogue{
-    width: 50%;
+    width: 30%;
+    display: block;
 }
 
 h5{
     text-align: center;
+}
+
+.catal{
+    border: 1px dotted #00A4E1;
+    text-align: left;
+}
+ul{
+    list-style: square;
+}
+
+input{
+    margin: auto;
 }
