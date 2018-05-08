@@ -1,6 +1,5 @@
 <?php
 
-require('c_config.php');
 
 function selectUsers(PDO $db){
     $sql = "SELECT * FROM users";

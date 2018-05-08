@@ -1,3 +1,4 @@
+console.log("ICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCI");
 var r;
 var c;
 var a;
@@ -6,7 +7,8 @@ var str ="";
 for(var i=0;i<Rooms.length;i++)
 {
 	r = Rooms[i];
-	str += '<div class="Room" name='+ r["Name"]+ ' style="left:'+r["xPosition"]+'px;top:'+r["yPosition"]+'px;Width:'+r["width"]+'px;Height:'+r["height"]+'px;">';
+	str += '<div class="Room" name='+ r["Name"]+ ' style="left:'+r["xPosition"]+'px;top:'+r["yPosition"]+'px;Width:'+r["Width"]+'px;Height:'+r["Height"]+'px;">';
+	
 	while(captors[k]!= null)
 	{
 		c= captors[k];
