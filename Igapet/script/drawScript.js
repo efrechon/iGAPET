@@ -1,4 +1,3 @@
-console.log("ICCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCI");
 var r;
 var c;
 var a;
@@ -112,7 +111,12 @@ function dragElement(elmnt,k,Rooms) {
 			}
 			else if( C2.y > elmnt.parentElement.offsetHeight)
 			{
+				console.log(posY);
+				console.log(elmnt.parentElement.offsetHeight);
+				console.log(halfHeight);
 				posY = +elmnt.parentElement.offsetHeight - +halfHeight;
+				console.log(posY);
+				console.log("edeed");
 			}
 		}
 		posX = posX - halfWidth ;

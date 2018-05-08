@@ -17,5 +17,6 @@
         <div id="contain">
             <?= $contenu?> <!-- Définir le contenu à afficher pour chaque page -->
         </div>
+		
     </body>
 </html>
