@@ -38,9 +38,10 @@
                 $requeteTriPA2= $db->query("SELECT ActuatorTypeID, State FROM actuators WHERE RoomID=$idroom");
                 while($triPA2= $requeteTriPA2->fetch()){
                     $idactionneur= $triPA2['ActuatorTypeID'];
-                    $requeteTriPA3= $db->query("SELECT ActuatorName, Unit FROM actuatortypes WHERE ActuatorTypeID=$idactionneur");
+                    $requeteTriPA3= $db->query("SELECT ActuatorName, Unit, url_img FROM actuatortypes WHERE ActuatorTypeID=$idactionneur");
                     while($triPA3= $requeteTriPA3->fetch()){
-                        echo '<div class="actionneurM">'.$triPA3['ActuatorName'].'<br/>'.$triPA2['State'].$triPA3['Unit'].'</div>';
+                        $idimg= $triPA3['url_img'];
+                        echo '<div class="actionneurM">'.$triPA3['ActuatorName'].'<br/><img src='."$idimg".'><br/>'.$triPA2['State'].' '.$triPA3['Unit'].'</div>';
                     }
                 }
             echo'</div>';

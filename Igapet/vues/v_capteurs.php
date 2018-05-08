@@ -11,7 +11,7 @@
             <option value="triPiece">Trier par pièce</option>
             <option value="triActionneur">Trier par capteur</option>
         </select>
-        <select name="whereA">
+        <select name="whereC">
             <?php $db=connexion_BDD();
             $id= $_SESSION['id'];
             $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
@@ -29,7 +29,7 @@
     <?php
     $db=connexion_BDD();
     if($_POST['triC'] == 'triPiece'){
-        $idhome= $_POST['whereA'];
+        $idhome= $_POST['whereC'];
         $requeteTriPC= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
         while($triPC= $requeteTriPC->fetch()){
             $idroom= $triPC['RoomID'];
@@ -38,9 +38,10 @@
             $requeteTriPC2= $db->query("SELECT CaptorTypeID, Value FROM captors WHERE RoomID=$idroom");
             while($triPC2= $requeteTriPC2->fetch()){
                 $idcapteur= $triPC2['CaptorTypeID'];
-                $requeteTriPC3= $db->query("SELECT CaptorName, Unit FROM captortypes WHERE CaptorTypeID=$idcapteur");
+                $requeteTriPC3= $db->query("SELECT CaptorName, Unit, url_img FROM captortypes WHERE CaptorTypeID=$idcapteur");
                 while($triPC3= $requeteTriPC3->fetch()){
-                    echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src="img/thermometer.png"><br/>'.$triPC2['Value'].$triPC3['Unit'].'</div>';
+                    $idimg= $triPC3['url_img'];
+                    echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/>'.$triPC2['Value'].' '.$triPC3['Unit'].'</div>';
                 }
             }
             echo'</div>';

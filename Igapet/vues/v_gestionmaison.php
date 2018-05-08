@@ -26,6 +26,14 @@
                             echo '<li class="C">'.$donneesC2['CaptorName'].'</li>';
                         }
                     }
+                    $requeteA= $db->query("SELECT ActuatorTypeID FROM actuators WHERE RoomID=$idroom");
+                    while($donneesA= $requeteA->fetch()){
+                        $nomactionneur= $donneesA['ActuatorTypeID'];
+                        $requeteA2= $db->query("SELECT ActuatorName FROM actuatortypes WHERE ActuatorTypeID=$nomactionneur");
+                        while($donneesA2= $requeteA2->fetch()){
+                            echo '<li class="C">'.$donneesA2['ActuatorName'].'</li>';
+                        }
+                    }
                     echo '</ul></li>';
                 }
                 echo '</ul></li>';
