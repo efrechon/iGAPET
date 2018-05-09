@@ -48,7 +48,7 @@
         <div class="wrapper">
         	<div class="one"><img id="icone" src="img/wifi.png" alt="Symbole Wi-Fi">
         		<h3 id="categories">Communication</h3></div>
-  			<div class="two"><img id="icone" src="img/cloud.png" alt="Symbole Nuage">
+  			<div class="two"><img id="icone" src="img/nuage.png" alt="Symbole Nuage">
   				<h3 id="categories">Cloud</h3><br/></div>
   			<div class="three"><img id="icone" src="img/lampe.png" alt="Symbole Lampe">
   				<h3 id="categories">Confort</h3><br/></div>
