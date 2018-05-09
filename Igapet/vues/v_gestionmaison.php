@@ -8,7 +8,7 @@
 <div id="gestionmaison">
     <div class="identitemaison">
         <ul>
-            <?php $db=connexion_BDD();
+            <?php 
             $id= $_SESSION['id'];
             $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
             while($donneesM= $requeteM->fetch()){
