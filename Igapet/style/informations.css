@@ -12,9 +12,15 @@ h5{
     text-align: left;
 }
 ul{
-    list-style: square;
+    list-style: none;
 }
 
-input{
-    margin: auto;
+li{
+    text-align: center;
 }
+
+img{
+    width: 8%;
+}
+
+

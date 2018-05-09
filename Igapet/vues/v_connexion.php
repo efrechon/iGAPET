@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -41,10 +41,10 @@
     </div>
 </div>
 </body>
-</html>
+</html>-->
 
 
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -119,4 +119,4 @@
             </div>
         </div>
     </div>
-</body>-->
+</body>

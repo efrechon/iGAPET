@@ -1,3 +1,4 @@
+/*
 * {
     font-family: "Arial";
 }
@@ -43,10 +44,10 @@ input[type="text"], input[type="email"], input[type="password"] {
 h3{
     text-align: center;
     color: #00A4E1;
-}
+}*/
 
 
-/** {
+* {
     font-family: "Arial";
 }
 
@@ -169,4 +170,4 @@ h3{
     text-align: justify;
     grid-column-gap: 50px;
     margin: 50px 50px 90px 50px;
-}*/
+}

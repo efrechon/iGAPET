@@ -12,9 +12,10 @@
         <div class="catal">
             <ul>
                 <?php $db= connexion_BDD();
-                $req= $db->query("SELECT CaptorName FROM captortypes");
+                $req= $db->query("SELECT CaptorName, url_img FROM captortypes");
                 while($cap= $req->fetch()){
-                    echo '<li>'.$cap['CaptorName'].'</li>';
+                    $idimg= $cap['url_img'];
+                    echo '<li>'.$cap['CaptorName'].'  '.'<img src='."$idimg".'></li>';
                 }
                 ?>
             </ul>
@@ -24,9 +25,10 @@
         <div class="catal">
             <ul>
                 <?php $db= connexion_BDD();
-                $req= $db->query("SELECT ActuatorName FROM actuatortypes");
+                $req= $db->query("SELECT ActuatorName, url_img FROM actuatortypes");
                 while($act= $req->fetch()){
-                    echo '<li>'.$act['ActuatorName'].'</li>';
+                    $idimg= $act['url_img'];
+                    echo '<li>'.$act['ActuatorName'].'  '.'<img src='."$idimg".'></li>';
                 }
                 ?>
             </ul>

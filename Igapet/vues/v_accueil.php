@@ -16,8 +16,11 @@
             if($don['nb'] == 0){
                 echo "vous n'avez pas encore de maison enregistrée.";
             }
-            else{
+            else if($don['nb'] == 1) {
                 echo "vous avez actuellement ".$don['nb']." maison.";
+            }
+            else{
+                echo "vous avez actuellement ".$don['nb']." maisons.";
             }
         ?>
     </div>

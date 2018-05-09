@@ -20,8 +20,8 @@
                     echo '<li class="B">'.$donneesP['Name'].'<ul>';
                     $requeteC= $db->query("SELECT CaptorTypeID FROM captors WHERE RoomID=$idroom");
                     while($donneesC= $requeteC->fetch()){
-                        $nomcapteur= $donneesC['CaptorTypeID'];
-                        $requeteC2= $db->query("SELECT CaptorName FROM captortypes WHERE CaptorTypeID=$nomcapteur");
+                        $idcapteur= $donneesC['CaptorTypeID'];
+                        $requeteC2= $db->query("SELECT CaptorName FROM captortypes WHERE CaptorTypeID=$idcapteur");
                         while($donneesC2= $requeteC2->fetch()){
                             echo '<li class="C">'.$donneesC2['CaptorName'].'</li>';
                         }

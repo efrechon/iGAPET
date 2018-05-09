@@ -19,8 +19,8 @@
             $idp= $donneesP['RoomID'];
             echo '<option value='."$idp".'>'.$piece.'</option><br/>';
         }
-    }
     echo '</select><br/>';
+    }
     ?>
     <label for="typeC">Type de capteur </label><br/><br/>
     <?php $db= connexion_BDD();
