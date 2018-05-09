@@ -11,7 +11,7 @@
     <div id=header>
         <h1>iGAPET</h1>
     </div>
-    <br/><p> Soyez capable de répondre à vos besoins du quotidien sans bouger de votre lit ! </p>
+    <br/><p> Soyez capable de rÃ©pondre Ã  vos besoins du quotidien sans bouger de votre lit ! </p>
     
     <div id="contain">
         <div id="connexion">
@@ -41,8 +41,8 @@
             </form>
         </div>
         <div id="notreconcept">
-         	<a href="#lien"><br/><img id="fleche" src="img/fleche.png" alt="Flèche bas"></a>
-        	<h1 id="lien">Découvrez notre concept</h1><br/>
+         	<a href="#lien"><br/><img id="fleche" src="img/fleche.png" alt="FlÃ¨che bas"></a>
+        	<h1 id="lien">DÃ©couvrez notre concept</h1><br/>
         </div>
         
         <div class="wrapper">
@@ -53,7 +53,7 @@
   			<div class="three"><img id="icone" src="img/lampe.png" alt="Symbole Lampe">
   				<h3 id="categories">Confort</h3><br/></div>
   			<div class="four"><img id="icone" src="img/cadenas.png" alt="Symbole Cadenas">
-  				<h3 id="categories">Sécurité</h3><br/></div>
+  				<h3 id="categories">SÃ©curitÃ©</h3><br/></div>
   			<div class="five"><a>wifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
         						 ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
         						 ut sit species matrimonii, dotis nomine futura coniunx hastam et tabernaculum offert maritowifiVita est illis semper in fuga uxoresque mercenariae conductae ad tempus ex pacto atque,
