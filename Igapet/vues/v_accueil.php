@@ -7,7 +7,7 @@
 <?php ob_start(); ?>
 <div id="full">
     <div id="Informations">
-        <?php $db =connexion_BDD();
+        <?php
             echo 'Bonjour '.$_SESSION['prenom'].', ';
             $idvisiteur= $_SESSION['id'];
             $req= $db->query("SELECT COUNT(*) as nb FROM houses WHERE UserID=$idvisiteur");

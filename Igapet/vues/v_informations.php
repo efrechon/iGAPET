@@ -11,7 +11,7 @@
         <h5>Capteurs</h5>
         <div class="catal">
             <ul>
-                <?php $db= connexion_BDD();
+                <?php
                 $req= $db->query("SELECT CaptorName, url_img FROM captortypes");
                 while($cap= $req->fetch()){
                     $idimg= $cap['url_img'];
@@ -24,7 +24,7 @@
         <h5>Actionneurs</h5>
         <div class="catal">
             <ul>
-                <?php $db= connexion_BDD();
+                <?php
                 $req= $db->query("SELECT ActuatorName, url_img FROM actuatortypes");
                 while($act= $req->fetch()){
                     $idimg= $act['url_img'];

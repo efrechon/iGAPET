@@ -40,7 +40,7 @@
             break;
             case "accueil":
                 include ('controls/c_inscription.php');
-                affiche_acceuil();
+                include ('vues/v_accueil.php');
             break;
             case "profil":
                 include ('controls/c_profil.php');
@@ -76,19 +76,19 @@
                         inscritption_maison($db);
                     }
                     else if ($_GET['new'] == 'piece'){
-                        affiche_new_piece();
+                        include('vues/v_ajouterpiece.php');
                         inscription_piece($db);
                     }
                     else if ($_GET['new'] == 'capteur'){
-                        affiche_new_capteur();
+                        include('vues/v_ajoutercapteur.php');
                         inscription_capteur($db);
                     }
                     else if ($_GET['new'] == 'actionneur'){
-                        affiche_new_actionneur();
+                        include('vues/v_ajouteractionneur.php');
                         inscription_actionneur($db);
                     }
                 }else{
-                    affiche_gestion_maison();
+                    include ('vues/v_gestionmaison.php');
                 }
             break;
             case "infos":
