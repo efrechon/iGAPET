@@ -29,5 +29,5 @@ body{
     position:relative;
     left: 1%;
     top: 2%;
-	overflow:hidden;
+	overflow: auto;
 }
