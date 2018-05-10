@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <?php
-
-require('Home.php');
-
+include("c_config.php");
 $Rooms= "";
 
 
@@ -48,4 +46,4 @@ else
 }
 
 ?>
-<meta http-equiv="refresh" content="0;URL='../vues/Igapet.php'" />
+<meta http-equiv="refresh" content="0;URL='../index.php?pageAction=vueEns'" />

@@ -19,6 +19,34 @@ function connected(){
     }
 }
 
+function getSQL(PDO $db,$sql)
+{
+	try
+	{
+		$req = $db->prepare(htmlspecialchars($sql));
+		$req->execute();
+
+		$result = $req->fetchAll(PDO::FETCH_ASSOC);
+	}
+	catch(PDOException $e) 
+	{
+		echo $e->getMessage();
+	}
+    return $result;
+}
+
+function doSQL(PDO $db,$sql)
+{
+	try{
+		$req = $db->prepare(htmlspecialchars($sql));
+		$req->execute();
+	}
+	catch(PDOException $e) 
+	{
+		echo $e->getMessage();
+	}
+}
+
 //Toutes les possibilités pour pageAction dans l'URL
 $possibilitiesPA=array(
     'connexion',
