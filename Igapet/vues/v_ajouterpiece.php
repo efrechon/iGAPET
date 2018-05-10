@@ -8,7 +8,7 @@
 <form action="" method="post">
     <label for="localisationM">Appartient à : </label>
     <select name="localisationM">
-    <?php $db=connexion_BDD();
+    <?php 
     $id= $_SESSION['id'];
     $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
     while($donnees= $requete->fetch()){

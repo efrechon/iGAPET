@@ -7,7 +7,7 @@
 <?php ob_start(); ?>
 <h2>Ajouter un capteur</h2>
 <form action="index.php?pageAction=gesmaison&new=capteur" method="post">
-    <?php $db=connexion_BDD();
+    <?php 
     $id= $_SESSION['id'];
     $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
     while($donneesM= $requeteM->fetch()){
@@ -23,7 +23,7 @@
     }
     ?>
     <label for="typeC">Type de capteur </label><br/><br/>
-    <?php $db= connexion_BDD();
+    <?php 
     $requeteC = $db->query("SELECT CaptorName, CaptorTypeID FROM captortypes");
     while($donneesC= $requeteC->fetch()){
         $idC= $donneesC['CaptorTypeID'];

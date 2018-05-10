@@ -12,7 +12,7 @@
             <option value="triActionneur">Trier par capteur</option>
         </select>
         <select name="whereC">
-            <?php $db=connexion_BDD();
+            <?php
             $id= $_SESSION['id'];
             $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
             while($donnees= $requete->fetch()){
@@ -27,7 +27,7 @@
 </div>
 <div id="affichageActionneur">
     <?php
-    $db=connexion_BDD();
+    
     if($_POST['triC'] == 'triPiece'){
         $idhome= $_POST['whereC'];
         $requeteTriPC= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");

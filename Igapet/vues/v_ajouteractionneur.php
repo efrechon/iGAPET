@@ -7,7 +7,7 @@
 <?php ob_start(); ?>
 <h2>Ajouter un actionneur</h2>
 <form action="index.php?pageAction=gesmaison&new=actionneur" method="post">
-    <?php $db=connexion_BDD();
+    <?php 
     $id= $_SESSION['id'];
     $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
     while($donneesM= $requeteM->fetch()){
@@ -23,7 +23,7 @@
     }
     ?>
     <label for="typeA">Type d'actionneur</label><br/><br/>
-    <?php $db= connexion_BDD();
+    <?php 
     $requeteA = $db->query("SELECT ActuatorName, ActuatorTypeID FROM actuatortypes");
     while($donneesA= $requeteA->fetch()){
         $idA= $donneesA['ActuatorTypeID'];

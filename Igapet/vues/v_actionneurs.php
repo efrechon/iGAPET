@@ -12,7 +12,7 @@
             <option value="triActionneur">Trier par actionneur</option>
         </select>
         <select name="whereA">
-            <?php $db=connexion_BDD();
+            <?php 
             $id= $_SESSION['id'];
             $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
             while($donnees= $requete->fetch()){
@@ -26,7 +26,7 @@
     </form>
 </div>
 <div id="affichageActionneur">
-    <?php $db=connexion_BDD();
+    <?php 
         if(!isset($_POST['triA'])){
             $_POST['triA']= 'triPiece';
             $_POST['whereA']= $idhome;
@@ -47,6 +47,7 @@
                             $idimg= $triPA3['url_img'];
                             echo '<div class="actionneurM">'.$triPA3['ActuatorName'].'<br/><img src='."$idimg".'><br/>'.$triPA2['State'].' '.$triPA3['Unit'].'</div>';
                         }
+
                     }
                     echo'</div>';
                 }
