@@ -7,10 +7,27 @@
 <?php ob_start(); ?>
 <div id="full">
     <div id="Informations">
-        <?php echo 'Bonjour '.$_SESSION['prenom'];?>
+        <?php $db =connexion_BDD();
+            echo 'Bonjour '.$_SESSION['prenom'].', ';
+            $idvisiteur= $_SESSION['id'];
+            $req= $db->query("SELECT COUNT(*) as nb FROM houses WHERE UserID=$idvisiteur");
+            $don= $req->fetch();
+            $req->closeCursor();
+            if($don['nb'] == 0){
+                echo "vous n'avez pas encore de maison enregistrée.";
+            }
+            else if($don['nb'] == 1) {
+                echo "vous avez actuellement ".$don['nb']." maison.";
+            }
+            else{
+                echo "vous avez actuellement ".$don['nb']." maisons.";
+            }
+        ?>
     </div>
     <div id="other">
-        <p>Autres</p>
+        <a href="index.php?pageAction=scenarios">
+            <img src="img/calendar.png" alt="calendrier">
+        </a>
     </div>
     <div id="Notifications">
         <fieldset>

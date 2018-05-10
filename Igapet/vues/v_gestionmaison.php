@@ -20,10 +20,18 @@
                     echo '<li class="B">'.$donneesP['Name'].'<ul>';
                     $requeteC= $db->query("SELECT CaptorTypeID FROM captors WHERE RoomID=$idroom");
                     while($donneesC= $requeteC->fetch()){
-                        $nomcapteur= $donneesC['CaptorTypeID'];
-                        $requeteC2= $db->query("SELECT CaptorName FROM captortypes WHERE CaptorTypeID=$nomcapteur");
+                        $idcapteur= $donneesC['CaptorTypeID'];
+                        $requeteC2= $db->query("SELECT CaptorName FROM captortypes WHERE CaptorTypeID=$idcapteur");
                         while($donneesC2= $requeteC2->fetch()){
                             echo '<li class="C">'.$donneesC2['CaptorName'].'</li>';
+                        }
+                    }
+                    $requeteA= $db->query("SELECT ActuatorTypeID FROM actuators WHERE RoomID=$idroom");
+                    while($donneesA= $requeteA->fetch()){
+                        $nomactionneur= $donneesA['ActuatorTypeID'];
+                        $requeteA2= $db->query("SELECT ActuatorName FROM actuatortypes WHERE ActuatorTypeID=$nomactionneur");
+                        while($donneesA2= $requeteA2->fetch()){
+                            echo '<li class="C">'.$donneesA2['ActuatorName'].'</li>';
                         }
                     }
                     echo '</ul></li>';

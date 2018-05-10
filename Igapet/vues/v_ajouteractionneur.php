@@ -17,10 +17,10 @@
         while($donneesP = $requeteP->fetch()){
             $piece= $donneesP['Name'];
             $idp= $donneesP['RoomID'];
-            echo '<option value='."$idp".'>'.$piece.'</option><br/>';
+            echo '<option value='."$idp".'>'.$piece.'</option>';
         }
+        echo '</select><br/>';
     }
-    echo '</select><br/>';
     ?>
     <label for="typeA">Type d'actionneur</label><br/><br/>
     <?php 

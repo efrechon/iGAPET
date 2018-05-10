@@ -9,8 +9,32 @@
     <fieldset>
         <legend>Catalogue</legend>
         <h5>Capteurs</h5>
+        <div class="catal">
+            <ul>
+                <?php $db= connexion_BDD();
+                $req= $db->query("SELECT CaptorName, url_img FROM captortypes");
+                while($cap= $req->fetch()){
+                    $idimg= $cap['url_img'];
+                    echo '<li>'.$cap['CaptorName'].'  '.'<img src='."$idimg".'></li>';
+                }
+                ?>
+            </ul>
+        </div>
         <br/>
         <h5>Actionneurs</h5>
+        <div class="catal">
+            <ul>
+                <?php $db= connexion_BDD();
+                $req= $db->query("SELECT ActuatorName, url_img FROM actuatortypes");
+                while($act= $req->fetch()){
+                    $idimg= $act['url_img'];
+                    echo '<li>'.$act['ActuatorName'].'  '.'<img src='."$idimg".'></li>';
+                }
+                ?>
+            </ul>
+        </div>
+        <br>
+        <input type="button" value="Modifier">
     </fieldset>
 </div>
 <!-- Fin & Affectation du contenu de la page -->
