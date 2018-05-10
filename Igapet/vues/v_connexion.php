@@ -11,7 +11,7 @@
     <div id=header>
         <h1>iGAPET</h1>
     </div>
-    <br/><p> Soyez capable de répondre à vos besoins du quotidien sans bouger de votre lit ! </p>
+    <br/><p class="slogan"> Soyez capable de répondre à vos besoins du quotidien sans bouger de votre lit ! </p>
     
     <div id="contain">
         <div id="connexion">

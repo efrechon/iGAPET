@@ -18,7 +18,12 @@ function inscription_utilisateur($db){
 
     // Execution de la requete
     $requete->execute();
-    $requete->closeCursor();
+    $requeteID= $db->query("SELECT UserID FROM users WHERE Mail='$email'");
+    while($id= $requeteID->fetch()){
+        $_SESSION['id']= $id['UserID'];
+    }
+    $_SESSION['mail']=$email;
+    $_SESSION['passwordInit']= $_POST['passwordI'];
 }
 
 function inscritption_maison($db){

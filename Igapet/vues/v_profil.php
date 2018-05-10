@@ -15,7 +15,7 @@
     <label for="passwordP">Mot de passe : </label>
     <input type="password" name="passwordP" value= <?php echo $_SESSION['passwordInit']?>><br/><br/>
     <label for="phone">Numéro de téléphone : </label>
-    <input type="text" name="phone" value= <?php echo $_SESSION['tel']?>><br/><br/>
+    <input type="text" name="phone" value= <?php if (isset($_SESSION['phone'])) echo $_SESSION['tel']?>><br/><br/>
     <input type="submit" value="Modifier">
 </form>
 <!-- Fin & Affectation du contenu de la page -->
