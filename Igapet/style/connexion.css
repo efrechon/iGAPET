@@ -16,7 +16,7 @@ p{
 
 #contain{
     display: flex;
-    padding-top: 6%;
+    padding-top: 5%;
     flex-wrap: wrap;
 }
 
@@ -52,12 +52,12 @@ label{
     margin-right: auto;
     width: 250px;
     float: left;
-    text-align: right;
+    text-align: center;
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
     width: 200px;
-    margin-left: -100px;
+    margin-left: -4%;
 }
 
 h2{
@@ -115,24 +115,14 @@ h3{
 .wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-row: auto;
+    grid-template-row : auto;
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
     text-align: justify;
-    grid-column-gap: 50px;
+    grid-column-gap : 50px;
     margin: 50px 50px 90px 50px;
-    border-bottom: 2px solid #00A4E1;
-    width: 50%;
-    margin-left: 25%;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-row : auto;
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-  text-align: justify;
-  grid-column-gap : 50px;
-  margin: 50px 50px 90px 50px;
+p{
+    text-align: justify;
 }
