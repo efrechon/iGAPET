@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style/vueEnsemble.css">
+
 <!-- Nom de la page -->
 <?php $nom_page = "Vue Ensemble"; ?>
 

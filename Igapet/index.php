@@ -17,7 +17,7 @@
                 if(isset($_GET['new'])){
                     if($_GET['new'] == 'visit'){
                         connexion_iGAPET($db);
-                        affiche_acceuil();
+                        include ('vues/accueil.php');
                     }
                 }
                 else{
@@ -72,7 +72,7 @@
                 include ('controls/c_inscription.php');
                 if ((isset($_GET['new']))){
                     if ($_GET['new'] == 'maison'){
-                        affiche_new_maison();
+                        include('vues/v_ajoutermaison.php');
                         inscritption_maison($db);
                     }
                     else if ($_GET['new'] == 'piece'){
@@ -124,7 +124,7 @@
     }
     else if(empty($_GET['pageAction'])) {
         include ('controls/c_inscription.php');
-        affiche_page_inscription();
+        include('vues/v_connexion.php');
     }
     else{
         // Page à afficher si problème d'URL

@@ -28,7 +28,7 @@ var i=0;
 while(es[i] != null)
 {
 	anchorPoint1[i] = {x:Rooms[i]["xPosition"],y:Rooms[i]["yPosition"]};
-	anchorPoint2[i] = {x:(+Rooms[i]["xPosition"] + +Rooms[i]["width"]),y:(+Rooms[i]["yPosition"] + +Rooms[i]["height"])};
+	anchorPoint2[i] = {x:(+Rooms[i]["xPosition"] + +Rooms[i]["Width"]),y:(+Rooms[i]["yPosition"] + +Rooms[i]["Height"])};
 	i+=1;
 }
 
@@ -46,10 +46,9 @@ function dragElement(elmnt,k,Rooms) {
 		document.onmousemove = elementDrag;
 	}
 	function elementDrag(e) {
-		var rad = 20;
+		var rad = 30;
 		e = e || window.event;
 		// calculate the new cursor position:
-
 		posX = e.clientX-getOffsetLeft(elmnt.parentElement);
 		posY = e.clientY-getOffsetTop(elmnt.parentElement);
 		//posY = +posY + + parseInt(elmnt.style.height);
@@ -97,26 +96,21 @@ function dragElement(elmnt,k,Rooms) {
 			{
 				posY= +b.y - +halfHeight;
 			}
-			if (C1.x < 0)
+			if (C1.x < 0) // top screen
 			{
 				posX=halfWidth;
 			}
-			else if (C2.x > elmnt.parentElement.offsetWidth)
+			else if (C2.x > elmnt.parentElement.offsetWidth) // bottomscreen
 			{
 				posX = +elmnt.parentElement.offsetWidth - +halfWidth;
 			}
-			if (C1.y < 0)
+			if (C1.y < 0) // leftside
 			{
 				posY = halfHeight;
 			}
-			else if( C2.y > elmnt.parentElement.offsetHeight)
+			else if( C2.y > elmnt.parentElement.offsetHeight) //rightside
 			{
-				console.log(posY);
-				console.log(elmnt.parentElement.offsetHeight);
-				console.log(halfHeight);
 				posY = +elmnt.parentElement.offsetHeight - +halfHeight;
-				console.log(posY);
-				console.log("edeed");
 			}
 		}
 		posX = posX - halfWidth ;
@@ -126,7 +120,7 @@ function dragElement(elmnt,k,Rooms) {
 		Rooms[k]["xPosition"] = posX;
 		Rooms[k]["yPosition"] = posY;
 		anchorPoint1[k] = {x:Rooms[k]["xPosition"],y:Rooms[k]["yPosition"]};
-		anchorPoint2[k] = {x:(+Rooms[k]["xPosition"] + +Rooms[k]["width"]),y:(+Rooms[k]["yPosition"] + +Rooms[k]["height"])};
+		anchorPoint2[k] = {x:(+Rooms[k]["xPosition"] + +Rooms[k]["Width"]),y:(+Rooms[k]["yPosition"] + +Rooms[k]["Height"])};
 		
 	}
 	function closeDragElement() {

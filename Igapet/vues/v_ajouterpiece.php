@@ -9,9 +9,8 @@
     <label for="localisationM">Appartient à : </label>
     <select name="localisationM">
     <?php 
-    $id= $_SESSION['id'];
-    $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
-    while($donnees= $requete->fetch()){
+    $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+    foreach($donneesList as $donnees){
         $nomM= $donnees['Name'];
         $idhome= $donnees['HouseID'];
         echo ('<option value='."$idhome".'>'.$nomM.'</option>');

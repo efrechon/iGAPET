@@ -8,7 +8,13 @@
 <div id="full">
     <div id="Informations">
         <?php
-            echo 'Bonjour '.$_SESSION['prenom'].', ';
+			if (isset($_SESSION['prenom'])){ 
+				echo 'Bonjour '.$_SESSION['prenom'];
+			} 
+			else { 
+				echo 'Bonjour';
+			}
+			echo "<br>";
             $idvisiteur= $_SESSION['id'];
             $req= $db->query("SELECT COUNT(*) as nb FROM houses WHERE UserID=$idvisiteur");
             $don= $req->fetch();

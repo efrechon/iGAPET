@@ -10,9 +10,10 @@ function changement_profil($db){
     $phone= htmlspecialchars($_POST['phone']);
 
     // Préparation de la requete SQL
-    $requete= $db->prepare("UPDATE users SET LastName=:nom,FirstName=:prenom,Mail=:mail,UserPassword=:password,Phone=:phone WHERE UserID=$id");
+    $requete= $db->prepare("UPDATE users SET LastName=:nom,FirstName=:prenom,Mail=:mail,UserPassword=:password,Phone=:phone WHERE UserID=:id");
 
     // Affectation des valeurs
+	$requete->bindValue(':id',$id);
     $requete->bindValue(':nom',$nom);
     $requete->bindValue(':prenom',$prenom);
     $requete->bindValue(':mail',$email);
@@ -22,19 +23,19 @@ function changement_profil($db){
     // Execution de la requete
     $requete->execute();
 
-    if($_POST['firstName'] != $_SESSION['prenom']){
+    if(!isset($_SESSION['prenom']) || $_POST['firstName'] != $_SESSION['prenom']){
         $_SESSION['prenom']= $_POST['firstName'];
     }
-    if($_POST['lastName'] != $_SESSION['nom']){
+    if(!isset($_SESSION['nom']) ||$_POST['lastName'] != $_SESSION['nom']){
         $_SESSION['nom']= $_POST['lastName'];
     }
-    if($_POST['emailP'] != $_SESSION['mail']){
+    if(!isset($_SESSION['mail']) || $_POST['emailP'] != $_SESSION['mail']){
         $_SESSION['mail']= $_POST['emailP'];
     }
-    if($_POST['passwordP'] != $_SESSION['passwordInit']){
+    if(!isset($_SESSION['passwordInit']) || $_POST['passwordP'] != $_SESSION['passwordInit']){
         $_SESSION['passwordInit']= $_POST['passwordP'];
     }
-    if($_POST['phone'] != $_SESSION['tel']){
+    if(!isset($_SESSION['tel']) || $_POST['phone'] != $_SESSION['tel']){
         $_SESSION['tel']= $_POST['phone'];
     }
 

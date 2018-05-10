@@ -9,28 +9,23 @@
     <div class="identitemaison">
         <ul>
             <?php 
-            $id= $_SESSION['id'];
-            $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
-            while($donneesM= $requeteM->fetch()){
-                $idhome= $donneesM['HouseID'];
+			$donnees = getSQL($db,"SELECT Name,HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+            foreach($donnees as $donneesM){
                 echo '<li class="A">'.$donneesM['Name'].'<ul>';
-                $requeteP= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
-                while($donneesP = $requeteP->fetch()){
-                    $idroom= $donneesP['RoomID'];
+                $donnees2= getSQL($db,"SELECT Name,RoomID FROM rooms WHERE HouseID=".$donneesM['HouseID']);
+                foreach($donnees2 as $donneesP){
                     echo '<li class="B">'.$donneesP['Name'].'<ul>';
-                    $requeteC= $db->query("SELECT CaptorTypeID FROM captors WHERE RoomID=$idroom");
-                    while($donneesC= $requeteC->fetch()){
-                        $idcapteur= $donneesC['CaptorTypeID'];
-                        $requeteC2= $db->query("SELECT CaptorName FROM captortypes WHERE CaptorTypeID=$idcapteur");
-                        while($donneesC2= $requeteC2->fetch()){
+                    $donnees3= getSQL($db,"SELECT CaptorTypeID FROM captors WHERE RoomID=".$donneesP['RoomID']);
+                    foreach($donnees3 as $donneesC){
+                        $donnees5= getSQL($db,"SELECT CaptorName FROM captortypes WHERE CaptorTypeID=".$donneesC['CaptorTypeID']);
+                        foreach($donnees5 as $donneesC2){
                             echo '<li class="C">'.$donneesC2['CaptorName'].'</li>';
                         }
                     }
-                    $requeteA= $db->query("SELECT ActuatorTypeID FROM actuators WHERE RoomID=$idroom");
-                    while($donneesA= $requeteA->fetch()){
-                        $nomactionneur= $donneesA['ActuatorTypeID'];
-                        $requeteA2= $db->query("SELECT ActuatorName FROM actuatortypes WHERE ActuatorTypeID=$nomactionneur");
-                        while($donneesA2= $requeteA2->fetch()){
+                    $donnees4= getSQL($db,"SELECT ActuatorTypeID FROM actuators WHERE RoomID=".$donneesP['RoomID']);
+                    foreach($donnees4 as $donneesA){
+                        $donnees6= getSQL($db,"SELECT ActuatorName FROM actuatortypes WHERE ActuatorTypeID=".$donneesA['ActuatorTypeID']);
+                        foreach($donnees6 as $donneesA2){
                             echo '<li class="C">'.$donneesA2['ActuatorName'].'</li>';
                         }
                     }

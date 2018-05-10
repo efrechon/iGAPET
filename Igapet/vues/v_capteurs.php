@@ -13,12 +13,9 @@
         </select>
         <select name="whereC">
             <?php
-            $id= $_SESSION['id'];
-            $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
-            while($donnees= $requete->fetch()){
-                $nomM= $donnees['Name'];
-                $idhome= $donnees['HouseID'];
-                echo ('<option value='."$idhome".'>'.$nomM.'</option>');
+            $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+            foreach($donneesList as $donnees){
+                echo ('<option value='.$donnees['HouseID'].'>'.$donnees['Name'].'</option>');
             }
             ?>
         </select>
@@ -28,24 +25,41 @@
 <div id="affichageActionneur">
     <?php
     
-    if($_POST['triC'] == 'triPiece'){
-        $idhome= $_POST['whereC'];
-        $requeteTriPC= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
-        while($triPC= $requeteTriPC->fetch()){
-            $idroom= $triPC['RoomID'];
-            echo'<h4>'.$triPC['Name'].'</h4>';
-            echo'<div class="pieceP">';
-            $requeteTriPC2= $db->query("SELECT CaptorTypeID, Value FROM captors WHERE RoomID=$idroom");
-            while($triPC2= $requeteTriPC2->fetch()){
-                $idcapteur= $triPC2['CaptorTypeID'];
-                $requeteTriPC3= $db->query("SELECT CaptorName, Unit, url_img FROM captortypes WHERE CaptorTypeID=$idcapteur");
-                while($triPC3= $requeteTriPC3->fetch()){
-                    $idimg= $triPC3['url_img'];
-                    echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/>'.$triPC2['Value'].' '.$triPC3['Unit'].'</div>';
-                }
-            }
-            echo'</div>';
-        }
+    if(!isset($_POST['triC']) || $_POST['triC'] == 'triPiece'){
+		if (isset($_POST['whereC'])){
+			$idhome= $_POST['whereC'];
+		}
+		else
+		{
+			$data = getSQL($db,"SELECT HouseID FROM houses WHERE UserID=".$_SESSION['id']." LIMIT 1");
+			if (!count($data))
+			{
+				echo "Vous n'avez pas de maison, veuillez en ajouter";
+				$idhome =0;
+			}
+			else
+			{
+				$idhome = (int)$data[0]["HouseID"];
+			}
+		}
+		if ($idhome){
+			$requeteTriPC= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
+			while($triPC= $requeteTriPC->fetch()){
+				$idroom= $triPC['RoomID'];
+				echo'<h4>'.$triPC['Name'].'</h4>';
+				echo'<div class="pieceP">';
+				$requeteTriPC2= $db->query("SELECT CaptorTypeID, Value FROM captors WHERE RoomID=$idroom");
+				while($triPC2= $requeteTriPC2->fetch()){
+					$idcapteur= $triPC2['CaptorTypeID'];
+					$requeteTriPC3= $db->query("SELECT CaptorName, Unit, url_img FROM captortypes WHERE CaptorTypeID=$idcapteur");
+					while($triPC3= $requeteTriPC3->fetch()){
+						$idimg= $triPC3['url_img'];
+						echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/>'.$triPC2['Value'].' '.$triPC3['Unit'].'</div>';
+					}
+				}
+				echo'</div>';
+			}
+		}
     }
     ?>
 </div>
