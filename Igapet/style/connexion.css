@@ -4,19 +4,15 @@
 
 h1{
     margin-left: 25%;
+    margin-bottom: 0;
     width: 50%;
     color: #00A4E1;
     text-align: center;
     border-bottom: 2px solid #00A4E1;
 }
 
-p{
-	 text-align: center;
-}
-
 #contain{
     display: flex;
-    padding-top: 6%;
     flex-wrap: wrap;
 }
 
@@ -52,12 +48,12 @@ label{
     margin-right: auto;
     width: 250px;
     float: left;
-    text-align: right;
+    text-align: center;
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
     width: 200px;
-    margin-left: -100px;
+    margin-left: -4%;
 }
 
 h2{
@@ -112,6 +108,14 @@ h3{
     margin-left: 25%;
 }
 
+p{
+    text-align: justify;
+}
+
+.slogan{
+    text-align: center;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -121,5 +125,4 @@ h3{
   text-align: justify;
   grid-column-gap : 50px;
   margin: 50px 50px 90px 50px;
-  background-color: blue;
 }
