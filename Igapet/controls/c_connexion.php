@@ -9,7 +9,12 @@ function connexion_iGAPET($db){
     else{
         if(authentification($db) == 'OK'){
             recup_informations($db);
-            header('Location:index.php?pageAction=accueil');
+            if($_SESSION['user_type']==2){
+                 header('Location:index.php?pageAction=accueil');
+            }
+            else if($_SESSION['user_type']==1){
+                header('Location:index.php?pageAction=admini');
+            }
         }
         else{
             header('Location:index.php?pageAction=connexion');

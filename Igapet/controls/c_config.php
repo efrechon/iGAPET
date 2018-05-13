@@ -47,6 +47,24 @@ function doSQL(PDO $db,$sql)
 	}
 }
 
+function is_administrateur(){
+	if($_SESSION['user_type']==1){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+function is_utilisateur(){
+    if($_SESSION['user_type']==2){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 //Toutes les possibilités pour pageAction dans l'URL
 $possibilitiesPA=array(
     'connexion',
@@ -67,6 +85,7 @@ $possibilitiesPA=array(
     'contacter',
     'cgu',
     'mentionsl',
-    'deconnexion');
+    'deconnexion',
+	'admini');
 
 ?>

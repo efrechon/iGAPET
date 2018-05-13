@@ -39,66 +39,85 @@
                 }
             break;
             case "accueil":
-                include ('controls/c_inscription.php');
-                include ('vues/v_accueil.php');
+                if(is_utilisateur()){
+                    include ('controls/c_inscription.php');
+                    include ('vues/v_accueil.php');
+                }
             break;
             case "profil":
-                include ('controls/c_profil.php');
-                if(isset($_GET['modifier']) && $_GET['modifier'] == 'yes'){
-                    modifier_profil($db);
+                if(is_utilisateur()) {
+                    include('controls/c_profil.php');
+                    if (isset($_GET['modifier']) && $_GET['modifier'] == 'yes') {
+                        modifier_profil($db);
+                        affiche_mon_profil();
+                    }
                     affiche_mon_profil();
                 }
-                affiche_mon_profil();
             break;
             case "vueEns":
-                include ('vues/v_vueensemble.php');
+                if(is_utilisateur()) {
+                    include('vues/v_vueensemble.php');
+                }
             break;
             case "capteurs":
-                include('vues/v_capteurs.php');
+                if(is_utilisateur()) {
+                    include('vues/v_capteurs.php');
+                }
             break;
             case "actionneurs":
-                include('vues/v_actionneurs.php');
+                if(is_utilisateur()) {
+                    include('vues/v_actionneurs.php');
+                }
             break;
             case "scenarios":
-                include('vues/v_scenarios.php');
+                if(is_utilisateur()) {
+                    include('vues/v_scenarios.php');
+                }
             break;
             case "notifs":
-                include('vues/v_notifications.php');
+                if(is_utilisateur()) {
+                    include('vues/v_notifications.php');
+                }
             break;
             case "gesutili":
-                include ('vues/v_gestionssutilisateurs.php');
+                if(is_utilisateur()) {
+                    include('vues/v_gestionssutilisateurs.php');
+                }
             break;
             case "gesmaison":
-                include ('controls/c_inscription.php');
-                if ((isset($_GET['new']))){
-                    if ($_GET['new'] == 'maison'){
-                        include('vues/v_ajoutermaison.php');
-                        inscritption_maison($db);
+                if(is_utilisateur()) {
+                    include('controls/c_inscription.php');
+                    if ((isset($_GET['new']))) {
+                        if ($_GET['new'] == 'maison') {
+                            include('vues/v_ajoutermaison.php');
+                            inscritption_maison($db);
+                        } else if ($_GET['new'] == 'piece') {
+                            include('vues/v_ajouterpiece.php');
+                            inscription_piece($db);
+                        } else if ($_GET['new'] == 'capteur') {
+                            include('vues/v_ajoutercapteur.php');
+                            inscription_capteur($db);
+                        } else if ($_GET['new'] == 'actionneur') {
+                            include('vues/v_ajouteractionneur.php');
+                            inscription_actionneur($db);
+                        }
+                    } else {
+                        include('vues/v_gestionmaison.php');
                     }
-                    else if ($_GET['new'] == 'piece'){
-                        include('vues/v_ajouterpiece.php');
-                        inscription_piece($db);
-                    }
-                    else if ($_GET['new'] == 'capteur'){
-                        include('vues/v_ajoutercapteur.php');
-                        inscription_capteur($db);
-                    }
-                    else if ($_GET['new'] == 'actionneur'){
-                        include('vues/v_ajouteractionneur.php');
-                        inscription_actionneur($db);
-                    }
-                }else{
-                    include ('vues/v_gestionmaison.php');
                 }
             break;
             case "infos":
-                include ('vues/v_informations.php');
+                if(is_utilisateur()) {
+                    include('vues/v_informations.php');
+                }
             break;
             case "sav":
-                include ('vues/v_sav.php');
+                if(is_utilisateur()) {
+                    include('vues/v_sav.php');
+                }
             break;
             case "faq":
-                include ('vues/v_faq.php');
+                include('vues/v_faq.php');
             break;
             case "apropos":
                 include ('vues/v_apropos.php');
@@ -120,15 +139,25 @@
                 include('controls/c_deconnexion.php');
                 deconnexion();
             break;
+            case "admini":
+                if(is_administrateur()){
+                    include ('vues/v_admin.php');
+                }
+                else{
+                    include('vues/v_erreur.php');
+                }
         }
     }
     else if(empty($_GET['pageAction'])) {
-        include ('controls/c_inscription.php');
+        include('controls/c_inscription.php');
         include('vues/v_connexion.php');
     }
     else{
-        // Page à afficher si problème d'URL
-        include ('vues/v_erreur.php');
+        include ('vues/v_erreur.php'); // Page à afficher si problème d'URL
+    }
+
+    if(isset($_GET['admini']) && $_SESSION['user_type']== 1){
+        include('vues/v_admin.php');
     }
 
 ?>

@@ -18,13 +18,14 @@ function verifi_mail($db){
 function authentification($db){
     $mail=$_POST['emailC'];
     $password= $_POST['passwordC'];
-    $requete= $db->query("SELECT UserID, FirstName, LastName, UserPassword, Phone FROM users WHERE Mail='$mail'");
+    $requete= $db->query("SELECT UserID, FirstName, LastName, UserPassword, Phone, UserTypeID FROM users WHERE Mail='$mail'");
     while($donnees= $requete->fetch()){
         if(password_verify($password,$donnees['UserPassword'])){
             $_SESSION['connected']= true;
             $_SESSION['id']= $donnees['UserID'];
             $_SESSION['mail']= $_POST['emailC'];
             $_SESSION['passwordInit']= $_POST['passwordC'];
+            $_SESSION['user_type']= $donnees['UserTypeID'];
             if($donnees['FirstName'] != NULL){
                 $_SESSION['prenom']= $donnees['FirstName'];
             }
@@ -46,14 +47,12 @@ function recup_informations($db){
     $mail=$_POST['emailC'];
     $requete= $db->query("SELECT UserID, FirstName, LastName, UserTypeID FROM users WHERE Mail=':mail'");
     $requete->bindParam(':mail',$mail);
-    $requete->fetch();
     while($donnees = $requete->fetch()){
         $_SESSION['id']=$donnees['UserID'];
         $_SESSION['nom']=$donnees['FirstName'];
         $_SESSION['prenom']=$donnees['LastName'];
         $_SESSION['user_type']=$donnees['UserTypeID'];
     }
-    $requete->closeCursor();
 }
 
 ?>

@@ -1,0 +1,41 @@
+*{
+    font-family: "Arial";
+}
+
+#full{
+    margin-top: 5%;
+    display: flex;
+}
+
+.composants{
+    width: 30%;
+    border: 1px solid #00A4E1;
+    margin-left: 2%;
+}
+
+.utilisateurs{
+    width: 40%;
+    border: 1px solid #00A4E1;
+    margin-left: 2%;
+}
+
+.edition{
+    width: 20%;
+    border: 1px solid #00A4E1;
+    margin-left: 2%;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+h3, h1{
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+    margin-bottom: 0px;
+}
