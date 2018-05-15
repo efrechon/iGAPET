@@ -71,9 +71,10 @@
                 <th>Nom</th>
                 <th>Mail</th>
                 <th>Nombre connexion</th>
+                <th>Suppression</th>
             </tr>
             <?php
-            $req= $db->query("SELECT FirstName, LastName, Mail FROM users WHERE UserTypeID!=1");
+            $req= $db->query("SELECT UserID, FirstName, LastName, Mail FROM users WHERE UserTypeID!=1");
             while($u= $req->fetch()){
                 echo '<tr><td>'.$u['FirstName'].'</td><td>'.$u['LastName'].'</td><td>'.$u['Mail'].'</td></tr>';
             }

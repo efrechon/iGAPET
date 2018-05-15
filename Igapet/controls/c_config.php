@@ -1,5 +1,6 @@
 <?php
 
+// Redirection si visiteur n'est pas connecté
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -19,48 +20,51 @@ function connected(){
     }
 }
 
-function getSQL(PDO $db,$sql)
-{
-	try
-	{
+// Récuperer une requete SQL
+function getSQL(PDO $db,$sql){
+	try{
 		$req = $db->prepare(htmlspecialchars($sql));
 		$req->execute();
 
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
 	}
-	catch(PDOException $e) 
+	catch(PDOException $e)
 	{
 		echo $e->getMessage();
 	}
     return $result;
 }
 
-function doSQL(PDO $db,$sql)
-{
+// Envoyer données BDD
+function doSQL(PDO $db,$sql){
 	try{
 		$req = $db->prepare(htmlspecialchars($sql));
 		$req->execute();
 	}
-	catch(PDOException $e) 
+	catch(PDOException $e)
 	{
 		echo $e->getMessage();
 	}
 }
 
+// Verifier que le visiteur est administrateur
 function is_administrateur(){
-	if($_SESSION['user_type']==1){
+	if(isset($_SESSION['user_type']) AND $_SESSION['user_type']==1){
 		return true;
 	}
 	else{
+		header('Location:index.php?pageAction=erreur');
 		return false;
 	}
 }
 
+// Verifier que le visiteur est un utilisateur
 function is_utilisateur(){
-    if($_SESSION['user_type']==2){
+    if(isset($_SESSION['user_type']) AND $_SESSION['user_type']==2){
         return true;
     }
     else{
+		header('Location:index.php?pageAction=erreur');
         return false;
     }
 }

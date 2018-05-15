@@ -3,3 +3,11 @@
     border: 1px solid #00A4E1;
     padding: 5%;
 }
+
+h3{
+    text-align: center;
+}
+
+input[type='submit']{
+    margin-left: 50%;
+}

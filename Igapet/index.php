@@ -156,8 +156,4 @@
         include ('vues/v_erreur.php'); // Page à afficher si problème d'URL
     }
 
-    if(isset($_GET['admini']) && $_SESSION['user_type']== 1){
-        include('vues/v_admin.php');
-    }
-
 ?>

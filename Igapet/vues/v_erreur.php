@@ -5,6 +5,12 @@
         text-align: center;
         margin-top: 20%;
     }
+    input[type='button']{
+        margin-left: 50%;
+    }
 </style>
 
-<h1>Erreur, cette page n'existe pas !</h1>
+<h1>Erreur, cette page n'existe pas !<br/>
+Veuillez vous connecter ou vous inscrire !</h1>
+<br/>
+<a href="index.php?pageAction=connexion"><input type="button" value="Retour"></a>
