@@ -13,22 +13,14 @@
                 echo "Veuillez compléter votre profil";
             }
             ?>
-        </fieldset>
-    </div>
-    <div id="other">
-        <a href="index.php?pageAction=scenarios">
-            <img src="img/calendar.png" alt="calendrier">
-        </a>
-    </div>
-    <div id="Informations">
-        <?php
+            <?php
             if (isset($_SESSION['prenom'])){
-				echo 'Bonjour '.$_SESSION['prenom'].',';
-			} 
-			else { 
-				echo 'Bonjour,';
-			}
-			echo "<br>";
+                echo 'Bonjour '.$_SESSION['prenom'].',';
+            }
+            else {
+                echo 'Bonjour,';
+            }
+            echo "<br>";
             $idvisiteur= $_SESSION['id'];
             $req= $db->query("SELECT COUNT(*) as nb FROM houses WHERE UserID=$idvisiteur");
             $don= $req->fetch();
@@ -43,7 +35,25 @@
                 echo "Vous avez actuellement ".$don['nb']." maisons.";
             }
             ?>
-        </div>
+        </fieldset>
+    </div>
+    <div id="other">
+        <a href="index.php?pageAction=scenarios">
+            <img src="img/calendar.png" alt="calendrier">
+        </a>
+    </div>
+    <div id="Informations">
+        <p>Choisir votre maison par défaut :
+            <?php
+            $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+            foreach($donneesList as $donnees){
+                $nomM= $donnees['Name'];
+                $idhome= $donnees['HouseID'];
+                echo '<input type="radio" value='."$idhome".'>'.$nomM.'     ';
+            }
+            ?>
+        </p>
+    </div>
 </div>
 
 
