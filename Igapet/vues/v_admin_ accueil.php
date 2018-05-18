@@ -59,9 +59,7 @@
         }
         ?>
         </table>
-        <input type="button" value="Ajouter">
-        <input type="button" value="Modifier">
-        <input type="button" value="Supprimer">
+        <a href="index.php?pageAction=admini&modification=catalogue"><input type="button" value="Modifier"></a>
     </div>
     <div class="utilisateurs">
         <h3>Liste utilisateur</h3>

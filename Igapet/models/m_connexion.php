@@ -50,6 +50,8 @@ function recup_informations($db){
     while($donnees = $requete->fetch()){
         $_SESSION['id']=$donnees['UserID'];
         $_SESSION['nom']=$donnees['FirstName'];
+        $_SESSION['mail']=$donnees['emailC'];
+        $_SESSION['passwordInit']= $_POST['passwordC'];
         $_SESSION['prenom']=$donnees['LastName'];
         $_SESSION['user_type']=$donnees['UserTypeID'];
     }

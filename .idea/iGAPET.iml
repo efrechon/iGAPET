@@ -7,11 +7,11 @@
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
-          <root url="file://C:/Windows/System32" />
+          <root url="file://$MODULE_DIR$/../../bin/php/php7.1.9" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://C:/Windows/System32" />
+          <root url="file://$MODULE_DIR$/../../bin/php/php7.1.9" />
         </SOURCES>
       </library>
     </orderEntry>

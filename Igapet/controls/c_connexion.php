@@ -8,7 +8,7 @@ function connexion_iGAPET($db){
     }
     else{
         if(authentification($db) == 'OK'){
-            recup_informations($db);
+            //recup_informations($db);
             if($_SESSION['user_type']==2){
                  header('Location:index.php?pageAction=accueil');
             }

@@ -11,17 +11,17 @@
 
     // Redirection en fonction de l'URL
     if(isset($_GET['pageAction']) && in_array($_GET['pageAction'], $possibilitiesPA)){
-        switch ($_GET['pageAction']){
+        switch($_GET['pageAction']){
             case "connexion":
                 include ('controls/c_connexion.php');
                 if(isset($_GET['new'])){
                     if($_GET['new'] == 'visit'){
                         connexion_iGAPET($db);
-                        include ('vues/accueil.php');
+                        include('vues/v_accueil.php');
                     }
                 }
                 else{
-                    affiche_page_inscription();
+                    include('vues/v_connexion.php');
                 }
             break;
             case "inscription":
@@ -40,7 +40,6 @@
             break;
             case "accueil":
                 if(is_utilisateur()){
-                    include ('controls/c_inscription.php');
                     include ('vues/v_accueil.php');
                 }
             break;
@@ -89,17 +88,13 @@
                     include('controls/c_inscription.php');
                     if ((isset($_GET['new']))) {
                         if ($_GET['new'] == 'maison') {
-                            include('vues/v_ajoutermaison.php');
-                            inscritption_maison($db);
+                            ajouter_maison($db);
                         } else if ($_GET['new'] == 'piece') {
-                            include('vues/v_ajouterpiece.php');
-                            inscription_piece($db);
+                            ajouter_piece($db);
                         } else if ($_GET['new'] == 'capteur') {
-                            include('vues/v_ajoutercapteur.php');
-                            inscription_capteur($db);
+                            ajouter_capteur($db);
                         } else if ($_GET['new'] == 'actionneur') {
-                            include('vues/v_ajouteractionneur.php');
-                            inscription_actionneur($db);
+                            ajouter_actionneur($db);
                         }
                     } else {
                         include('vues/v_gestionmaison.php');
@@ -141,7 +136,14 @@
             break;
             case "admini":
                 if(is_administrateur()){
-                    include ('vues/v_admin.php');
+                    if(isset($_GET['modification'])){
+                        if($_GET['modification']== 'catalogue'){
+                            include('vues/v_admin_modification.php');
+                        }
+                    }
+                    else{
+                        include('vues/v_admin_ accueil.php');
+                    }
                 }
                 else{
                     include('vues/v_erreur.php');

@@ -51,10 +51,10 @@ function ajouter_sous_utilisateur($db){
 function ajouter_maison($db){
     if(isset($_POST['nameM'], $_POST['adresseV'], $_POST['adresseCDP'], $_POST['adresseP'], $_POST['etagesM'])){
         inscritption_maison($db);
-        header('Location: index.php?pageAction=gesmaison');
+        include('vues/v_gestionmaison.php');
     }
     else{
-        header('Location: index.php?pageAction=gesmaison&new=maison');
+        include('vues/v_ajoutermaison.php');
 
     }
 }
@@ -62,30 +62,30 @@ function ajouter_maison($db){
 function ajouter_piece($db){
     if(isset($_POST['localisationM'], $_POST['nameP'], $_POST['largeur'], $_POST['longeur'], $_POST['positionX'], $_POST['positionY'], $_POST['etage'])){
         inscritption_piece($db);
-        header('Location: index.php?pageAction=gesmaison');
+        include('vues/v_gestionmaison.php');
     }
     else{
-        header('Location: index.php?pageAction=gesmaison&new=piece');
+        include('vues/v_ajouterpiece.php');
     }
 }
 
 function ajouter_capteur($db){
     if (isset($_POST['maison'], $_POST['localisationP'], $_POST['typeC'])){
-        header('Location: index.php?pageAction=gesmaison');
         inscription_capteur($db);
+        include('vues/v_gestionmaison.php');
     }
     else{
-        header('Location: index.php?pageAction=gesmaison&new=piece');
+        include('vues/v_ajoutercapteur.php');
     }
 }
 
 function ajouter_actionneur($db){
     if (isset($_POST['maison'], $_POST['localisationPA'], $_POST['typeA'])){
-        header('Location: index.php?pageAction=gesmaison');
         inscription_capteur($db);
+        include('vues/v_gestionmaison.php');
     }
     else{
-        header('Location: index.php?pageAction=gesmaison&new=piece');
+        include('vues/v_ajouteractionneur.php');
     }
 }
 

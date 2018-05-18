@@ -44,15 +44,27 @@
     </div>
     <div id="Informations">
         <p>Choisir votre maison par défaut :
-            <?php
-            $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
-            foreach($donneesList as $donnees){
-                $nomM= $donnees['Name'];
-                $idhome= $donnees['HouseID'];
-                echo '<input type="radio" value='."$idhome".'>'.$nomM.'     ';
-            }
-            ?>
-        </p>
+        <!-- Choisir sa maison par défaut pour la suite du site -->
+                <?php
+                $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+                foreach($donneesList as $donnees){
+                    $nomM= $donnees['Name'];
+                    $idhome= $donnees['HouseID'];
+                    echo '<input type="radio" name="choice" value='."$idhome".'>'.$nomM.'     ';
+                }
+                ?>
+            </p>
+        <div class="Moyenne">
+            <h5>Bilan de la maison</h5>
+
+        </div>
+        <?php
+            $requeteLumTotal= $db->query("SELECT COUNT(State) as nbrTot FROM actuators WHERE ActuatorTypeID=2");
+            $requeteLum= $db->query("SELECT COUNT(State) as nbr FROM actuators WHERE ActuatorTypeID=2 AND State='ON'");
+            $lum= $requeteLum->fetch();
+            $lumTot= $requeteLumTotal->fetch();
+            echo 'Vous avez '.$lum['nbr'].' lumières allumées sur '.$lumTot['nbrTot'].' lumières disponibles';
+        ?>
     </div>
 </div>
 
