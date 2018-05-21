@@ -136,13 +136,15 @@
             break;
             case "admini":
                 if(is_administrateur()){
+                    include('controls/c_admin.php');
                     if(isset($_GET['modification'])){
                         if($_GET['modification']== 'catalogue'){
-                            include('vues/v_admin_modification.php');
+                            //inscription_type_capteurs($db);
+                            include('vues/v_admin_ajout.php');
                         }
                     }
                     else{
-                        include('vues/v_admin_ accueil.php');
+                        include('vues/v_admin_accueil.php');
                     }
                 }
                 else{

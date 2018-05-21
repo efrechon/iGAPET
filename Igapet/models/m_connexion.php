@@ -18,7 +18,7 @@ function verifi_mail($db){
 function authentification($db){
     $mail=$_POST['emailC'];
     $password= $_POST['passwordC'];
-    $requete= $db->query("SELECT UserID, FirstName, LastName, UserPassword, Phone, UserTypeID FROM users WHERE Mail='$mail'");
+    $requete= $db->query("SELECT UserID, FirstName, LastName, UserPassword, Phone, UserTypeID, NbrConnexion FROM users WHERE Mail='$mail'");
     while($donnees= $requete->fetch()){
         if(password_verify($password,$donnees['UserPassword'])){
             $_SESSION['connected']= true;
@@ -26,6 +26,7 @@ function authentification($db){
             $_SESSION['mail']= $_POST['emailC'];
             $_SESSION['passwordInit']= $_POST['passwordC'];
             $_SESSION['user_type']= $donnees['UserTypeID'];
+            $connex= $donnees['NbrConnexion'];
             if($donnees['FirstName'] != NULL){
                 $_SESSION['prenom']= $donnees['FirstName'];
             }
@@ -35,6 +36,7 @@ function authentification($db){
             if($donnees['Phone'] == NULL){
                 $_SESSION['tel']= $donnees['Phone'];
             }
+            $requ= $db->query("UPDATE users SET NbrConnexion='$connex'+1 WHERE Mail='$mail'");
             return 'OK';
         }
         else{

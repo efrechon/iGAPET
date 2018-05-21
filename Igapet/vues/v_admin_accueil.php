@@ -23,6 +23,7 @@
                 <th>Nom</th>
                 <th>Unité</th>
                 <th>Nombre</th>
+                <th>Panne détécté</th>
             </tr>
             <?php
             $reqC=$db->query("SELECT CaptorTypeID, CaptorName, Unit FROM captortypes");
@@ -33,6 +34,7 @@
                 while($c2=$reqC2->fetch()){
                     echo '<td>'.$c2['nbr'].'</td>';
                 }
+                echo '<td>0</td>';
                 echo '</tr>';
             }
             ?>
@@ -45,6 +47,7 @@
             <th>Max</th>
             <th>Unité</th>
             <th>Nombre</th>
+            <th>Panne détécté</th>
         </tr>
         <?php
         $reqA=$db->query("SELECT ActuatorTypeID, ActuatorName, Unit, MinimumValue, MaximumValue FROM actuatortypes");
@@ -55,6 +58,7 @@
             while($a2=$reqA2->fetch()){
                 echo '<td>'.$a2['nbr'].'</td>';
             }
+            echo '<td>0</td>';
             echo '</tr>';
         }
         ?>
@@ -72,13 +76,24 @@
                 <th>Suppression</th>
             </tr>
             <?php
-            $req= $db->query("SELECT UserID, FirstName, LastName, Mail FROM users WHERE UserTypeID!=1");
-            while($u= $req->fetch()){
-                echo '<tr><td>'.$u['FirstName'].'</td><td>'.$u['LastName'].'</td><td>'.$u['Mail'].'</td></tr>';
-            }
+                if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
+                    $id= (int) $_GET['supprime'];
+                    $req= $db->prepare("DELETE FROM users WHERE UserID=:id");
+                    $req->bindParam(':id', $id);
+                    $req->execute();
+                }
+            ?>
+            <?php
+                $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion FROM users WHERE UserTypeID!=1 ORDER BY NbrConnexion DESC");
+                while($u= $req->fetch()){
+                    echo '<tr><td>'.$u['FirstName'].'</td>';
+                    echo '<td>'.$u['LastName'].'</td>';
+                    echo '<td>'.$u['Mail'].'</td>';
+                    echo '<td>'.$u['NbrConnexion'].'</td>';
+                    echo '<td><a href="index.php?pageAction=admini&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
+                }
             ?>
         </table>
-        <input type="button" value="Supprimer">
     </div>
     <div class="edition">
         <h3>Edition des pages</h3>

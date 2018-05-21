@@ -8,7 +8,7 @@ function inscription_utilisateur($db){
     $type_uti= 2;
 
     // Préparation de la requete SQL
-    $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID) VALUES(:mail,:date_adhesion,:password,:type_uti)');
+    $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID, NbrConnexion) VALUES(:mail,:date_adhesion,:password,:type_uti, 1)');
 
     // Affectation des valeurs
     $requete->bindParam(':mail',$email);
