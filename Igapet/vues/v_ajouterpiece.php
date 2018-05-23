@@ -5,7 +5,7 @@
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
 <h2>Ajouter une pièce</h2>
-<form action="" method="post">
+<form action="index.php?pageAction=gesmaison&new=piece" method="post">
     <label for="localisationM">Appartient à : </label>
     <select name="localisationM">
     <?php 

@@ -12,7 +12,7 @@
     include('v_header.php');?>
 </div>
 <div id=nav>
-
+    <?php include ('v_admin_menu.php');?>
 </div>
 <div id="full">
     <div class="composants">
@@ -76,33 +76,24 @@
                 <th>Suppression</th>
             </tr>
             <?php
-                if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
-                    $id= (int) $_GET['supprime'];
-                    $req= $db->prepare("DELETE FROM users WHERE UserID=:id");
-                    $req->bindParam(':id', $id);
-                    $req->execute();
-                }
+            if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
+                $id= (int) $_GET['supprime'];
+                $req= $db->prepare("DELETE FROM users WHERE UserID=:id");
+                $req->bindParam(':id', $id);
+                $req->execute();
+            }
             ?>
             <?php
-                $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion FROM users WHERE UserTypeID!=1 ORDER BY NbrConnexion DESC");
-                while($u= $req->fetch()){
-                    echo '<tr><td>'.$u['FirstName'].'</td>';
-                    echo '<td>'.$u['LastName'].'</td>';
-                    echo '<td>'.$u['Mail'].'</td>';
-                    echo '<td>'.$u['NbrConnexion'].'</td>';
-                    echo '<td><a href="index.php?pageAction=admini&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
-                }
+            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion FROM users WHERE UserTypeID!=1 ORDER BY NbrConnexion DESC");
+            while($u= $req->fetch()){
+                echo '<tr><td>'.$u['FirstName'].'</td>';
+                echo '<td>'.$u['LastName'].'</td>';
+                echo '<td>'.$u['Mail'].'</td>';
+                echo '<td>'.$u['NbrConnexion'].'</td>';
+                echo '<td><a href="index.php?pageAction=admini&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
+            }
             ?>
         </table>
-    </div>
-    <div class="edition">
-        <h3>Edition des pages</h3>
-        <ul>
-            <li>CGU</li>
-            <li>Mentions Légales</li>
-            <li>A propos</li>
-        </ul>
-        <input type="button" value="Editer">
     </div>
     <div id="messagerie">
 

@@ -139,7 +139,7 @@
                     include('controls/c_admin.php');
                     if(isset($_GET['modification'])){
                         if($_GET['modification']== 'catalogue'){
-                            //inscription_type_capteurs($db);
+                            ajouter_composants($db);
                             include('vues/v_admin_ajout.php');
                         }
                     }

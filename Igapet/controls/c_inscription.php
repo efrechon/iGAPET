@@ -3,7 +3,7 @@
 include('models/m_inscription.php');
 
 // Fonctions
-function ajouter_utilisateur($db){
+ function ajouter_utilisateur($db){
     if(verification_mail($db) && verification_password() && isset($_POST['cguOk'])){
         inscription_utilisateur($db);
         header('Location:index.php?pageAction=accueil');
@@ -81,7 +81,7 @@ function ajouter_capteur($db){
 
 function ajouter_actionneur($db){
     if (isset($_POST['maison'], $_POST['localisationPA'], $_POST['typeA'])){
-        inscription_capteur($db);
+        inscription_actionneur($db);
         include('vues/v_gestionmaison.php');
     }
     else{
