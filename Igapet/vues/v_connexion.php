@@ -36,7 +36,7 @@
                 <input type="password" name="passwordI"><br/><br/>
                 <label for="verifpasswordI">Confirmer votre mot de passe : </label>
                 <input type="password" name="verifpasswordI"><br/><br/>
-                <input type="checkbox" name="cguOk">J'accepte les Conditions Générales d'Utilisation<br/><br/>
+                <input type="checkbox" name="cguOk">J'accepte les <a href= 'index.php?pageAction=cgu'>Conditions Générales d'Utilisation</a><br/><br/>
                 <input type="submit" value="S'inscrire"><a href='index.php?pageAction=accueil'></a>
             </form>
         </div>
@@ -62,8 +62,7 @@
   			 					aux services des objets connectés, à volonté et dans n'importe quelle pièce de la maison.</a></div>
   			<div class="seven"><a>Le confort de l'utilisateur est un point important pour iGAPET. Nous donnons la possibilité aux utilisateurs de
   			 					  réaliser une grande partie des tâches de la vie quotidienne en un seul clic. Par exemple, pouvoir fermer les volets de votre maison,
-  			 					  allumer toutes les lampes d'une pièce ou encore augmenter le chauffage d'une pièce, ainsi que de nombreuses autres fonctions.
-  			</a></div>
+  			 					  allumer toutes les lampes d'une pièce ou encore augmenter le chauffage d'une pièce, ainsi que de nombreuses autres fonctions.</a></div>
   			<div class="eight"><a>Vous reviez d'une maison sécurisée 24h/24 ? Vous êtes au bon endroit. En effet, iGAPET propose de nombreuses solutions afin de
   								  rendre votre maison hors de danger : caméra connectée, capteurs au niveau des portes et des fenêtres.
   								  Ce qui vous avertira lors d'une intrusion.</a></div>
