@@ -14,12 +14,12 @@
         <a href='index.php?pageAction=v_gestionmaison'--><li class="onglet">Gérer les maisons</li></a>
         <a href='index.php?pageAction=v_informations'--><li class="onglet">Informations</li></a>
         <a href='index.php?pageAction=v_sav'--> <li class="onglet">SAV</li></a>
-        <br><br><br><br><br><br><br>
-        <a href='index.php?pageAction=v_faq'--><li class="small">FAQ</li></a>
-        <a href='index.php?pageAction=v_apropos'--><li class="small">A propos</li></a>
-        <a href='index.php?pageAction=c_contacter'--><li class="small">Nous contacter</li></a>
-        <a href='index.php?pageAction=c_reglementation'--><li class="small">CGU</li></a>
-        <a href='index.php?pageAction=c_reglementation'--><li class="small">Mentions Légales</li></a>
+        <br><br><br>
+        <a href='index.php?pageAction=v_faq'--><li class="onglet">FAQ</li></a>
+        <a href='index.php?pageAction=v_apropos'--><li class="onglet">A propos</li></a>
+        <a href='index.php?pageAction=c_contacter'--><li class="onglet">Nous contacter</li></a>
+        <a href='index.php?pageAction=c_reglementation'--><li class="onglet">CGU</li></a>
+        <a href='index.php?pageAction=c_reglementation'--><li class="onglet">Mentions Légales</li></a>
     </ul>
 </nav>
 
