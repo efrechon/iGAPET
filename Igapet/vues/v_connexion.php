@@ -44,7 +44,7 @@
                 <input type="password" name="UserPassword"><br/><br/>
                 <label for="UserPassword2">Confirmer votre mot de passe : </label>
                 <input type="password" name="UserPassword2"><br/><br/>
-                <input type="checkbox" name="cguOk">J'accepte les <a href='index.php?pageAction=v_cgu'>Conditions Générales d'Utilisation</a><br/><br/>
+                <input type="checkbox" name="cgu">J'accepte les <a href='index.php?pageAction=v_cgu'>Conditions Générales d'Utilisation</a><br/><br/>
 				<input type="hidden" name="type" value="utilisateur">
 				<?php
 				if (isset($_SESSION["erreurInscription"])){
