@@ -2,11 +2,6 @@
     font-family: "Raleway";
 }
 
-@font-face{
-    font-family: 'Raleway';
-    src: url('Raleway-Regular.ttf');
-}
-
 body{
     margin: 0;
     display:flex;
@@ -23,7 +18,7 @@ body{
 
 #nav{
     width: 15%;
-    height: 89%;
+    height: 90%;
     position: relative;
 	overflow:hidden;
 }
