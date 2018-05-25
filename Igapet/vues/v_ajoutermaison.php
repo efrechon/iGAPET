@@ -6,17 +6,25 @@
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
 <h2>Ajouter une maison</h2>
-<form action="index.php?pageAction=gesmaison&new=maison" method="post">
-    <label for="nameM">Renommer votre maison : </label>
-    <input type="text" name="nameM"><br/><br/>
-    <label for="adresseV">Voie : </label>
-    <input type="text" name="adresseV"><br/><br/>
-    <label for="adresseCDP">Code Postal : </label>
-    <input type="text" name="adresseCDP"><br/><br/>
-    <label for="adresseP">Pays : </label>
-    <input type="text" name="adresseP"><br/><br/>
-    <label for="etagesM">Nombre d'étage : </label>
-    <input type="number" name="etagesM" min="0" step="1"><br/><br/>
+<form action="controls/c_inscription.php" method="post">
+    <label for="Name">Renommer votre maison : </label>
+    <input type="text" name="Name"><br/><br/>
+    <label for="Address">Voie : </label>
+    <input type="text" name="Address"><br/><br/>
+    <label for="PostalCode">Code Postal : </label>
+    <input type="text" name="PostalCode"><br/><br/>
+    <label for="Country">Pays : </label>
+    <input type="text" name="Country"><br/><br/>
+    <label for="NumberOfFloor">Nombre d'étage : </label>
+    <input type="number" name="NumberOfFloor" min="0" step="1"><br/><br/>
+	<input type="hidden" value="maison" name="type">
+	<?php if (isset($_SESSION["erreurAjoutMaison"]))
+	{
+		echo $_SESSION["erreurAjoutMaison"];
+		unset($_SESSION["erreurAjoutMaison"]);
+	}
+	?>
+	</br>
     <input type="submit" value="Ajouter">
 </form>
 <!-- Fin & Affectation du contenu de la page -->

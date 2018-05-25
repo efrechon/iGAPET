@@ -9,19 +9,19 @@
     <div id="Notifications">
         <fieldset>
             <legend>Notifications</legend>
-            <?php if(!isset($_SESSION['prenom'])){
+            <?php if(!isset($_SESSION['FirstName'])){
                 echo "Veuillez compléter votre profil";
             }
             ?>
             <?php
-            if (isset($_SESSION['prenom'])){
-                echo 'Bonjour '.$_SESSION['prenom'].',';
+            if (isset($_SESSION['FirstName'])){
+                echo 'Bonjour '.$_SESSION['FirstName'].',';
             }
             else {
                 echo 'Bonjour,';
             }
             echo "<br>";
-            $idvisiteur= $_SESSION['id'];
+            $idvisiteur= $_SESSION['UserID'];
             $req= $db->query("SELECT COUNT(*) as nb FROM houses WHERE UserID=$idvisiteur");
             $don= $req->fetch();
             $req->closeCursor();
@@ -46,7 +46,7 @@
         <p>Choisir votre maison par défaut :
         <!-- Choisir sa maison par défaut pour la suite du site -->
                 <?php
-                $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+                $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['UserID']);
                 foreach($donneesList as $donnees){
                     $nomM= $donnees['Name'];
                     $idhome= $donnees['HouseID'];

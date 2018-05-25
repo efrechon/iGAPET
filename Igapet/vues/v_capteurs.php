@@ -13,7 +13,7 @@
         </select>
         <select name="whereC">
             <?php
-            $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+            $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['UserID']);
             foreach($donneesList as $donnees){
                 echo ('<option value='.$donnees['HouseID'].'>'.$donnees['Name'].'</option>');
             }
@@ -31,7 +31,7 @@
 		}
 		else
 		{
-			$data = getSQL($db,"SELECT HouseID FROM houses WHERE UserID=".$_SESSION['id']." LIMIT 1");
+			$data = getSQL($db,"SELECT HouseID FROM houses WHERE UserID=".$_SESSION['UserID']." LIMIT 1");
 			if (!count($data))
 			{
 				echo "Vous n'avez pas de maison, veuillez en ajouter";

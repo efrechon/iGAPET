@@ -1,35 +1,25 @@
 <?php
 
-include('models/m_connexion.php');
+include("c_config.php");
+include('../models/m_connexion.php');
 
-function connexion_iGAPET($db){
-    if(empty($_POST['emailC']) || empty($_POST['passwordC'])){
-        header('Location:index.php?pageAction=connexion');
-    }
-    else{
-        if(authentification($db) == 'OK'){
-            //recup_informations($db);
-            if($_SESSION['user_type']==2){
-                 header('Location:index.php?pageAction=accueil');
-            }
-            else if($_SESSION['user_type']==1){
-                header('Location:index.php?pageAction=admini');
-            }
-        }
-        else{
-            header('Location:index.php?pageAction=connexion');
-        }
-    }
+
+if(empty($_POST['Mail']) || empty($_POST['UserPassword'])){
+	$_SESSION["erreurConnection"] = "Veuillez remplir tous les champs";
+	header('Location:../index.php?pageAction=v_connexion');
+}
+else{
+	if(authentification($db)){
+		connect($db);
+		header('Location:../index.php?pageAction=v_accueil');
+	}
+	else{
+		$_SESSION["erreurConnection"] = "Cet association compte et mot de passe n'existe pas";
+		header('Location:../index.php?pageAction=v_connexion');
+	}
 }
 
-// Affichages
-function affiche_page_inscription(){
-    include('vues/v_connexion.php');
-}
 
-function affiche_acceuil(){
-    include('vues/v_accueil.php');
-}
 
 
 ?>

@@ -1,6 +1,10 @@
-CREATE DATABASE IGAPET;		-- nom temporaire pour pas supprimer IGAPET
 
-USE IGAPET;
+IF EXISTS(select * from sys.databases where name='IGAPET')
+DROP DATABASE IGAPET
+
+CREATE DATABASE IGAPET		-- nom temporaire pour pas supprimer IGAPET
+
+USE IGAPET
 
 CREATE TABLE Users(
 	UserID int PRIMARY KEY AUTO_INCREMENT,          -- principal key
@@ -10,13 +14,12 @@ CREATE TABLE Users(
 	CreationDate datetime NOT NULL,  		                -- automatic
     UserPassword varchar(255) NOT NULL,		                -- should be crypted + condition
 	UserTypeID tinyint NOT NULL,
-    Phone varchar(15),                			    -- should be unique
-	NbrConnexion int(11) NOT NULL
+    Phone varchar(15)                			    -- should be unique
 );
 
 CREATE TABLE Houses(
 	HouseID int PRIMARY KEY AUTO_INCREMENT,         -- primary key
-	UserID int NOT NULL,	                            -- foreign key
+	UserID int,			                            -- foreign key
 	Name varchar(50) NOT NULL,
 	Address varchar(255) NOT NULL,                  -- change varcharSize
 	PostalCode varchar(10) NOT NULL,
@@ -37,29 +40,29 @@ CREATE TABLE Rooms(
 
 CREATE TABLE Captors(
 	CaptorID int PRIMARY KEY AUTO_INCREMENT,        -- primary key
-	RoomID int NOT NULL, 				            	    -- foreign key
-	CaptorTypeID int NOT NULL,  			            	    -- foreign key
+	RoomID int, 				            	    -- foreign key
+	CaptorTypeID int,  			            	    -- foreign key
 	Value varchar(255) 		                	    -- modify according to precision
   
 );
 
 CREATE TABLE Actuators(
 	ActuatorID int PRIMARY KEY AUTO_INCREMENT,	    -- primary key
-	RoomID int NOT NULL,						                -- foreign key
-	ActuatorTypeID int NOT NULL,			                    -- foreign key
+	RoomID int,						                -- foreign key
+	ActuatorTypeID int,			                    -- foreign key
 	State varchar(255)		                	    -- modify according to precision
 );
 
 CREATE TABLE Scenarios(
 	ScenarioID int PRIMARY KEY AUTO_INCREMENT,      -- primary key
-	ActuatorID int NOT NULL,				                        -- foreign key
+ActuatorID int,				                        -- foreign key
 	CibleState varchar(255),		                -- modify according to precision
 	ActionDate datetime
 );
 
 CREATE TABLE Notifications(
 	NotificationID int PRIMARY KEY AUTO_INCREMENT,  -- primary key
-	CaptorID int NOT NULL,					                -- foreign key
+	CaptorID int,					                -- foreign key
 	Threshold varchar(255),			                -- modify according to precision
 	ThresholdType varchar(1)		                -- < or >
 );
@@ -75,8 +78,8 @@ CREATE TABLE UserTypes(
 CREATE TABLE CaptorTypes(
 	CaptorTypeID int PRIMARY KEY AUTO_INCREMENT,    -- primary key
 	CaptorName varchar(30),
-	Unit varchar(10),
-	url_img varchar(255)					        -- add more information? price,size,ect
+	Unit varchar(10)
+											        -- add more information? price,size,ect
 );
 
 CREATE TABLE ActuatorTypes(
@@ -84,8 +87,7 @@ CREATE TABLE ActuatorTypes(
 	ActuatorName varchar(30),
 	Unit varchar(10),
 	MinimumValue varchar(255),					    -- modify according to precision
-	MaximumValue varchar(255),					    -- modify according to precision
-	url_img varchar(255)
+	MaximumValue varchar(255)					    -- modify according to precision
 );
 
 CREATE TABLE Page(

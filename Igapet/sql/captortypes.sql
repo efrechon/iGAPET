@@ -41,11 +41,11 @@ CREATE TABLE IF NOT EXISTS `captortypes` (
 -- Déchargement des données de la table `captortypes`
 --
 
-INSERT INTO `captortypes` (`CaptorTypeID`, `CaptorName`, `Unit`, `url_img`) VALUES
-(1, 'Luminosité', 'Lux', 'img/luminosity.png'),
-(2, 'Température', '°C', 'img/thermometer.png'),
-(3, 'Humidité', '%', 'img/humidity.png');
-COMMIT;
+	INSERT INTO `captortypes` (`CaptorTypeID`, `CaptorName`, `Unit`, `url_img`) VALUES
+	(1, 'Luminosité', 'Lux', 'img/luminosity.png'),
+	(2, 'Température', '°C', 'img/thermometer.png'),
+	(3, 'Humidité', '%', 'img/humidity.png');
+	COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

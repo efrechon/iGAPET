@@ -1,8 +1,8 @@
 <?php
 
 function recup_liste_maison($db){
-    $id= $_SESSION['id'];
-    $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
+    $UserID= $_SESSION['UserID'];
+    $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$UserID");
     $maisons=$requete->fetchAll();
     return $maisons;
 }

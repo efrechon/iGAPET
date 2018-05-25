@@ -33,7 +33,8 @@
                 ?>
             </ul>
         </div>
-        <br/>
+        <br>
+        <input type="button" value="Modifier">
     </fieldset>
 </div>
 <!-- Fin & Affectation du contenu de la page -->

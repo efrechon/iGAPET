@@ -2,41 +2,41 @@
 
 function changement_profil($db){
     // Récupération des valeurs
-    $id= htmlspecialchars($_SESSION['id']);
-    $nom= htmlspecialchars($_POST["lastName"]);
-    $prenom= htmlspecialchars($_POST["firstName"]);
-    $email= htmlspecialchars($_POST["emailP"]);
-    $password = password_hash($_POST['passwordP'], PASSWORD_BCRYPT);
-    $phone= htmlspecialchars($_POST['phone']);
+    $UserID= htmlspecialchars($_SESSION['UserID']);
+    $LastName= htmlspecialchars($_POST["LastName"]);
+    $FirstName= htmlspecialchars($_POST["FirstName"]);
+    $Mail= htmlspecialchars($_POST["Mail"]);
+    $UserPassword = password_hash($_POST['UserPassword'], PASSWORD_BCRYPT);
+    $Phone= htmlspecialchars($_POST['Phone']);
 
     // Préparation de la requete SQL
-    $requete= $db->prepare("UPDATE users SET LastName=:nom,FirstName=:prenom,Mail=:mail,UserPassword=:password,Phone=:phone WHERE UserID=:id");
+    $requete= $db->prepare("UPDATE users SET LastName=:LastName,FirstName=:FirstName,Mail=:Mail,UserPassword=:UserPassword,Phone=:Phone WHERE UserID=:UserID");
 
     // Affectation des valeurs
-	$requete->bindValue(':id',$id);
-    $requete->bindValue(':nom',$nom);
-    $requete->bindValue(':prenom',$prenom);
-    $requete->bindValue(':mail',$email);
-    $requete->bindValue(':password',$password);
-    $requete->bindValue(':phone',$phone);
+	$requete->bindValue(':UserID',$UserID);
+    $requete->bindValue(':LastName',$LastName);
+    $requete->bindValue(':FirstName',$FirstName);
+    $requete->bindValue(':Mail',$Mail);
+    $requete->bindValue(':UserPassword',$UserPassword);
+    $requete->bindValue(':Phone',$Phone);
 
     // Execution de la requete
     $requete->execute();
 
-    if(!isset($_SESSION['prenom']) || $_POST['firstName'] != $_SESSION['prenom']){
-        $_SESSION['prenom']= $_POST['firstName'];
+    if(!isset($_SESSION['FirstName']) || $_POST['FirstName'] != $_SESSION['FirstName']){
+        $_SESSION['FirstName']= $_POST['FirstName'];
     }
-    if(!isset($_SESSION['nom']) ||$_POST['lastName'] != $_SESSION['nom']){
-        $_SESSION['nom']= $_POST['lastName'];
+    if(!isset($_SESSION['LastName']) ||$_POST['LastName'] != $_SESSION['LastName']){
+        $_SESSION['LastName']= $_POST['LastName'];
     }
-    if(!isset($_SESSION['mail']) || $_POST['emailP'] != $_SESSION['mail']){
-        $_SESSION['mail']= $_POST['emailP'];
+    if(!isset($_SESSION['Mail']) || $_POST['Mail'] != $_SESSION['Mail']){
+        $_SESSION['Mail']= $_POST['Mail'];
     }
-    if(!isset($_SESSION['passwordInit']) || $_POST['passwordP'] != $_SESSION['passwordInit']){
-        $_SESSION['passwordInit']= $_POST['passwordP'];
+    if(!isset($_SESSION['UserPassword']) || $_POST['UserPassword'] != $_SESSION['UserPassword']){
+        $_SESSION['UserPassword']= $_POST['UserPassword'];
     }
-    if(!isset($_SESSION['tel']) || $_POST['phone'] != $_SESSION['tel']){
-        $_SESSION['tel']= $_POST['phone'];
+    if(!isset($_SESSION['Phone']) || $_POST['Phone'] != $_SESSION['Phone']){
+        $_SESSION['Phone']= $_POST['Phone'];
     }
 
 }

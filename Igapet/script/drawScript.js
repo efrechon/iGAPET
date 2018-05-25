@@ -3,22 +3,22 @@ var c;
 var a;
 var k = 0;
 var str ="";
+var sav ="";
 for(var i=0;i<Rooms.length;i++)
 {
 	r = Rooms[i];
-	str += '<div class="Room" name='+ r["Name"]+ ' style="left:'+r["xPosition"]+'px;top:'+r["yPosition"]+'px;Width:'+r["Width"]+'px;Height:'+r["Height"]+'px;">';
-	
-	while(captors[k]!= null)
+	if (r["xPosition"] != 0)
 	{
-		c= captors[k];
-		str += '<div class="Captor"></div>';
-		k +=1;
-		if (captors[k] != null && captors[k]["RoomID"] != r["RoomID"]) { break; }
+		str += '<div class="Room" name='+ r["Name"]+ ' style="position:absolute;left:'+r["xPosition"]+'px;top:'+r["yPosition"]+'px;Width:'+r["Width"]+'px;Height:'+r["Height"]+'px;">';
+		str += r["Name"];
+		str += "</div>";
 	}
-	str += r["Name"];
-	str += "</div>"
+	else
+	{
+		sav += '<div class="Room" name='+ r["Name"]+ ' style="position:relative;left:'+r["xPosition"]+'px;top:'+r["yPosition"]+'px;Width:'+r["Width"]+'px;Height:'+r["Height"]+'px;">';
+	}
 }
-document.getElementById("drawing").innerHTML = str;
+document.getElementById("drawingedition").innerHTML = str;
 var es = document.body.querySelectorAll("div.Room");
 var k=0
 
@@ -46,24 +46,24 @@ function dragElement(elmnt,k,Rooms) {
 		document.onmousemove = elementDrag;
 	}
 	function elementDrag(e) {
-		var rad = 30;
+		var rad = 10;
 		e = e || window.event;
 		// calculate the new cursor position:
-		posX = e.clientX-getOffsetLeft(elmnt.parentElement);
-		posY = e.clientY-getOffsetTop(elmnt.parentElement);
+		posX = (e.clientX-getOffsetLeft(elmnt.parentElement))/document.getElementById("drawingedition").style.zoom;
+		posY = (e.clientY-getOffsetTop(elmnt.parentElement))/document.getElementById("drawingedition").style.zoom;
 		//posY = +posY + + parseInt(elmnt.style.height);
 		// set the element's new position:
 		for (var i = 0; i < anchorPoint1.length; i++) {
+			var halfWidth = parseInt(elmnt.style.width) / 2;
+			var halfHeight = parseInt(elmnt.style.height) / 2;
+			C1 = {x:+posX - +halfWidth ,y:+posY - +halfHeight };
+			C2=  {x:+posX + +halfWidth ,y:+posY + +halfHeight };
 			if (i == k)
 			{
 				continue;
 			}
 			var a = anchorPoint1[i];
 			var b = anchorPoint2[i];
-			var halfWidth = parseInt(elmnt.style.width) / 2;
-			var halfHeight = parseInt(elmnt.style.height) / 2;
-			C1 = {x:+posX - +halfWidth ,y:+posY - +halfHeight };
-			C2=  {x:+posX + +halfWidth ,y:+posY + +halfHeight };
 			if (C1.x < +b.x + +rad && C1.x > +b.x - +rad) // left side to right
 			{
 				posX= +b.x + +halfWidth;
@@ -96,19 +96,19 @@ function dragElement(elmnt,k,Rooms) {
 			{
 				posY= +b.y - +halfHeight;
 			}
-			if (C1.x < 0) // top screen
+			if (C1.x < 0) // leftside
 			{
 				posX=halfWidth;
 			}
-			else if (C2.x > elmnt.parentElement.offsetWidth) // bottomscreen
+			else if (C2.x > elmnt.parentElement.parentElement.offsetWidth) // right side
 			{
-				posX = +elmnt.parentElement.offsetWidth - +halfWidth;
+				posX = +elmnt.parentElement.parentElement.offsetWidth - +halfWidth;
 			}
-			if (C1.y < 0) // leftside
+			if (C1.y < 0) // bottom side
 			{
 				posY = halfHeight;
 			}
-			else if( C2.y > elmnt.parentElement.offsetHeight) //rightside
+			else if( C2.y > elmnt.parentElement.offsetHeight) // top side
 			{
 				posY = +elmnt.parentElement.offsetHeight - +halfHeight;
 			}
@@ -127,6 +127,16 @@ function dragElement(elmnt,k,Rooms) {
 		/* stop moving when mouse button is released:*/
 		document.onmouseup = null;
 		document.onmousemove = null;
+		if (C2.x > elmnt.parentElement.offsetWidth) // right side
+		{
+			elmnt.style.position="relative";
+			elmnt.style.left="0";
+			elmnt.style.top="0";
+			elmnt.style.margin="2% auto";
+			elmnt.parentElement.removeChild(elmnt);
+			document.getElementById("drawingHolder").appendChild(elmnt);
+			console.log(es);
+		}
 	}
 }
 
@@ -166,3 +176,17 @@ function getOffsetTop( elem )
     return offsetTop;
 	
 }
+document.getElementById("drawingedition").style.zoom=1.0;
+window.addEventListener('wheel', function(e) {
+  if (e.deltaY < 0) {
+    console.log('scrolling up');
+	document.getElementById("drawingedition").style.zoom = +document.getElementById("drawingedition").style.zoom + +0.1;
+  }
+  if (e.deltaY > 0 && document.getElementById("drawingedition").style.zoom >0.15) {
+    console.log('scrolling down');
+	document.getElementById("drawingedition").style.zoom -= +0.1;
+  }
+  console.log(document.getElementById("drawingedition").style.zoom);
+});
+	
+	

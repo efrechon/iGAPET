@@ -9,7 +9,7 @@
     <div class="identitemaison">
         <ul>
             <?php 
-			$donnees = getSQL($db,"SELECT Name,HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+			$donnees = getSQL($db,"SELECT Name,HouseID FROM houses WHERE UserID=".$_SESSION['UserID']);
             foreach($donnees as $donneesM){
                 echo '<li class="A">'.$donneesM['Name'].'<ul>';
                 $donnees2= getSQL($db,"SELECT Name,RoomID FROM rooms WHERE HouseID=".$donneesM['HouseID']);
@@ -38,10 +38,9 @@
     </div>
     <div class="blocajout">
         <br/><br/>
-        <a href='index.php?pageAction=gesmaison&new=maison'>Ajouter une maison</a><br/><br/><br/><br/>
-        <a href='index.php?pageAction=gesmaison&new=piece'>Ajouter une pièce</a><br/><br/><br/><br/>
-        <a href='index.php?pageAction=gesmaison&new=capteur'>Ajouter un capteur</a><br/><br/><br/><br/>
-        <a href='index.php?pageAction=gesmaison&new=actionneur'>Ajouter un actionneur</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajoutermaison'>Ajouter une maison</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajouterpiece'>Ajouter une pièce</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajoutercapteur'>Ajouter un capteur</a><br/><br/><br/><br/>
     </div>
 </div>
 <!-- Fin & Affectation du contenu de la page -->
