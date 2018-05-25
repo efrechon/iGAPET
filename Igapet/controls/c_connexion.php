@@ -11,6 +11,10 @@ if(empty($_POST['Mail']) || empty($_POST['UserPassword'])){
 else{
 	if(authentification($db)){
 		connect($db);
+		if (is_administrateur())
+		{
+			header('Location:../index.php?pageAction=v_admin_accueil');
+		}
 		header('Location:../index.php?pageAction=v_accueil');
 	}
 	else{
