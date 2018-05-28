@@ -6,7 +6,7 @@
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
 <div id="selection">
-    <form action="index.php?pageAction=capteurs" method="post">
+    <form action="index.php?pageAction=v_capteurs" method="post">
         <select name="triC">
             <option value="triPiece">Trier par pièce</option>
             <option value="triActionneur">Trier par capteur</option>

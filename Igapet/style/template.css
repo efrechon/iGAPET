@@ -2,6 +2,12 @@
     font-family: "Raleway";
 }
 
+@font-face{
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf');
+}
+
+
 body{
     margin: 0;
     display:flex;

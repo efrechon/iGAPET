@@ -38,9 +38,9 @@
     </div>
     <div class="blocajout">
         <br/><br/>
-        <a href='index.php?pageAction=v_ajoutermaison'>Ajouter une maison</a><br/><br/><br/><br/>
-        <a href='index.php?pageAction=v_ajouterpiece'>Ajouter une pièce</a><br/><br/><br/><br/>
-        <a href='index.php?pageAction=v_ajoutercapteur'>Ajouter un capteur</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajoutermaison' class="ajouter">Ajouter une maison</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajouterpiece' class="ajouter">Ajouter une pièce</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajoutercapteur' class="ajouter">Ajouter un capteur</a><br/><br/><br/><br/>
     </div>
 </div>
 <!-- Fin & Affectation du contenu de la page -->
