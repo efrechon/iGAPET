@@ -5,13 +5,9 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<form action="index.php?pageAction=contacter" method="post">
-    <div id="mailC">
-        <label for="emailM">Votre email : </label>
-        <input type="email" name="emailM" value= <?php echo $_SESSION['mail']; ?>><br/><br/>
-    </div>
-    <label for="description" class="demande">Que pouvons nous faire pour vous ?</label><br/><br/>
-    <textarea cols="100" rows="20" name="description"></textarea><br/>
+<form action="" method="post">
+    <p class="demande">Comment pouvons nous vous aider ?</p><br/><br/>
+    <textarea cols="175" rows="25" name="description"></textarea><br/>
     <input type="submit" value="Envoyer">
 </form>
 

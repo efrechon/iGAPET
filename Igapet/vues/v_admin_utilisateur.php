@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/admin.css"/>
+    <link rel="stylesheet" href="style/admin_utilisateur.css"/>
     <link rel="icon" href="img/Logo.png">
     <title>iGAPET</title>
 </head>
@@ -23,7 +23,6 @@
                 <th>Nom</th>
                 <th>Mail</th>
                 <th>Nombre connexion</th>
-                <th>Suppression</th>
             </tr>
             <?php
             if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
@@ -40,7 +39,7 @@
                 echo '<td>'.$u['LastName'].'</td>';
                 echo '<td>'.$u['Mail'].'</td>';
                 echo '<td>'.$u['NbrConnexion'].'</td>';
-                echo '<td><a href="index.php?pageAction=v_admin_accueil&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
+                echo '<td><a href="index.php?pageAction=v_admin_utilisateur&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
             }
             ?>
         </table>

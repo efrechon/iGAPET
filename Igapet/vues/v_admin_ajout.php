@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/admin.css"/>
+    <link rel="stylesheet" href="style/admin_ajout.css"/>
     <link rel="icon" href="img/Logo.png">
     <title>iGAPET</title>
 </head>
@@ -74,24 +74,26 @@
             ?>
         </table>
     </div>
-    <div class="newcomposants">
-        <h3>Ajouter un capteur</h3>
-        <form method="post" action="index.php?pageAction=v_admin_ajout">
-            <label for="nameNTC">Nom composant : </label><input type="text" name="nameNTC"><br/><br/>
-            <label for="uniteNTC">Unité : </label><input type="text" name="uniteNTC"><br/><br/>
-            <input type="submit" value="Ajouter"><br/><br/>
-        </form>
-    </div>
-    <div class="newcomposants">
-        <h3>Ajouter un actionneur</h3>
-        <form method="post" action="index.php?pageAction=v_admin_ajout">
-            <label for="nameNTA">Nom composant : </label><input type="text" name="nameNTA"><br/><br/>
-            <label for="uniteNTA">Unité : </label><input type="text" name="uniteNTA"><br/><br/>
-            <label for="minNTA">Minimum : </label><input type="text" name="minNTA"><br/><br/>
-            <label for="maxNTA">Maximum : </label><input type="text" name="maxNTA"><br/><br/>
+    <div class="ajoutertype">
+        <div class="newcomposants">
+            <h3>Ajouter un capteur</h3>
+            <form method="post" action="index.php?pageAction=v_admin_ajout">
+                <label for="nameNTC">Nom composant : </label><input type="text" name="nameNTC"><br/><br/>
+                <label for="uniteNTC">Unité : </label><input type="text" name="uniteNTC"><br/><br/>
+                <input type="submit" value="Ajouter"><br/><br/>
+            </form>
+        </div>
+        <div class="newcomposants">
+            <h3>Ajouter un actionneur</h3>
+            <form method="post" action="index.php?pageAction=v_admin_ajout">
+                <label for="nameNTA">Nom composant : </label><input type="text" name="nameNTA"><br/><br/>
+                <label for="uniteNTA">Unité : </label><input type="text" name="uniteNTA"><br/><br/>
+                <label for="minNTA">Minimum : </label><input type="text" name="minNTA"><br/><br/>
+                <label for="maxNTA">Maximum : </label><input type="text" name="maxNTA"><br/><br/>
 
-            <input type="submit" value="Ajouter"><br/><br/>
-        </form>
+                <input type="submit" value="Ajouter"><br/><br/>
+            </form>
+        </div>
     </div>
    </div>
 

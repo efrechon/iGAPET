@@ -22,20 +22,15 @@ body{
     margin: 2%;
 }
 
-.newcomposants{
-    width: 40%;
-    height: 90%;
-    border: 1px solid #00A4E1;
-    margin-top: 2%;
-    margin-right: 2%;
-    text-align: center;
-}
-
-.edition{
-    width: 96%;
+#messagerie{
+    width: 52%;
     border: 1px solid #00A4E1;
     margin-left: 2%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    overflow: auto;
 }
+
 
 table{
     width: 100%;
@@ -50,17 +45,4 @@ h3, h1{
 h4{
     text-align: center;
     margin-bottom: 0px;
-}
-
-label{
-    margin-left: auto;
-    margin-right: auto;
-    width: 250px;
-    float: left;
-    text-align: center;
-}
-
-input[type="text"]{
-    width: 200px;
-    margin-left: -10%;
 }

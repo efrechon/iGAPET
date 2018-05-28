@@ -17,24 +17,25 @@ body{
 }
 
 .composants{
-    width: 40%;
+    width: 52%;
+    height: 90%;
     border: 1px solid #00A4E1;
     margin: 2%;
 }
 
 .newcomposants{
-    width: 40%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     border: 1px solid #00A4E1;
-    margin-top: 2%;
+    margin-bottom: 2%;
     margin-right: 2%;
     text-align: center;
 }
 
-.edition{
-    width: 96%;
-    border: 1px solid #00A4E1;
-    margin-left: 2%;
+.ajoutertype{
+    width: 40%;
+    height: 90%;
+    padding-top: 2%;
 }
 
 table{

@@ -15,7 +15,9 @@ else{
 		{
 			header('Location:../index.php?pageAction=v_admin_accueil');
 		}
-		header('Location:../index.php?pageAction=v_accueil');
+		else{
+		    header('Location:../index.php?pageAction=v_accueil');
+        }
 	}
 	else{
 		$_SESSION["erreurConnection"] = "Cet association compte et mot de passe n'existe pas";

@@ -38,7 +38,7 @@
         </fieldset>
     </div>
     <div id="other">
-        <a href="index.php?pageAction=scenarios">
+        <a href="index.php?pageAction=v_scenarios">
             <img src="img/calendar.png" alt="calendrier">
         </a>
     </div>

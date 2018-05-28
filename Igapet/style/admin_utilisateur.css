@@ -1,0 +1,36 @@
+*{
+    font-family: "Raleway";
+}
+
+@font-face{
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf');
+}
+
+body{
+    margin: 0;
+}
+
+.utilisateurs{
+    width: 52%;
+    border: 1px solid #00A4E1;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    overflow: auto;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+h3, h1{
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+    margin-bottom: 0px;
+}
