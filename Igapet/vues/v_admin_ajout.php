@@ -11,8 +11,12 @@
     <?php $nom_page="Administration";
     include('v_header.php');?>
 </div>
+<div id=nav>
+    <?php include ('v_admin_menu.php');?>
+</div>
 <div id="full">
     <div class="composants">
+        <h3>Catalogue des composants</h3>
         <table>
             <h4>Capteurs</h4>
             <tr>
@@ -21,7 +25,6 @@
                 <th>Nombre</th>
                 <th>Panne détécté</th>
             </tr>
-        <h3>Catalogue des composants</h3>
             <?php
             if(isset($_GET['supprimeC']) AND !empty($_GET['supprimeC'])){
                 $id= (int)$_GET['supprimeC'];
@@ -40,7 +43,7 @@
                     echo '<td>'.$c2['nbr'].'</td>';
                 }
                 echo '<td>0</td>';
-                echo '<td><a href="index.php?pageAction=admini&modification=catalogue&supprimeC='.$c['CaptorTypeID'].'">Supprimer</a></td></tr>';
+                echo '<td><a href="index.php?pageAction=v_admin_ajout&supprimeC='.$c['CaptorTypeID'].'">Supprimer</a></td></tr>';
                 echo '</tr>';
             }
             ?>
@@ -65,6 +68,7 @@
                     echo '<td>'.$a2['nbr'].'</td>';
                 }
                 echo '<td>0</td>';
+                echo '<td><a href="index.php?pageAction=v_admin_ajout&supprimeC='.$a['ActuatorTypeID'].'">Supprimer</a></td></tr>';
                 echo '</tr>';
             }
             ?>
@@ -72,15 +76,20 @@
     </div>
     <div class="newcomposants">
         <h3>Ajouter un capteur</h3>
-        <form method="post" action="">
-            <input type="radio" name="typeNT" value="captor">Capteur
-            <input type="radio" name="typeNT" value="actuator">Actionneur<br/><br/>
-            <label for="nameNT">Nom composant : </label><input type="text" name="nameNT"><br/><br/>
-            <label for="uniteNT">Unité : </label><input type="text" name="uniteNT"><br/><br/>
-            <label for="minNA">Minimum : </label><input type="radio" name="OFFNUMBER"><input type="number" name="minNA">
-            <input type="radio" name="OFFNUMBER">OFF<br/><br/>
-            <label for="maxNA">Minimum : </label><input type="radio" name="ONNUMBER"><input type="number" name="maxNA">
-            <input type="radio" name="ONNUMBER">ON<br/><br/>
+        <form method="post" action="index.php?pageAction=v_admin_ajout">
+            <label for="nameNTC">Nom composant : </label><input type="text" name="nameNTC"><br/><br/>
+            <label for="uniteNTC">Unité : </label><input type="text" name="uniteNTC"><br/><br/>
+            <input type="submit" value="Ajouter"><br/><br/>
+        </form>
+    </div>
+    <div class="newcomposants">
+        <h3>Ajouter un actionneur</h3>
+        <form method="post" action="index.php?pageAction=v_admin_ajout">
+            <label for="nameNTA">Nom composant : </label><input type="text" name="nameNTA"><br/><br/>
+            <label for="uniteNTA">Unité : </label><input type="text" name="uniteNTA"><br/><br/>
+            <label for="minNTA">Minimum : </label><input type="text" name="minNTA"><br/><br/>
+            <label for="maxNTA">Maximum : </label><input type="text" name="maxNTA"><br/><br/>
+
             <input type="submit" value="Ajouter"><br/><br/>
         </form>
     </div>

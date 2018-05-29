@@ -2,45 +2,40 @@
 
 function inscription_utilisateur($db){
     // Récupération des valeurs
-    $email= $_POST["emailI"];
-    $adhesion= date('Y-m-d');
-    $password = password_hash($_POST['passwordI'], PASSWORD_BCRYPT);
-    $type_uti= 2;
-
+    $Mail= $_POST["Mail"];
+    $CreationDate= date('Y-m-d');
+    $UserPassword = password_hash($_POST['UserPassword'], PASSWORD_BCRYPT);
+    $UserTypeID= 2;
+	$NbrConnexion=0;
     // Préparation de la requete SQL
-    $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID, NbrConnexion) VALUES(:mail,:date_adhesion,:password,:type_uti, 1)');
+    $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID,NbrConnexion) VALUES(:Mail,:CreationDate,:UserPassword,:UserTypeID,:NbrConnexion)');
 
     // Affectation des valeurs
-    $requete->bindParam(':mail',$email);
-    $requete->bindParam(':date_adhesion',$adhesion);
-    $requete->bindParam(':password',$password);
-    $requete->bindParam(':type_uti',$type_uti);
+    $requete->bindParam(':Mail',$Mail);
+    $requete->bindParam(':CreationDate',$CreationDate);
+    $requete->bindParam(':UserPassword',$UserPassword);
+    $requete->bindParam(':UserTypeID',$UserTypeID);
+	$requete->bindParam(':NbrConnexion',$NbrConnexion);
 
     // Execution de la requete
     $requete->execute();
-    $requeteID= $db->query("SELECT UserID FROM users WHERE Mail='$email'");
-    while($id= $requeteID->fetch()){
-        $_SESSION['id']= $id['UserID'];
-    }
-    $_SESSION['mail']=$email;
-    $_SESSION['passwordInit']= $_POST['passwordI'];
 }
 
-function inscritption_maison($db){
-    $nom=htmlspecialchars($_POST['nameM']);
-    $voie=htmlspecialchars($_POST['adresseV']);
-    $cp=htmlspecialchars($_POST['adresseCDP']);
-    $pays=htmlspecialchars($_POST['adresseP']);
-    $nbretage=htmlspecialchars($_POST['etagesM']);
-    $id= $_SESSION['id'];
+function inscription_maison($db){
+    $Name=htmlspecialchars($_POST['Name']);
+    $Address=htmlspecialchars($_POST['Address']);
+    $PostalCode=htmlspecialchars($_POST['PostalCode']);
+    $Country=htmlspecialchars($_POST['Country']);
+    $NumberOfFloor=htmlspecialchars($_POST['NumberOfFloor']);
+    $id= $_SESSION['UserID'];
 
-    $requeteM=$db->prepare('INSERT INTO houses(Name, Address, PostalCode, Country, NumberOfFloor, UserID) VALUES (:nom,:voie,:cp,:pays,:nbretages,:id)');
+    $requeteM=$db->prepare('INSERT INTO houses(Name, Address, PostalCode, Country, NumberOfFloor, UserID) VALUES (:Name,:Address,:PostalCode,:Country,:NumberOfFloor,:id)');
 
-    $requeteM->bindParam(':nom',$nom);
-    $requeteM->bindParam(':voie',$voie);
-    $requeteM->bindParam(':cp',$cp);
-    $requeteM->bindParam(':pays',$pays);
-    $requeteM->bindParam(':nbretages',$nbretage);
+    $requeteM->bindParam(':Name',$Name);
+    $requeteM->bindParam(':Address',$Address);
+    $requeteM->bindParam(':PostalCode',$PostalCode);
+    $requeteM->bindParam(':Country',$Country);
+    $requeteM->bindParam(':NumberOfFloor',$NumberOfFloor);
     $requeteM->bindParam(':id',$id);
 
     $requeteM->execute();
@@ -48,48 +43,44 @@ function inscritption_maison($db){
 }
 
 function inscription_piece($db){
-    $maisonid=$_POST['localisationM'];
-    $nom= htmlspecialchars($_POST['nameP']);
-    $xpos= htmlspecialchars($_POST['positionX']);
-    $ypos= htmlspecialchars($_POST['positionY']);
-    $longueur= htmlspecialchars($_POST['longueur']);
-    $largeur= htmlspecialchars($_POST['largeur']);
-    $etage= htmlspecialchars($_POST['etage']);
+    $HouseID=$_POST['HouseID'];
+    $Name= htmlspecialchars($_POST['Name']);
+	$Width= htmlspecialchars($_POST['Width']);
+    $Height= htmlspecialchars($_POST['Height']);
+    $Floor= htmlspecialchars($_POST['Floor']);
 
-    $requeteP=$db->prepare("INSERT INTO rooms(HouseID, Name, xPosition, yPosition, Width, Height, Floor) VALUES (:maisonid,:nom,:xpos,:ypos,:longueur,:largeur,:etage)");
+    $requeteP=$db->prepare("INSERT INTO rooms(HouseID, Name, Width, Height, Floor) VALUES (:HouseID,:Name,:Width,:Height,:Floor)");
 
-    $requeteP->bindParam(':maisonid',$maisonid);
-    $requeteP->bindParam(':nom',$nom);
-    $requeteP->bindParam(':xpos',$xpos);
-    $requeteP->bindParam(':ypos',$ypos);
-    $requeteP->bindParam(':longueur',$longueur);
-    $requeteP->bindParam(':largeur',$largeur);
-    $requeteP->bindParam(':etage',$etage);
+    $requeteP->bindParam(':HouseID',$HouseID);
+    $requeteP->bindParam(':Name',$Name);
+	$requeteP->bindParam(':Width',$Width);
+    $requeteP->bindParam(':Height',$Height);
+    $requeteP->bindParam(':Floor',$Floor);
 
     $requeteP->execute();
     $requeteP->closeCursor();
 }
 
 function inscription_capteur($db){
-    $localisationPC= $_POST['localisationP'];
-    $typeCapteur= $_POST['typeC'];
+    $RoomID= $_POST['RoomID'];
+    $TypeID= $_POST['TypeID'];
 
-    $requeteC=$db->prepare("INSERT INTO captors(RoomID, CaptorTypeID) VALUES (:piece, :type)");
+    $requeteC=$db->prepare("INSERT INTO captors(RoomID, CaptorTypeID) VALUES (:RoomID, :TypeID)");
 
-    $requeteC->bindParam(':piece', $localisationPC);
-    $requeteC->bindParam(':type', $typeCapteur);
+    $requeteC->bindParam(':RoomID', $RoomID);
+    $requeteC->bindParam(':TypeID', $TypeID);
 
     $requeteC->execute();
     $requeteC->closeCursor();
 }
 
 function inscription_actionneur($db){
-    $localisationPA=$_POST['localisationPA'];
-    $typeActionneur=$_POST['typeA'];
-    $requeteA=$db->prepare("INSERT INTO actuators(RoomID, ActuatorTypeId) VALUES (:piece, :type)");
+    $RoomID=$_POST['RoomID'];
+    $TypeID=$_POST['TypeID'];
+    $requeteA=$db->prepare("INSERT INTO actuators(RoomID, ActuatorTypeId) VALUES (:RoomID, :TypeID)");
 
-    $requeteA->bindParam(':piece', $localisationPA);
-    $requeteA->bindParam(':type', $typeActionneur);
+    $requeteA->bindParam(':RoomID', $RoomID);
+    $requeteA->bindParam(':TypeID', $TypeID);
 
     $requeteA->execute();
     $requeteA->closeCursor();
@@ -97,17 +88,23 @@ function inscription_actionneur($db){
 
 function verification_existence_mail($db){
     $mailexist= 'OK';
-    $email= $_POST['emailI'];
+    $Mail= $_POST['Mail'];
     $requete= $db->prepare('SELECT Mail FROM users ');
-    $requete->bindParam(':mail',$email);
+    $requete->bindParam(':Mail',$Mail);
     $requete->execute();
     while($saved = $requete->fetch()){
-        if ($saved['Mail']== $email){
+        if ($saved['Mail']== $Mail){
             $mailexist= 'KO';
             break;
         }
     }
     return $mailexist;
+}
+
+function inscription_sous_utilisateur($db){
+	$requete = $db->prepare("INSERT INTO 
+	
+	
 }
 
 ?>

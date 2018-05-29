@@ -16,28 +16,45 @@
     <div id="contain">
         <div id="connexion">
             <h2>Connexion</h2><br/><br/>
-            <form action="index.php?pageAction=connexion&new=visit" method="post">
-                <label for="emailC">Email : </label>
-                <input type="text" name="emailC"><br/><br/>
-                <label for="passwordC">Mot de passe : </label>
-                <input type="password" name="passwordC"><br/><br/>
+            <form action="controls/c_connexion.php" method="post">
+                <label for="Mail">Email : </label>
+                <input type="text" name="Mail"><br/><br/>
+                <label for="UserPassword">Mot de passe : </label>
+                <input type="password" name="UserPassword"><br/><br/>
                	<a>Mot de passe oublié</a><br/><br/>
-                <input type="submit" value="Se connecter"><a href='index.php?pageAction=accueil'></a>
+				<?php
+				if (isset($_SESSION["erreurConnection"])){
+					echo $_SESSION["erreurConnection"];
+					unset($_SESSION["erreurConnection"]);
+				}
+				
+				?>
+				<br/>
+                <input type="submit" value="Se connecter">
             </form>
         </div>
         <div id="inscription">
             <h2>Inscription</h2><br/><br/>
-            <form action='index.php?pageAction=inscription&type=utilisateur' method="post">
-                <label for="emailI">Email : </label>
-                <input type="email" name="emailI"><br/><br/>
-                <label for="verifemailI">Confirmer votre Email : </label>
-                <input type="text" name="verifemailI"><br/><br/>
-                <label for="passwordI">Mot de passe : </label>
-                <input type="password" name="passwordI"><br/><br/>
-                <label for="verifpasswordI">Confirmer votre mot de passe : </label>
-                <input type="password" name="verifpasswordI"><br/><br/>
-                <input type="checkbox" name="cguOk">J'accepte les <a href= 'index.php?pageAction=cgu'>Conditions Générales d'Utilisation</a><br/><br/>
-                <input type="submit" value="S'inscrire"><a href='index.php?pageAction=accueil'></a>
+            <form action='controls/c_inscription.php' method="post">
+                <label for="Mail">Email : </label>
+                <input type="email" name="Mail"><br/><br/>
+                <label for="Mail2">Confirmer votre Email : </label>
+                <input type="text" name="Mail2"><br/><br/>
+                <label for="UserPassword">Mot de passe : </label>
+                <input type="password" name="UserPassword"><br/><br/>
+                <label for="UserPassword2">Confirmer votre mot de passe : </label>
+                <input type="password" name="UserPassword2"><br/><br/>
+                <input type="checkbox" name="cgu">J'accepte les <a href='index.php?pageAction=v_cgu'>Conditions Générales d'Utilisation</a><br/><br/>
+				<input type="hidden" name="type" value="utilisateur">
+				<?php
+				if (isset($_SESSION["erreurInscription"])){
+					echo $_SESSION["erreurInscription"];
+					unset($_SESSION["erreurInscription"]);
+				}
+				
+				?>
+				<br/>
+                <input type="submit" value="S'inscrire">
             </form>
         </div>
         <div id="notreconcept">
@@ -71,3 +88,6 @@
 </div>
 </body>
 </html>
+<?php 
+session_unset();
+?>

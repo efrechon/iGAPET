@@ -57,3 +57,15 @@ h4{
     margin-bottom: 0px;
 }
 
+label{
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    float: left;
+    text-align: center;
+}
+
+input[type="text"]{
+    width: 200px;
+    margin-left: -10%;
+}

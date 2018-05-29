@@ -22,11 +22,12 @@ h4{
     margin-left: 1%;
 }
 
-.autorisation{
+#autorisation{
     width: 50%;
     height: 96%;
     border: 1px solid #DDDDDD;
     margin-left: 2%;
+	overflow:auto;
 }
 
 .resume{
@@ -35,3 +36,14 @@ h4{
     border: 2px solid #5e5e5e;
     margin-left: 2%;
 }
+
+.autorisationBlock{
+	width:91%;
+	padding:4%;
+	height:5%;
+	border: 1px solid Black;
+	position:relative;
+	
+}
+
+
