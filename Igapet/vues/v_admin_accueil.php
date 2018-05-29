@@ -67,7 +67,20 @@
     </div>
     <div id="messagerie">
         <h3>Messagerie</h3>
-        <p>Affiches tous les messages !</p>
+        <?php
+        $requete=$db->query("SELECT Correspondant,Objet,Demande,Date FROM messagerie ORDER BY MessagerieID DESC");
+        while($donnees= $requete->fetch()){
+            $UserID= $donnees['Correspondant'];
+            $requete2= $db->query("SELECT * FROM users WHERE UserID=$UserID");
+            while ($donnees2= $requete2->fetch()){
+                echo '<div class="message">';
+                echo 'Le '.$donnees['Date'].', de '.$donnees2['FirstName'].' '.$donnees2['LastName'].'<br/>';
+                echo '<ins>Objet :</ins> <b>'.$donnees['Objet'].'</b><br/>';
+                echo '<ins>Message :</ins> '.$donnees['Demande'];
+                echo '</div>';
+            }
+        }
+        ?>
     </div>
 </div>
 

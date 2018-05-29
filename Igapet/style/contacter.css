@@ -1,5 +1,14 @@
-.demande{
+.slogan{
     text-align: center;
+}
+
+label{
+    margin-left: 5%;
+}
+
+input[type='text']{
+    width: 84%;
+    border: 2px solid #00A4E1;
 }
 
 textarea{

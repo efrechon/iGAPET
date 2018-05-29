@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/admin.css"/>
+    <link rel="stylesheet" href="style/admin_ajout.css"/>
     <link rel="icon" href="img/Logo.png">
     <title>iGAPET</title>
 </head>
@@ -15,7 +15,7 @@
     <?php include ('v_admin_menu.php');?>
 </div>
 <div id="full">
-   <?= $contenu; ?>
+
 </div>
 
 </body>

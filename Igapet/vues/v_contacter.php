@@ -5,9 +5,11 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<form action="" method="post">
-    <p class="demande">Comment pouvons nous vous aider ?</p><br/><br/>
-    <textarea cols="175" rows="25" name="description"></textarea><br/>
+<form action="controls/c_admin.php" method="post">
+    <p class="slogan">Comment pouvons nous vous aider ?</p><br/><br/>
+    <label for="Objet">Objet : </label><input type="text" name="Objet"><br/><br/>
+    <textarea cols="175" rows="25" name="Demande"></textarea><br/>
+    <input type="hidden" value="message" name="type">
     <input type="submit" value="Envoyer">
 </form>
 

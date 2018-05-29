@@ -1,8 +1,8 @@
 <?php
 
 function inscription_type_capteurs($db){
-    $name= htmlspecialchars($_POST['nameNTC']);
-    $unite= htmlspecialchars($_POST['uniteNTC']);
+    $name= htmlspecialchars($_POST['CaptorName']);
+    $unite= htmlspecialchars($_POST['Unit']);
 
     $requete= $db->prepare("INSERT INTO captortypes(CaptorName, Unit) VALUES (:name,:unite)");
 
@@ -13,10 +13,10 @@ function inscription_type_capteurs($db){
 }
 
 function inscription_type_actionneurs($db){
-    $name= htmlspecialchars($_POST['nameNTA']);
-    $unite= htmlspecialchars($_POST['uniteNTA']);
-    $min=htmlspecialchars($_POST['minNTA']);
-    $max=htmlspecialchars($_POST['maxNTA']);
+    $name= htmlspecialchars($_POST['ActuatorName']);
+    $unite= htmlspecialchars($_POST['Unit']);
+    $min=htmlspecialchars($_POST['MinimumValue']);
+    $max=htmlspecialchars($_POST['MaximumValue']);
 
 
     $requete= $db->prepare("INSERT INTO actuatortypes(ActuatorName, Unit, MinimumValue, MaximumValue) VALUES (:name,:unite,:min,:max)");
@@ -25,6 +25,22 @@ function inscription_type_actionneurs($db){
     $requete->bindParam(':unite', $unite);
     $requete->bindParam(':min', $min);
     $requete->bindParam(':max', $max);
+
+    $requete->execute();
+}
+
+function envoi_message($db){
+    $correspondant= htmlspecialchars($_SESSION['UserID']);
+    $objet= htmlspecialchars($_POST['Objet']);
+    $demande= htmlspecialchars($_POST['Demande']);
+    $date= date('Y-m-d');
+
+    $requete= $db->prepare("INSERT INTO messagerie(Correspondant, Objet, Demande, Date) VALUES (:correspondant,:objet,:demande,:date)");
+
+    $requete->bindParam(':correspondant', $correspondant);
+    $requete->bindParam(':demande', $demande);
+    $requete->bindParam(':objet', $objet);
+    $requete->bindParam(':date', $date);
 
     $requete->execute();
 }

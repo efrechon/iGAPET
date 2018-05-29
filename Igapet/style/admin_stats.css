@@ -1,0 +1,31 @@
+*{
+    font-family: "Raleway";
+}
+
+@font-face{
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf');
+}
+
+body{
+    margin: 0;
+}
+
+#full{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.quart{
+    width: 30%;
+    max-height: 10%;
+    border: 2px dotted #00A4E1;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    text-align: center;
+    justify-content: center;
+}
+
+.chart-container{
+    width: 50%;
+}
