@@ -33,11 +33,11 @@
                     
                     
                     <?php 
-                    $id= $_SESSION['id'];
-                    $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
+                    $id= $_SESSION['UserID'];
+                    $requeteM= $db->query("SELECT Name,HouseID FROM Houses WHERE UserID=$id");
                     while($donneesM= $requeteM->fetch()){
                         $idhome= $donneesM['HouseID'];
-                        $requeteP= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
+                        $requeteP= $db->query("SELECT Name,RoomID FROM Rooms WHERE HouseID=$idhome");
                         echo '<select id="Piece" name="localisationP">';
                         while($donneesP = $requeteP->fetch()){
                             $piece= $donneesP['Name'];
@@ -49,7 +49,7 @@
             <?php
                 echo '<input type="checkbox" name="ajoutH">'.'ajouter'.'<br/>';
             ?><br/>
-            <div style=" overflow:scroll;width:50%; height:20%; border:#000000 1px solid;" class="liste">            
+            <div style=" overflow:scroll;width:50%; height:20%; border:#000000 1px solid; margin-left:24%;" class="liste">            
                 <h4>Maisons/pièces sélectionnées</h4>
 
             </div>
