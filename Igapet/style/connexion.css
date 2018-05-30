@@ -1,28 +1,31 @@
 * {
-    font-family: "Arial";
+    font-family: "Raleway";
 }
+
+@font-face{
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf');
+}
+
 
 h1{
     margin-left: 25%;
+    margin-top: 2%;
     width: 50%;
     color: #00A4E1;
     text-align: center;
     border-bottom: 2px solid #00A4E1;
 }
 
-p{
-	 text-align: center;
-}
-
 #contain{
     display: flex;
-    padding-top: 6%;
     flex-wrap: wrap;
 }
 
 #connexion{
     margin-right : 7%;
     margin-left : 5%;
+    margin-top: 3%;
     background-color: #F7F7F7;
     border: 1px solid white;
     justify-content: center;
@@ -35,8 +38,9 @@ p{
 }
 
 #inscription{
-	margin-left : 6.5%;
-	background-color: #F7F7F7;
+    margin-left : 6.5%;
+    margin-top: 3%;
+    background-color: #F7F7F7;
     border: 1px solid white;
     justify-content: center;
     text-align: center;
@@ -52,12 +56,12 @@ label{
     margin-right: auto;
     width: 250px;
     float: left;
-    text-align: right;
+    text-align: center;
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
     width: 200px;
-    margin-left: -100px;
+    margin-left: -4%;
 }
 
 h2{
@@ -69,39 +73,44 @@ h2{
 }
 
 input[type="submit"] {
-	margin-bottom: 5%;
+    margin-bottom: 5%;
+    border-radius: 25px;
+    border: 1px solid #00A4E1;
+    background-color: white;
+    padding: 2%;
 }
 
 input[type="submit"]:hover {
-    box-shadow: 1px 1px 2px #838383;
-    border: 1px solid #E3E3E3;
+    border: 1px solid #00A4E1;
+    background-color: #00A4E1;
+    color: white;
 }
 
 #notreconcept{
-	display:grid;
-	grid-template-columns: 100%;
-	margin-top: 10px;
-	width : 100%;
-	grid-template-rows: auto auto;
-	text-align: center;
-	margin-left : auto;
-	margin-right : auto;
+    display:grid;
+    grid-template-columns: 100%;
+    margin-top: 5%;
+    width : 100%;
+    grid-template-rows: auto auto;
+    text-align: center;
+    margin-left : auto;
+    margin-right : auto;
 }
 
 #fleche {
-	width: 5%;
+    width: 5%;
 }
 
 .concept {
-	display : block ;
-	margin-top : 5% ;
+    display : block ;
+    margin-top : 5% ;
 }
 
 #icone{
-	display: block;
-	width: 35%;
-	margin-right: auto;
-	margin-left: auto;
+    display: block;
+    width: 35%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 h3{
@@ -112,14 +121,21 @@ h3{
     margin-left: 25%;
 }
 
+p{
+    text-align: justify;
+}
+
+.slogan{
+    text-align: center;
+}
+
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-row : auto;
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-  text-align: justify;
-  grid-column-gap : 50px;
-  margin: 50px 50px 90px 50px;
-  background-color: blue;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-row : auto;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    text-align: justify;
+    grid-column-gap : 50px;
+    margin: 50px 50px 90px 50px;
 }

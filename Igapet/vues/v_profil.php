@@ -5,17 +5,17 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<form action="index.php?pageAction=profil&modifier=yes" method="post">
+<form action="controls/c_profil.php" method="post">
     <label for="lastName">Prénom : </label>
-    <input type="text" name="firstName" value= <?php echo $_SESSION['prenom']?>><br/><br/>
+    <input type="text" name="FirstName" value="<?php if (isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']?>"><br/><br/>
     <label for="firstName">Nom : </label>
-    <input type="text" name="lastName" value= <?php echo $_SESSION['nom']?>><br/><br/>
-    <label for="emailP">Email : </label>
-    <input type="text" name="emailP" value= <?php echo $_SESSION['mail']?>><br/><br/>
-    <label for="passwordP">Mot de passe : </label>
-    <input type="password" name="passwordP" value= <?php echo $_SESSION['passwordInit']?>><br/><br/>
-    <label for="phone">Numéro de téléphone : </label>
-    <input type="text" name="phone" value= <?php echo $_SESSION['tel']?>><br/><br/>
+    <input type="text" name="LastName" value="<?php if (isset($_SESSION['LastName'])) echo $_SESSION['LastName']?>"><br/><br/>
+    <label for="Mail">Email : </label>
+    <input type="text" name="Mail" value="<?php echo $_SESSION['Mail']?>"><br/><br/>
+    <label for="UserPassword">Mot de passe : </label>
+    <input type="password" name="UserPassword"><br/><br/>
+    <label for="Phone">Numéro de téléphone : </label>
+    <input type="text" name="Phone" value= "<?php if (isset($_SESSION['Phone'])) echo $_SESSION['Phone']?>"><br/><br/>
     <input type="submit" value="Modifier">
 </form>
 <!-- Fin & Affectation du contenu de la page -->

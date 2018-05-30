@@ -1,8 +1,5 @@
-<!DOCTYPE html>
 <?php
-
-require('Home.php');
-
+include("c_config.php");
 $Rooms= "";
 
 
@@ -46,6 +43,5 @@ else
 {
 	echo "Error Save not found";
 }
-
+header('Location:../index.php?pageAction=v_vueensemble');
 ?>
-<meta http-equiv="refresh" content="0;URL='../vues/Igapet.php'" />

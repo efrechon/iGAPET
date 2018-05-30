@@ -8,11 +8,11 @@
 <div id="selection">
     <form action="index.php?pageAction=actionneurs" method="post">
         <select name="triA">
-            <option value="triPiece">Trier par pièce</option>
+            <option value="triPiece" selected="selected">Trier par pièce</option>
             <option value="triActionneur">Trier par actionneur</option>
         </select>
         <select name="whereA">
-            <?php $db=connexion_BDD();
+            <?php 
             $id= $_SESSION['id'];
             $requete= $db->query("SELECT Name, HouseID FROM houses WHERE UserID=$id");
             while($donnees= $requete->fetch()){
@@ -26,26 +26,46 @@
     </form>
 </div>
 <div id="affichageActionneur">
-    <?php
-        $db=connexion_BDD();
-        if($_POST['triA'] == 'triPiece'){
-            $idhome= $_POST['whereA'];
-            $requeteTriPA= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
-            while($triPA= $requeteTriPA->fetch()){
-                $idroom= $triPA['RoomID'];
-                echo'<h4>'.$triPA['Name'].'</h4>';
-                echo'<div class="pieceP">';
-                $requeteTriPA2= $db->query("SELECT ActuatorTypeID, State FROM actuators WHERE RoomID=$idroom");
-                while($triPA2= $requeteTriPA2->fetch()){
-                    $idactionneur= $triPA2['ActuatorTypeID'];
-                    $requeteTriPA3= $db->query("SELECT ActuatorName, Unit FROM actuatortypes WHERE ActuatorTypeID=$idactionneur");
-                    while($triPA3= $requeteTriPA3->fetch()){
-                        echo '<div class="actionneurM">'.$triPA3['ActuatorName'].'<br/>'.$triPA2['State'].$triPA3['Unit'].'</div>';
-                    }
-                }
-            echo'</div>';
-            }
-        }
+    <?php 
+		if(!isset($_POST['triA']) || $_POST['triA'] == 'triPiece'){
+			if (isset($_POST['whereA'])){
+				$idhome= $_POST['whereA'];
+			}
+			else
+			{
+				$data = getSQL($db,"SELECT HouseID FROM houses WHERE UserID=".$_SESSION['id']." LIMIT 1");
+				if (!count($data))
+				{
+					echo "Vous n'avez pas de maison, veuillez en ajouter";
+					$idhome =0;
+				}
+				else
+				{
+					$idhome = (int)$data[0]["HouseID"];
+				}
+			}
+			if ($idhome){
+				$requeteTriPA= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
+				while($triPA= $requeteTriPA->fetch()){
+					$idroom= $triPA['RoomID'];
+					echo'<h4>'.$triPA['Name'].'</h4>';
+					echo'<div class="pieceP">';
+					$requeteTriPA2= $db->query("SELECT ActuatorTypeID, State FROM actuators WHERE RoomID=$idroom");
+					while($triPA2= $requeteTriPA2->fetch()){
+						$idactionneur= $triPA2['ActuatorTypeID'];
+						$requeteTriPA3= $db->query("SELECT ActuatorName, Unit, url_img FROM actuatortypes WHERE ActuatorTypeID=$idactionneur");
+						while($triPA3= $requeteTriPA3->fetch()){
+							$idimg= $triPA3['url_img'];
+							echo '<div class="actionneurM">'.$triPA3['ActuatorName'].'<br/><img src='."$idimg".'><br/>'.$triPA2['State'].' '.$triPA3['Unit'].'</div>';
+						}
+
+					}
+					echo'</div>';
+				}
+			}
+			
+		}
+        
         /*elseif ($_POST['triA']== 'triActionneur'){
             $idhome= $_POST['whereA'];
             $requeteTriA= $db->query("SELECT ActuatorName, ActuatorTypeID FROM actuatortypes");

@@ -1,7 +1,8 @@
 nav {
     width: 100%;
-    height: 87vh;
+    height: 100vh;
     border-right: 2px gray solid;
+    background-color: #1e1e1e;
 }
 
 .conteneur{
@@ -12,32 +13,18 @@ nav {
 
 .onglet{
     text-align: center;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    border-bottom: 1px gray solid;
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
 
-.onglet:hover{
-    background-color: #DDDDDD;
+.active, .onglet:hover{
+    background-color: #3b3b3b;
     cursor: pointer;
-    font-style: italic;
-}
-
-.small:hover{
-    background-color: #DDDDDD;
-    cursor: pointer;
-    font-style: italic;
-}
-
-.small{
-    text-align: center;
-    font-size: small;
-    margin-bottom: 3%;
-    padding: 0;
-    border: none;
+    border-left: 4px solid #00A4E1;
+    
 }
 
 a{
-    color: black;
+    color: white;
     text-decoration: none;
 }

@@ -7,28 +7,22 @@
 <?php ob_start(); ?>
 <h2>Ajouter un actionneur</h2>
 <form action="index.php?pageAction=gesmaison&new=actionneur" method="post">
-    <?php $db=connexion_BDD();
-    $id= $_SESSION['id'];
-    $requeteM= $db->query("SELECT Name,HouseID FROM houses WHERE UserID=$id");
-    while($donneesM= $requeteM->fetch()){
-        $idhome= $donneesM['HouseID'];
-        $requeteP= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
-        echo '<input type="radio" name="maison" value='."$idhome".'>'.$donneesM['Name'].'<select id="Piece" name="localisationPA">';
-        while($donneesP = $requeteP->fetch()){
-            $piece= $donneesP['Name'];
-            $idp= $donneesP['RoomID'];
-            echo '<option value='."$idp".'>'.$piece.'</option><br/>';
+    <?php 
+	$donnees= getSQL($db,"SELECT Name,HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+    foreach($donnees as $donneesM){
+		echo '<input type="radio" name="maison" value='.$donneesM['HouseID'].'>'.$donneesM['Name'].'<select id="Piece" name="localisationPA">';
+		$donnees2 = getSQL($db,"SELECT Name,RoomID FROM rooms WHERE HouseID=".$donneesM['HouseID']);
+        foreach($donnees2 as $donneesP){
+            echo '<option value='.$donneesP['RoomID'].'>'.$donneesP['Name'].'</option><br/>';
         }
+		echo '</select><br/>';
     }
-    echo '</select><br/>';
     ?>
     <label for="typeA">Type d'actionneur</label><br/><br/>
-    <?php $db= connexion_BDD();
-    $requeteA = $db->query("SELECT ActuatorName, ActuatorTypeID FROM actuatortypes");
-    while($donneesA= $requeteA->fetch()){
-        $idA= $donneesA['ActuatorTypeID'];
-        $nomA= $donneesA['ActuatorName'];
-        echo '<input type="radio" name="typeA" value='."$idA".'>'.$nomA.'<br/>';
+    <?php 
+    $donnees = getSQL($db,"SELECT ActuatorName, ActuatorTypeID FROM actuatortypes");
+    foreach($donnees as $donneesA){
+        echo '<input type="radio" name="typeA" value='.$donneesA['ActuatorTypeID'].'>'.$donneesA['ActuatorName'].'<br/>';
     }
     ?><br/>
     <input type="submit" value="Ajouter">
