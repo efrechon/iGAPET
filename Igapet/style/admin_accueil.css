@@ -23,12 +23,14 @@ body{
 }
 
 #messagerie{
-    width: 52%;
+    width: 50%;
     border: 1px solid #00A4E1;
     margin-left: 2%;
     margin-bottom: 2%;
     margin-top: 2%;
     overflow: auto;
+    max-height: 90vh;
+    text-align: justify;
 }
 
 .message{

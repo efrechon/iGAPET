@@ -44,4 +44,23 @@ function envoi_message($db){
 
     $requete->execute();
 }
+
+function envoi_panne($db){
+    $correspondant= htmlspecialchars($_SESSION['UserID']);
+    $objet= htmlspecialchars('Rapport de panne');
+    $capteur=htmlspecialchars($_POST['CaptorName']);
+    $piece=htmlspecialchars($_POST['Name']);
+    $probleme=htmlspecialchars($_POST['Problem']);
+    $demande= 'Le capteur<b> '.$capteur.'</b> se trouvant dans la pièce <b>'.$piece.'</b>.<br/>Rencontre le problème suivant : <b>'.$probleme.'</b>.';
+    $date= date('Y-m-d');
+
+    $requete= $db->prepare("INSERT INTO messagerie(Correspondant, Objet, Demande, Date) VALUES (:correspondant,:objet,:demande,:date)");
+
+    $requete->bindParam(':correspondant', $correspondant);
+    $requete->bindParam(':objet', $objet);
+    $requete->bindParam(':demande', $demande);
+    $requete->bindParam(':date', $date);
+
+    $requete->execute();
+}
 ?>

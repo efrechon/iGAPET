@@ -14,6 +14,9 @@ if (isset($_POST["type"])) {
         case"message";
             envoyer_message($db);
         break;
+        case"sav":
+            rapport_panne($db);
+        break;
     }
 }
 
@@ -41,7 +44,13 @@ function envoyer_message($db){
     if(isset($_POST['Demande'], $_POST['Objet']) && !empty($_POST['Demande']) && !empty($_POST['Objet'])){
         envoi_message($db);
         header('Location:../index.php?pageAction=v_contacter');
+    }
+}
 
+function rapport_panne($db){
+    if(isset($_POST['CaptorName'], $_POST['Name'], $_POST['Problem']) && !empty($_POST['CaptorName']) && !empty($_POST['Name']) && !empty($_POST['Problem'])){
+        envoi_panne($db);
+        header('Location:../index.php?pageAction=v_sav');
     }
 }
 ?>

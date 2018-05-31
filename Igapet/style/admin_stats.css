@@ -16,16 +16,23 @@ body{
     flex-wrap: wrap;
 }
 
-.quart{
-    width: 30%;
-    max-height: 10%;
+.demi{
+    width: 47%;
+    max-height: 80%;
     border: 2px dotted #00A4E1;
     margin-left: 2%;
     margin-bottom: 1%;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .chart-container{
-    width: 50%;
+    width: 70%;
+    justify-items: center;
+}
+
+h3{
+    width: 100%;
 }
