@@ -20,7 +20,7 @@
 				</select>
 				<input type="hidden" value="v_gestionssutilisateurs" name="link">
 			</form>
-			<form action="controls/c_sutil.php" method="post">
+			<form action="controls/c_inscription.php" method="post">
 				<h4>Paramètres du compte sous utilisateur</h4>
 			    <label for="Name">Nom du sous-compte : </label>
 				<input type="text" name="Name"><br/><br/>
@@ -35,7 +35,7 @@
 					<?php
 					$donnees= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['UserID']);
 					foreach($donnees as $d){
-						echo '<option value='.$d['HouseID'].'>'.$d['Name'].'</option></br>';
+						echo '<option value=H'.$d['HouseID'].'>'.$d['Name'].'</option></br>';
 					}
 					?>
 				</select>
@@ -48,7 +48,7 @@
 					<?php
 					$donnees= getSQL($db,"SELECT Name, RoomID FROM rooms WHERE HouseID=".$_SESSION['HouseID']);
 					foreach($donnees as $d){
-						echo '<option value='.$d['RoomID'].'>'.$d['Name'].'</option></br>';
+						echo '<option value=R'.$d['RoomID'].'>'.$d['Name'].'</option></br>';
 					}
 					?>
 				</select>
@@ -61,11 +61,11 @@
 					<?php
 					$donnees= getSQL($db,"SELECT CaptorTypeId,CaptorName FROM captortypes");
 					foreach($donnees as $d){
-						echo '<option value='.$d['CaptorTypeId'].'>'.$d['CaptorName'].'</option></br>';
+						echo '<option value=C'.$d['CaptorTypeId'].'>'.$d['CaptorName'].'</option></br>';
 					}
 					$donnees= getSQL($db,"SELECT ActuatorTypeID,ActuatorName FROM actuatortypes");
 					foreach($donnees as $d){
-						echo '<option value=0'.$d['ActuatorTypeID'].'>'.$d['ActuatorName'].'</option></br>';
+						echo '<option value=A'.$d['ActuatorTypeID'].'>'.$d['ActuatorName'].'</option></br>';
 					}
 					?>
 				</select>
@@ -81,9 +81,9 @@
 				<label for="Name">Gérer les sous utilisateurs </label><br/><br/>	
 				<input type="checkbox" name="Name">
 				<label for="Name">Gérer les maisons </label><br/><br/>	
-				<input type="hidden" id="autorisationList" value="a" name="autorisations">
+				<input type="hidden" id="autorisationList" value="" name="autorisations">
 				<input type="hidden" name="type" value="sousutilisateur">
-				<input type="button" value="Ajouter">
+				<input type="submit" value="Ajouter">
 			</form>
         </div>
         <div id="autorisation">

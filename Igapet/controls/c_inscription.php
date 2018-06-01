@@ -44,6 +44,7 @@ function ajouter_utilisateur($db){
 }
 
 function ajouter_sous_utilisateur($db){
+	var_dump($_POST);
 	if (isset($_POST['UserPassword']) && isset($_POST['UserPassword2']) && isset($_POST['FirstName']) && !empty($_POST['UserPassword']) && !empty($_POST['UserPassword2']) && !empty($_POST['FirstName']))
 	{
 		if ($_POST['UserPassword'] != $_POST['UserPassword'])

@@ -102,7 +102,7 @@ function verification_existence_mail($db){
 }
 
 function inscription_sous_utilisateur($db){
-	$requete = $db->prepare("INSERT INTO 
+	$requete = $db->prepare("INSERT INTO ");
 	
 	
 }

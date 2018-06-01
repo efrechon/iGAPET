@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/menu.css"/>
-</head>
+
+<link rel="stylesheet" href="style/menu.css"/>
 
 <nav>
 <div id="myDIV">
@@ -28,11 +24,9 @@
 
     <script>
 	var onglet = <?php echo json_encode($_GET['pageAction']); ?>;
-    var menu = document.getElementById("myDIV").childNodes[1].childNodes;
-    var txt = "http://localhost/iGAPET-master/Igapet/index.php?pageAction="+onglet;
-    console.log(txt);
+    var menu = document.getElementById("myDIV").getElementsByClassName('conteneur')[0];
     for(var i=0;i<menu.length;i++){
-		if (menu[i].href == txt)
+		if (menu.getElementsByTagName('a')[i].href.split("=")[1] == onglet)
 		{
 			menu[i].childNodes[0].className ="onglet active";
 		}
@@ -41,4 +35,3 @@
  
 </nav>
 
-</html>

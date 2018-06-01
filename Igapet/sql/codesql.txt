@@ -67,7 +67,7 @@ CREATE TABLE Notifications(
 CREATE TABLE UserTypes(
 	UserTypeID int PRIMARY KEY AUTO_INCREMENT,	    -- primary key
 	ParentUserID int,
-	EditionAdmin bit DEFAULT (0),			--definir 0 comme admin et enlever cette ligne??
+	EditionAdmin bit DEFAULT (0),			      -- definir 0 comme admin et enlever cette ligne??
 	ManageUsers bit,
 	AddScénarios bit,
 	AddNotifications bit,

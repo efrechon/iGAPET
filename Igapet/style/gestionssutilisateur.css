@@ -46,4 +46,12 @@ h4{
 	
 }
 
+.delete{
+	width:20px;
+	height:20px;
+	background-color:red;
+	position:relative;
+	float:right;
+}
+
 
