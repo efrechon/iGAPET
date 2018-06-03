@@ -67,13 +67,14 @@ CREATE TABLE Notifications(
 CREATE TABLE UserTypes(
 	UserTypeID int PRIMARY KEY AUTO_INCREMENT,	    -- primary key
 	ParentUserID int,
-	EditionAdmin bit DEFAULT (0),			      -- definir 0 comme admin et enlever cette ligne??
-	ManageUsers bit,
-	AddScénarios bit,
-	AddNotifications bit,
-	ConsultNotifications bit,
-	ManageHouses bit,
-	CustomAutorisations varchar(255)
+	EditionAdmin varchar(1) DEFAULT (0),			      -- definir 0 comme admin et enlever cette ligne??
+	ManageUsers varchar(1),
+	AddScenarios varchar(1),
+	AddNotifications varchar(1),
+	ConsultNotifications varchar(1),
+	ManageHouses varchar(1),
+	CustomAutorisationsHouse varchar(255),
+	CustomAutorisationsCaptor varchar(255)
 );
 
 CREATE TABLE CaptorTypes(

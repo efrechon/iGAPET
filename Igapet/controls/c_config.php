@@ -67,24 +67,45 @@ function getOneSQL(PDO $db,$sql)
 }
 
 function is_administrateur(){
-	if(isset($_SESSION['UserTypeID']) AND $_SESSION['UserTypeID']==1){
+	if(isset($_SESSION['UserTypeID']) AND $_SESSION['UserTypeID']==-1){
 		return true;
 	}
-	else{
-		header('Location:index.php?pageAction=erreur');
-		return false;
-	}
+	return false;
 }
 	
 // Verifier que le visiteur est un utilisateur
 function is_utilisateur(){
-    if(isset($_SESSION['UserTypeID']) AND $_SESSION['UserTypeID']==2){
+    if(isset($_SESSION['UserTypeID']) AND $_SESSION['UserTypeID']==0){
         return true;
     }
     else{
 		header('Location:index.php?pageAction=erreur');
         return false;
     }
+}
+
+function getAllHouses($db){
+	if ($_SESSION['UserTypeID'] == 0){
+		return (getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['UserID']));
+	}
+	$d = getOneSQL($db,"SELECT ParentUserID,CustomAutorisations FROM usertypes WHERE UserTypeID=".$_SESSION['UserTypeID']);
+	$donnees = getSQL($db,"SELECT * FROM houses WHERE UserID=".$d['ParentUserID']);
+	
+	$autorisations = explode("-",$d['CustomAutorisations']);
+	$return = array();
+	foreach($donnes as $a)
+	{
+		foreach($autorisations as $b)
+		{
+			if ("H"+$a == $b)
+			{
+				array_push($return,$a);
+				break;
+			}
+		}
+	}
+	return $return;
+	
 }
 
 ?>

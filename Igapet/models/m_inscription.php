@@ -5,7 +5,7 @@ function inscription_utilisateur($db){
     $Mail= $_POST["Mail"];
     $CreationDate= date('Y-m-d');
     $UserPassword = password_hash($_POST['UserPassword'], PASSWORD_BCRYPT);
-    $UserTypeID= 2;
+    $UserTypeID= 1;
 	$NbrConnexion=0;
     // Préparation de la requete SQL
     $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID,NbrConnexion) VALUES(:Mail,:CreationDate,:UserPassword,:UserTypeID,:NbrConnexion)');
@@ -102,8 +102,89 @@ function verification_existence_mail($db){
 }
 
 function inscription_sous_utilisateur($db){
-	$requete = $db->prepare("INSERT INTO ");
 	
+	$ParentUserID = $_SESSION['UserID'];
+	$ManageUsers = 0;
+	if (isset($_POST['ManageUsers']))
+		$ManageUsers = 1;
+	$AddScenarios = 0;
+	if (isset($_POST['AddScenarios']))
+		$AddScenarios = 1;
+	$AddNotifications = 0;
+	if (isset($_POST['AddNotifications']))
+		$AddNotifications = 1;
+	$ManageHouses = 0;
+	if (isset($_POST['ManageHouses']))
+		$ManageHouses = 1;
+	$ConsultNotifications = 0;
+	if (isset($_POST['ConsultNotifications']))
+		$ConsultNotifications = 1;	
+	
+
+	$CustomAutorisationsHouse = $_POST['CustomAutorisationsHouse'];
+	if (isset($_POST['ConsulterToutesMaisons']))
+	{
+		$CustomAutorisationsHouse = "";
+		$donnees = getAllHouses($db);
+		foreach($donnees as $d){
+			if ($CustomAutorisationsHouse != "")
+				$CustomAutorisationsHouse += "-";
+			$CustomAutorisationsHouse += "H"+$d['HouseID'];
+		}
+	}
+	
+	$CustomAutorisations = $_POST['CustomAutorisationsCaptor'];
+	if (isset($_POST['ConsulterTousCapteurs']))
+	{
+		$CustomAutorisationsCaptor = "";
+		$donnees = getSQL($db,"SELECT CaptorTypeID FROM captortypes");
+		foreach($donnees as $d){
+			if ($CustomAutorisationsCaptor != "")
+				$CustomAutorisationsCaptor += "-";
+			$CustomAutorisationsCaptor += "C".$d['CaptorTypeID'];
+		}
+		$donnees = getSQL($db,"SELECT ActuatorTypeId FROM Actuatortypes");
+		foreach($donnees as $d){
+			if ($CustomAutorisationsCaptor != "")
+				$CustomAutorisationsCaptor += "-";
+			$CustomAutorisationsCaptor += "A".$d['ActuatorTypeId'];
+		}
+	}
+	
+	var_dump($_POST);
+	var_dump($CustomAutorisationsCaptor);
+	var_dump($CustomAutorisationsHouse);
+	
+	$requete= $db->prepare('INSERT INTO usertypes(ParentUserID, ManageUsers, AddScenarios,AddNotifications,ConsultNotifications,ManageHouses,CustomAutorisationsHouse,CustomAutorisationsCaptor) 
+							VALUES(:ParentUserID, :ManageUsers, :AddScenarios,:AddNotifications,:ConsultNotifications,:ManageHouses,:CustomAutorisationsHouse,:CustomAutorisationsCaptor)');
+							
+	$requete->bindParam(':ParentUserID',$ParentUserID);
+	$requete->bindParam(':ManageUsers',$ManageUsers);
+	$requete->bindParam(':AddScenarios',$AddScenarios);
+	$requete->bindParam(':AddNotifications',$AddNotifications);
+	$requete->bindParam(':ConsultNotifications',$ConsultNotifications);
+	$requete->bindParam(':ManageHouses',$ManageHouses);
+	$requete->bindParam(':CustomAutorisationsHouse',$CustomAutorisationsHouse);	
+	$requete->bindParam(':CustomAutorisationsCaptor',$CustomAutorisationsCaptor);	
+	
+	$requete->execute();
+	
+	
+	$Mail= $_POST["Name"];
+    $CreationDate= date('Y-m-d');
+    $UserPassword = password_hash($_POST['UserPassword'], PASSWORD_BCRYPT);
+    $UserTypeID = getOneSQL($db,"SELECT UserTypeID FROM usertypes ORDER BY UserTypeID DESC LIMIT 1")["UserTypeID"];
+	$NbrConnexion=0;
+	
+	$requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID,NbrConnexion) VALUES(:Mail,:CreationDate,:UserPassword,:UserTypeID,:NbrConnexion)');
+	
+	$requete->bindParam(':Mail',$Mail);
+    $requete->bindParam(':CreationDate',$CreationDate);
+    $requete->bindParam(':UserPassword',$UserPassword);
+    $requete->bindParam(':UserTypeID',$UserTypeID);
+	$requete->bindParam(':NbrConnexion',$NbrConnexion);
+	
+	$requete->execute();
 	
 }
 

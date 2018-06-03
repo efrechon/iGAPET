@@ -12,7 +12,7 @@
 				<select name="HouseID" onchange='this.form.submit()'>
 					<option value='' disabled selected>Choisir une maison spécifique</option>
 					<?php
-					$donnees= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['UserID']);
+					$donnees= getAllHouses($db);
 					foreach($donnees as $d){
 						echo '<option value='.$d['HouseID'].'>'.$d['Name'].'</option></br>';
 					}
@@ -28,8 +28,8 @@
 				<input type="password" name="UserPassword"><br/><br/>	
 				<label for="UserPassword2">Confirmer le mot de passe: </label>
 				<input type="password" name="UserPassword2"><br/><br/>	
-				<input type="checkbox" name="Name">
-				<label for="Name">Consulter mes maisons </label><br/><br/>	
+				<input type="checkbox" name="ConsulterToutesMaisons">
+				<label for="ConsulterToutesMaisons">Consulter mes maisons </label><br/><br/>	
 				<select id="HouseSelect">
 					<option value='' disabled selected>Choisir une maison spécifique</option>
 					<?php
@@ -41,21 +41,8 @@
 				</select>
 				<button type="button" onclick='AddHouse()'> + </button>
 				<br/><br/>	
-				<input type="checkbox" name="Name">
-				<label for="Name">Consulter mes pièces </label><br/><br/>	
-				<select id="RoomSelect">
-					<option value='' disabled selected>Choisir une pièce spécifique</option>
-					<?php
-					$donnees= getSQL($db,"SELECT Name, RoomID FROM rooms WHERE HouseID=".$_SESSION['HouseID']);
-					foreach($donnees as $d){
-						echo '<option value=R'.$d['RoomID'].'>'.$d['Name'].'</option></br>';
-					}
-					?>
-				</select>
-				<button type="button" onclick='AddRoom()'> + </button>
-				</br></br>
-				<input type="checkbox" name="Name">
-				<label for="Name">Consulter ou utiliser mes capteurs </label>
+				<input type="checkbox" name="ConsulterTousCapteurs">
+				<label for="ConsulterTousCapteurs">Consulter ou utiliser mes capteurs </label>
 				<select id="CaptorSelect">
 					<option value='' disabled selected>Choisir un type de capteur spécifique</option>
 					<?php
@@ -71,17 +58,18 @@
 				</select>
 				<button type="button" onclick='AddCaptor()'> + </button>
 				<br/><br/>	
-				<input type="checkbox" name="Name">
-				<label for="Name">Planifier des scénarios </label><br/><br/>	
-				<input type="checkbox" name="Name">
-				<label for="Name">Ajouter des notifications </label><br/><br/>	
-				<input type="checkbox" name="Name">
-				<label for="Name">Consulter les notifications </label><br/><br/>	
-				<input type="checkbox" name="Name">
-				<label for="Name">Gérer les sous utilisateurs </label><br/><br/>	
-				<input type="checkbox" name="Name">
-				<label for="Name">Gérer les maisons </label><br/><br/>	
-				<input type="hidden" id="autorisationList" value="" name="autorisations">
+				<input type="checkbox" name="AddScenarios">
+				<label for="AddScenarios">Planifier des scénarios </label><br/><br/>	
+				<input type="checkbox" name="AddNotifications">
+				<label for="AddNotifications">Ajouter des notifications </label><br/><br/>	
+				<input type="checkbox" name="ConsultNotifications">
+				<label for="ConsultNotifications">Consulter les notifications </label><br/><br/>	
+				<input type="checkbox" name="ManageUsers">
+				<label for="ManageUsers">Gérer les sous utilisateurs </label><br/><br/>	
+				<input type="checkbox" name="ManageHouses">
+				<label for="ManageHouses">Gérer les maisons </label><br/><br/>	
+				<input type="hidden" id="autorisationListHouse" value="" name="CustomAutorisationsHouse">
+				<input type="hidden" id="autorisationListCaptor" value="" name="CustomAutorisationsCaptor">
 				<input type="hidden" name="type" value="sousutilisateur">
 				<input type="submit" value="Ajouter">
 			</form>
