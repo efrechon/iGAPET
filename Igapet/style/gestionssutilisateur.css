@@ -54,4 +54,13 @@ h4{
 	float:right;
 }
 
+.userBlock{
+	width: 96%;
+	height:10%;
+	border: 2px solid #5e5e5e;
+	position:relative;
+	
+	
+}
+
 

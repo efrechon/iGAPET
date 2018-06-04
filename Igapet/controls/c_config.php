@@ -86,18 +86,18 @@ function is_utilisateur(){
 
 function getAllHouses($db){
 	if ($_SESSION['UserTypeID'] == 0){
-		return (getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['UserID']));
+		return (getSQL($db,"SELECT * FROM houses WHERE UserID=".$_SESSION['UserID']));
 	}
-	$d = getOneSQL($db,"SELECT ParentUserID,CustomAutorisations FROM usertypes WHERE UserTypeID=".$_SESSION['UserTypeID']);
+	$d = getOneSQL($db,"SELECT ParentUserID,CustomAutorisationsHouse FROM usertypes WHERE UserTypeID=".$_SESSION['UserTypeID']);
 	$donnees = getSQL($db,"SELECT * FROM houses WHERE UserID=".$d['ParentUserID']);
 	
-	$autorisations = explode("-",$d['CustomAutorisations']);
+	$autorisations = explode("-",$d['CustomAutorisationsHouse']);
 	$return = array();
-	foreach($donnes as $a)
+	foreach($donnees as $a)
 	{
 		foreach($autorisations as $b)
 		{
-			if ("H"+$a == $b)
+			if ("H".$a['HouseID'] == $b)
 			{
 				array_push($return,$a);
 				break;
@@ -106,6 +106,53 @@ function getAllHouses($db){
 	}
 	return $return;
 	
+}
+
+function getAllCaptors($db){
+	if ($_SESSION['UserTypeID'] == 0){
+		return (getSQL($db,"SELECT * FROM captortypes"));
+	}
+	$d = getOneSQL($db,"SELECT ParentUserID,CustomAutorisationsCaptor FROM usertypes WHERE UserTypeID=".$_SESSION['UserTypeID']);
+	$donnees = getSQL($db,"SELECT * FROM captortypes");
+	
+	$autorisations = explode("-",$d['CustomAutorisationsCaptor']);
+	$return = array();
+	foreach($donnees as $a)
+	{
+		foreach($autorisations as $b)
+		{
+			if ("C".$a['CaptorTypeID'] == $b)
+			{
+				array_push($return,$a);
+				break;
+			}
+		}
+	}
+	return $return;
+	
+}
+
+function getAllActuators($db){
+	if ($_SESSION['UserTypeID'] == 0){
+		return (getSQL($db,"SELECT * FROM actuatortypes"));
+	}
+	$d = getOneSQL($db,"SELECT ParentUserID,CustomAutorisationsCaptor FROM usertypes WHERE UserTypeID=".$_SESSION['UserTypeID']);
+	$donnees = getSQL($db,"SELECT * FROM actuatortypes");
+	
+	$autorisations = explode("-",$d['CustomAutorisationsCaptor']);
+	$return = array();
+	foreach($donnees as $a)
+	{
+		foreach($autorisations as $b)
+		{
+			if ("A".$a['ActuatorTypeID'] == $b)
+			{
+				array_push($return,$a);
+				break;
+			}
+		}
+	}
+	return $return;
 }
 
 ?>

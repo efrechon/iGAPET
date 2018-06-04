@@ -54,7 +54,7 @@ function ajouter_sous_utilisateur($db){
 		//if (verification_nom($db))
 		inscription_sous_utilisateur($db);
 	}
-
+	header('Location:../index.php?pageAction=v_gestionssutilisateurs');
 	
 }
 

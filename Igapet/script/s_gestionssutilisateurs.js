@@ -1,6 +1,12 @@
 
 
-
+var d= document.getElementsByClassName('userBlock');
+for(var i=0;i<d.length;i++)
+{
+	d[i].getElementsByClassName('delete')[0].addEventListener("click",function(){
+		deletionUserType(this);
+	});
+}
 
 function AddHouse(){
 	var doc = document.getElementById("autorisation");
@@ -113,4 +119,18 @@ function deletionCaptor(elmnt){
 	}
 	if (elmnt.parentElement)
 		elmnt.parentElement.removeChild(elmnt);
+}
+
+function deletionUserType(elmnt){
+	if (!window.confirm("êtes vous sur de supprimer cet utilisateur?"))
+		return;
+	
+	console.log(elmnt.parentElement);
+	elmnt.parentElement.remove();
+
+	document.getElementById('delinput').value= elmnt.parentElement.innerHTML;
+	document.getElementById('delform').form.submit;
+	
+		
+	
 }

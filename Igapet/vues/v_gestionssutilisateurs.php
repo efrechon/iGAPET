@@ -80,6 +80,17 @@
     </div>
     <div class="resume">
         <h4>Liste sous utilisateur</h4>
+		<?php 
+			$donnees = getSQL($db,"SELECT * FROM usertypes WHERE ParentUserID=".$_SESSION['UserID']);
+			foreach($donnees as $d)
+			{
+				$u = getSQL($db,"SELECT * FROM users WHERE UserTypeID=".$d['UserTypeID']);
+				echo "<div class=userBlock>".$u[0]['Mail']."<div class=delete></div></div>";
+			}
+		?>
+		<form action="controls/c_gestionsUtilisateurs.php" method="POST" id="delform">
+			<input type="hidden" value="" name="UserID" id="delinput">
+		</form>
     </div>
 </div>
 

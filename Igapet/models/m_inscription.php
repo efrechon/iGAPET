@@ -128,26 +128,26 @@ function inscription_sous_utilisateur($db){
 		$donnees = getAllHouses($db);
 		foreach($donnees as $d){
 			if ($CustomAutorisationsHouse != "")
-				$CustomAutorisationsHouse += "-";
-			$CustomAutorisationsHouse += "H"+$d['HouseID'];
+				$CustomAutorisationsHouse = $CustomAutorisationsHouse."-";
+			$CustomAutorisationsHouse = $CustomAutorisationsHouse."H".$d['HouseID'];
 		}
 	}
 	
-	$CustomAutorisations = $_POST['CustomAutorisationsCaptor'];
+	$CustomAutorisationsCaptor = $_POST['CustomAutorisationsCaptor'];
 	if (isset($_POST['ConsulterTousCapteurs']))
 	{
 		$CustomAutorisationsCaptor = "";
 		$donnees = getSQL($db,"SELECT CaptorTypeID FROM captortypes");
 		foreach($donnees as $d){
 			if ($CustomAutorisationsCaptor != "")
-				$CustomAutorisationsCaptor += "-";
-			$CustomAutorisationsCaptor += "C".$d['CaptorTypeID'];
+				$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."-";
+			$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."C".$d['CaptorTypeID'];
 		}
 		$donnees = getSQL($db,"SELECT ActuatorTypeId FROM Actuatortypes");
 		foreach($donnees as $d){
 			if ($CustomAutorisationsCaptor != "")
-				$CustomAutorisationsCaptor += "-";
-			$CustomAutorisationsCaptor += "A".$d['ActuatorTypeId'];
+				$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."-";
+			$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."A".$d['ActuatorTypeId'];
 		}
 	}
 	
