@@ -25,6 +25,7 @@ function getSQL(PDO $db,$sql)
 {
 	try
 	{
+		var_dump($sql);
 		$req = $db->prepare(htmlspecialchars($sql));
 		$req->execute();
 

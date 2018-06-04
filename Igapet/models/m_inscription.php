@@ -151,10 +151,6 @@ function inscription_sous_utilisateur($db){
 		}
 	}
 	
-	var_dump($_POST);
-	var_dump($CustomAutorisationsCaptor);
-	var_dump($CustomAutorisationsHouse);
-	
 	$requete= $db->prepare('INSERT INTO usertypes(ParentUserID, ManageUsers, AddScenarios,AddNotifications,ConsultNotifications,ManageHouses,CustomAutorisationsHouse,CustomAutorisationsCaptor) 
 							VALUES(:ParentUserID, :ManageUsers, :AddScenarios,:AddNotifications,:ConsultNotifications,:ManageHouses,:CustomAutorisationsHouse,:CustomAutorisationsCaptor)');
 							

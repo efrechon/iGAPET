@@ -124,13 +124,11 @@ function deletionCaptor(elmnt){
 function deletionUserType(elmnt){
 	if (!window.confirm("êtes vous sur de supprimer cet utilisateur?"))
 		return;
-	
+	console.log(document.getElementById('delform'));
+	document.getElementById('delinput').value= elmnt.parentElement.innerHTML.split("<")[0];
+	document.getElementById('delform').submit();
 	console.log(elmnt.parentElement);
 	elmnt.parentElement.remove();
-
-	document.getElementById('delinput').value= elmnt.parentElement.innerHTML;
-	document.getElementById('delform').form.submit;
-	
 		
 	
 }
