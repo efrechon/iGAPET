@@ -25,7 +25,6 @@ function getSQL(PDO $db,$sql)
 {
 	try
 	{
-		var_dump($sql);
 		$req = $db->prepare(htmlspecialchars($sql));
 		$req->execute();
 
@@ -109,7 +108,7 @@ function getAllHouses($db){
 	
 }
 
-function getAllCaptors($db){
+function getAllCaptors($db,$RoomID){
 	if ($_SESSION['UserTypeID'] == 0){
 		return (getSQL($db,"SELECT * FROM captortypes"));
 	}
@@ -129,6 +128,10 @@ function getAllCaptors($db){
 			}
 		}
 	}
+	
+	$captorList = getSQL($db,"SELECT * FROM captors WHERE RoomID=".$RoomID);
+	
+	
 	return $return;
 	
 }

@@ -8,18 +8,6 @@
 <div id="geressutilisateur">
     <div class="modification">
         <div class="ajout">
-			<form action="controls/c_reload.php" method="post">
-				<select name="HouseID" onchange='this.form.submit()'>
-					<option value='' disabled selected>Choisir une maison spécifique</option>
-					<?php
-					$donnees= getAllHouses($db);
-					foreach($donnees as $d){
-						echo '<option value='.$d['HouseID'].'>'.$d['Name'].'</option></br>';
-					}
-					?>
-				</select>
-				<input type="hidden" value="v_gestionssutilisateurs" name="link">
-			</form>
 			<form action="controls/c_inscription.php" method="post">
 				<h4>Paramètres du compte sous utilisateur</h4>
 			    <label for="Name">Nom du sous-compte : </label>
@@ -85,7 +73,7 @@
 			foreach($donnees as $d)
 			{
 				$u = getSQL($db,"SELECT * FROM users WHERE UserTypeID=".$d['UserTypeID']);
-				echo "<div class=userBlock>".$u[0]['Mail']."<div class=delete></div></div>";
+				echo "<div class=userBlock UserID=".$u[0]['UserID'].">".$u[0]['Mail']."<div class=delete></div></div>";
 			}
 		?>
 		<form action="controls/c_gestionsUtilisateurs.php" method="POST" id="delform">
@@ -93,6 +81,15 @@
 		</form>
     </div>
 </div>
+
+<script>
+	<?php if (isset($_POST['LoadFormUserID'])){
+		getSQL($db,"SELECT UserTypeID FROM users WHERE UserID=$...) 
+	}
+	?>
+
+</script>
+
 
 <script src="script/s_gestionssutilisateurs.js"></script>
 

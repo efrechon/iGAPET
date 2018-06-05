@@ -1,19 +1,20 @@
 
 
-var d= document.getElementsByClassName('userBlock');
+
+var d= document.querySelectorAll('.userBlock');
 for(var i=0;i<d.length;i++)
 {
-	d[i].getElementsByClassName('delete')[0].addEventListener("click",function(){
+	d[i].querySelector('.delete').addEventListener("click",function(){
 		deletionUserType(this);
 	});
 }
+
 
 function AddHouse(){
 	var doc = document.getElementById("autorisation");
 	var list = document.getElementById("autorisationListHouse");
 	var selecteur = document.getElementById("HouseSelect");
 	var txt = selecteur.value;
-	
 	
 	if ((selecteur.selectedIndex == 0))
 		return;
@@ -102,8 +103,9 @@ function deletionHouse(elmnt){
 		}
 	}
 	if (elmnt.parentElement)
-		elmnt.parentElement.removeChild(elmnt);
+		elmnt.parentElement.removeChild(elmnt);	
 }
+
 function deletionCaptor(elmnt){
 	var list = document.getElementById("autorisationListCaptor");
 	var L = list.value.split("-");
@@ -124,11 +126,12 @@ function deletionCaptor(elmnt){
 function deletionUserType(elmnt){
 	if (!window.confirm("êtes vous sur de supprimer cet utilisateur?"))
 		return;
-	console.log(document.getElementById('delform'));
-	document.getElementById('delinput').value= elmnt.parentElement.innerHTML.split("<")[0];
+	document.getElementById('delinput').value= elmnt.parentElement.attributes.userid.value;
 	document.getElementById('delform').submit();
-	console.log(elmnt.parentElement);
-	elmnt.parentElement.remove();
-		
+
+}
+
+function selection(elmnt){
+	
 	
 }
