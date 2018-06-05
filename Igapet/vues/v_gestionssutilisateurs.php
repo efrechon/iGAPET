@@ -83,8 +83,11 @@
 </div>
 
 <script>
-	<?php if (isset($_POST['LoadFormUserID'])){
-		getSQL($db,"SELECT UserTypeID FROM users WHERE UserID=$...) 
+	<?php 
+	if (isset($_POST['LoadFormUserID'])){
+		$UserTypeID = getSQL($db,"SELECT UserTypeID FROM users WHERE UserID=".$_POST['LoadFormUserID'])[0]['UserTypeID'];
+		$donnees = getSQL($db,"SELECT * FROM users WHERE UserTypeID=".$UserTypeID);
+		
 	}
 	?>
 
