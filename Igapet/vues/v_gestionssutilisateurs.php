@@ -80,17 +80,17 @@
 			<input type="hidden" value="" name="UserID" id="delinput">
 		</form>
     </div>
+	<?php var_dump($_POST) ?>
 </div>
 
 <script>
 	<?php 
-	if (isset($_POST['LoadFormUserID'])){
+	if (isset($_POST['LoadFormUserID']) && !empty($_POST['LoadFormUserID'])){
 		$UserTypeID = getSQL($db,"SELECT UserTypeID FROM users WHERE UserID=".$_POST['LoadFormUserID'])[0]['UserTypeID'];
-		$donnees = getSQL($db,"SELECT * FROM users WHERE UserTypeID=".$UserTypeID);
-		
+		$donnees = getSQL($db,"SELECT * FROM usertypes WHERE UserTypeID=".$UserTypeID);
+		echo ('var UserInformation = '.json_encode($donnees).';');
 	}
 	?>
-
 </script>
 
 

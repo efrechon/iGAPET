@@ -1,6 +1,4 @@
 
-
-
 var d= document.querySelectorAll('.userBlock');
 for(var i=0;i<d.length;i++)
 {
@@ -9,6 +7,24 @@ for(var i=0;i<d.length;i++)
 	});
 }
 
+
+var node = document.createElement('div');
+node.className = "userBlock";
+node.innerText = "Ajouter un Utilisateur";
+document.querySelector(".resume").appendChild(node);
+
+
+var d= document.querySelectorAll('.userBlock');
+
+for(var i=0;i<d.length;i++)
+{
+	d[i].addEventListener("click",function(){
+		loadUserType(this);
+	});
+}
+
+if (typeof UserInformation != "undefined")
+	loadForm(UserInformation);
 
 function AddHouse(){
 	var doc = document.getElementById("autorisation");
@@ -39,14 +55,13 @@ function AddHouse(){
 	doc.appendChild(node);
 	
 	for(var i=0;i<doc.getElementsByClassName('autorisationBlock').length;i++){
-		doc.getElementsByClassName('autorisationBlock')[i].addEventListener("click",function(){
-			deletionHouse(this);
+		doc.getElementsByClassName('autorisationBlock')[i].querySelector('.delete').addEventListener("click",function(){
+			deletionHouse(this.parentElement);
 		});
 	}
 	if (list.value != "")
 		list.value += "-";
 	list.value += txt;
-	
 }
 
 function AddCaptor(){
@@ -79,8 +94,8 @@ function AddCaptor(){
 	doc.appendChild(node);
 	
 	for(var i=0;i<doc.getElementsByClassName('autorisationBlock').length;i++){
-		doc.getElementsByClassName('autorisationBlock')[i].addEventListener("click",function(){
-			deletionCaptor(this);
+		doc.getElementsByClassName('autorisationBlock')[i].querySelector('.delete').addEventListener("click",function(){
+			deletionCaptor(this.parentElement);
 		});
 	}
 	if (list.value != "")
@@ -131,7 +146,36 @@ function deletionUserType(elmnt){
 
 }
 
-function selection(elmnt){
+function loadUserType(elmnt){
+	var f = document.createElement("form");
+	f.setAttribute('method','post');
+	f.setAttribute('action','index.php?pageAction=v_gestionssutilisateurs');
+	
+	var p = document.createElement("input");
+	var d = "";
+	if (elmnt.attributes.userID)
+		d = elmnt.attributes.userID.value;
+	p.setAttribute('value',d);
+	p.setAttribute('Name','LoadFormUserID');
+	
+	if (elmnt.attributes.userID != undefined)
+	{
+		console.log("a");
+	}
+	console.log(elmnt.attributes.userID);
+	
+	f.appendChild(p);
+	document.querySelector('#geressutilisateur').appendChild(f);
+	f.submit();
+	
+}
+
+function loadForm(a){
+	console.log(a);
+	for (var i=0;i<a.length;i++)
+	{
+		console.log(a[i]);
+	}
 	
 	
 }

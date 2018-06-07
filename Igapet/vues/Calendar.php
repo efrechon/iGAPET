@@ -1,5 +1,6 @@
 
 <link rel="stylesheet" href="../style/Calendar.css">
+
 <div id="calendarHeader">
 </div>
 <div id="calendar">
