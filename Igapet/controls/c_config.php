@@ -23,6 +23,7 @@ function connected(){
 
 function getSQL(PDO $db,$sql)
 {
+	//var_dump($sql);
 	try
 	{
 		$req = $db->prepare(htmlspecialchars($sql));

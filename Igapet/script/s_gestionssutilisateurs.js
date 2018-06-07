@@ -19,8 +19,9 @@ var d= document.querySelectorAll('.userBlock');
 for(var i=0;i<d.length;i++)
 {
 	d[i].addEventListener("click",function(){
+		if (d[i] !== event.target) return;
 		loadUserType(this);
-	});
+	},false);
 }
 
 if (typeof UserInformation != "undefined")

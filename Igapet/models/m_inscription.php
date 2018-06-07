@@ -5,7 +5,7 @@ function inscription_utilisateur($db){
     $Mail= $_POST["Mail"];
     $CreationDate= date('Y-m-d');
     $UserPassword = password_hash($_POST['UserPassword'], PASSWORD_BCRYPT);
-    $UserTypeID= 1;
+    $UserTypeID= 0;
 	$NbrConnexion=0;
     // Préparation de la requete SQL
     $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID,NbrConnexion) VALUES(:Mail,:CreationDate,:UserPassword,:UserTypeID,:NbrConnexion)');
