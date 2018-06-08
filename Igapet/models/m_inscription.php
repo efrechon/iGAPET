@@ -184,4 +184,91 @@ function inscription_sous_utilisateur($db){
 	
 }
 
+function modifier_sous_utilisateur($db){
+	$Mail = $_POST['Name'];
+	$UserID = $_POST['UserID'];
+	
+	$requete = $db->prepare('UPDATE users SET Mail=:Mail WHERE UserID=:UserID');
+	
+	$requete->bindParam(':Mail',$Mail);
+	$requete->bindParam(':UserID',$UserID);
+	$requete->execute();
+	$requete->closeCursor();
+	
+	$UserTypeID = getSQL($db,'SELECT UserTypeID FROM users WHERE UserID='.$UserID)[0]['UserTypeID'];
+	
+	$ManageUsers = 0;
+	if (isset($_POST['ManageUsers']))
+		$ManageUsers = 1;
+	$AddScenarios = 0;
+	if (isset($_POST['AddScenarios']))
+		$AddScenarios = 1;
+	$AddNotifications = 0;
+	if (isset($_POST['AddNotifications']))
+		$AddNotifications = 1;
+	$ManageHouses = 0;
+	if (isset($_POST['ManageHouses']))
+		$ManageHouses = 1;
+	$ConsultNotifications = 0;
+	if (isset($_POST['ConsultNotifications']))
+		$ConsultNotifications = 1;	
+	
+
+	$CustomAutorisationsHouse = $_POST['CustomAutorisationsHouse'];
+	if (isset($_POST['ConsulterToutesMaisons']))
+	{
+		$CustomAutorisationsHouse = "";
+		$donnees = getAllHouses($db);
+		foreach($donnees as $d){
+			if ($CustomAutorisationsHouse != "")
+				$CustomAutorisationsHouse = $CustomAutorisationsHouse."-";
+			$CustomAutorisationsHouse = $CustomAutorisationsHouse."H".$d['HouseID'];
+		}
+	}
+	
+	$CustomAutorisationsCaptor = $_POST['CustomAutorisationsCaptor'];
+	if (isset($_POST['ConsulterTousCapteurs']))
+	{
+		$CustomAutorisationsCaptor = "";
+		$donnees = getSQL($db,"SELECT CaptorTypeID FROM captortypes");
+		foreach($donnees as $d){
+			if ($CustomAutorisationsCaptor != "")
+				$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."-";
+			$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."C".$d['CaptorTypeID'];
+		}
+		$donnees = getSQL($db,"SELECT ActuatorTypeId FROM Actuatortypes");
+		foreach($donnees as $d){
+			if ($CustomAutorisationsCaptor != "")
+				$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."-";
+			$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."A".$d['ActuatorTypeId'];
+		}
+	}
+	$requete = $db->prepare('UPDATE usertypes SET ManageUsers=:ManageUsers AddScenarios=:AddScenarios AddNotifications=:AddNotifications ManageHouses=:ManageHouses WHERE UserTypeID=:UserTypeID');
+			
+	$requete->bindParam(':ManageUsers',$ManageUsers);
+	$requete->bindParam(':AddScenarios',$AddScenarios);
+	$requete->bindParam(':AddNotifications',$AddNotifications);
+	$requete->bindParam(':ManageHouses',$ManageHouses);
+	$requete->bindParam(':UserTypeID',$UserTypeID);
+	
+	$requete->execute();
+	$requete->closeCursor();
+	
+	$requete = $db->prepare('UPDATE usertypes SET ConsultNotifications=:ConsultNotifications CustomAutorisationsHouse=:CustomAutorisationsHouse CustomAutorisationsCaptor=:CustomAutorisationsCaptor WHERE UserTypeID=:UserTypeID');
+	
+	$requete->bindParam(':ConsultNotifications',$ConsultNotifications);
+	$requete->bindParam(':CustomAutorisationsHouse',$CustomAutorisationsHouse);
+	$requete->bindParam(':CustomAutorisationsCaptor',$CustomAutorisationsCaptor);
+	$requete->bindParam(':UserTypeID',$UserTypeID);
+	
+	$requete->execute();
+	$requete->closeCursor();
+	//doSQL($db,'UPDATE usertypes SET 
+	//		ManageUsers='.$ManageUsers.' AddScenarios='.$AddScenarios.' AddNotifications='.$AddNotifications.' ManageHouses='.$ManageHouses.' 
+	//		ConsultNotifications='.$ConsultNotifications.' CustomAutorisationsHouse='.$CustomAutorisationsHouse.' CustomAutorisationsCaptor='.$CustomAutorisationsCaptor.' WHERE UserTypeID='.$UserTypeID);
+	
+	
+	
+}
+
 ?>

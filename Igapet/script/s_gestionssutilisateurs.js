@@ -19,7 +19,6 @@ var d= document.querySelectorAll('.userBlock');
 for(var i=0;i<d.length;i++)
 {
 	d[i].addEventListener("click",function(){
-		console.log(this);
 		if (this !== event.target) return;
 		loadUserType(this);
 	},false);
@@ -159,12 +158,7 @@ function loadUserType(elmnt){
 		d = elmnt.attributes.userID.value;
 	p.setAttribute('value',d);
 	p.setAttribute('Name','LoadFormUserID');
-	
-	if (elmnt.attributes.userID != undefined)
-	{
-		console.log("a");
-	}
-	console.log(elmnt.attributes.userID);
+	p.setAttribute('type','hidden');
 	
 	f.appendChild(p);
 	document.querySelector('#geressutilisateur').appendChild(f);
@@ -178,7 +172,7 @@ function loadForm(a){
 	document.querySelector('#P2').parentElement.removeChild(document.querySelector('#P2'));
 	document.querySelector('#P3').parentElement.removeChild(document.querySelector('#P3'));
 	document.querySelector('#P0').parentElement.removeChild(document.querySelector('#P0'));
-	
+	document.querySelector('#sender').attributes.value.value = "modifier";
 	for (var key in a)
 	{
 		
@@ -216,31 +210,63 @@ function loadForm(a){
 			case "CustomAutorisationsCaptor":
 				document.querySelector('#autorisationListCaptor').setAttribute('value',a[key]);
 				break;
-			
+			case "UserID":
+				var i = document.createElement('input');
+				i.setAttribute('type','hidden');
+				i.setAttribute('value',a[key]);
+				i.setAttribute('Name',key);
+				document.querySelector('#form').appendChild(i);
+				break;
+				
 			
 			
 		}
 	}
-	loadAutorisationFromH();
+	loadAutorisationFromH(a);
 }
 
 
-function loadAutorisationFromH(){
+function loadAutorisationFromH(UserInf){
 	var a = document.querySelector('#autorisationListHouse').attributes.value.value.split("-");
 	console.log(a);
 	for(var i in a)
 	{
 		var node = document.createElement('div');
 		node.className = "autorisationBlock";
-		node.name = i;
-		node.innerHTML = selecteur.getElementsByTagName('option')[selecteur.selectedIndex].innerHTML;
+		node.name = a[i];
+		node.innerHTML = UserInf[a[i]];
+		var del = document.createElement('div');
+		del.className = "delete";
+		
+		node.appendChild(del);
+		document.querySelector('#autorisation').appendChild(node);
+	}
+	
+	var a = document.querySelector('#autorisationListCaptor').attributes.value.value.split("-");
+	console.log(a);
+	for(var i in a)
+	{
+		var node = document.createElement('div');
+		node.className = "autorisationBlock";
+		node.name = a[i];
+		node.innerHTML = UserInf[a[i]];
 		
 		var del = document.createElement('div');
 		del.className = "delete";
 		
 		node.appendChild(del);
-		doc.appendChild(node);
+		document.querySelector('#autorisation').appendChild(node);
 	}
 	
+	for(var i=0;i<document.getElementById("autorisation").getElementsByClassName('autorisationBlock').length;i++){
+		document.getElementById("autorisation").getElementsByClassName('autorisationBlock')[i].querySelector('.delete').addEventListener("click",function(){
+			deletionHouse(this.parentElement);
+		});
+	}
+	for(var i=0;i<doc.getElementsByClassName('autorisationBlock').length;i++){
+	doc.getElementsByClassName('autorisationBlock')[i].querySelector('.delete').addEventListener("click",function(){
+		deletionCaptor(this.parentElement);
+	});
+	}
 	
 }

@@ -40,6 +40,7 @@ function getSQL(PDO $db,$sql)
 
 function doSQL(PDO $db,$sql)
 {
+	var_dump($sql);
 	try{
 		$req = $db->prepare($sql);
 		$req->execute();

@@ -8,7 +8,7 @@
 <div id="geressutilisateur">
     <div class="modification">
         <div class="ajout">
-			<form action="controls/c_inscription.php" method="post">
+			<form action="controls/c_inscription.php" method="post" id="form">
 				<h4>Paramètres du compte sous utilisateur</h4>
 			    <label for="Name">Nom du sous-compte : </label>
 				<input type="text" name="Name" id="N"><br/><br/>
@@ -59,7 +59,7 @@
 				<input type="hidden" id="autorisationListHouse" value="" name="CustomAutorisationsHouse">
 				<input type="hidden" id="autorisationListCaptor" value="" name="CustomAutorisationsCaptor">
 				<input type="hidden" name="type" value="sousutilisateur" id="SU">
-				<input type="submit" value="Ajouter">
+				<input type="submit" value="Ajouter" id="sender">
 			</form>
         </div>
         <div id="autorisation">
@@ -83,17 +83,48 @@
 </div>
 
 <script>
+
 	<?php 
 	if (isset($_POST['LoadFormUserID']) && !empty($_POST['LoadFormUserID'])){
-		$UserTypeID = getSQL($db,"SELECT Mail,UserTypeID FROM users WHERE UserID=".$_POST['LoadFormUserID'])[0];
+		$UserTypeID = getSQL($db,"SELECT Mail,UserTypeID,UserID FROM users WHERE UserID=".$_POST['LoadFormUserID'])[0];
 		$donnees = getSQL($db,"SELECT * FROM usertypes WHERE UserTypeID=".$UserTypeID['UserTypeID'])[0];
 		$donnees['Name'] = $UserTypeID['Mail'];
-		echo('console.log('.json_encode(
+		$donnees['UserID'] = $UserTypeID['UserID'];
+		$a = explode("-",$donnees['CustomAutorisationsHouse']);
+		
+		if (count($a) != 1 && $a[0] != "")
+		{
+		foreach($a as $b){
+			$b = ltrim($b,"H");
+			$donnees["H".$b] = getSQL($db,"SELECT Name FROM houses WHERE HouseID=".$b)[0]['Name'];
+		}
+		}
+		
+		$a = explode("-",$donnees['CustomAutorisationsCaptor']);
+		$ac = getSQL($db,"SELECT ActuatorName,ActuatorTypeID FROM actuatortypes");
+		$ca = getSQL($db,"SELECT CaptorName,CaptorTypeID FROM captortypes");
+		foreach($a as $b){
+			foreach($ac as $r){
+				if ("A".$r['ActuatorTypeID'] == $b)
+				{
+					$donnees[$b] = $r['ActuatorName'];
+					break;
+				}
+			}
+			foreach($ca as $t){
+				if ("C".$t['CaptorTypeID'] == $b)
+				{
+					$donnees[$b] = $t['CaptorName'];
+					break;
+				}
+			}
+		}
+		
+		
 		echo ('var UserInformation = '.json_encode($donnees).';');
 	}
 	?>
 </script>
-
 
 <script src="script/s_gestionssutilisateurs.js"></script>
 
