@@ -3,7 +3,12 @@
     include("controls/c_config.php");
     // Redirection en fonction de l'URL
     if(isset($_GET['pageAction']) && file_exists("vues/".$_GET["pageAction"].".php")){
-		include("vues/".$_GET['pageAction'].".php");
+        if(isset($_SESSION['UserID'])){
+		    include("vues/".$_GET['pageAction'].".php");
+        }
+        else{
+            include('vues/v_connexion.php');
+        }
     }
     else if(empty($_GET['pageAction'])) {
         include('vues/v_connexion.php');

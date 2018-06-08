@@ -23,20 +23,20 @@
 		}
 		?>
 	</select>
-</form>	
+</form>
 
-				<select name="RoomID" >
-					<?php
-					$f= (int) getSQL($db,"SELECT NumberOfFloor FROM houses WHERE HouseID=".$_SESSION['HouseID'])[0]["NumberOfFloor"];
-					for($i=1;$i<$f+1;$i++){
-						echo '<option value="'.$i.'"';
-						if ($_SESSION["Floor"] == $i){
-							echo " selected";					
-						}
-						echo '>'.$i.'</option>';
-					}
-					?>
-				</select>
+<select name="RoomID" >
+    <?php
+    $f= (int) getSQL($db,"SELECT NumberOfFloor FROM houses WHERE HouseID=".$_SESSION['HouseID'])[0]["NumberOfFloor"];
+    for($i=1;$i<$f+1;$i++){
+        echo '<option value="'.$i.'"';
+        if ($_SESSION["Floor"] == $i){
+            echo " selected";
+        }
+        echo '>'.$i.'</option>';
+    }
+    ?>
+</select>
 
 <form action="controls/c_inscription.php" method="post">
 	<select id="Piece" name="RoomID">

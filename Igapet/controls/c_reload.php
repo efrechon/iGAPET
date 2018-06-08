@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 
 if (isset($_POST["HouseID"])){
@@ -8,3 +6,4 @@ if (isset($_POST["HouseID"])){
 	header('Location:../index.php?pageAction=v_ajoutercapteur');
 }
 echo "error";
+?>

@@ -19,4 +19,12 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
     margin: 10px 0 5px -350px;
 }
 
+.first{
+    margin: 0 auto;
+}
+
+input[type='checkbox']{
+    justify-content: left;
+    text-align: left;
+}
 

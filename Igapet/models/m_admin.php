@@ -63,4 +63,31 @@ function envoi_panne($db){
 
     $requete->execute();
 }
+
+function inscription_administrateur($db){
+    // Récupération des valeurs
+    $FirstName= $_POST["FirstName"];
+    $LastName= $_POST["LastName"];
+    $Mail= $_POST["Mail"];
+    $CreationDate= date('Y-m-d');
+    $UserPassword = password_hash($_POST['UserPassword'], PASSWORD_BCRYPT);
+    $Phone= $_POST['Phone'];
+    $UserTypeID= -1;
+    $NbrConnexion= 0;
+    // Préparation de la requete SQL
+    $requete= $db->prepare('INSERT INTO users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES(:FirstName,:LastName,:Mail,:CreationDate,:UserPassword,:UserTypeID,:Phone,:NbrConnexion)');
+
+    // Affectation des valeurs
+    $requete->bindParam('FirstName',$FirstName);
+    $requete->bindParam('LastName',$LastName);
+    $requete->bindParam(':Mail',$Mail);
+    $requete->bindParam(':CreationDate',$CreationDate);
+    $requete->bindParam(':UserPassword',$UserPassword);
+    $requete->bindParam(':UserTypeID',$UserTypeID);
+    $requete->bindParam(':NbrConnexion',$NbrConnexion);
+    $requete->bindParam('Phone',$Phone);
+
+    // Execution de la requete
+    $requete->execute();
+}
 ?>

@@ -59,9 +59,15 @@
                 $requeteC= $db->query("SELECT * FROM captortypes");
                 while($donnessC= $requeteC->fetch()){
                     $url= $donnessC['url_img'];
+                    $id= $donnessC['CaptorTypeID'];
                     echo '<div class="bilan">'.$donnessC['CaptorName'].'<br/>';
                     echo '<img src='."$url".'><br/>';
-                    echo 'Moyenne : '.$donnessC['Unit'].'<br/>';
+                    echo 'Moyenne : ';
+                    $requete2=$db->query("SELECT AVG(Value) as avg FROM captors WHERE CaptorTypeId=$id AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID=13)");
+                    while($donnees=$requete2->fetch()){
+                        echo number_format($donnees['avg'],1);
+                    }
+                    echo $donnessC['Unit'].'<br/>';
                     echo 'Consigne : <input type="number"><br/>';
                     echo '<input type="submit" value="Envoyer">';
                     echo '</div>';

@@ -5,17 +5,20 @@ include('../models/m_admin.php');
 
 if (isset($_POST["type"])) {
     switch ($_POST["type"]) {
-        case "type_capteur";
+        case "type_capteur":
             ajouter_type_capteur($db);
         break;
-        case"type_actionneur";
+        case "type_actionneur":
             ajouter_type_actionneur($db);
         break;
-        case"message";
+        case "message":
             envoyer_message($db);
         break;
-        case"sav":
+        case "sav":
             rapport_panne($db);
+        break;
+        case "administrateur":
+            ajouter_administrateur($db);
         break;
     }
 }
@@ -52,5 +55,16 @@ function rapport_panne($db){
         envoi_panne($db);
         header('Location:../index.php?pageAction=v_sav');
     }
+}
+
+function ajouter_administrateur($db){
+    if(isset($_POST['FirstName'], $_POST['LastName'], $_POST['Mail'], $_POST['UserPassword'], $_POST['UserPassword2']) AND verification_password()){
+        inscription_administrateur($db);
+        header('Location:../index.php?pageAction=v_admin_accueil');
+    }
+    else{
+        header('Location:../index.php?pageAction=v_admin_utilisateur');
+    }
+
 }
 ?>

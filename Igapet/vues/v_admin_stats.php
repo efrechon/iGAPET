@@ -23,7 +23,7 @@
         echo 'Il y a '.$nbr['nbr']." utilisateurs d'inscrit sur le site.<br/><br/>";
         $requeteavg=$db->query("SELECT AVG(NbrConnexion) as avg FROM users WHERE UserTypeID!=1");
         $avg=$requeteavg->fetch();
-        echo 'Moyenne de connexion : '.$avg['avg'].'<br/><br/>';
+        echo 'Moyenne de connexion : '.number_format($avg['avg'],1).'<br/><br/>';
         $requetemin=$db->query("SELECT MIN(NbrConnexion) as min FROM users  WHERE UserTypeID!=1");
         $min=$requetemin->fetch();
         echo 'Minimum de connexion : ' .$min['min'].'<br/><br/>';
@@ -33,6 +33,20 @@
         $requetedate=$db->query("SELECT MAX(CreationDate) as date FROM users WHERE UserTypeID=2");
         $date=$requetedate->fetch();
         echo 'Dernière inscription : '.$date['date'].'<br/><br/>';
+        $requetemaison=$db->query("SELECT UserID FROM users WHERE UserTypeID!=1");
+        $compteur= 0;
+        $tab= 0;
+        while($maison=$requetemaison->fetch()){
+            $idUser= $maison['UserID'];
+            $requetemaison2=$db->query("SELECT COUNT(HouseID) as nbrMaison FROM houses WHERE UserID=$idUser");
+            while($maison2= $requetemaison2->fetch()){
+                $tab += $maison2['nbrMaison'];
+                $compteur +=1;
+            }
+            $avgmaison = $tab/$compteur;
+        }
+        echo 'Nombre de maison moyen par utilisateur : '.number_format($avgmaison,1).'<br/><br/>';
+        //echo 'Nombre de capteur moyen par utilisateur : <br/><br/>';
         ?>
     </div>
     <div class="demi">

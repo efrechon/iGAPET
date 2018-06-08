@@ -87,4 +87,50 @@ function is_utilisateur(){
     }
 }
 
+function verification_mail($db){
+    if (isset($_POST['Mail']) && isset($_POST['Mail2']) && $_POST['Mail'] != NULL) {
+        if ($_POST['Mail'] != $_POST['Mail2']) {
+            $_SESSION["erreurInscription"] = 'Les deux mails doivent être identiques !';
+            return false;
+        } else {
+            if(verification_existence_mail($db)== 'OK'){
+                return true;
+            }
+            else{
+                $_SESSION["erreurInscription"] = "Ce mail existe déja";
+                return false;
+            }
+        }
+    } else {
+        $_SESSION["erreurInscription"] = "veuillez remplir le champ Mail";
+        return false;
+    }
+}
+
+function verification_password(){
+    //if(preg_match('#^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$#', $_POST['UserPassword']){
+    if (isset($_POST['UserPassword']) && isset($_POST['UserPassword2']) && $_POST['UserPassword'] != NULL){
+        if($_POST['UserPassword'] != $_POST['UserPassword2']){
+            $_SESSION["erreurInscription"] = 'Les deux mots de passe doivent être identiques !';
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    else
+    {
+        $_SESSION["erreurInscription"] = "Veuillez remplir le champ Mot de passe ";
+        return false;
+    }
+}
+
+function verification_cgu(){
+    if (isset($_POST['cgu']))
+        return true;
+    $_SESSION["erreurInscription"] = "Veuillez accepter les cgu";
+    return false;
+
+}
+
 ?>

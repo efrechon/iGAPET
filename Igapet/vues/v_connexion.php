@@ -27,7 +27,6 @@
 					echo $_SESSION["erreurConnection"];
 					unset($_SESSION["erreurConnection"]);
 				}
-				
 				?>
 				<br/>
                 <input type="submit" value="Se connecter">
@@ -51,7 +50,6 @@
 					echo $_SESSION["erreurInscription"];
 					unset($_SESSION["erreurInscription"]);
 				}
-				
 				?>
 				<br/>
                 <input type="submit" value="S'inscrire">

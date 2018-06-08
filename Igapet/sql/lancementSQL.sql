@@ -1,9 +1,9 @@
 IF EXISTS(select * from sys.databases where name='IGAPET');
 DROP DATABASE IGAPET;
 
-CREATE DATABASE test;
+CREATE DATABASE IGAPET;
 
-USE test;
+USE IGAPET;
 
 CREATE TABLE Users(
 	UserID int PRIMARY KEY AUTO_INCREMENT,
@@ -96,19 +96,21 @@ CREATE TABLE Page(
 	PageContent TEXT
 );
 
-CREATE TABLE Historic(
-	HistoicID int PRIMARY KEY AUTO_INCREMENT,
-	CaptorID int,
-	Value varchar(255),
-	Date datetime
-);
-
 CREATE TABLE Messagerie(
   MessagerieID int PRIMARY KEY AUTO_INCREMENT,
   Correspondant varchar(255),
   Objet varchar(255),
   Demande text,
   Dare datetime
+);
+
+CREATE TABLE Trames(
+  TrameID int PRIMARY KEY AUTO_INCREMENT,
+  CaptorType varchar(1),
+  CaptorNumber varchar(2),
+  Value varchar(16),
+  TrameNumber varchar(4),
+  Date datetime
 );
 
 INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Nicolas', 'Terru', 'nicolas.terru@gmail.com', '2018-05-10', '$2y$10$Q9e2escHubQahsHFeT01re7h9.0gGjqu3GHf5Ej2zXQzy9CkhoK.2', 2, '+33678940312', 20);
