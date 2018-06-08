@@ -19,7 +19,7 @@
             }
             ?>
         </select>
-        <input type="submit" value="Valider">
+        <input type="submit" id="boutonValider" value="Valider">
     </form>
 </div>
 <div id="affichageActionneur">

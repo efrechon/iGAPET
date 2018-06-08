@@ -78,6 +78,7 @@ input[type="submit"] {
     border: 1px solid #00A4E1;
     background-color: white;
     padding: 2%;
+    outline-style:none;
 }
 
 input[type="submit"]:hover {

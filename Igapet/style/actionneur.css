@@ -1,7 +1,21 @@
 #selection{
     height: 5%;
     border-bottom: 2px solid gray;
-    padding: 0;
+    padding-bottom: 0.5%;
+}
+
+#boutonValider {
+    border-radius: 25px;
+    border: 1px solid #00A4E1;
+    background-color: white;
+    padding: 0.4%;
+    outline-style:none;
+}
+
+#boutonValider:hover {
+    border: 1px solid #00A4E1;
+    background-color: #00A4E1;
+    color: white;
 }
 
 .actionneurM{

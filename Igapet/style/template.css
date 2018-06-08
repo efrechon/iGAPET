@@ -44,15 +44,11 @@ input[type="submit"] {
     border: 1px solid #00A4E1;
     background-color: white;
     padding: 1%;
+    outline-style:none;
 }
 
 input[type="submit"]:hover {
     border: 1px solid #00A4E1;
     background-color: #00A4E1;
     color: white;
-}
-
-input[type="submit"]:active {
-    border-radius: 25px;
-    background-color: red;
 }

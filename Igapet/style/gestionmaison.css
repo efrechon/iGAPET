@@ -20,6 +20,22 @@
     border: 1px solid #00A4E1;
 }
 
+.ajouter {
+    margin-bottom: 5%;
+    border-radius: 25px;
+    border: 1px solid #00A4E1;
+    background-color: white;
+    padding: 2%;
+    outline-style:none;
+}
+
+.ajouter:hover {
+    border: 1px solid #00A4E1;
+    background-color: #00A4E1;
+    color: white;
+}
+
+
 ul{
     text-align: left;
 }
