@@ -11,48 +11,39 @@
 				    <?php
                     echo '<input type="checkbox" name="Partout">'.'Partout'.'<br/>';
                     ?>
-            <select name="HouseID" onchange='this.form.submit()'>
+                    
+                    
+                    <select id="HouseSelect">
+					<option value='' disabled selected>Choisir une maison spécifique</option>
 					<?php
-					if (!isset($_SESSION["HouseID"])){
-						echo "<option value='' disabled selected>Choisir la maison</option>";
-					}
-					$donnees= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+					$donnees= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['UserID']);
 					foreach($donnees as $d){
-						echo '<option value="'.$d['HouseID'].'"';
-						if (isset($_SESSION["HouseID"]) && $_SESSION["HouseID"] == $d['HouseID']){
-							echo " selected";					
-						}
-						echo '>'.$d['Name'].'</option>';
+						echo '<option value='.$d['HouseID'].'>'.$d['Name'].'</option></br>';
 					}
 					?>
-            </select>
+				</select>
+				<button type="button" onclick='AjHouse()'> + </button>
+				<br/><br/>
+                <input type="hidden" id="selectionHList" value="a" name="selections">
+                
+                
+                <select id="RoomSelect">
+					<option value='' disabled selected>Choisir une pièce spécifique</option>
+					<?php
+					$donnees= getSQL($db,"SELECT Name, RoomID FROM rooms WHERE HouseID=".$_SESSION['HouseID']);
+					foreach($donnees as $d){
+						echo '<option value='.$d['RoomID'].'>'.$d['Name'].'</option></br>';
+					}
+					?>
+				</select>
+				<button type="button" onclick='AjRoom()'> + </button>
+				</br></br>
+                <input type="hidden" id="selectionRList" value="a" name="selections">
+                
+                
 
-            <?php
-                    echo '<input type="checkbox" name="ajoutH">'.'ajouter'.'<br/>';
-                    ?>
-                    
-                    
-                    <?php 
-                    $id= $_SESSION['UserID'];
-                    $requeteM= $db->query("SELECT Name,HouseID FROM Houses WHERE UserID=$id");
-                    while($donneesM= $requeteM->fetch()){
-                        $idhome= $donneesM['HouseID'];
-                        $requeteP= $db->query("SELECT Name,RoomID FROM Rooms WHERE HouseID=$idhome");
-                        echo '<select id="Piece" name="localisationP">';
-                        while($donneesP = $requeteP->fetch()){
-                            $piece= $donneesP['Name'];
-                            $idp= $donneesP['RoomID'];
-                            echo '<option value='."$idp".'>'.$piece.'</option><br/>';
-                        }
-                    }
-            ?>
-            <?php
-                echo '<input type="checkbox" name="ajoutH">'.'ajouter'.'<br/>';
-            ?><br/>
-            <div style=" overflow:scroll;width:50%; height:20%; border:#000000 1px solid; margin-left:24%;" class="liste">            
-                <h4>Maisons/pièces sélectionnées</h4>
-
-            </div>
+                <div id="selectionH">
+                </div>
                 <h4 for="typeA">Type d'actionneur</h4>
     <?php 
     $donnees = getSQL($db,"SELECT ActuatorName, ActuatorTypeID FROM actuatortypes");
@@ -68,19 +59,23 @@
                 <?php
                     echo '<input type="checkbox" name="Permanent">'.'En permanence'.'<br/>'.'<br/>';
                     ?>
-
                     <label for="datedeb">Date de départ : </label>
-                    <input type="Date de départ" name="datedeb"><br/><br/>
-                    <label for="heuredeb">Heure &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </label>
-                    <input type="Heure" name="heuredeb"><br/><br/>
+                    <input id="datedeb" type="date">
+                    <br/>
+                    <label for="heuredeb">Heure de départ : </label>
+                    <input id="heuredeb" type="time">
+                    <br/>
                     <label for="datefin">Date de fin : </label>
-                    <input type="Date de fin" name="datefin"><br/><br/>
-                    <label for="heurefin">Heure: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input type="Heure" name="heurefin"><br/><br/>
+                    <input id="datefin" type="date">
+                    <br/>
+                    <label for="heurefin">Heure de fin : </label>
+                    <input id="heurefin" type="time">
+                    <br/>
 
             </div>
             
     <br/>
+
     <input type="submit" value="Ajouter le scénario">
     </div>
 
@@ -88,6 +83,9 @@
         <h3>Calendrier</h3>
     </div>
 </div>
+
+<script src="script/s_scenarios.js"></script>
+
 <!-- Fin & Affectation du contenu de la page -->
 <?php $contenu=ob_get_clean(); ?>
 
