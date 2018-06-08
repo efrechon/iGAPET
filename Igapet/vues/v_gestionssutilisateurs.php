@@ -11,12 +11,12 @@
 			<form action="controls/c_inscription.php" method="post">
 				<h4>Paramètres du compte sous utilisateur</h4>
 			    <label for="Name">Nom du sous-compte : </label>
-				<input type="text" name="Name"><br/><br/>
-			    <label for="UserPassword">Mot de passe: </label>
-				<input type="password" name="UserPassword"><br/><br/>	
-				<label for="UserPassword2">Confirmer le mot de passe: </label>
-				<input type="password" name="UserPassword2"><br/><br/>	
-				<input type="checkbox" name="ConsulterToutesMaisons">
+				<input type="text" name="Name" id="N"><br/><br/>
+			    <label for="UserPassword" id="P0">Mot de passe: </label>
+				<input type="password" name="UserPassword" id ="P1"><br/><br/>	
+				<label for="UserPassword2" id="P3">Confirmer le mot de passe: </label>
+				<input type="password" name="UserPassword2" id="P2"><br/><br/>	
+				<input type="checkbox" name="ConsulterToutesMaisons" id="CM">
 				<label for="ConsulterToutesMaisons">Consulter mes maisons </label><br/><br/>	
 				<select id="HouseSelect">
 					<option value='' disabled selected>Choisir une maison spécifique</option>
@@ -29,7 +29,7 @@
 				</select>
 				<button type="button" onclick='AddHouse()'> + </button>
 				<br/><br/>	
-				<input type="checkbox" name="ConsulterTousCapteurs">
+				<input type="checkbox" name="ConsulterTousCapteurs" id="CC">
 				<label for="ConsulterTousCapteurs">Consulter ou utiliser mes capteurs </label>
 				<select id="CaptorSelect">
 					<option value='' disabled selected>Choisir un type de capteur spécifique</option>
@@ -46,19 +46,19 @@
 				</select>
 				<button type="button" onclick='AddCaptor()'> + </button>
 				<br/><br/>	
-				<input type="checkbox" name="AddScenarios">
+				<input type="checkbox" name="AddScenarios" id="AS">
 				<label for="AddScenarios">Planifier des scénarios </label><br/><br/>	
-				<input type="checkbox" name="AddNotifications">
+				<input type="checkbox" name="AddNotifications" id="AN">
 				<label for="AddNotifications">Ajouter des notifications </label><br/><br/>	
-				<input type="checkbox" name="ConsultNotifications">
+				<input type="checkbox" name="ConsultNotifications" id="CN">
 				<label for="ConsultNotifications">Consulter les notifications </label><br/><br/>	
-				<input type="checkbox" name="ManageUsers">
+				<input type="checkbox" name="ManageUsers" id="MU">
 				<label for="ManageUsers">Gérer les sous utilisateurs </label><br/><br/>	
-				<input type="checkbox" name="ManageHouses">
+				<input type="checkbox" name="ManageHouses" id="MH">
 				<label for="ManageHouses">Gérer les maisons </label><br/><br/>	
 				<input type="hidden" id="autorisationListHouse" value="" name="CustomAutorisationsHouse">
 				<input type="hidden" id="autorisationListCaptor" value="" name="CustomAutorisationsCaptor">
-				<input type="hidden" name="type" value="sousutilisateur">
+				<input type="hidden" name="type" value="sousutilisateur" id="SU">
 				<input type="submit" value="Ajouter">
 			</form>
         </div>
@@ -69,7 +69,7 @@
     <div class="resume">
         <h4>Liste sous utilisateur</h4>
 		<?php 
-			$donnees = getSQL($db,"SELECT * FROM usertypes WHERE ParentUserID=".$_SESSION['UserID']);
+			$donnees = getSQL($db,"SELECT * FROM usertypes WHERE ParentUserID=".$_SESSION['UserID']);	
 			foreach($donnees as $d)
 			{
 				$u = getSQL($db,"SELECT * FROM users WHERE UserTypeID=".$d['UserTypeID']);
@@ -80,14 +80,15 @@
 			<input type="hidden" value="" name="UserID" id="delinput">
 		</form>
     </div>
-	<?php var_dump($_POST) ?>
 </div>
 
 <script>
 	<?php 
 	if (isset($_POST['LoadFormUserID']) && !empty($_POST['LoadFormUserID'])){
-		$UserTypeID = getSQL($db,"SELECT UserTypeID FROM users WHERE UserID=".$_POST['LoadFormUserID'])[0]['UserTypeID'];
-		$donnees = getSQL($db,"SELECT * FROM usertypes WHERE UserTypeID=".$UserTypeID);
+		$UserTypeID = getSQL($db,"SELECT Mail,UserTypeID FROM users WHERE UserID=".$_POST['LoadFormUserID'])[0];
+		$donnees = getSQL($db,"SELECT * FROM usertypes WHERE UserTypeID=".$UserTypeID['UserTypeID'])[0];
+		$donnees['Name'] = $UserTypeID['Mail'];
+		echo('console.log('.json_encode(
 		echo ('var UserInformation = '.json_encode($donnees).';');
 	}
 	?>

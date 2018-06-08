@@ -19,7 +19,8 @@ var d= document.querySelectorAll('.userBlock');
 for(var i=0;i<d.length;i++)
 {
 	d[i].addEventListener("click",function(){
-		if (d[i] !== event.target) return;
+		console.log(this);
+		if (this !== event.target) return;
 		loadUserType(this);
 	},false);
 }
@@ -172,10 +173,73 @@ function loadUserType(elmnt){
 }
 
 function loadForm(a){
-	console.log(a);
-	for (var i=0;i<a.length;i++)
+	
+	document.querySelector('#P1').parentElement.removeChild(document.querySelector('#P1'));
+	document.querySelector('#P2').parentElement.removeChild(document.querySelector('#P2'));
+	document.querySelector('#P3').parentElement.removeChild(document.querySelector('#P3'));
+	document.querySelector('#P0').parentElement.removeChild(document.querySelector('#P0'));
+	
+	for (var key in a)
 	{
-		console.log(a[i]);
+		
+		if (!a.hasOwnProperty(key)) continue;
+		
+		switch(key){
+			case "Name":
+				document.querySelector('#N').setAttribute('value',a[key]);
+				break;
+			case "UserTypeID":
+			case "ParentUserID":
+			case "ManageUsers":
+				if (a[key] == 1)
+				document.querySelector('#MH').checked = true;
+				break;
+			case "AddScenarios":
+				if (a[key] == 1)
+				document.querySelector('#AS').checked = true;
+				break;
+			case "AddNotifications":
+				if (a[key] == 1)
+				document.querySelector('#AN').checked = true;
+				break;
+			case "ConsultNotifications":
+				if (a[key] == 1)
+				document.querySelector('#CN').checked = true;
+				break;
+			case "ManageHouses":
+				if (a[key] == 1)
+				document.querySelector('#MH').checked = true;
+				break;
+			case "CustomAutorisationsHouse":
+				document.querySelector('#autorisationListHouse').setAttribute('value',a[key]);
+				break;
+			case "CustomAutorisationsCaptor":
+				document.querySelector('#autorisationListCaptor').setAttribute('value',a[key]);
+				break;
+			
+			
+			
+		}
+	}
+	loadAutorisationFromH();
+}
+
+
+function loadAutorisationFromH(){
+	var a = document.querySelector('#autorisationListHouse').attributes.value.value.split("-");
+	console.log(a);
+	for(var i in a)
+	{
+		var node = document.createElement('div');
+		node.className = "autorisationBlock";
+		node.name = i;
+		node.innerHTML = selecteur.getElementsByTagName('option')[selecteur.selectedIndex].innerHTML;
+		
+		var del = document.createElement('div');
+		del.className = "delete";
+		
+		node.appendChild(del);
+		doc.appendChild(node);
 	}
 	
 	

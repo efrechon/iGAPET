@@ -26,7 +26,7 @@ function getSQL(PDO $db,$sql)
 	//var_dump($sql);
 	try
 	{
-		$req = $db->prepare(htmlspecialchars($sql));
+		$req = $db->prepare($sql);
 		$req->execute();
 
 		$result = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -41,7 +41,7 @@ function getSQL(PDO $db,$sql)
 function doSQL(PDO $db,$sql)
 {
 	try{
-		$req = $db->prepare(htmlspecialchars($sql));
+		$req = $db->prepare($sql);
 		$req->execute();
 	}
 	catch(PDOException $e) 
@@ -55,7 +55,7 @@ function getOneSQL(PDO $db,$sql)
 {
 	try
 	{
-		$req = $db->prepare(htmlspecialchars($sql));
+		$req = $db->prepare($sql);
 		$req->execute();
 
 		$result = $req->fetch();
@@ -109,29 +109,40 @@ function getAllHouses($db){
 	
 }
 
-function getAllCaptors($db,$RoomID){
+function getAllCaptors($db,$sql){
 	if ($_SESSION['UserTypeID'] == 0){
-		return (getSQL($db,"SELECT * FROM captortypes"));
+		return (getSQL($db,"SELECT * FROM captors".$sql));
 	}
 	$d = getOneSQL($db,"SELECT ParentUserID,CustomAutorisationsCaptor FROM usertypes WHERE UserTypeID=".$_SESSION['UserTypeID']);
 	$donnees = getSQL($db,"SELECT * FROM captortypes");
 	
 	$autorisations = explode("-",$d['CustomAutorisationsCaptor']);
-	$return = array();
+	$cType = array();
 	foreach($donnees as $a)
 	{
 		foreach($autorisations as $b)
 		{
 			if ("C".$a['CaptorTypeID'] == $b)
 			{
-				array_push($return,$a);
+				array_push($cType,$a['CaptorTypeID']);
 				break;
 			}
 		}
 	}
 	
-	$captorList = getSQL($db,"SELECT * FROM captors WHERE RoomID=".$RoomID);
-	
+	$captorList = getSQL($db,"SELECT * FROM captors".$sql);
+	$return = array();
+	foreach ($captorList as $c)
+	{
+		foreach($cType as $a)
+		{
+			if ($c['CaptorTypeID'] == $a)
+			{
+				array_push($return,$c);
+				break;
+			}
+		}
+	}
 	
 	return $return;
 	
@@ -139,24 +150,38 @@ function getAllCaptors($db,$RoomID){
 
 function getAllActuators($db){
 	if ($_SESSION['UserTypeID'] == 0){
-		return (getSQL($db,"SELECT * FROM actuatortypes"));
+		return (getSQL($db,"SELECT * FROM actuators".$sql));
 	}
 	$d = getOneSQL($db,"SELECT ParentUserID,CustomAutorisationsCaptor FROM usertypes WHERE UserTypeID=".$_SESSION['UserTypeID']);
 	$donnees = getSQL($db,"SELECT * FROM actuatortypes");
 	
 	$autorisations = explode("-",$d['CustomAutorisationsCaptor']);
-	$return = array();
+	$aType = array();
 	foreach($donnees as $a)
 	{
 		foreach($autorisations as $b)
 		{
-			if ("A".$a['ActuatorTypeID'] == $b)
+			if ("A".$a['CaptorTypeID'] == $b)
 			{
-				array_push($return,$a);
+				array_push($aType,$a['CaptorTypeID']);
 				break;
 			}
 		}
 	}
+	$captorList = getSQL($db,"SELECT * FROM actuators".$sql);
+	$return = array();
+	foreach ($captorList as $c)
+	{
+		foreach($cType as $a)
+		{
+			if ($c['CaptorTypeID'] == $a)
+			{
+				array_push($return,$c);
+				break;
+			}
+		}
+	}
+	
 	return $return;
 }
 
