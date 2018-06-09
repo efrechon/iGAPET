@@ -243,19 +243,14 @@ function modifier_sous_utilisateur($db){
 			$CustomAutorisationsCaptor = $CustomAutorisationsCaptor."A".$d['ActuatorTypeId'];
 		}
 	}
-	$requete = $db->prepare('UPDATE usertypes SET ManageUsers=:ManageUsers AddScenarios=:AddScenarios AddNotifications=:AddNotifications ManageHouses=:ManageHouses WHERE UserTypeID=:UserTypeID');
+	$requete = $db->prepare('UPDATE usertypes SET ManageUsers=:ManageUsers,AddScenarios=:AddScenarios,AddNotifications=:AddNotifications,
+							ManageHouses=:ManageHouses,ConsultNotifications=:ConsultNotifications,CustomAutorisationsHouse=:CustomAutorisationsHouse,
+							CustomAutorisationsCaptor=:CustomAutorisationsCaptor WHERE UserTypeID=:UserTypeID');
 			
 	$requete->bindParam(':ManageUsers',$ManageUsers);
 	$requete->bindParam(':AddScenarios',$AddScenarios);
 	$requete->bindParam(':AddNotifications',$AddNotifications);
 	$requete->bindParam(':ManageHouses',$ManageHouses);
-	$requete->bindParam(':UserTypeID',$UserTypeID);
-	
-	$requete->execute();
-	$requete->closeCursor();
-	
-	$requete = $db->prepare('UPDATE usertypes SET ConsultNotifications=:ConsultNotifications CustomAutorisationsHouse=:CustomAutorisationsHouse CustomAutorisationsCaptor=:CustomAutorisationsCaptor WHERE UserTypeID=:UserTypeID');
-	
 	$requete->bindParam(':ConsultNotifications',$ConsultNotifications);
 	$requete->bindParam(':CustomAutorisationsHouse',$CustomAutorisationsHouse);
 	$requete->bindParam(':CustomAutorisationsCaptor',$CustomAutorisationsCaptor);

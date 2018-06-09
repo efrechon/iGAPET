@@ -7,10 +7,28 @@
         <a href='index.php?pageAction=v_accueil'><li class="onglet">Accueil</li></a>
         <a href='index.php?pageAction=v_vueensemble'--><li class="onglet">Vue d'ensemble</li></a>
         <a href='index.php?pageAction=v_capteurs'--><li class="onglet">Mes capteurs</li></a>
-        <a href='index.php?pageAction=v_scenarios'--><li class="onglet">Scénarios</li></a>
-        <a href='index.php?pageAction=v_notifications'--><li class="onglet">Notifications</li></a>
-        <a href='index.php?pageAction=v_gestionssutilisateurs'--><li class="onglet">Gérer les utilisateurs</li></a>
-        <a href='index.php?pageAction=v_gestionmaison'--><li class="onglet">Gérer les maisons</li></a>
+		<?php 
+		if (!isset($block) || $block['AddScenarios'] == 1 ){
+			
+				echo ("<a href='index.php?pageAction=v_scenarios'--><li class='onglet'>Scénarios</li></a>");
+		}
+		?>
+		<?php 
+		if (!isset($block) || $block['AddNotifications'] == 1 ){
+			
+				echo ("<a href='index.php?pageAction=v_notifications'--><li class='onglet'>Notifications</li></a>");
+		}
+		?>
+		<?php 
+		if (!isset($block) || $block['ManageUsers'] == 1 ){
+			echo ("<a href='index.php?pageAction=v_gestionssutilisateurs'--><li class='onglet'>Gérer les utilisateurs</li></a>");
+		}
+		?>
+		<?php 
+		if (!isset($block) || $block['ManageHouses'] == 1 ){
+			echo ("<a href='index.php?pageAction=v_gestionmaison'--><li class='onglet'>Gérer les maisons</li></a>");
+		}
+		?>
         <a href='index.php?pageAction=v_informations'--><li class="onglet">Informations</li></a>
         <a href='index.php?pageAction=v_sav'--> <li class="onglet">SAV</li></a>
         <br><br><br>

@@ -108,6 +108,7 @@ function AddCaptor(){
 function deletionHouse(elmnt){
 	var list = document.getElementById("autorisationListHouse");
 	var L = list.value.split("-");
+	console.log(L);
 	list.value="";
 	for (var i=0;i<L.length;i++)
 	{
@@ -186,7 +187,7 @@ function loadForm(a){
 			case "ParentUserID":
 			case "ManageUsers":
 				if (a[key] == 1)
-				document.querySelector('#MH').checked = true;
+				document.querySelector('#MU').checked = true;
 				break;
 			case "AddScenarios":
 				if (a[key] == 1)
@@ -227,35 +228,41 @@ function loadForm(a){
 
 
 function loadAutorisationFromH(UserInf){
-	var a = document.querySelector('#autorisationListHouse').attributes.value.value.split("-");
-	console.log(a);
-	for(var i in a)
+	if (document.querySelector('#autorisationListHouse').attributes.value.value != "")
 	{
-		var node = document.createElement('div');
-		node.className = "autorisationBlock";
-		node.name = a[i];
-		node.innerHTML = UserInf[a[i]];
-		var del = document.createElement('div');
-		del.className = "delete";
-		
-		node.appendChild(del);
-		document.querySelector('#autorisation').appendChild(node);
+		var a = document.querySelector('#autorisationListHouse').attributes.value.value.split("-");
+		console.log(a);
+		for(var i in a)
+		{
+			var node = document.createElement('div');
+			node.className = "autorisationBlock";
+			node.name = a[i];
+			node.innerHTML = UserInf[a[i]];
+			var del = document.createElement('div');
+			del.className = "delete";
+			
+			node.appendChild(del);
+			document.querySelector('#autorisation').appendChild(node);
+		}
 	}
 	
-	var a = document.querySelector('#autorisationListCaptor').attributes.value.value.split("-");
-	console.log(a);
-	for(var i in a)
+	if (document.querySelector('#autorisationListCaptor').attributes.value.value != "")
 	{
-		var node = document.createElement('div');
-		node.className = "autorisationBlock";
-		node.name = a[i];
-		node.innerHTML = UserInf[a[i]];
-		
-		var del = document.createElement('div');
-		del.className = "delete";
-		
-		node.appendChild(del);
-		document.querySelector('#autorisation').appendChild(node);
+		var a = document.querySelector('#autorisationListCaptor').attributes.value.value.split("-");
+		console.log(a);
+		for(var i in a)
+		{
+			var node = document.createElement('div');
+			node.className = "autorisationBlock";
+			node.name = a[i];
+			node.innerHTML = UserInf[a[i]];
+			
+			var del = document.createElement('div');
+			del.className = "delete";
+			
+			node.appendChild(del);
+			document.querySelector('#autorisation').appendChild(node);
+		}
 	}
 	
 	for(var i=0;i<document.getElementById("autorisation").getElementsByClassName('autorisationBlock').length;i++){
@@ -263,8 +270,8 @@ function loadAutorisationFromH(UserInf){
 			deletionHouse(this.parentElement);
 		});
 	}
-	for(var i=0;i<doc.getElementsByClassName('autorisationBlock').length;i++){
-	doc.getElementsByClassName('autorisationBlock')[i].querySelector('.delete').addEventListener("click",function(){
+	for(var i=0;i<document.getElementById("autorisation").getElementsByClassName('autorisationBlock').length;i++){
+			document.getElementById("autorisation").getElementsByClassName('autorisationBlock')[i].querySelector('.delete').addEventListener("click",function(){
 		deletionCaptor(this.parentElement);
 	});
 	}
