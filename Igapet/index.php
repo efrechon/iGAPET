@@ -17,3 +17,5 @@
     }
 
 ?>
+
+<script src="script/request.js"></script>

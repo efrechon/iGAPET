@@ -130,7 +130,7 @@ function ajouter_piece($db){
     }
     else{
 		$_SESSION["erreurAjoutPiece"] = "Veuillez remplir tous les champs";
-        header('Location: ../index.php?pageAction=v_ajouterpiece');
+        //header('Location: ../index.php?pageAction=v_ajouterpiece');
     }
 }
 

@@ -64,6 +64,12 @@
         </div>
         <div id="autorisation">
             <h4>Autorisations</h4>
+			<h5> Maisons </h5>
+			<div id="autorisationHouse">
+			</div>
+			<h5> Capteurs </h5>
+			<div id="autorisationCaptor">
+			</div>
         </div>
     </div>
     <div class="resume">
@@ -91,8 +97,7 @@
 		$donnees['Name'] = $UserTypeID['Mail'];
 		$donnees['UserID'] = $UserTypeID['UserID'];
 		$a = explode("-",$donnees['CustomAutorisationsHouse']);
-		
-		if (count($a) != 1 && $a[0] != "")
+		if (count($a) != 1 || $a[0] != "")
 		{
 		foreach($a as $b){
 			$b = ltrim($b,"H");

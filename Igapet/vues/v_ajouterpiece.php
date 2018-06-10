@@ -26,7 +26,7 @@
     <label for="Height">Longueur : </label>
     <input type="number" name="Height" min="0"><br/><br/>
     <label for="Floor">Etage : </label>
-    <select id="FLoorSelector">
+    <select id="FLoorSelector" name='Floor'>
 	
 	</select>
 	<input type="hidden" value="piece" name="type">
