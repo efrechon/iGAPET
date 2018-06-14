@@ -5,7 +5,12 @@
     if(isset($_SESSION['UserID']) && isset($_GET['pageAction']) && file_exists("vues/".$_GET["pageAction"].".php")){
 		$UTID = getSQL($db,"SELECT UserTypeID FROM users WHERE UserID=".$_SESSION['UserID'])[0]['UserTypeID'];
 		if ($UTID > 0)
-			$block = getSQL($db,"SELECT * FROM usertypes WHERE UserTypeID=".$UTID)[0];
+		{
+			$tempo = getSQL($db,"SELECT * FROM usertypes WHERE UserTypeID=".$UTID);
+			if (count($tempo) != 0)	
+				$block = $tempo[0];
+			
+		}
 		include("vues/".$_GET['pageAction'].".php");
     }
     else if(empty($_GET['pageAction']) || !isset($_SESSION['UserID'])) {
@@ -17,5 +22,3 @@
     }
 
 ?>
-
-<script src="script/request.js"></script>

@@ -1,6 +1,12 @@
 * {
-    font-family: "Arial";
+    font-family: "Raleway";
 }
+
+@font-face{
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf');
+}
+
 
 h1{
     margin-left: 25%;
@@ -72,6 +78,7 @@ input[type="submit"] {
     border: 1px solid #00A4E1;
     background-color: white;
     padding: 2%;
+    outline-style:none;
 }
 
 input[type="submit"]:hover {

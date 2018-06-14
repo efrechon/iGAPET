@@ -24,7 +24,6 @@ function authentification($db){ //connecte
 	else{
 		return false;
 	}
-    
 }
 
 function connect($db){ // définit les $_session
@@ -47,7 +46,8 @@ function connect($db){ // définit les $_session
 	$_SESSION['HouseID'] = $donnees2['HouseID'];
 	$_SESSION['Floor'] = 1;
 	$NbrConnexion = $donnees["NbrConnexion"];
-	DOSQL($db,"UPDATE users SET NbrConnexion='$NbrConnexion'+1 WHERE Mail='$Mail'");
+	$date= date('Y-m-d');
+	DOSQL($db,"UPDATE users SET NbrConnexion='$NbrConnexion'+1,ConnectDate='$date' WHERE Mail='$Mail'");
 }
 
 ?>

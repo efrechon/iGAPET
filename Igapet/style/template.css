@@ -2,6 +2,12 @@
     font-family: "Raleway";
 }
 
+@font-face{
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf');
+}
+
+
 body{
     margin: 0;
     display:flex;
@@ -30,4 +36,19 @@ body{
     left: 1%;
     top: 2%;
 	overflow: auto;
+}
+
+input[type="submit"] {
+    margin-bottom: 5%;
+    border-radius: 20px;
+    border: 1px solid #00A4E1;
+    background-color: white;
+    padding: 1%;
+    outline-style:none;
+}
+
+input[type="submit"]:hover {
+    border: 1px solid #00A4E1;
+    background-color: #00A4E1;
+    color: white;
 }
