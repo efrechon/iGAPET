@@ -76,6 +76,7 @@
                 $requeteA= $db->query("SELECT * FROM actuatortypes");
                 while($donnessA= $requeteA->fetch()){
                     $url= $donnessA['url_img'];
+                    $idA= $donnessC['ActuatorTypeID'];
                     echo '<div class="bilan">'.$donnessA['ActuatorName'].'<br/>';
                     echo '<img src='."$url".'><br/>';
                     if($donnessA['Unit']== NULL){
@@ -83,7 +84,10 @@
                         echo '<input type="button" value="OFF"><br/>';
                     }
                     else{
-                        echo 'Moyenne : '.$donnessA['Unit'].'<br/>';
+                        $requeteA2=$db->query("SELECT AVG(State) as avg FROM actuators WHERE ActuatorTypeID='$idA' AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID=13)");
+                        while($donnessA2= $requeteA2->fetch()){
+                            echo 'Moyenne : '.$donnessA2['avg'].$donnessA['Unit'].'<br/>';
+                        }
                         echo 'Consigne : <input type="number"><br/>';
                     }
                     echo '<input type="submit" value="Envoyer">';

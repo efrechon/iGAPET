@@ -6,6 +6,7 @@ $host = "localhost";
 $user = "root";
 $pass = "";
 $dbname = "IGAPET";
+
 try {
 	$db = new PDO('mysql:host=' . $host . ';dbname=' . $dbname, $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -108,7 +109,6 @@ function verification_mail($db){
 }
 
 function verification_password(){
-    //if(preg_match('#^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$#', $_POST['UserPassword']){
     if (isset($_POST['UserPassword']) && isset($_POST['UserPassword2']) && $_POST['UserPassword'] != NULL){
         if($_POST['UserPassword'] != $_POST['UserPassword2']){
             $_SESSION["erreurInscription"] = 'Les deux mots de passe doivent être identiques !';

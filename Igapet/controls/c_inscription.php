@@ -6,25 +6,25 @@ include('../models/m_connexion.php');
 
 if (isset($_POST["type"])){
 	switch($_POST["type"]){
-		case "utilisateur";
+        case "utilisateur":
 			ajouter_utilisateur($db);
 		break;
-		case"sousutilisateur";
+        case"sousutilisateur":
 			ajouter_sous_utilisateur($db);
 		break;
-		case "connexion";
+        case "connexion":
 			verification_mail($db);	
 		break;
-		case "maison";
+        case "maison":
 			ajouter_maison($db);
 		break;
-		case "piece";
+        case "piece":
 			ajouter_piece($db);
 		break;
-		case "capteur";
+        case "capteur":
 			ajouter_capteur($db);
 		break;
-		case "actionneur";
+        case "actionneur":
 			ajouter_actionneur($db);
 	}
 }

@@ -56,12 +56,16 @@
 						$idimg= $triPC3['url_img'];
 						echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/>'.$triPC2['Value'].' '.$triPC3['Unit'].'</div>';
 					}
-                    $requeteTriPC4= $db->query("SELECT ActuatorName, Unit, url_img FROM ortypes WHERE CaptorTypeID=$idcapteur");
-                    while($triPC4= $requeteTriPC4->fetch()){
-                        $idimg2= $triPC4['url_img'];
-                        echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/>'.$triPC2['Value'].' '.$triPC3['Unit'].'</div>';
-                    }
 				}
+                $requeteTriPC5= $db->query("SELECT ActuatorTypeID, State FROM actuators WHERE RoomID=$idroom");
+                while($triPC5= $requeteTriPC5->fetch()) {
+                    $idactionneur= $triPC5['ActuatorTypeID'];
+                    $requeteTriPC4 = $db->query("SELECT ActuatorName, Unit, url_img FROM actuatortypes WHERE ActuatorTypeID=$idactionneur");
+                    while ($triPC4 = $requeteTriPC4->fetch()) {
+                        $idimg2 = $triPC4['url_img'];
+                        echo '<div class="actionneurM">'.$triPC4['ActuatorName'].'<br/><img src='."$idimg2".'><br/>'.$triPC5['State'].' '.$triPC4['Unit'].'</div>';
+                    }
+                }
 				echo '</div>';
 			}
             /*$requete1=$db->query("SELECT CapteurNumero, Value FROM trames WHERE TrameID=5");

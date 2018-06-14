@@ -20,23 +20,27 @@
         echo "Trame $i: $data_tab[$i]<br/>";
         // Décodage
         list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec)=sscanf($data_tab[$i],"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
-        echo("$t,$o,$r,$c,$n,$v,$a,$x,$year,$month,$day,$hour,$min,$sec<br/>");
-        echo hexdec($v).'<br/>';
-
-        /*$valeur= hexdec($v);
         $date= $year.'-'.$month.'-'.$day.' '.$hour.':'.$min.':'.$sec;
+        if($t == '1' AND $o == '007E'){
+            echo 'Date : '.$date.'<br/>';
+            echo("$t,$o,$r,$c,$n,$v,$a,$x,$year,$month,$day,$hour,$min,$sec<br/>");
+            echo 'Valeur : '.hexdec($v).'<br/>';
+            echo '<br/>';
+        }
 
-        $requete=$db->prepare("INSERT INTO trames(CaptorType, CaptorNumber, Value, TrameNumber, Date) VALUES (:CaptorType,:CaptorNumber, :Value, :TrameNumber, :Date)");
+        $valeur= hexdec($v);
 
-        $requete->bindParam('CaptorType', $c);
-        $requete->bindParam('CaptorNumber', $n);
-        $requete->bindParam('Value', $valeur);
-        $requete->bindParam('TrameNumber', $a);
-        $requete->bindParam('Date', $date);
+        /*if($t == '1' AND $o == '007E'){
+            $requete=$db->prepare("INSERT INTO trames(CaptorType, CaptorNumber, Value, TrameNumber, Date) VALUES (:CaptorType,:CaptorNumber, :Value, :TrameNumber, :Date)");
 
-        $requete->execute();*/
+            $requete->bindParam('CaptorType', $c);
+            $requete->bindParam('CaptorNumber', $n);
+            $requete->bindParam('Value', $valeur);
+            $requete->bindParam('TrameNumber', $a);
+            $requete->bindParam('Date', $date);
 
-
+            $requete->execute();
+        }*/
     }
 
 ?>

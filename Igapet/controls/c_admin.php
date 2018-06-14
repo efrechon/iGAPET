@@ -20,6 +20,9 @@ if (isset($_POST["type"])) {
         case "administrateur":
             ajouter_administrateur($db);
         break;
+        case "page":
+            modification_page($db);
+        break;
     }
 }
 
@@ -66,5 +69,15 @@ function ajouter_administrateur($db){
         header('Location:../index.php?pageAction=v_admin_utilisateur');
     }
 
+}
+
+function modification_page($db){
+    if(isset($_POST['PageContent'])){
+        modification_contenu($db);
+        header('Location:../index.php?pageAction=v_admin_edition');
+    }
+    else{
+        header('Location:../index.php?pageAction=v_admin_edition');
+    }
 }
 ?>

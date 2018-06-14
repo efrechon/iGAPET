@@ -5,8 +5,9 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
+<p>Vous pouvez nous envoyer un mail à l'adresse suivante : <b>app.igapet@gmail.com</b>, ou remplir les champs ci-contre :</p>
 <form action="controls/c_admin.php" method="post">
-    <p class="slogan">Comment pouvons nous vous aider ?</p><br/><br/>
+    <p class="slogan">Comment pouvons nous vous aider ?</p><br/>
     <label for="Objet">Objet : </label><input type="text" name="Objet"><br/><br/>
     <textarea cols="175" rows="25" name="Demande"></textarea><br/>
     <input type="hidden" value="message" name="type">

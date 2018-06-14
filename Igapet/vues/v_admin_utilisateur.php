@@ -23,6 +23,7 @@
                 <th>Nom</th>
                 <th>Mail</th>
                 <th>Nombre connexion</th>
+                <th>Dernière connexion</th>
             </tr>
             <?php
             if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
@@ -33,12 +34,13 @@
             }
             ?>
             <?php
-            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion FROM users WHERE UserTypeID!=1 ORDER BY NbrConnexion DESC");
+            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion, ConnectDate FROM users WHERE UserTypeID!=1 ORDER BY NbrConnexion DESC");
             while($u= $req->fetch()){
                 echo '<tr><td>'.$u['FirstName'].'</td>';
                 echo '<td>'.$u['LastName'].'</td>';
                 echo '<td>'.$u['Mail'].'</td>';
                 echo '<td>'.$u['NbrConnexion'].'</td>';
+                echo '<td>'.$u['ConnectDate'].'</td>';
                 echo '<td><a href="index.php?pageAction=v_admin_utilisateur&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
             }
             ?>
@@ -65,6 +67,7 @@
                 <th>Nom</th>
                 <th>Mail</th>
                 <th>Nombre connexion</th>
+                <th>Dernière connexion</th>
             </tr>
             <?php
             if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
@@ -75,12 +78,13 @@
             }
             ?>
             <?php
-            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion FROM users WHERE UserTypeID=1 OR USerTypeID=-1");
+            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion, ConnectDate FROM users WHERE UserTypeID=1 OR USerTypeID=-1");
             while($u= $req->fetch()){
                 echo '<tr><td>'.$u['FirstName'].'</td>';
                 echo '<td>'.$u['LastName'].'</td>';
                 echo '<td>'.$u['Mail'].'</td>';
                 echo '<td>'.$u['NbrConnexion'].'</td>';
+                echo '<td>'.$u['ConnectDate'].'</td>';
                 echo '<td><a href="index.php?pageAction=v_admin_utilisateur&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
             }
             ?>

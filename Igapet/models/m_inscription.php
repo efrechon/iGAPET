@@ -3,16 +3,17 @@
 function inscription_utilisateur($db){
     // Récupération des valeurs
     $Mail= $_POST["Mail"];
-    $CreationDate= date('Y-m-d');
+    $Date= date('Y-m-d');
     $UserPassword = password_hash($_POST['UserPassword'], PASSWORD_BCRYPT);
     $UserTypeID= 2;
 	$NbrConnexion=0;
     // Préparation de la requete SQL
-    $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, UserPassword, UserTypeID,NbrConnexion) VALUES(:Mail,:CreationDate,:UserPassword,:UserTypeID,:NbrConnexion)');
+    $requete= $db->prepare('INSERT INTO users(Mail, CreationDate, ConnectDate, UserPassword, UserTypeID,NbrConnexion) VALUES(:Mail,:CreationDate,:ConnectDate,:UserPassword,:UserTypeID,:NbrConnexion)');
 
     // Affectation des valeurs
     $requete->bindParam(':Mail',$Mail);
-    $requete->bindParam(':CreationDate',$CreationDate);
+    $requete->bindParam(':CreationDate',$Date);
+    $requete->bindParam(':ConnectDate',$Date);
     $requete->bindParam(':UserPassword',$UserPassword);
     $requete->bindParam(':UserTypeID',$UserTypeID);
 	$requete->bindParam(':NbrConnexion',$NbrConnexion);

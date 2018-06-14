@@ -55,6 +55,7 @@ function envoi_panne($db){
     $date= date('Y-m-d');
 
     $requete= $db->prepare("INSERT INTO messagerie(Correspondant, Objet, Demande, Date) VALUES (:correspondant,:objet,:demande,:date)");
+    //$requete2= $db->prepare("UPDATE captors SET ")
 
     $requete->bindParam(':correspondant', $correspondant);
     $requete->bindParam(':objet', $objet);
@@ -90,4 +91,17 @@ function inscription_administrateur($db){
     // Execution de la requete
     $requete->execute();
 }
+
+function modification_contenu($db){
+    $pageName= $_POST['PageName'];
+    $pageContent= htmlspecialchars($_POST['PageContent']);
+
+    $requete= $db->prepare("UPDATE pagecontent SET PageContent=:pageContent WHERE PageName=:pageName");
+
+    $requete->bindParam('pageContent', $pageContent);
+    $requete->bindParam('pageName', $pageName);
+
+    $requete->execute();
+}
+
 ?>
