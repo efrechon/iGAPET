@@ -12,19 +12,13 @@
 			
 				echo ("<a href='index.php?pageAction=v_scenarios'--><li class='onglet'>Scénarios</li></a>");
 		}
-		?>
-		<?php 
 		if (!isset($block) || $block['AddNotifications'] == 1 ){
 			
 				echo ("<a href='index.php?pageAction=v_notifications'--><li class='onglet'>Notifications</li></a>");
 		}
-		?>
-		<?php 
 		if (!isset($block) || $block['ManageUsers'] == 1 ){
 			echo ("<a href='index.php?pageAction=v_gestionssutilisateurs'--><li class='onglet'>Gérer les utilisateurs</li></a>");
 		}
-		?>
-		<?php 
 		if (!isset($block) || $block['ManageHouses'] == 1 ){
 			echo ("<a href='index.php?pageAction=v_gestionmaison'--><li class='onglet'>Gérer les maisons</li></a>");
 		}
@@ -32,11 +26,11 @@
         <a href='index.php?pageAction=v_informations'--><li class="onglet">Informations</li></a>
         <a href='index.php?pageAction=v_sav'--> <li class="onglet">SAV</li></a>
         <br><br><br>
-        <a href='index.php?pageAction=faq'--><li class="onglet">FAQ</li></a>
-        <a href='index.php?pageAction=apropos'--><li class="onglet">A propos</li></a>
-        <a href='index.php?pageAction=contacter'--><li class="onglet">Nous contacter</li></a>
-        <a href='index.php?pageAction=cgu'--><li class="onglet">CGU</li></a>
-        <a href='index.php?pageAction=mentionsl'--><li class="onglet">Mentions Légales</li></a>
+        <a href='index.php?pageAction=v_faq'--><li class="onglet">FAQ</li></a>
+        <a href='index.php?pageAction=v_apropos'--><li class="onglet">A propos</li></a>
+        <a href='index.php?pageAction=v_contacter'--><li class="onglet">Nous contacter</li></a>
+        <a href='index.php?pageAction=v_cgu'--><li class="onglet">CGU</li></a>
+        <a href='index.php?pageAction=v_mentionsl'--><li class="onglet">Mentions Légales</li></a>
     </ul>
 </div>
 

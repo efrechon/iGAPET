@@ -1,23 +1,35 @@
-<link rel="stylesheet" href="style/ajout.css"/>
+<link rel="stylesheet" href="style/profil.css"/>
 
 <!-- Nom de la page -->
 <?php $nom_page = "Mon Profil"; ?>
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<form action="controls/c_profil.php" method="post">
-    <label for="lastName">Prénom : </label>
-    <input type="text" name="FirstName" value="<?php if (isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']?>"><br/><br/>
-    <label for="firstName">Nom : </label>
-    <input type="text" name="LastName" value="<?php if (isset($_SESSION['LastName'])) echo $_SESSION['LastName']?>"><br/><br/>
-    <label for="Mail">Email : </label>
-    <input type="text" name="Mail" value="<?php echo $_SESSION['Mail']?>"><br/><br/>
-    <label for="UserPassword">Mot de passe : </label>
-    <input type="password" name="UserPassword"><br/><br/>
-    <label for="Phone">Numéro de téléphone : </label>
-    <input type="text" name="Phone" value= "<?php if (isset($_SESSION['Phone'])) echo $_SESSION['Phone']?>"><br/><br/>
-    <input type="submit" value="Modifier">
-</form>
+<div class="first">
+    <div id="debut">
+        <label>Préom : </label><?php if (isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']?><br/><br/>
+        <label>Nom : </label><?php if (isset($_SESSION['LastName'])) echo $_SESSION['LastName']?><br/><br/>
+        <label>Mail : </label><?php echo $_SESSION['Mail']?><br/><br/>
+        <label>Téléphone : </label><?php if (isset($_SESSION['Phone'])) echo $_SESSION['Phone']?><br/><br/>
+        <button id="button" onclick="change()">Modifier</button>
+    </div>
+    <div id="fin">
+        <form method="post" action="controls/c_profil.php">
+            <label for='FirstName'>Prénom : </label><input type='text' name='FirstName' value="<?php if (isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']?>"><br/>
+            <label for='LastName'>Nom : </label><input type='text' name='LastName' value='<?php if (isset($_SESSION['LastName'])) echo $_SESSION['LastName']?>'><br/>
+            <label for='Phone'>Téléphone : </label><input type='phone' name='Phone' value="<?php if (isset($_SESSION['Phone'])) echo $_SESSION['Phone']?>"><br/>
+            <input type='submit' value='Modifier'>
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById("debut").style.visibility = 'visible';
+    document.getElementById("fin").style.visibility = 'hidden';
+    function change(){
+        document.getElementById("debut").style.visibility = 'hidden';
+        document.getElementById("fin").style.visibility = 'visible';
+    }
+</script>
 <!-- Fin & Affectation du contenu de la page -->
 <?php $contenu=ob_get_clean(); ?>
 
