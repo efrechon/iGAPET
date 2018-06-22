@@ -6,16 +6,17 @@ CREATE TABLE Users(
 	UserID int PRIMARY KEY AUTO_INCREMENT,          -- principal key
 	FirstName varchar(70),
 	LastName varchar(70),
-    Mail varchar(70),		            	        -- should be unique
-	CreationDate datetime,  		                -- automatic
-    UserPassword varchar(255),		                -- should be crypted + condition
-	UserTypeID tinyint,
-    Phone varchar(15)                			    -- should be unique
+    Mail varchar(70) NOT NULL,		            	        -- should be unique
+	CreationDate datetime NOT NULL,  		                -- automatic
+    UserPassword varchar(255) NOT NULL,		                -- should be crypted + condition
+	UserTypeID tinyint NOT NULL,
+    Phone varchar(15),                			    -- should be unique
+	NbrConnexion int(11) NOT NULL
 );
 
 CREATE TABLE Houses(
 	HouseID int PRIMARY KEY AUTO_INCREMENT,         -- primary key
-	UserID int,			                            -- foreign key
+	UserID int NOT NULL,	                            -- foreign key
 	Name varchar(50) NOT NULL,
 	Address varchar(255) NOT NULL,                  -- change varcharSize
 	PostalCode varchar(10) NOT NULL,
@@ -27,8 +28,8 @@ CREATE TABLE Rooms(
 	RoomID int PRIMARY KEY AUTO_INCREMENT,          -- primary key
 	HouseID int,			                        -- foreign key
 	Name varchar(30) NOT NULL,
-	xPosition real NOT NULL,
-	yPosition real NOT NULL,
+	xPosition real,
+	yPosition real,
 	Width real NOT NULL,
 	Height real NOT NULL,
 	Floor tinyint			                        -- must be < HouseID->NumberOfFloor -1
@@ -36,29 +37,33 @@ CREATE TABLE Rooms(
 
 CREATE TABLE Captors(
 	CaptorID int PRIMARY KEY AUTO_INCREMENT,        -- primary key
-	RoomID int, 				            	    -- foreign key
-	CaptorTypeID int,  			            	    -- foreign key
+	RoomID int NOT NULL, 				            	    -- foreign key
+	CaptorTypeID int NOT NULL,  			            	    -- foreign key
 	Value varchar(255) 		                	    -- modify according to precision
   
 );
 
 CREATE TABLE Actuators(
 	ActuatorID int PRIMARY KEY AUTO_INCREMENT,	    -- primary key
-	RoomID int,						                -- foreign key
-	ActuatorTypeID int,			                    -- foreign key
+	RoomID int NOT NULL,						                -- foreign key
+	ActuatorTypeID int NOT NULL,			                    -- foreign key
 	State varchar(255)		                	    -- modify according to precision
 );
 
 CREATE TABLE Scenarios(
 	ScenarioID int PRIMARY KEY AUTO_INCREMENT,      -- primary key
-ActuatorID int,				                        -- foreign key
+	ActuatorID int NOT NULL,				                        -- foreign key
 	CibleState varchar(255),		                -- modify according to precision
-	ActionDate datetime
+	ActionDateDeb date,
+	ActionDateFin date,
+	ActionHeureDeb time,
+	ActionheureFin time,
+	Repetion varchar(255)
 );
 
 CREATE TABLE Notifications(
 	NotificationID int PRIMARY KEY AUTO_INCREMENT,  -- primary key
-	CaptorID int,					                -- foreign key
+	CaptorID int NOT NULL,					                -- foreign key
 	Threshold varchar(255),			                -- modify according to precision
 	ThresholdType varchar(1)		                -- < or >
 );
@@ -74,8 +79,8 @@ CREATE TABLE UserTypes(
 CREATE TABLE CaptorTypes(
 	CaptorTypeID int PRIMARY KEY AUTO_INCREMENT,    -- primary key
 	CaptorName varchar(30),
-	Unit varchar(10)
-											        -- add more information? price,size,ect
+	Unit varchar(10),
+	url_img varchar(255)					        -- add more information? price,size,ect
 );
 
 CREATE TABLE ActuatorTypes(
@@ -83,11 +88,12 @@ CREATE TABLE ActuatorTypes(
 	ActuatorName varchar(30),
 	Unit varchar(10),
 	MinimumValue varchar(255),					    -- modify according to precision
-	MaximumValue varchar(255)					    -- modify according to precision
+	MaximumValue varchar(255),					    -- modify according to precision
+	url_img varchar(255)
 );
 
-CREATE TABLE PageContent(
-	PageID int PRIMARY KEY AUTO_INCREMENT,		    -- primary key
+CREATE TABLE Page(
+	PageID int PRIMARY KEY,		    -- primary key
 	PageContent TEXT
 );
 
