@@ -70,6 +70,7 @@ h2{
     border-bottom: 2px solid #00A4E1;
     width: 50%;
     margin-left: 25%;
+    margin-bottom: 0;
 }
 
 input[type="submit"] {
@@ -123,6 +124,7 @@ h3{
 
 p{
     text-align: justify;
+    margin: 0;
 }
 
 .slogan{

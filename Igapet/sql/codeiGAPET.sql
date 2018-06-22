@@ -14,7 +14,8 @@ CREATE TABLE users(
   UserPassword varchar(255) NOT NULL,
 	UserTypeID tinyint NOT NULL,
   Phone varchar(15),
-  NbrConnexion int(11) NOT NULL
+  NbrConnexion int(11) NOT NULL,
+  FavoriteHome int(11)
 );
 
 CREATE TABLE houses(
@@ -42,7 +43,8 @@ CREATE TABLE captors(
 	CaptorID int PRIMARY KEY AUTO_INCREMENT,
 	RoomID int NOT NULL,
 	CaptorTypeID int NOT NULL,
-	Value varchar(255)
+	Value varchar(255),
+	Fonctionnel boolean
 
 );
 
@@ -50,7 +52,8 @@ CREATE TABLE actuators(
   ActuatorID int PRIMARY KEY AUTO_INCREMENT,
 	RoomID int NOT NULL,
   ActuatorTypeID int NOT NULL,
-	State varchar(255)
+	State varchar(255),
+	Fonctionnel boolean
 );
 
 CREATE TABLE scenarios(
@@ -112,3 +115,15 @@ CREATE TABLE trames(
   TrameNumber varchar(4),
   Date datetime
 );
+
+INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Luminosité', '%', 'img/luminosity.png');
+INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Température', '°C', 'img/thermometer.png');
+INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Humidité', '%', 'img/humidity.png');
+INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Son', 'dB', 'img/speaker.png');
+INSERT INTO ActuatorTypes(ActuatorName, Unit, MinimumValue, MaximumValue, url_img) VALUES ('Volets', '%', 0, 100, 'img/blinds.png');
+INSERT INTO ActuatorTypes(ActuatorName, Unit, MinimumValue, MaximumValue, url_img) VALUES ('Lumière', NULL, 'OFF', 'ON', 'img/light_icon.png');
+INSERT INTO ActuatorTypes(ActuatorName, Unit, MinimumValue, MaximumValue, url_img) VALUES ('Radiateur', '°C', 20, 40, 'img/radiator.png');
+INSERT INTO Page(PageName, PageContent) VALUES ('CGU', NULL);
+INSERT INTO Page(PageName, PageContent) VALUES ('Mentions Légales', NULL);
+INSERT INTO Page(PageName, PageContent) VALUES ('A propos', NULL);
+INSERT INTO Page(PageName, PageContent) VALUES ('FAQ', NULL);

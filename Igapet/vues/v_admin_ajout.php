@@ -42,7 +42,10 @@
                 while($c2=$reqC2->fetch()){
                     echo '<td>'.$c2['nbr'].'</td>';
                 }
-                echo '<td>0</td>';
+                $reqC3=$db->query("SELECT COUNT(Fonctionnel) as nbrpanne FROM captors WHERE Fonctionnel= 0 AND CaptorTypeID=$id");
+                while($c3=$reqC3->fetch()){
+                    echo '<td>'.$c3['nbrpanne'].'</td>';
+                }
                 echo '<td><a href="index.php?pageAction=v_admin_ajout&supprimeC='.$c['CaptorTypeID'].'">Supprimer</a></td></tr>';
                 echo '</tr>';
             }
@@ -75,7 +78,10 @@
                 while($a2=$reqA2->fetch()){
                     echo '<td>'.$a2['nbr'].'</td>';
                 }
-                echo '<td>0</td>';
+                $reqA3=$db->query("SELECT COUNT(Fonctionnel) as nbrpanne FROM actuators WHERE Fonctionnel= 0 AND ActuatorTypeID=$id");
+                while($a3=$reqA3->fetch()){
+                    echo '<td>'.$a3['nbrpanne'].'</td>';
+                }
                 echo '<td><a href="index.php?pageAction=v_admin_ajout&supprimeA='.$a['ActuatorTypeID'].'">Supprimer</a></td></tr>';
                 echo '</tr>';
             }

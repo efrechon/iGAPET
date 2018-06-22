@@ -28,10 +28,11 @@ function authentification($db){ //connecte
 
 function connect($db){ // définit les $_session
 	$Mail = $_POST['Mail'];
-	$donnees = getOneSQL($db,"SELECT UserID,FirstName,LastName,Phone,UserTypeID,NbrConnexion FROM users WHERE Mail='$Mail'");
+	$donnees = getOneSQL($db,"SELECT UserID,FirstName,LastName,Phone,UserTypeID,NbrConnexion,FavoriteHome FROM users WHERE Mail='$Mail'");
 	$_SESSION['connected']= true;
 	$_SESSION['Mail']= $_POST['Mail'];
 	$_SESSION['UserID']= $donnees['UserID'];
+	$_SESSION['HouseID']= $donnees['FavoriteHome'];
 	if($donnees['FirstName'] != NULL){
 		$_SESSION['FirstName']= $donnees['FirstName'];
 	}

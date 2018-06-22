@@ -13,7 +13,7 @@ body{
     display:flex;
     flex-flow: row wrap;
     align-items:stretch;
-    background-color: #DCDCDC;
+    background-color: #EAEAEA;
 }
 
 #header{

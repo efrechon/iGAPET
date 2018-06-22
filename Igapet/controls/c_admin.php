@@ -61,7 +61,7 @@ function rapport_panne($db){
 }
 
 function ajouter_administrateur($db){
-    if(isset($_POST['FirstName'], $_POST['LastName'], $_POST['Mail'], $_POST['UserPassword'], $_POST['UserPassword2']) AND verification_password()){
+    if(isset($_POST['FirstName'], $_POST['LastName'], $_POST['Mail'], $_POST['UserPassword'], $_POST['UserPassword2']) AND verification_password() AND verification_mail($db)){
         inscription_administrateur($db);
         header('Location:../index.php?pageAction=v_admin_accueil');
     }

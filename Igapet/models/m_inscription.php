@@ -66,7 +66,7 @@ function inscription_capteur($db){
     $RoomID= $_POST['RoomID'];
     $TypeID= $_POST['TypeID'];
 
-    $requeteC=$db->prepare("INSERT INTO captors(RoomID, CaptorTypeID) VALUES (:RoomID, :TypeID)");
+    $requeteC=$db->prepare("INSERT INTO captors(RoomID, CaptorTypeID, Fonctionnel) VALUES (:RoomID, :TypeID, '1')");
 
     $requeteC->bindParam(':RoomID', $RoomID);
     $requeteC->bindParam(':TypeID', $TypeID);
@@ -78,7 +78,7 @@ function inscription_capteur($db){
 function inscription_actionneur($db){
     $RoomID=$_POST['RoomID'];
     $TypeID=$_POST['TypeID'];
-    $requeteA=$db->prepare("INSERT INTO actuators(RoomID, ActuatorTypeId) VALUES (:RoomID, :TypeID)");
+    $requeteA=$db->prepare("INSERT INTO actuators(RoomID, ActuatorTypeId, Fonctionnel) VALUES (:RoomID, :TypeID, '1 ')");
 
     $requeteA->bindParam(':RoomID', $RoomID);
     $requeteA->bindParam(':TypeID', $TypeID);

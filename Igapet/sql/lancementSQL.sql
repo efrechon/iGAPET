@@ -14,7 +14,8 @@ CREATE TABLE users(
   UserPassword varchar(255) NOT NULL,
 	UserTypeID tinyint NOT NULL,
   Phone varchar(15),
-  NbrConnexion int(11) NOT NULL
+  NbrConnexion int(11) NOT NULL,
+  FavoriteHome int(11)
 );
 
 CREATE TABLE houses(
@@ -42,7 +43,8 @@ CREATE TABLE captors(
 	CaptorID int PRIMARY KEY AUTO_INCREMENT,
 	RoomID int NOT NULL,
 	CaptorTypeID int NOT NULL,
-	Value varchar(255)
+	Value varchar(255),
+	Fonctionnel boolean
 
 );
 
@@ -50,7 +52,8 @@ CREATE TABLE actuators(
   ActuatorID int PRIMARY KEY AUTO_INCREMENT,
 	RoomID int NOT NULL,
   ActuatorTypeID int NOT NULL,
-	State varchar(255)
+	State varchar(255),
+	Fonctionnel boolean
 );
 
 CREATE TABLE scenarios(
@@ -113,8 +116,8 @@ CREATE TABLE trames(
   Date datetime
 );
 
-INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Nicolas', 'Terru', 'nicolas.terru@gmail.com', '2018-05-10', '$2y$10$Q9e2escHubQahsHFeT01re7h9.0gGjqu3GHf5Ej2zXQzy9CkhoK.2', 2, '+33678940312', 20);
-INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Dany', 'Brillant', 'dany@free.fr', '2018-05-17', '$2y$10$weHYROCoUDmn9ebsFzf.Y.uvfBtCAB3SHQKVA4FHTr5XmP2Z041..', 2, '+3367890452314', 11);
+INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Nicolas', 'Terru', 'nicolas.terru@gmail.com', '2018-05-10', '$2y$10$Q9e2escHubQahsHFeT01re7h9.0gGjqu3GHf5Ej2zXQzy9CkhoK.2', 2, '+33678940312', 20, 1);
+INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Dany', 'Brillant', 'dany@free.fr', '2018-05-17', '$2y$10$weHYROCoUDmn9ebsFzf.Y.uvfBtCAB3SHQKVA4FHTr5XmP2Z041..', 2, '+3367890452314', 11, 3);
 INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Edgar', 'Admin', 'app.igapet@gmail.com', '2018-05-17', '$2y$10$QFHqu/zv92wr.ndlBslq2.qJnRQE.CZXwXaC8Du8BUMf5M7qLzlA2', 1, NULL, 31);
 INSERT INTO Houses(UserID, Name, Address, PostalCode, Country, NumberOfFloor) VALUES (1, 'Maison Principale', '5 avenue de la République', 92450, 'France', 2);
 INSERT INTO Houses(UserID, Name, Address, PostalCode, Country, NumberOfFloor) VALUES (1, 'AirBnB', '4 rue des Mimosas', 33095, 'France', 1);
@@ -132,26 +135,26 @@ INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Luminosité', '%', '
 INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Température', '°C', 'img/thermometer.png');
 INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Humidité', '%', 'img/humidity.png');
 INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Son', 'dB', 'img/speaker.png');
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (1, 1, 90);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (2, 2, 19);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (3, 3, 10);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (4, 5, 67);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (5, 1, 63);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (5, 2, 20);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (5, 3, 70);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (6, 2, 23);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (7, 1, 75);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (8, 1, 50);
-INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (9, 1, 100);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (1, 1, 90, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (2, 2, 19, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (3, 3, 10, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (4, 5, 67, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (5, 1, 63, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (5, 2, 20, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (5, 3, 70, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (6, 2, 23, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (7, 1, 75, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (8, 1, 50, 1);
+INSERT INTO Captors(RoomID, CaptorTypeID, Value) VALUES (9, 1, 100, 1);
 INSERT INTO ActuatorTypes(ActuatorName, Unit, MinimumValue, MaximumValue, url_img) VALUES ('Volets', '%', 0, 100, 'img/blinds.png');
 INSERT INTO ActuatorTypes(ActuatorName, Unit, MinimumValue, MaximumValue, url_img) VALUES ('Lumière', NULL, 'OFF', 'ON', 'img/light_icon.png');
 INSERT INTO ActuatorTypes(ActuatorName, Unit, MinimumValue, MaximumValue, url_img) VALUES ('Radiateur', '°C', 20, 40, 'img/radiator.png');
-INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (1, 1, 0);
-INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (2, 2, 'OFF');
-INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (3, 1, 0);
-INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (4, 1, 0);
-INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (5, 2, 'ON');
-INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (8, 1, 80);
+INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (1, 1, 0, 1);
+INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (2, 2, 'OFF', 1);
+INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (3, 1, 0, 1);
+INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (4, 1, 0, 1);
+INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (5, 2, 'ON', 1);
+INSERT INTO Actuators(RoomID, ActuatorTypeID, State) VALUES (8, 1, 80, 1);
 INSERT INTO Page(PageName, PageContent) VALUES ('CGU', NULL);
 INSERT INTO Page(PageName, PageContent) VALUES ('Mentions Légales', NULL);
 INSERT INTO Page(PageName, PageContent) VALUES ('A propos', NULL);

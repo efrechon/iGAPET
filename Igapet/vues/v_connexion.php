@@ -21,7 +21,6 @@
                 <input type="text" name="Mail"><br/><br/>
                 <label for="UserPassword">Mot de passe : </label>
                 <input type="password" name="UserPassword"><br/><br/>
-               	<a>Mot de passe oublié</a><br/><br/>
 				<?php
 				if (isset($_SESSION["erreurConnection"])){
 					echo $_SESSION["erreurConnection"];

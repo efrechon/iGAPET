@@ -34,7 +34,10 @@
                 while($c2=$reqC2->fetch()){
                     echo '<td>'.$c2['nbr'].'</td>';
                 }
-                echo '<td>0</td>';
+                $reqC3=$db->query("SELECT COUNT(Fonctionnel) as nbrpanne FROM captors WHERE Fonctionnel= 0 AND CaptorTypeID=$id");
+                while($c3=$reqC3->fetch()){
+                    echo '<td>'.$c3['nbrpanne'].'</td>';
+                }
                 echo '</tr>';
             }
             ?>
@@ -58,7 +61,10 @@
             while($a2=$reqA2->fetch()){
                 echo '<td>'.$a2['nbr'].'</td>';
             }
-            echo '<td>0</td>';
+            $reqA3=$db->query("SELECT COUNT(Fonctionnel) as nbrpanne FROM actuators WHERE Fonctionnel= 0 AND ActuatorTypeID=$id");
+            while($a3=$reqA3->fetch()){
+                echo '<td>'.$a3['nbrpanne'].'</td>';
+            }
             echo '</tr>';
         }
         ?>
@@ -68,13 +74,13 @@
     <div id="messagerie">
         <h3>Messagerie</h3>
         <?php
-        $requete=$db->query("SELECT Correspondant,Objet,Demande,Date FROM messagerie ORDER BY MessagerieID DESC");
+        $requete=$db->query("SELECT Correspondant,Objet,Demande,Date FROM messagerie ORDER BY MessagerieID DESC ");
         while($donnees= $requete->fetch()){
             $UserID= $donnees['Correspondant'];
             $requete2= $db->query("SELECT * FROM users WHERE UserID=$UserID");
             while ($donnees2= $requete2->fetch()){
                 echo '<div class="message">';
-                echo 'Le '.$donnees['Date'].', de '.$donnees2['FirstName'].' '.$donnees2['LastName'].'<br/>';
+                echo 'Le '.$donnees['Date'].', de '.$donnees2['FirstName'].' '.$donnees2['LastName'].' [ <i>'.$donnees2['Mail'].'</i> ]<br/>';
                 echo '<ins>Objet :</ins> <b>'.$donnees['Objet'].'</b><br/>';
                 echo '<ins>Message :</ins> '.$donnees['Demande'];
                 echo '</div>';

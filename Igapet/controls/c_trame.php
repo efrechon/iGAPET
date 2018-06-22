@@ -12,11 +12,11 @@
     $data = curl_exec($ch);
     curl_close($ch);
 
-    $data= substr($data,345720);
+    //$data= substr($data,577178);
     // Mettre les données sous la forme d'un tableau
     $data_tab = str_split($data,33);
     echo "Data Trames :<br />";
-    for($i=0, $size=count($data_tab); $i<1000; $i++){
+    for($i=0, $size=count($data_tab); $i<sizeof($data); $i++){
         echo "Trame $i: $data_tab[$i]<br/>";
         // Décodage
         list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec)=sscanf($data_tab[$i],"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
