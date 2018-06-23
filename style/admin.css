@@ -1,0 +1,71 @@
+*{
+    font-family: "Arial";
+}
+
+body{
+    margin: 0;
+}
+
+#full{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.composants{
+    width: 40%;
+    border: 1px solid #00A4E1;
+    margin: 2%;
+}
+
+.newcomposants{
+    width: 40%;
+    height: 90%;
+    border: 1px solid #00A4E1;
+    margin-top: 2%;
+    margin-right: 2%;
+    text-align: center;
+
+}
+
+.utilisateurs{
+    width: 52%;
+    border: 1px solid #00A4E1;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    overflow: auto;
+}
+
+.edition{
+    width: 96%;
+    border: 1px solid #00A4E1;
+    margin-left: 2%;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+h3, h1{
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+label{
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    float: left;
+    text-align: center;
+}
+
+input[type="text"]{
+    width: 200px;
+    margin-left: -10%;
+}

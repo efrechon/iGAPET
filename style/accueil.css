@@ -1,0 +1,179 @@
+#full{
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: auto;
+    height: 96%;
+}
+
+#Notifications
+{
+	width: 100%;
+	height: 20%;
+	overflow: hidden;
+    border: 2px solid white;
+    border-radius:8px;
+    margin: 1%;
+    color: black;
+    background-color: white;
+    box-shadow:1px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+#infos
+{
+	padding: 1%;
+}
+
+
+#Informations{
+    padding: 5px;
+    width: 100%;
+    height: 70%;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin: 1%;
+    color: black;
+    background-color: white;
+    box-shadow:1px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+p{
+    margin:0;
+}
+
+.moyenne{
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bilan{
+    width: 12%;
+    height: 25%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: 1%;
+    border: 1px double black;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+}
+
+.bilan:hover{
+	background-color: #00A4E1;
+	color: white;
+	border: white;
+}
+
+input[type='number']{
+    width: 20%;
+    background-color: white;
+}
+
+h4{
+    margin: 3%;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #00A4E1;
+    color : white;
+}
+
+h5{
+    margin: 0;
+    width: 100%;
+    height: 5%;
+}
+
+/* DEBUT calendrier JS
+.calendarMain{
+	font-family: "Helvetica Neue", Helvetica, Geneva, sans-serif;
+	text-align: left;
+}
+.calendarMain:after{
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+.calendarMain > div{
+	width: 220px;
+	padding: 5px 10px 10px 10px;
+	background-color: #2e373f;
+	background-color: rgba(46, 55, 63, 0.95);
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 10px #555;
+	-webkit-box-shadow: 0 0 10px #555;
+	box-shadow: 0 0 10px #555;
+	font-size: 12px;
+}
+
+.calendarMain > input{
+	display: block;
+	height: 22px;
+	padding-top: 2px;
+	background-color: #2e373f;
+	color: #fff;
+	border-radius: 5px;
+	border: none;
+}
+.calendarMain > input:hover{
+	background-color: #2673cb;
+}
+
+.calendarMain .calendarTitle{
+	position: absolute;
+	margin: 7px 0 0 0;
+	padding: 0;
+	width: 220px;
+	color: #ccc;
+	text-align: center;
+}
+.calendarNav input{
+	position: relative;
+	margin: 5px 0 10px 0;
+	width: 20px;
+	background-color: #5d6f7f;
+	border: none;
+	color: #fff;
+}
+.calendarNav input:hover{
+	background-color: #6f8598;
+}
+.calendarNav .calendarNavMR, .calendarNav .calendarNavYR{
+	float: right;
+}
+
+.jsCalendar{
+	color: #fff;
+	border-collapse: collapse;
+}
+.jsCalendar th{
+	color: #8ba7bf;
+	font-size: 16px;
+	font-weight: normal;
+	text-align: center;
+}
+.jsCalendar td{
+	padding: 0;
+	border: none;
+	width: 30px;
+	padding: 3px 0 3px 0;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+}
+.jsCalendar .day:hover{
+	background-color: #2673cb;
+	border-color: #2673cb;
+}
+.jsCalendar .selectedDay{
+	background-color: #c44d38;
+	border-color: #c44d38;
+}
+
+*/

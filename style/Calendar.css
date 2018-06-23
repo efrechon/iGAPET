@@ -1,0 +1,69 @@
+
+
+#calendar{
+	Width:100%;
+	Height:90%;
+	
+	
+}
+
+#calendarHeader{
+	Width:20%;
+	Height:10%;
+	
+}
+
+tr{
+	Width:100%;
+	Height:16%;
+	position:relative;
+	background-color:Lightgrey;
+	
+}
+
+th{
+	border: 2px solid #ddd;
+	border: 2px solid #ddd;
+}
+
+.dayHeader{
+	Height:100%;
+	Width:14%;
+	position:relative;
+
+	
+}
+
+.grised{
+	color:grey;
+	
+}
+
+#selected{
+	background-color:lightblue;
+	
+}
+
+#moveLeft{
+	height:0%;
+	padding:20%;
+	width:0%;
+	position:relative;
+	border: 1px solid black;
+}
+
+#moveRight{
+	height:0%;
+	padding:20%;
+	width:0%;
+	position:relative;
+	border: 1px solid black;
+	float:left;
+}
+
+#calendarTitle{
+	height:0%;
+	width:0%;
+	padding:10%;
+	
+}

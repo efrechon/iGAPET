@@ -1,0 +1,45 @@
+#selection{
+    height: 5%;
+    border-bottom: 2px solid gray;
+    padding-bottom: 0.5%;
+}
+
+#boutonValider {
+    border-radius: 25px;
+    border: 1px solid #00A4E1;
+    background-color: white;
+    padding: 0.4%;
+    outline-style:none;
+}
+
+#boutonValider:hover {
+    border: 1px solid #00A4E1;
+    background-color: #00A4E1;
+    color: white;
+}
+
+.actionneurM{
+    font-size: medium;
+    border: 1px solid #00A4E1;
+    padding: 1%;
+    margin:1%;
+    width: 8%;
+    text-align: center;
+    border-radius: 25px;
+}
+
+h4{
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.pieceP, .actionneurP {
+    width: 98%;
+    display: flex;
+    border: 2px solid #DDDDDD;
+    border-radius: 25px;
+}
+
+img{
+    width: 25%;
+}

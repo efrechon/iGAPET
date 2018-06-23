@@ -1,0 +1,58 @@
+#gestionmaison{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+
+.identitemaison {
+    width: 70%;
+    height: 97%;
+}
+
+.blocajout{
+    width: 30%;
+    height: 97%;
+}
+
+.blocajout a{
+    padding: 5%;
+    border-radius: 25px;
+    border: 1px solid #00A4E1;
+}
+
+.ajouter {
+    margin-bottom: 5%;
+    border-radius: 25px;
+    border: 1px solid #00A4E1;
+    background-color: white;
+    padding: 2%;
+    outline-style:none;
+	color:black;
+}
+
+.ajouter:hover {
+    border: 1px solid #00A4E1;
+    background-color: #00A4E1;
+    color: white;
+}
+
+
+ul{
+    text-align: left;
+}
+
+li{
+    border: none;
+}
+
+.A{
+    list-style: url('../img/house.png');
+}
+
+.B{
+    list-style: circle;
+}
+
+.C{
+    list-style: inside;
+}
