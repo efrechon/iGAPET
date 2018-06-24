@@ -29,10 +29,9 @@
 				{
 					$CaptorType =substr($t,6,1);
 					$CaptorNumber = substr($t,7,2);
-					$Value = substr($t,1,4);
+					$Value = substr($t,9,4);
 					$Date = substr($t,19,14);
 					$Link = $h;
-					
 					$requete = $db->prepare("INSERT INTO trames(CaptorType,CaptorNumber,Value,Date,Link) values (:CaptorType,:CaptorNumber,:Value,:Date,:Link)");
 					
 					$requete->bindParam(':CaptorType',$CaptorType);
@@ -57,11 +56,11 @@
 			$val = getSQL($db,"SELECT DISTINCT CaptorNumber FROM trames");
 			$ar = array();
 			foreach($val as $v){
-				array_push($ar,getSQL($db,"SELECT * FROM trames WHERE CaptorNumber=".$v['CaptorNumber']." ORDER BY TrameID DESC LIMIT 1")[0]);
-				
+				$tra = getSQL($db,"SELECT * FROM trames WHERE CaptorNumber=".$v['CaptorNumber']." ORDER BY TrameID DESC LIMIT 1")[0];
+				array_push($ar,$tra);
+				doSQL($db,"UPDATE captors SET Value='".hexdec($tra['Value'])."' WHERE link='".$tra['Link']."' AND captorlink='".$tra['CaptorNumber']."'");
 			}
-			var_dump(json_encode($ar));
-			echo 'done';
+			echo json_encode($ar);
 /* 		}
 	} */
 

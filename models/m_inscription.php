@@ -68,12 +68,19 @@ function inscription_piece($db){
 function inscription_capteur($db){
     $RoomID= $_POST['RoomID'];
     $TypeID= $_POST['TypeID'];
-
-    $requeteC=$db->prepare("INSERT INTO captors(RoomID, CaptorTypeID) VALUES (:RoomID, :TypeID)");
+	$captorlink = null;
+	if (isset($_POST['captorlink']))
+		$captorlink = $_POST['captorlink'];
+	$temp = getSQL($db,"SELECT HouseID FROM rooms WHERE RoomID=".$RoomID)[0]['HouseID'];
+	$link = getSQL($db,"SELECT Link FROM houses WHERE HouseID=".$temp)[0]['Link'];
+	
+    $requeteC=$db->prepare("INSERT INTO captors(RoomID, CaptorTypeID,captorlink,link) VALUES (:RoomID, :TypeID,:captorlink,:link)");
 
     $requeteC->bindParam(':RoomID', $RoomID);
     $requeteC->bindParam(':TypeID', $TypeID);
-
+	$requeteC->bindParam(':captorlink', $captorlink);
+	$requeteC->bindParam(':link', $link);
+	
     $requeteC->execute();
     $requeteC->closeCursor();
 }
