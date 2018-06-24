@@ -57,7 +57,7 @@
             ?></h3>
         <form method="post" action="controls/c_admin.php" id="modification">
             <input type="hidden" name="type" value="page">
-            <input type="hidden" name="PageName" value="<?php echo $pageName;?>">
+            <input type="hidden" name="PageName" value="<?php if (isset($pageName)) echo $pageName;?>">
             <?php
             if(isset($pageName)){
                 $requete2= $db->query("SELECT PageContent FROM page WHERE PageName='$pageName'");
@@ -66,8 +66,6 @@
                     echo "<textarea name='PageContent' rows='25' cols='160' form='modification'>$contenu</textarea><br/><br/>";
                     echo "<input type='submit' value='Enregistrer'>";
                 }
-            }
-            else {
             }
             ?>
         </form>
