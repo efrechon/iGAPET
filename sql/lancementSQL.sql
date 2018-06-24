@@ -43,7 +43,8 @@ CREATE TABLE captors(
 	RoomID int NOT NULL,
 	CaptorTypeID int NOT NULL,
 	Value varchar(255),
-	captorlink varchar(2)
+	captorlink varchar(2),
+	link varchar(4)
 
 );
 
@@ -52,7 +53,8 @@ CREATE TABLE actuators(
 	RoomID int NOT NULL,
 	ActuatorTypeID int NOT NULL,
 	State varchar(255),
-	captlorlink varchar(2)
+	captlorlink varchar(2),
+	link varchar(4)
 );
 
 CREATE TABLE scenarios(
@@ -66,7 +68,8 @@ CREATE TABLE scenarios(
 
 CREATE TABLE notifications(
 	NotificationID int PRIMARY KEY AUTO_INCREMENT,
-	CaptorID int,
+	link varchar(4),
+	captorlink varchar(2),
 	Threshold varchar(255),
 	ThresholdType varchar(1)
 );
