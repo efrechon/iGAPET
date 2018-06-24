@@ -1,33 +1,26 @@
 #catalogue{
-    width: 90%;
-    padding: 2%;
-    background-color: white;
-    margin-left: 2%;
-    margin-top: 4%;
+    width: 30%;
     display: block;
-    border-radius: 25px;
 }
 
-h4{
-    margin-top: 0;
-    text-align:center;
-    width: 98%;
-    border-radius: 8px;
-    padding: 5px;
-    background-color: #00A4E1;
-    color : white;
-}
-
-table{
-    margin-left: 23%;
-}
-
-td, th{
-    width: 18%;
+h5{
     text-align: center;
 }
+
+.catal{
+    border: 1px dotted #00A4E1;
+    text-align: left;
+}
+ul{
+    list-style: none;
+}
+
+li{
+    text-align: center;
+}
+
 img{
-    width: 35%;
+    width: 8%;
 }
 
 

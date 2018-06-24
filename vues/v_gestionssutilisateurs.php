@@ -15,7 +15,7 @@
 			    <label for="P1" id="P0">Mot de passe: </label>
 				<input type="password" name="UserPassword" id ="P1"><br/><br/>	
 				<label for="P2" id="P3">Confirmer le mot de passe: </label>
-				<input type="password" name="UserPassword2" id="P2"><br/><br/>
+				<input type="password" name="UserPassword2" id="P2"><br/><br/>	
 				<input type="checkbox" name="ConsulterToutesMaisons" id="CM">
 				<label for="CM">Consulter mes maisons </label><br/><br/>	
 				<select id="HouseSelect">
@@ -28,7 +28,7 @@
 					?>
 				</select>
 				<button type="button" onclick='AddHouse()'> + </button>
-				<br/>
+				<br/><br/>	
 				<input type="checkbox" name="ConsulterTousCapteurs" id="CC">
 				<label for="CC">Consulter ou utiliser mes capteurs </label>
 				<select id="CaptorSelect">
@@ -45,7 +45,7 @@
 					?>
 				</select>
 				<button type="button" onclick='AddCaptor()'> + </button>
-				<br/>
+				<br/><br/>	
 				<input type="checkbox" name="AddScenarios" id="AS">
 				<label for="AS">Planifier des scénarios </label><br/><br/>	
 				<input type="checkbox" name="AddNotifications" id="AN">

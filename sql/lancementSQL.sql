@@ -12,8 +12,7 @@ CREATE TABLE users(
 	UserTypeID tinyint NOT NULL,
 	Phone varchar(15),
 	NbrConnexion int(11) NOT NULL,
-	ConnectDate datetime,
-	FavoriteHome int(11)
+	ConnectDate datetime
 );
 
 CREATE TABLE houses(

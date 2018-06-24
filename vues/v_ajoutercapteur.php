@@ -61,6 +61,9 @@
         echo '<input type="radio" name="TypeID" onclick="document.getElementById(\'capteurOuActionneur\').value=\'actionneur\';"  value='.$donneesA['ActuatorTypeID'].'>'.$donneesA['ActuatorName'].'<br/>';
     }
     ?><br/>
+	
+	<label for="captorlink">lien capteur </label>
+	<input  type="text" value="" name="captorlink">
 	<input id="capteurOuActionneur" type="hidden" value="capteur" name="type">
 	<?php if (isset($_SESSION["erreurAjoutCapteur"]))
 	{

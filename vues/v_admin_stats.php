@@ -18,22 +18,22 @@
 <div id="full">
     <div class="demi">
         <h3>Statistiques utilisateur</h3>
-        <?php $requetenbr=$db->query("SELECT COUNT(UserID) as nbr FROM users WHERE UserTypeID!=-2 OR USerTypeID=-1");
+        <?php $requetenbr=$db->query("SELECT COUNT(UserID) as nbr FROM users WHERE UserTypeID!=1");
         $nbr=$requetenbr->fetch();
         echo 'Il y a '.$nbr['nbr']." utilisateurs d'inscrit sur le site.<br/><br/>";
-        $requeteavg=$db->query("SELECT AVG(NbrConnexion) as avg FROM users WHERE UserTypeID!=-2 OR USerTypeID=-1");
+        $requeteavg=$db->query("SELECT AVG(NbrConnexion) as avg FROM users WHERE UserTypeID!=1");
         $avg=$requeteavg->fetch();
         echo 'Moyenne de connexion : '.number_format($avg['avg'],1).'<br/><br/>';
-        $requetemin=$db->query("SELECT MIN(NbrConnexion) as min FROM users  WHERE UserTypeID!=-2 OR USerTypeID=-1");
+        $requetemin=$db->query("SELECT MIN(NbrConnexion) as min FROM users  WHERE UserTypeID!=1");
         $min=$requetemin->fetch();
         echo 'Minimum de connexion : ' .$min['min'].'<br/><br/>';
-        $requetemax=$db->query("SELECT MAX(NbrConnexion) as max FROM users WHERE UserTypeID!=-2 OR USerTypeID=-1");
+        $requetemax=$db->query("SELECT MAX(NbrConnexion) as max FROM users WHERE UserTypeID!=1");
         $max=$requetemax->fetch();
         echo 'Maximum de connexion : ' .$max['max'].'<br/><br/>';
-        $requetedate=$db->query("SELECT MAX(CreationDate) as date FROM users WHERE UserTypeID!=-2 OR USerTypeID=-1");
+        $requetedate=$db->query("SELECT MAX(CreationDate) as date FROM users WHERE UserTypeID=2");
         $date=$requetedate->fetch();
         echo 'Dernière inscription : '.$date['date'].'<br/><br/>';
-        $requetemaison=$db->query("SELECT UserID FROM users WHERE UserTypeID!=-2 OR USerTypeID=-1");
+        $requetemaison=$db->query("SELECT UserID FROM users WHERE UserTypeID!=1");
         $compteur= 0;
         $tab= 0;
         while($maison=$requetemaison->fetch()){

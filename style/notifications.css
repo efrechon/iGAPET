@@ -2,7 +2,10 @@
     width: 99%;
 	height: 99%;
     display: flex;
+	border: 2px solid black;
 }
+
+
 
 input[type='number']{
     width: 20%;
@@ -25,18 +28,15 @@ h4{
 	text-align:center;
     width: 55%;
     height: 99%;
-    background-color: #FFFFFF;
-    border-radius: 25px;
+    border: 1px solid #DDDDDD;
     margin-left: 1%;
-
 }
 
 #Autorisation{
     width: 90%;
     height: 25%;
-    border: 1px solid #00A4E1;
-    border-radius: 25px;
+    border: 1px solid #DDDDDD;
     margin-left: 5%;
-    overflow:auto;
-    text-align:center;
+	overflow:auto;
+	text-align:center;
 }

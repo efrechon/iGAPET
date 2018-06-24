@@ -1,7 +1,6 @@
 #billet{
     margin: 10%;
-    background-color: white;
-    border-radius: 25px;
+    border: 1px solid #00A4E1;
     padding: 5%;
 }
 

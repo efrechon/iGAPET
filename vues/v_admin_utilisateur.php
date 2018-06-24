@@ -34,7 +34,7 @@
             }
             ?>
             <?php
-            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion, ConnectDate FROM users WHERE UserTypeID!=-2 ORDER BY NbrConnexion DESC");
+            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion, ConnectDate FROM users WHERE UserTypeID!=1 ORDER BY NbrConnexion DESC");
             while($u= $req->fetch()){
                 echo '<tr><td>'.$u['FirstName'].'</td>';
                 echo '<td>'.$u['LastName'].'</td>';
@@ -78,7 +78,7 @@
             }
             ?>
             <?php
-            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion, ConnectDate FROM users WHERE UserTypeID=-2 OR USerTypeID=-1");
+            $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion, ConnectDate FROM users WHERE UserTypeID=1 OR USerTypeID=-1");
             while($u= $req->fetch()){
                 echo '<tr><td>'.$u['FirstName'].'</td>';
                 echo '<td>'.$u['LastName'].'</td>';

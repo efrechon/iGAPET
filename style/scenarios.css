@@ -3,12 +3,11 @@
 }
 
 .ajout{
-    width: 55%;
-    height: 97%;
-    background-color: white;
-    border-radius: 25px;
+    width: 40%;
+    height: 99%;
+    border: 1px solid #5e5e5e;
     text-align: center;
-    margin-right: 2%;
+    margin-right: 5%;
     margin-left: 2%;
 }
 
@@ -22,35 +21,21 @@
     margin-left:30%;
 }
 
-.horaire {
-    width: 90%;
-    height: 30%;
+
+.horaire{
+    width: 70%;
+    height: 51%;
+    border: 1px solid #5e5e5e;
     text-align: center;
-    margin-left: 5%;
+    margin-left:15%;
+    
 }
+
 
 .calendrier{
-    width: 45%;
-    height: 97%;
-    background-color: white;
-    border-radius: 25px;
+    width: 55%;
+    height: 99%;
+    border: 1px solid #5e5e5e;
     text-align: center;
     margin-right: 1%;
-}
-
-h4{
-    text-align:center;
-    margin-top: 2%;
-    margin-left: 3%;
-    width: 90%;
-    border: 1px solid white;
-    border-radius: 8px;
-    padding: 5px;
-    background-color: #00A4E1;
-    color : white;
-}
-
-.typeA{
-    margin-top: 0;
-    margin-bottom: 0;
 }

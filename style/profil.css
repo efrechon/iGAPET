@@ -22,7 +22,6 @@ input[type="text"], input[type="password"], input[type="phone"] {
 }
 
 #debut{
-    padding-top: 5%;
     padding-left: 30%;
     justify-content: center;
     justify-items: center;
@@ -33,4 +32,3 @@ input[type="text"], input[type="password"], input[type="phone"] {
     justify-content: center;
     justify-items: center;
 }
-

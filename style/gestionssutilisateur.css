@@ -6,51 +6,34 @@
     width: 60%;
     height: 96%;
     display: flex;
-    background-color: white;
-    border-radius: 25px;
+    border: 2px solid #5e5e5e;
     padding: 1% 1% 0 1%;
     margin-left: 2%;
 }
 
 h4{
-    text-align:center;
-    width: 96%;
-    border-radius: 8px;
-    padding: 5px;
-    background-color: #00A4E1;
-    color : white;
-}
-
-h5{
-    text-align:center;
-    color : #00A4E1;
+    text-align: center;
 }
 
 .ajout{
     width: 50%;
     height: 96%;
-    border: 1px solid #00A4E1;
-    border-radius: 25px;
+    border: 1px solid #DDDDDD;
     margin-left: 1%;
-    padding: 1%;
 }
 
 #autorisation{
     width: 50%;
     height: 96%;
-    border: 1px solid #00A4E1;
-    border-radius:25px;
+    border: 1px solid #DDDDDD;
     margin-left: 2%;
-    padding: 1%;
 	overflow:auto;
 }
 
 .resume{
     width: 30%;
-    height: 94%;
-	background-color: white;
-    border-radius: 25px;
-    padding: 1%;
+    height: 98%;
+    border: 2px solid #5e5e5e;
     margin-left: 2%;
 }
 
@@ -58,7 +41,9 @@ h5{
 	width:91%;
 	padding:4%;
 	height:5%;
-	background-color: white;
+	border: 1px solid Black;
+	position:relative;
+	
 }
 
 .delete{
@@ -71,13 +56,10 @@ h5{
 .userBlock{
 	width: 96%;
 	height:10%;
-	border: 2px solid #00A4E1;
-    padding: 1%;
+	border: 2px solid #5e5e5e;
 	position:relative;
-}
-
-#sender{
-    margin-left: 40%;
+	
+	
 }
 
 

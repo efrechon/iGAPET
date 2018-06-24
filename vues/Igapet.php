@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../style/style.css"/>
-        <link rel="icon" href="../../img/Logo.png">
+        <link rel="icon" href="../img/Logo.png">
 		<title>Vue d'ensemble</title>
 	</head>
 	<body>

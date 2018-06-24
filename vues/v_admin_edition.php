@@ -20,13 +20,11 @@
             <label for="page">Que voulez-vous modifier ?</label><br/><br/>
             <select name="page" id="page">
                 <?php
-                $requete=$db->query("SELECT PageName FROM page");
-                while($donnees= $requete->fetch()){
-                    $pageNom= $donnees['PageName'];
-                    echo '<option value="'.$pageNom.'"';
-                    if(isset($_POST['page']) AND $_POST['page'] == $pageNom){ echo '  selected';};
-                    echo ">".$pageNom."</option>";
-                }
+                    $requete=$db->query("SELECT PageName FROM pagecontent");
+                    while($donnees= $requete->fetch()){
+                        $pageNom= $donnees['PageName'];
+                        echo "<option value=".$pageNom.">".$pageNom."</option>";
+                    }
                 ?>
             </select>
             <br/><br/>
@@ -34,42 +32,28 @@
         </form>
     </div>
     <div id="affichagePage">
-        <h3><?php
-            $titre = "Veuillez modifier la page ";
-            if(isset($_POST['page'])){
-                if($_POST['page'] == 'A'){
-                    $pageName= 'A Propos';
-                    $titre = $titre.'A Propos';
-                }
-                elseif($_POST['page'] == 'Mentions'){
-                    $pageName= 'Mentions Légales';
-                    $titre = $titre.'Mentions Légales';
-                }
-                else{
-                    $pageName= $_POST['page'];
-                    $titre = $titre.$_POST['page'];
-                }
+        <h3>Veuillez modifier la page <?php
+            if($_POST['page'] == 'A'){
+                $pageName= 'A Propos';
+            }
+            elseif($_POST['page'] == 'Mentions'){
+                $pageName= 'Mentions Légales';
             }
             else{
-                $titre = "Vous n'avez pas encore sélectionné la page à modifier";
+                $pageName= $_POST['page'];
             }
-            echo $titre;
-            ?></h3>
+            echo $pageName;?></h3>
         <form method="post" action="controls/c_admin.php" id="modification">
-            <input type="hidden" name="type" value="page">
             <input type="hidden" name="PageName" value="<?php echo $pageName;?>">
             <?php
-            if(isset($pageName)){
-                $requete2= $db->query("SELECT PageContent FROM page WHERE PageName='$pageName'");
+                $requete2= $db->query("SELECT PageContent FROM pagecontent WHERE PageName='$pageName'");
                 while($donnees2 =$requete2->fetch()){
                     $contenu= $donnees2['PageContent'];
                     echo "<textarea name='PageContent' rows='25' cols='160' form='modification'>$contenu</textarea><br/><br/>";
-                    echo "<input type='submit' value='Enregistrer'>";
                 }
-            }
-            else {
-            }
             ?>
+            <input type="hidden" name="type" value="page">
+            <input type="submit" value="Enregistrer">
         </form>
     </div>
 </div>

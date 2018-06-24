@@ -7,7 +7,7 @@
 <?php ob_start(); ?>
 <div class="first">
     <div id="debut">
-        <label>Prénom : </label><?php if (isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']?><br/><br/>
+        <label>Préom : </label><?php if (isset($_SESSION['FirstName'])) echo $_SESSION['FirstName']?><br/><br/>
         <label>Nom : </label><?php if (isset($_SESSION['LastName'])) echo $_SESSION['LastName']?><br/><br/>
         <label>Mail : </label><?php echo $_SESSION['Mail']?><br/><br/>
         <label>Téléphone : </label><?php if (isset($_SESSION['Phone'])) echo $_SESSION['Phone']?><br/><br/>

@@ -1,9 +1,6 @@
-textarea{
-    width: 95%;
+.tour{
     margin: 2%;
-    padding: 2%;
+    padding: 1%;
+    background-color: #DDDDDD;
     height: 75vh;
-    border-radius: 25px;
-    border: none;
-    background-color: white;
 }
