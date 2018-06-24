@@ -23,7 +23,6 @@ for(var i=0;i<d.length;i++)
 		loadUserType(this);
 	},false);
 }
-console.log(UserInformation);
 if (typeof UserInformation != "undefined")
 	loadForm(UserInformation);
 
