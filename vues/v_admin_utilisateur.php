@@ -28,9 +28,12 @@
             <?php
             if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
                 $id= (int) $_GET['supprime'];
+				if (getSQL($db,"SELECT UserTypeID FROM users WHERE UserID=".$id)[0]['UserTypeID'] >-1 )
+				{
                 $req= $db->prepare("DELETE FROM users WHERE UserID=:id");
                 $req->bindParam(':id', $id);
                 $req->execute();
+				}
             }
             ?>
             <?php
@@ -41,7 +44,7 @@
                 echo '<td>'.$u['Mail'].'</td>';
                 echo '<td>'.$u['NbrConnexion'].'</td>';
                 echo '<td>'.$u['ConnectDate'].'</td>';
-                echo '<td><a href="index.php?pageAction=v_admin_utilisateur&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
+                echo '<td><a onclick="return confirm(\'Etes vous sur de vouloir supprimer cet utilisateur? (action irréversible)?\');" href="index.php?pageAction=v_admin_utilisateur&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
             }
             ?>
         </table>
@@ -85,7 +88,7 @@
                 echo '<td>'.$u['Mail'].'</td>';
                 echo '<td>'.$u['NbrConnexion'].'</td>';
                 echo '<td>'.$u['ConnectDate'].'</td>';
-                echo '<td><a href="index.php?pageAction=v_admin_utilisateur&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
+                echo '<td><a onclick="return confirm(\'Etes vous sur de vouloir supprimer cet administrateur? (action irréversible)?\');" href="index.php?pageAction=v_admin_utilisateur&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
             }
             ?>
         </table>
