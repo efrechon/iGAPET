@@ -39,8 +39,6 @@
 .delete{
 	width:15px;
 	height:15px;
-	position:relative;
-	float:right;
 }
 
 
@@ -62,4 +60,9 @@ li{
 
 .C{
     list-style: inside;
+}
+
+.formImg{
+    margin-left: 5%;
+    display: inline-flex;
 }

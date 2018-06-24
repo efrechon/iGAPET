@@ -10,7 +10,7 @@
     echo 'Le '.date('d/m/Y').' à '.date('h:i:sa').',';?>
     <form method="post" action="controls/c_admin.php">
         <h3>Rapport de panne</h3><br/>
-        <p>Le capteur<input type="text" name="CaptorName">se trouvant dans la pièce <input type="text" name="Name"> est defectueux.<br/>
+        <p>Le capteur <input type="text" name="CaptorName"> se trouvant dans la pièce <input type="text" name="Name"> est defectueux.<br/><br/>
         La source du disfonctionnement est <input type="text" name="Problem">.</p><br/>
         <input type="hidden" name="type" value="sav">
         <input type="submit" value="Envoyer">

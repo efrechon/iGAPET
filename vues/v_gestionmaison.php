@@ -11,22 +11,22 @@
             <?php 
 			$donnees = getAllHouses($db);
             foreach($donnees as $donneesM){
-                echo '<li class="A">'.$donneesM['Name'].'<form action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer cette maison?\');"><input type="hidden" name="HouseID" value='.$donneesM['HouseID'].'><input type="image" alt="delete" src="img/close.png"></form><ul>';
+                echo '<li class="A">'.$donneesM['Name'].'<form class="formImg" action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer cette maison?\');"><input type="hidden" name="HouseID" value='.$donneesM['HouseID'].'><input type="image" alt="delete" src="img/close.png" class="delete"></form><ul>';
                 $donnees2= getSQL($db,"SELECT Name,RoomID FROM rooms WHERE HouseID=".$donneesM['HouseID']);
                 foreach($donnees2 as $donneesP){
-                    echo '<li class="B">'.$donneesP['Name'].'<form action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer cette pièce?\');"><input type="hidden" name="RoomID" value='.$donneesP['RoomID'].'><input type="image" alt="delete" src="img/close.png"></form><ul>';
+                    echo '<li class="B">'.$donneesP['Name'].'<form class="formImg" action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer cette pièce?\');"><input type="hidden" name="RoomID" value='.$donneesP['RoomID'].'><input type="image" alt="delete" src="img/close.png"></form><ul>';
                     $donnees3= getAllCaptors($db,"WHERE RoomID=".$donneesP['RoomID']);
                     foreach($donnees3 as $donneesC){
                         $donnees5= getAllCaptorTypes($db,"WHERE CaptorTypeID=".$donneesC['CaptorTypeID']);
                         foreach($donnees5 as $donneesC2){
-                            echo '<li class="C">'.$donneesC2['CaptorName'].'<form action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce capteur?\');"><input type="hidden" name="CaptorID" value='.$donneesC['CaptorID'].'><input type="image" alt="delete" src="img/close.png"></form></li>';
+                            echo '<li class="C">'.$donneesC2['CaptorName'].'<form class="formImg" action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce capteur?\');"><input type="hidden" name="CaptorID" value='.$donneesC['CaptorID'].'><input type="image" alt="delete" src="img/close.png"></form></li>';
                         }
                     }
                     $donnees4= getAllActuators($db,"WHERE RoomID=".$donneesP['RoomID']);
                     foreach($donnees4 as $donneesA){
                         $donnees6= getAllActuatorType($db,"WHERE ActuatorTypeID=".$donneesA['ActuatorTypeID']);
                         foreach($donnees6 as $donneesA2){
-                            echo '<li class="C">'.$donneesA2['ActuatorName'].'<form action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce capteur?\');"><input type="hidden" name="ActuatorID" value='.$donneesA['ActuatorID'].'><input type="image" alt="delete" src="img/close.png"></form></li>';
+                            echo '<li class="C">'.$donneesA2['ActuatorName'].'<form class="formImg" action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce capteur?\');"><input type="hidden" name="ActuatorID" value='.$donneesA['ActuatorID'].'><input type="image" alt="delete" src="img/close.png"></form></li>';
                         }
                     }
                     echo '</ul></li>';

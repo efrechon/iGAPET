@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style/actionneur.css">
+<link rel="stylesheet" href="style/capteur.css">
 
 <!-- Nom de la page -->
 <?php $nom_page = "Mes capteurs"; ?>

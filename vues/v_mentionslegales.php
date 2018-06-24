@@ -9,7 +9,7 @@
     <?php
     $requete= $db->query("SELECT PageContent FROM page WHERE PageName='$nom_page'");
     while($donnees= $requete->fetch()){
-        echo $donnees['PageContent'];
+        echo "<textarea disabled rows='34' cols='185'>".$donnees['PageContent']."</textarea>";
     }
     ?>
 </div>

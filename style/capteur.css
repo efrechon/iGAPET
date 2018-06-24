@@ -1,6 +1,5 @@
 #selection{
     height: 5%;
-    border-bottom: 2px solid gray;
     padding-bottom: 0.5%;
 }
 
@@ -30,13 +29,13 @@
 
 h4{
     text-align: center;
-    margin-bottom: 0;
+    margin-bottom: 1%;
 }
 
 .pieceP, .actionneurP {
     width: 98%;
     display: flex;
-    border: 2px solid #DDDDDD;
+    background-color: white;
     border-radius: 25px;
 }
 

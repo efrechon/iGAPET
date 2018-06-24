@@ -59,12 +59,11 @@
                     $id= $donnessC['CaptorTypeID'];
                     echo '<div class="bilan">'.$donnessC['CaptorName'].'<br/>';
                     echo '<img src='."$url".'><br/>';
-                    echo 'Moyenne : ';
-                    $requete2=$db->query("SELECT AVG(Value) as avg FROM captors WHERE CaptorTypeId=$id AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID=13)");
-                    while($donnees=$requete2->fetch()){
-                        echo number_format($donnees['avg'],1);
+                    $maisonID =$_SESSION['HouseID'];
+                    $requete2=$db->query("SELECT AVG(Value) as avgcapteur FROM captors WHERE CaptorTypeID=$id AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID='$maisonID')");
+                    while($donnees2=$requete2->fetch()){
+                        echo 'Moyenne : '.number_format($donnees2['avgcapteur'],1).' '.$donnessC['Unit'].'<br/>';
                     }
-                    echo $donnessC['Unit'].'<br/>';
                     echo 'Consigne : <input type="number"><br/>';
                     echo '<input type="submit" value="Envoyer">';
                     echo '</div>';
@@ -76,14 +75,24 @@
                     $idA= $donnessA['ActuatorTypeID'];
                     echo '<div class="bilan">'.$donnessA['ActuatorName'].'<br/>';
                     echo '<img src='."$url".'><br/>';
+                    $maisonID =$_SESSION['HouseID'];
                     if($donnessA['Unit']== NULL){
-                        echo ' / <br/>';
+                        $requeteNombreON=$db->query("SELECT COUNT(State) as nbrcapteurON FROM actuators WHERE ActuatorTypeID='$idA' AND State='ON' AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID='$maisonID')");
+                        while($donneesNombreON = $requeteNombreON->fetch()){
+                            echo $donneesNombreON['nbrcapteurON'];
+                        }
+                        echo ' / ';
+                        $requeteNombre=$db->query("SELECT COUNT(*) as nbrcapteur FROM actuators WHERE ActuatorTypeID='$idA' AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID='$maisonID')");
+                        while($donneesNombre = $requeteNombre->fetch()){
+                            echo $donneesNombre['nbrcapteur'];
+                        }
+                        echo '<br/>';
                         echo '<input type="button" value="OFF"><br/>';
                     }
                     else{
-                        $requeteA2=$db->query("SELECT AVG(State) as avg FROM actuators WHERE ActuatorTypeID='$idA' AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID=13)");
+                        $requeteA2=$db->query("SELECT AVG(State) as avgactionneur FROM actuators WHERE ActuatorTypeID='$idA' AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID='$maisonID')");
                         while($donnessA2= $requeteA2->fetch()){
-                            echo 'Moyenne : '.$donnessA2['avg'].$donnessA['Unit'].'<br/>';
+                            echo 'Moyenne : '.number_format($donnessA2['avgactionneur'],1).$donnessA['Unit'].'<br/>';
                         }
                         echo 'Consigne : <input type="number"><br/>';
                     }
