@@ -6,47 +6,43 @@
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
 <div id="full">
-    <div id="Notifications">
-        <fieldset>
-            <legend>Notifications</legend>
-            <?php if(!isset($_SESSION['prenom'])){
+	<div id="Notifications">
+    	<div class="Moyenne">
+        	<h4>Notifications</h4>
+		</div>
+		<div id=infos>
+            <?php if(!isset($_SESSION['FirstName'])){
                 echo "Veuillez compléter votre profil";
             }
             ?>
             <?php
-            if (isset($_SESSION['prenom'])){
-                echo 'Bonjour '.$_SESSION['prenom'].',';
+            if (isset($_SESSION['FirstName'])){
+                echo 'Bonjour '.$_SESSION['FirstName'].',';
             }
             else {
                 echo 'Bonjour,';
             }
             echo "<br>";
-            $idvisiteur= $_SESSION['id'];
-            $req= $db->query("SELECT COUNT(*) as nb FROM houses WHERE UserID=$idvisiteur");
-            $don= $req->fetch();
-            $req->closeCursor();
-            if($don['nb'] == 0){
+            $nb= count(getAllHouses($db));
+            if($nb == 0){
                 echo "Vous n'avez pas encore de maison enregistrée.";
             }
-            else if($don['nb'] == 1) {
-                echo "Vous avez actuellement ".$don['nb']." maison.";
+            else if($nb == 1) {
+                echo "Vous avez actuellement ".$nb." maison.";
             }
             else{
-                echo "Vous avez actuellement ".$don['nb']." maisons.";
+                echo "Vous avez actuellement ".$nb." maisons.";
             }
             ?>
-        </fieldset>
+       </div>
     </div>
-    <div id="other">
-        <a href="index.php?pageAction=scenarios">
-            <img src="img/calendar.png" alt="calendrier">
-        </a>
-    </div>
-    <div id="Informations">
+
+	<div id="Informations">
+	    
         <p>Choisir votre maison par défaut :
         <!-- Choisir sa maison par défaut pour la suite du site -->
                 <?php
-                $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+                $donneesList= getAllHouses($db);
                 foreach($donneesList as $donnees){
                     $nomM= $donnees['Name'];
                     $idhome= $donnees['HouseID'];
@@ -55,16 +51,47 @@
                 ?>
             </p>
         <div class="Moyenne">
-            <h5>Bilan de la maison</h5>
-
-        </div>
-        <?php
-            $requeteLumTotal= $db->query("SELECT COUNT(State) as nbrTot FROM actuators WHERE ActuatorTypeID=2");
-            $requeteLum= $db->query("SELECT COUNT(State) as nbr FROM actuators WHERE ActuatorTypeID=2 AND State='ON'");
-            $lum= $requeteLum->fetch();
-            $lumTot= $requeteLumTotal->fetch();
-            echo 'Vous avez '.$lum['nbr'].' lumières allumées sur '.$lumTot['nbrTot'].' lumières disponibles';
-        ?>
+            <h4>Bilan de la maison</h4>
+            <?php
+                $requeteC= getAllCaptorTypes($db,"");
+				foreach($requeteC as $donnessC){
+                    $url= $donnessC['url_img'];
+                    $id= $donnessC['CaptorTypeID'];
+                    echo '<div class="bilan">'.$donnessC['CaptorName'].'<br/>';
+                    echo '<img src='."$url".'><br/>';
+                    echo 'Moyenne : ';
+                    $requete2=$db->query("SELECT AVG(Value) as avg FROM captors WHERE CaptorTypeId=$id AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID=13)");
+                    while($donnees=$requete2->fetch()){
+                        echo number_format($donnees['avg'],1);
+                    }
+                    echo $donnessC['Unit'].'<br/>';
+                    echo 'Consigne : <input type="number"><br/>';
+                    echo '<input type="submit" value="Envoyer">';
+                    echo '</div>';
+                }
+                echo '<br/>';
+                $requeteA= getAllActuatorType($db,"");
+				foreach($requeteA as $donnessA){
+                    $url= $donnessA['url_img'];
+                    $idA= $donnessA['ActuatorTypeID'];
+                    echo '<div class="bilan">'.$donnessA['ActuatorName'].'<br/>';
+                    echo '<img src='."$url".'><br/>';
+                    if($donnessA['Unit']== NULL){
+                        echo ' / <br/>';
+                        echo '<input type="button" value="OFF"><br/>';
+                    }
+                    else{
+                        $requeteA2=$db->query("SELECT AVG(State) as avg FROM actuators WHERE ActuatorTypeID='$idA' AND RoomID IN (SELECT RoomID FROM rooms WHERE HouseID=13)");
+                        while($donnessA2= $requeteA2->fetch()){
+                            echo 'Moyenne : '.$donnessA2['avg'].$donnessA['Unit'].'<br/>';
+                        }
+                        echo 'Consigne : <input type="number"><br/>';
+                    }
+                    echo '<input type="submit" value="Envoyer">';
+                    echo '</div>';
+                }
+            ?>
+    	</div>
     </div>
 </div>
 

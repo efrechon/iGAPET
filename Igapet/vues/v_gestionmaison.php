@@ -9,24 +9,24 @@
     <div class="identitemaison">
         <ul>
             <?php 
-			$donnees = getSQL($db,"SELECT Name,HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+			$donnees = getAllHouses($db);
             foreach($donnees as $donneesM){
-                echo '<li class="A">'.$donneesM['Name'].'<ul>';
+                echo '<li class="A">'.$donneesM['Name'].'<form action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'êtes vous sur de vouloir supprimer cette maison?\');"><input type="hidden" name="HouseID" value='.$donneesM['HouseID'].'><input type="image" alt="delete" src="img/close.png"></form><ul>';
                 $donnees2= getSQL($db,"SELECT Name,RoomID FROM rooms WHERE HouseID=".$donneesM['HouseID']);
                 foreach($donnees2 as $donneesP){
-                    echo '<li class="B">'.$donneesP['Name'].'<ul>';
-                    $donnees3= getSQL($db,"SELECT CaptorTypeID FROM captors WHERE RoomID=".$donneesP['RoomID']);
+                    echo '<li class="B">'.$donneesP['Name'].'<form action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'êtes vous sur de vouloir supprimer cette pièce?\');"><input type="hidden" name="RoomID" value='.$donneesP['RoomID'].'><input type="image" alt="delete" src="img/close.png"></form><ul>';
+                    $donnees3= getAllCaptors($db,"WHERE RoomID=".$donneesP['RoomID']);
                     foreach($donnees3 as $donneesC){
-                        $donnees5= getSQL($db,"SELECT CaptorName FROM captortypes WHERE CaptorTypeID=".$donneesC['CaptorTypeID']);
+                        $donnees5= getAllCaptorTypes($db,"WHERE CaptorTypeID=".$donneesC['CaptorTypeID']);
                         foreach($donnees5 as $donneesC2){
-                            echo '<li class="C">'.$donneesC2['CaptorName'].'</li>';
+                            echo '<li class="C">'.$donneesC2['CaptorName'].'<form action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'êtes vous sur de vouloir supprimer ce capteur?\');"><input type="hidden" name="CaptorID" value='.$donneesC['CaptorID'].'><input type="image" alt="delete" src="img/close.png"></form></li>';
                         }
                     }
-                    $donnees4= getSQL($db,"SELECT ActuatorTypeID FROM actuators WHERE RoomID=".$donneesP['RoomID']);
+                    $donnees4= getAllActuators($db,"WHERE RoomID=".$donneesP['RoomID']);
                     foreach($donnees4 as $donneesA){
-                        $donnees6= getSQL($db,"SELECT ActuatorName FROM actuatortypes WHERE ActuatorTypeID=".$donneesA['ActuatorTypeID']);
+                        $donnees6= getAllActuatorType($db,"WHERE ActuatorTypeID=".$donneesA['ActuatorTypeID']);
                         foreach($donnees6 as $donneesA2){
-                            echo '<li class="C">'.$donneesA2['ActuatorName'].'</li>';
+                            echo '<li class="C">'.$donneesA2['ActuatorName'].'<form action="controls/c_deletion.php" method="post" onsubmit="return confirm(\'êtes vous sur de vouloir supprimer ce capteur?\');"><input type="hidden" name="ActuatorID" value='.$donneesA['ActuatorID'].'><input type="image" alt="delete" src="img/close.png"></form></li>';
                         }
                     }
                     echo '</ul></li>';
@@ -38,10 +38,9 @@
     </div>
     <div class="blocajout">
         <br/><br/>
-        <a href='index.php?pageAction=gesmaison&new=maison'>Ajouter une maison</a><br/><br/><br/><br/>
-        <a href='index.php?pageAction=gesmaison&new=piece'>Ajouter une pièce</a><br/><br/><br/><br/>
-        <a href='index.php?pageAction=gesmaison&new=capteur'>Ajouter un capteur</a><br/><br/><br/><br/>
-        <a href='index.php?pageAction=gesmaison&new=actionneur'>Ajouter un actionneur</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajoutermaison' class="ajouter">Ajouter une maison</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajouterpiece' class="ajouter">Ajouter une pièce</a><br/><br/><br/><br/>
+        <a href='index.php?pageAction=v_ajoutercapteur' class="ajouter">Ajouter un capteur</a><br/><br/><br/><br/>
     </div>
 </div>
 <!-- Fin & Affectation du contenu de la page -->

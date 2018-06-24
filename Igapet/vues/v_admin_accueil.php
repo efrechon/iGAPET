@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/admin.css"/>
+    <link rel="stylesheet" href="style/admin_accueil.css"/>
     <link rel="icon" href="img/Logo.png">
     <title>iGAPET</title>
 </head>
@@ -12,7 +12,7 @@
     include('v_header.php');?>
 </div>
 <div id=nav>
-
+    <?php include ('v_admin_menu.php');?>
 </div>
 <div id="full">
     <div class="composants">
@@ -63,49 +63,24 @@
         }
         ?>
         </table>
-        <a href="index.php?pageAction=admini&modification=catalogue"><input type="button" value="Modifier"></a>
-    </div>
-    <div class="utilisateurs">
-        <h3>Liste utilisateur</h3>
-        <table>
-            <tr>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Mail</th>
-                <th>Nombre connexion</th>
-                <th>Suppression</th>
-            </tr>
-            <?php
-                if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
-                    $id= (int) $_GET['supprime'];
-                    $req= $db->prepare("DELETE FROM users WHERE UserID=:id");
-                    $req->bindParam(':id', $id);
-                    $req->execute();
-                }
-            ?>
-            <?php
-                $req= $db->query("SELECT UserID, FirstName, LastName, Mail, NbrConnexion FROM users WHERE UserTypeID!=1 ORDER BY NbrConnexion DESC");
-                while($u= $req->fetch()){
-                    echo '<tr><td>'.$u['FirstName'].'</td>';
-                    echo '<td>'.$u['LastName'].'</td>';
-                    echo '<td>'.$u['Mail'].'</td>';
-                    echo '<td>'.$u['NbrConnexion'].'</td>';
-                    echo '<td><a href="index.php?pageAction=admini&supprime='.$u['UserID'].'">Supprimer</a></td></tr>';
-                }
-            ?>
-        </table>
-    </div>
-    <div class="edition">
-        <h3>Edition des pages</h3>
-        <ul>
-            <li>CGU</li>
-            <li>Mentions Légales</li>
-            <li>A propos</li>
-        </ul>
-        <input type="button" value="Editer">
+        <a href="index.php?pageAction=v_admin_ajout"><input type="button" value="Modifier"></a>
     </div>
     <div id="messagerie">
-
+        <h3>Messagerie</h3>
+        <?php
+        $requete=$db->query("SELECT Correspondant,Objet,Demande,Date FROM messagerie ORDER BY MessagerieID DESC");
+        while($donnees= $requete->fetch()){
+            $UserID= $donnees['Correspondant'];
+            $requete2= $db->query("SELECT * FROM users WHERE UserID=$UserID");
+            while ($donnees2= $requete2->fetch()){
+                echo '<div class="message">';
+                echo 'Le '.$donnees['Date'].', de '.$donnees2['FirstName'].' '.$donnees2['LastName'].'<br/>';
+                echo '<ins>Objet :</ins> <b>'.$donnees['Objet'].'</b><br/>';
+                echo '<ins>Message :</ins> '.$donnees['Demande'];
+                echo '</div>';
+            }
+        }
+        ?>
     </div>
 </div>
 

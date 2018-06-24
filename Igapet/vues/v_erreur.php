@@ -13,4 +13,4 @@
 <h1>Erreur, cette page n'existe pas !<br/>
 Veuillez vous connecter ou vous inscrire !</h1>
 <br/>
-<a href="index.php?pageAction=connexion"><input type="button" value="Retour"></a>
+<a href="index.php?pageAction=v_connexion"><input type="button" value="Retour"></a>

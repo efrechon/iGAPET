@@ -6,20 +6,20 @@
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
 <div id="selection">
-    <form action="index.php?pageAction=capteurs" method="post">
+    <form action="index.php?pageAction=v_capteurs" method="post">
         <select name="triC">
             <option value="triPiece">Trier par pièce</option>
             <option value="triActionneur">Trier par capteur</option>
         </select>
         <select name="whereC">
             <?php
-            $donneesList= getSQL($db,"SELECT Name, HouseID FROM houses WHERE UserID=".$_SESSION['id']);
+            $donneesList= getAllHouses($db);
             foreach($donneesList as $donnees){
                 echo ('<option value='.$donnees['HouseID'].'>'.$donnees['Name'].'</option>');
             }
             ?>
         </select>
-        <input type="submit" value="Valider">
+        <input type="submit" id="boutonValider" value="Valider">
     </form>
 </div>
 <div id="affichageActionneur">
@@ -31,7 +31,7 @@
 		}
 		else
 		{
-			$data = getSQL($db,"SELECT HouseID FROM houses WHERE UserID=".$_SESSION['id']." LIMIT 1");
+			$data = getAllHouses($db);
 			if (!count($data))
 			{
 				echo "Vous n'avez pas de maison, veuillez en ajouter";
@@ -43,23 +43,83 @@
 			}
 		}
 		if ($idhome){
-			$requeteTriPC= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
+            $requeteTriPC= $db->query("SELECT Name,RoomID FROM rooms WHERE HouseID=$idhome");
 			while($triPC= $requeteTriPC->fetch()){
 				$idroom= $triPC['RoomID'];
-				echo'<h4>'.$triPC['Name'].'</h4>';
-				echo'<div class="pieceP">';
-				$requeteTriPC2= $db->query("SELECT CaptorTypeID, Value FROM captors WHERE RoomID=$idroom");
-				while($triPC2= $requeteTriPC2->fetch()){
+				echo '<h4>'.$triPC['Name'].'</h4>';
+				echo '<div class="pieceP">';
+				$requeteTriPC2= getAllCaptors($db,"WHERE RoomID=".$idroom);
+				foreach($requeteTriPC2 as $triPC2){
 					$idcapteur= $triPC2['CaptorTypeID'];
-					$requeteTriPC3= $db->query("SELECT CaptorName, Unit, url_img FROM captortypes WHERE CaptorTypeID=$idcapteur");
-					while($triPC3= $requeteTriPC3->fetch()){
+					$requeteTriPC3= getAllCaptorTypes($db,"WHERE CaptorTypeID=".$idcapteur);
+					foreach($requeteTriPC3 as $triPC3){
 						$idimg= $triPC3['url_img'];
 						echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/>'.$triPC2['Value'].' '.$triPC3['Unit'].'</div>';
 					}
 				}
-				echo'</div>';
+                $requeteTriPC5= getAllActuators($db,"WHERE RoomID=".$idroom);
+				foreach ($requeteTriPC5 as $triPC5){
+                    $idactionneur= $triPC5['ActuatorTypeID'];
+                    $requeteTriPC4 = getAllActuatorType($db,"WHERE ActuatorTypeID=".$idactionneur);
+					foreach($requeteTriPC4 as $triPC4){
+                        $idimg2 = $triPC4['url_img'];
+                        echo '<div class="actionneurM">'.$triPC4['ActuatorName'].'<br/><img src='."$idimg2".'><br/>'.$triPC5['State'].' '.$triPC4['Unit'].'</div>';
+                    }
+                }
+				echo '</div>';
 			}
+            /*$requete1=$db->query("SELECT CapteurNumero, Value FROM trames WHERE TrameID=5");
+            while($donnees= $requete1->fetch()){
+                $capteur= $donnees['CapteurNumero'];
+                $valeur= hexdec($donnees['Value']);
+                $requete2=$db->query("UPDATE captors SET Value=$valeur WHERE CaptorID=40");
+            }*/
 		}
+    }
+    elseif(!isset($_POST['triC']) || $_POST['triC'] == 'triActionneur') {
+        if (isset($_POST['whereC'])) {
+            $idhome = $_POST['whereC'];
+        } else {
+            $data = getAllHouses($db);
+            if (!count($data)) {
+                echo "Vous n'avez pas de maison, veuillez en ajouter";
+                $idhome = 0;
+            } else {
+                $idhome = (int)$data[0]["HouseID"];
+            }
+        }
+        if ($idhome) {
+            $requeteTriTC = getAllCaptorTypes($db,"");
+			foreach($requeteTriTC as $triTC){
+                $idcapteur = $triTC['CaptorTypeID'];
+                echo '<h4>' . $triTC['CaptorName'] . '</h4>';
+                echo '<div class="pieceP">';
+                $requeteTriTC2 = getAllCaptors($db,"WHERE CaptorTypeID=".$idcapteur);
+				foreach($requeteTriTC2 as $triTC2){
+                    $idroom = $triTC2['RoomID'];
+                    $requeteTriTC3 = $db->query("SELECT Name, Floor FROM rooms WHERE HouseID=$idhome AND RoomID=$idroom");
+                    while ($triTC3 = $requeteTriTC3->fetch()) {
+                        echo '<div class="actionneurM">'.$triTC3['Name'].'<br/>Etage : '.$triTC3['Floor'].'<br/><b>'.$triTC2['Value'].' '.$triTC['Unit'].'</b></div>';
+                    }
+                }
+                echo '</div>';
+            }
+            $requeteTriTC4 = getAllActuatorType($db,"");
+			foreach($requeteTriTC4 as $triTC4){
+                $idactionneur = $triTC4['ActuatorTypeID'];
+                echo '<h4>' . $triTC4['ActuatorName'] . '</h4>';
+                echo '<div class="pieceP">';
+                $requeteTriTC5 = getAllActuators($db,"WHERE ActuatorTypeID=".$idactionneur);
+				foreach($requeteTriTC5 as $triTC5){
+                    $idroom2 = $triTC5['RoomID'];
+                    $requeteTriTC6 = $db->query("SELECT Name, Floor FROM rooms WHERE HouseID=$idhome AND RoomID=$idroom2");
+                    while ($triTC6 = $requeteTriTC6->fetch()) {
+                        echo '<div class="actionneurM">'.$triTC6['Name'].'<br/>Etage : '.$triTC6['Floor'].'<br/><b>'.$triTC5['State'].' '.$triTC4['Unit'].'</b></div>';
+                    }
+                }
+                echo '</div>';
+            }
+        }
     }
     ?>
 </div>

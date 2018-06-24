@@ -5,13 +5,12 @@
 
 <!-- Début du contenu de la page -->
 <?php ob_start(); ?>
-<form action="index.php?pageAction=contacter" method="post">
-    <div id="mailC">
-        <label for="emailM">Votre email : </label>
-        <input type="email" name="emailM" value= <?php echo $_SESSION['mail']; ?>><br/><br/>
-    </div>
-    <label for="description" class="demande">Que pouvons nous faire pour vous ?</label><br/><br/>
-    <textarea cols="100" rows="20" name="description"></textarea><br/>
+<p>Vous pouvez nous envoyer un mail à l'adresse suivante : <b>app.igapet@gmail.com</b>, ou remplir les champs ci-contre :</p>
+<form action="controls/c_admin.php" method="post">
+    <p class="slogan">Comment pouvons nous vous aider ?</p><br/>
+    <label for="Objet">Objet : </label><input type="text" name="Objet"><br/><br/>
+    <textarea cols="175" rows="25" name="Demande"></textarea><br/>
+    <input type="hidden" value="message" name="type">
     <input type="submit" value="Envoyer">
 </form>
 

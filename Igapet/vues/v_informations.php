@@ -12,8 +12,8 @@
         <div class="catal">
             <ul>
                 <?php
-                $req= $db->query("SELECT CaptorName, url_img FROM captortypes");
-                while($cap= $req->fetch()){
+                $req= getAllCaptorTypes($db,"");
+				foreach($req as $cap){
                     $idimg= $cap['url_img'];
                     echo '<li>'.$cap['CaptorName'].'  '.'<img src='."$idimg".'></li>';
                 }
@@ -25,15 +25,16 @@
         <div class="catal">
             <ul>
                 <?php
-                $req= $db->query("SELECT ActuatorName, url_img FROM actuatortypes");
-                while($act= $req->fetch()){
+                $req= getAllActuatorType($db,"");
+				foreach($req as $act){
                     $idimg= $act['url_img'];
                     echo '<li>'.$act['ActuatorName'].'  '.'<img src='."$idimg".'></li>';
                 }
                 ?>
             </ul>
         </div>
-        <br/>
+        <br>
+        <input type="button" value="Modifier">
     </fieldset>
 </div>
 <!-- Fin & Affectation du contenu de la page -->

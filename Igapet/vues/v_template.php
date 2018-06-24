@@ -20,3 +20,5 @@
 		
     </body>
 </html>
+
+<script src="script/s_trame.js"></script>

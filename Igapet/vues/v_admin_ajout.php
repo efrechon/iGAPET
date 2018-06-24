@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style/admin.css"/>
+    <link rel="stylesheet" href="style/admin_ajout.css"/>
     <link rel="icon" href="img/Logo.png">
     <title>iGAPET</title>
 </head>
@@ -11,8 +11,12 @@
     <?php $nom_page="Administration";
     include('v_header.php');?>
 </div>
+<div id=nav>
+    <?php include ('v_admin_menu.php');?>
+</div>
 <div id="full">
     <div class="composants">
+        <h3>Catalogue des composants</h3>
         <table>
             <h4>Capteurs</h4>
             <tr>
@@ -21,7 +25,6 @@
                 <th>Nombre</th>
                 <th>Panne détécté</th>
             </tr>
-        <h3>Catalogue des composants</h3>
             <?php
             if(isset($_GET['supprimeC']) AND !empty($_GET['supprimeC'])){
                 $id= (int)$_GET['supprimeC'];
@@ -40,7 +43,7 @@
                     echo '<td>'.$c2['nbr'].'</td>';
                 }
                 echo '<td>0</td>';
-                echo '<td><a href="index.php?pageAction=admini&modification=catalogue&supprimeC='.$c['CaptorTypeID'].'">Supprimer</a></td></tr>';
+                echo '<td><a href="index.php?pageAction=v_admin_ajout&supprimeC='.$c['CaptorTypeID'].'">Supprimer</a></td></tr>';
                 echo '</tr>';
             }
             ?>
@@ -56,6 +59,14 @@
                 <th>Panne détécté</th>
             </tr>
             <?php
+            if(isset($_GET['supprimeA']) AND !empty($_GET['supprimeA'])){
+                $id= (int)$_GET['supprimeA'];
+                $req= $db->prepare("DELETE FROM actuatortypes WHERE ActuatorTypeID=:id");
+                $req->bindParam(':id', $id);
+                $req->execute();
+            }
+            ?>
+            <?php
             $reqA=$db->query("SELECT ActuatorTypeID, ActuatorName, Unit, MinimumValue, MaximumValue FROM actuatortypes");
             while($a=$reqA->fetch()){
                 $id=$a['ActuatorTypeID'];
@@ -65,24 +76,33 @@
                     echo '<td>'.$a2['nbr'].'</td>';
                 }
                 echo '<td>0</td>';
+                echo '<td><a href="index.php?pageAction=v_admin_ajout&supprimeA='.$a['ActuatorTypeID'].'">Supprimer</a></td></tr>';
                 echo '</tr>';
             }
             ?>
         </table>
     </div>
-    <div class="newcomposants">
-        <h3>Ajouter un capteur</h3>
-        <form method="post" action="">
-            <input type="radio" name="typeNT" value="captor">Capteur
-            <input type="radio" name="typeNT" value="actuator">Actionneur<br/><br/>
-            <label for="nameNT">Nom composant : </label><input type="text" name="nameNT"><br/><br/>
-            <label for="uniteNT">Unité : </label><input type="text" name="uniteNT"><br/><br/>
-            <label for="minNA">Minimum : </label><input type="radio" name="OFFNUMBER"><input type="number" name="minNA">
-            <input type="radio" name="OFFNUMBER">OFF<br/><br/>
-            <label for="maxNA">Minimum : </label><input type="radio" name="ONNUMBER"><input type="number" name="maxNA">
-            <input type="radio" name="ONNUMBER">ON<br/><br/>
-            <input type="submit" value="Ajouter"><br/><br/>
-        </form>
+    <div class="ajoutertype">
+        <div class="newcomposants">
+            <h3>Ajouter un capteur</h3>
+            <form action="controls/c_admin.php" method="post">
+                <label for="CaptorName">Nom composant : </label><input type="text" name="CaptorName"><br/><br/>
+                <label for="Unit">Unité : </label><input type="text" name="Unit"><br/><br/>
+                <input type="hidden" value="type_capteur" name="type">
+                <input type="submit" value="Ajouter"><br/><br/>
+            </form>
+        </div>
+        <div class="newcomposants">
+            <h3>Ajouter un actionneur</h3>
+            <form action="controls/c_admin.php" method="post">
+                <label for="ActuatorName">Nom composant : </label><input type="text" name="ActuatorName"><br/><br/>
+                <label for="Unit">Unité : </label><input type="text" name="Unit"><br/><br/>
+                <label for="MinimumValue">Minimum : </label><input type="text" name="MinimumValue"><br/><br/>
+                <label for="MaximumValue">Maximum : </label><input type="text" name="MaximumValue"><br/><br/>
+                <input type="hidden" value="type_actionneur" name="type">
+                <input type="submit" value="Ajouter"><br/><br/>
+            </form>
+        </div>
     </div>
    </div>
 
