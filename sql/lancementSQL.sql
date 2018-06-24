@@ -128,8 +128,8 @@ CREATE TABLE trames(
 	
 );
 
-INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Nicolas', 'Terru', 'nicolas.terru@gmail.com', '2018-05-10', '$2y$10$Q9e2escHubQahsHFeT01re7h9.0gGjqu3GHf5Ej2zXQzy9CkhoK.2', 0, '+33678940312', 20, 1);
-INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Dany', 'Brillant', 'dany@free.fr', '2018-05-17', '$2y$10$weHYROCoUDmn9ebsFzf.Y.uvfBtCAB3SHQKVA4FHTr5XmP2Z041..', 0, '+3367890452314', 11, 3);
+INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion,FavoriteHome) VALUES ('Nicolas', 'Terru', 'nicolas.terru@gmail.com', '2018-05-10', '$2y$10$Q9e2escHubQahsHFeT01re7h9.0gGjqu3GHf5Ej2zXQzy9CkhoK.2', 0, '+33678940312', 20, 1);
+INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion,FavoriteHome) VALUES ('Dany', 'Brillant', 'dany@free.fr', '2018-05-17', '$2y$10$weHYROCoUDmn9ebsFzf.Y.uvfBtCAB3SHQKVA4FHTr5XmP2Z041..', 0, '+3367890452314', 11, 3);
 INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Edgar', 'Admin', 'app.igapet@gmail.com', '2018-05-17', '$2y$10$QFHqu/zv92wr.ndlBslq2.qJnRQE.CZXwXaC8Du8BUMf5M7qLzlA2', -2, NULL, 31);
 INSERT INTO Houses(UserID, Name, Address, PostalCode, Country, NumberOfFloor) VALUES (1, 'Maison Principale', '5 avenue de la République', 92450, 'France', 2);
 INSERT INTO Houses(UserID, Name, Address, PostalCode, Country, NumberOfFloor) VALUES (1, 'AirBnB', '4 rue des Mimosas', 33095, 'France', 1);
