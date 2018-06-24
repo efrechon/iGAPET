@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style/actionneur.css">
+<link rel="stylesheet" href="style/capteur.css">
 
 <!-- Nom de la page -->
 <?php $nom_page = "Mes capteurs"; ?>
@@ -66,7 +66,7 @@
                     $requeteTriPC4 = getAllActuatorType($db,"WHERE ActuatorTypeID=".$idactionneur);
 					foreach($requeteTriPC4 as $triPC4){
                         $idimg2 = $triPC4['url_img'];
-						if (isset($triPC5['link']) && isset($triPC5['captlorlink']))
+                         if (isset($triPC5['link']) && isset($triPC5['captlorlink']))
 							echo '<div class="actionneurM">'.$triPC4['ActuatorName'].'<br/><img src='."$idimg2".'><br/><button onclick="sendData(\'0001\',\''.$triPC5['link'].'\',\''.$triPC5['captlorlink'].'\')">monter</button><button onclick="sendData(\'0010\',\''.$triPC5['link'].'\',\''.$triPC5['captlorlink'].'\')">arreter</button><button onclick="sendData(\'0100\',\''.$triPC5['link'].'\',\''.$triPC5['captlorlink'].'\')">descendre</button>'.$triPC5['State'].''.$triPC4['Unit'].'</div>';
 						else
 							echo '<div class="actionneurM">'.$triPC4['ActuatorName'].'<br/><img src='."$idimg2".'><br/>'.$triPC5['State'].''.$triPC4['Unit'].'</div>';
@@ -105,7 +105,10 @@
                     $idroom = $triTC2['RoomID'];
                     $requeteTriTC3 = $db->query("SELECT Name, Floor FROM rooms WHERE HouseID=$idhome AND RoomID=$idroom");
                     while ($triTC3 = $requeteTriTC3->fetch()) {
-                        echo '<div class="actionneurM">'.$triTC3['Name'].'<br/>Etage : '.$triTC3['Floor'].'<br/><b>'.$triTC2['Value'].' '.$triTC['Unit'].'</b></div>';
+						if (isset($triTC2['link']) && isset($triTC2['captorlink']))
+							echo '<div class="actionneurM">'.$triTC3['Name'].'<br/>Etage : '.$triTC3['Floor'].'<br/><b><div class='.$triTC2['link'].''.$triTC2['captorlink'].'></div>'.$triTC['Unit'].'</b></div>';
+						else
+							echo '<div class="actionneurM">'.$triTC3['Name'].'<br/>Etage : '.$triTC3['Floor'].'<br/><b>'.$triTC2['Value'].' '.$triTC['Unit'].'</b></div>';
                     }
                 }
                 echo '</div>';
@@ -120,7 +123,10 @@
                     $idroom2 = $triTC5['RoomID'];
                     $requeteTriTC6 = $db->query("SELECT Name, Floor FROM rooms WHERE HouseID=$idhome AND RoomID=$idroom2");
                     while ($triTC6 = $requeteTriTC6->fetch()) {
-                        echo '<div class="actionneurM">'.$triTC6['Name'].'<br/>Etage : '.$triTC6['Floor'].'<br/><b>'.$triTC5['State'].' '.$triTC4['Unit'].'</b></div>';
+						if (isset($triTC5['link']) && isset($triTC5['captlorlink']))
+							echo '<div class="actionneurM">'.$triTC6['Name'].'<br/>Etage : '.$triTC6['Floor'].'<br/><b><button onclick="sendData(\'0001\',\''.$triTC5['link'].'\',\''.$triTC5['captlorlink'].'\')">monter</button><button onclick="sendData(\'0010\',\''.$triTC5['link'].'\',\''.$triTC5['captlorlink'].'\')">arreter</button><button onclick="sendData(\'0100\',\''.$triTC5['link'].'\',\''.$triTC5['captlorlink'].'\')">descendre</button>'.$triTC5['State'].' '.$triTC4['Unit'].'</b></div>';
+						else
+							echo '<div class="actionneurM">'.$triTC6['Name'].'<br/>Etage : '.$triTC6['Floor'].'<br/><b>'.$triTC5['State'].' '.$triTC4['Unit'].'</b></div>';
                     }
                 }
                 echo '</div>';
