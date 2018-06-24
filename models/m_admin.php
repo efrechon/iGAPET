@@ -96,7 +96,7 @@ function modification_contenu($db){
     $pageName= $_POST['PageName'];
     $pageContent= htmlspecialchars($_POST['PageContent']);
 
-    $requete= $db->prepare("UPDATE pagecontent SET PageContent=:pageContent WHERE PageName=:pageName");
+    $requete= $db->prepare("UPDATE page SET PageContent=:pageContent WHERE PageName=:pageName");
 
     $requete->bindParam('pageContent', $pageContent);
     $requete->bindParam('pageName', $pageName);

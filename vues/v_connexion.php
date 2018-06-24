@@ -11,17 +11,15 @@
     <div id=header>
         <h1>iGAPET</h1>
     </div>
-    <br/><p class="slogan"> Soyez capable de répondre à vos besoins du quotidien sans bouger de votre lit ! </p>
-    
+    <p class="slogan"> Soyez capable de répondre à vos besoins du quotidien sans bouger de votre lit ! </p>
     <div id="contain">
         <div id="connexion">
-            <h2>Connexion</h2><br/><br/>
+            <h2>Connexion</h2><br/><br/><br/><br/>
             <form action="controls/c_connexion.php" method="post">
                 <label for="Mail">Email : </label>
                 <input type="text" name="Mail"><br/><br/>
                 <label for="UserPassword">Mot de passe : </label>
                 <input type="password" name="UserPassword"><br/><br/>
-               	<a>Mot de passe oublié</a><br/><br/>
 				<?php
 				if (isset($_SESSION["erreurConnection"])){
 					echo $_SESSION["erreurConnection"];
@@ -44,7 +42,7 @@
                 <input type="password" name="UserPassword"><br/><br/>
                 <label for="UserPassword2">Confirmer votre mot de passe : </label>
                 <input type="password" name="UserPassword2"><br/><br/>
-                <input type="checkbox" name="cgu">J'accepte les <a href='index.php?pageAction=v_cgu'>Conditions Générales d'Utilisation</a><br/><br/>
+                <input type="checkbox" name="cgu">J'accepte les <a href='index.php?pageAction=v_cgu_visiteur'>Conditions Générales d'Utilisation</a><br/><br/>
 				<input type="hidden" name="type" value="utilisateur">
 				<?php
 				if (isset($_SESSION["erreurInscription"])){
@@ -58,7 +56,7 @@
             </form>
         </div>
         <div id="notreconcept">
-         	<a href="#lien"><br/><img id="fleche" src="img/fleche.png" alt="Flèche bas"></a>
+         	<a href="#lien"><img id="fleche" src="img/fleche.png" alt="Flèche bas"></a>
         	<h1 id="lien">Découvrez notre concept</h1><br/>
         </div>
         

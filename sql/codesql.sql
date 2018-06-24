@@ -1,6 +1,3 @@
-IF EXISTS(select * from sys.databases where name='IGAPET');
-DROP DATABASE IGAPET;
-
 CREATE DATABASE IGAPET;
 
 USE IGAPET;
@@ -26,7 +23,8 @@ CREATE TABLE houses(
 	Address varchar(255) NOT NULL,
 	PostalCode varchar(10) NOT NULL,
 	Country varchar(30) NOT NULL,
-	NumberOfFloor tinyint NOT NULL
+	NumberOfFloor tinyint NOT NULL,
+	Link varchar(4)
 );
 
 CREATE TABLE rooms(
@@ -44,7 +42,9 @@ CREATE TABLE captors(
 	CaptorID int PRIMARY KEY AUTO_INCREMENT,
 	RoomID int NOT NULL,
 	CaptorTypeID int NOT NULL,
-	Value varchar(255)
+	Value varchar(255),
+	captorlink varchar(2),
+	link varchar(4)
 
 );
 
@@ -52,19 +52,24 @@ CREATE TABLE actuators(
 	ActuatorID int PRIMARY KEY AUTO_INCREMENT,
 	RoomID int NOT NULL,
 	ActuatorTypeID int NOT NULL,
-	State varchar(255)
+	State varchar(255),
+	captlorlink varchar(2),
+	link varchar(4)
 );
 
 CREATE TABLE scenarios(
 	ScenarioID int PRIMARY KEY AUTO_INCREMENT,
 	ActuatorID int NOT NULL,
 	CibleState varchar(255),
-	ActionDate datetime
+	ActionDateBegin datetime,
+	ActionDateEnd datetime,
+	ActionLength time
 );
 
 CREATE TABLE notifications(
 	NotificationID int PRIMARY KEY AUTO_INCREMENT,
-	CaptorID int,
+	link varchar(4),
+	captorlink varchar(2),
 	Threshold varchar(255),
 	ThresholdType varchar(1)
 );
@@ -118,9 +123,11 @@ CREATE TABLE trames(
 	CaptorNumber varchar(2),
 	Value varchar(16),
 	TrameNumber varchar(4),
-	Date datetime
+	Date datetime,
+	Link varchar(4)
 );
 
+INSERT INTO Users(FirstName, LastName, Mail, CreationDate, UserPassword, UserTypeID, Phone, NbrConnexion) VALUES ('Edgar', 'Admin', 'app.igapet@gmail.com', '2018-05-17', '$2y$10$QFHqu/zv92wr.ndlBslq2.qJnRQE.CZXwXaC8Du8BUMf5M7qLzlA2', -2, NULL, 1);
 INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Luminosité', '%', 'img/luminosity.png');
 INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Température', '°C', 'img/thermometer.png');
 INSERT INTO CaptorTypes(CaptorName, Unit, url_img) VALUES ('Humidité', '%', 'img/humidity.png');

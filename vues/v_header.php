@@ -14,5 +14,5 @@
         else{
             echo $_SESSION['Mail'];
         }?></p></a>
-    <a href='index.php'><img class="off" src="img/Power.png" title="Deconnexion" alt="Bouton de deconnexion"></a>
+    <a href='index.php?pageAction=v_connexion'><img class="off" src="img/Power.png" title="Deconnexion" alt="Bouton de deconnexion"></a>
 </header>

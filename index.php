@@ -14,10 +14,14 @@
 		include("vues/".$_GET['pageAction'].".php");
     }
     else if(empty($_GET['pageAction']) || !isset($_SESSION['UserID'])) {
-        include('vues/v_connexion.php');
+        if($_GET['pageAction'] == 'v_cgu_visiteur'){
+            include('vues/v_cgu_visiteur.php');
+        }
+        else{
+            include('vues/v_connexion.php');
+        }
     }
     else{
-        // Page à afficher si problème d'URL
         include ('vues/v_erreur.php');
     }
 

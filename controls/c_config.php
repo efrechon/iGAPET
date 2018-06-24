@@ -106,7 +106,7 @@ function verification_mail($db){
 }
 
 function verification_password(){
-    if (isset($_POST['UserPassword']) && isset($_POST['UserPassword2']) && $_POST['UserPassword'] != NULL){
+    if (isset($_POST['UserPassword']) && isset($_POST['UserPassword2']) && $_POST['UserPassword'] != NULL && strlen($_POST['UserPassword']) >= 6){
         if($_POST['UserPassword'] != $_POST['UserPassword2']){
             $_SESSION["erreurInscription"] = 'Les deux mots de passe doivent être identiques !';
             return false;

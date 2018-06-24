@@ -69,6 +69,16 @@
 	}
 	?>
 	</br>
+    <label for="captorlink">Lien capteur </label>
+    <input  type="text" value="" name="captorlink">
+    <input id="capteurOuActionneur" type="hidden" value="capteur" name="type">
+    <?php if (isset($_SESSION["erreurAjoutCapteur"]))
+    {
+        echo $_SESSION["erreurAjoutCapteur"];
+        unset($_SESSION["erreurAjoutCapteur"]);
+    }
+    ?>
+    </br>
     <input type="submit" value="Ajouter">
 </form>
 <!-- Fin & Affectation du contenu de la page -->

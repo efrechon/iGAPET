@@ -23,15 +23,8 @@ body{
 	overflow:hidden;
 }
 
-#nav{
-    width: 15%;
-    height: 90%;
-    position: relative;
-	overflow:hidden;
-}
-
 #contain{
-    width:84%;
+    width:92%;
     height:87%;
     position:relative;
     left: 1%;
@@ -55,7 +48,7 @@ input[type="submit"]:hover, button:hover {
 }
 
 .visiteur{
-    width: 100%;
+    width: 90%;
     margin-left: 5%;
     margin-top: 2%;
     padding: 2%;
