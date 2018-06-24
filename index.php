@@ -14,7 +14,7 @@
 		include("vues/".$_GET['pageAction'].".php");
     }
     else if(empty($_GET['pageAction']) || !isset($_SESSION['UserID'])) {
-        if($_GET['pageAction'] == 'v_cgu_visiteur'){
+        if(isset($_GET['pageAction']) && $_GET['pageAction'] == 'v_cgu_visiteur'){
             include('vues/v_cgu_visiteur.php');
         }
         else{
