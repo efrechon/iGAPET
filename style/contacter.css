@@ -1,0 +1,27 @@
+.slogan{
+    text-align: center;
+}
+
+label{
+    margin-left: 5%;
+}
+
+input[type='text']{
+    width: 84%;
+    border: 2px solid #00A4E1;
+}
+
+textarea{
+    margin-left: 5%;
+    border: 2px solid #00A4E1;
+}
+
+input[type="submit"]{
+    margin-top: 2%;
+    margin-left: 45%;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}

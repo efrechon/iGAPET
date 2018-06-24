@@ -1,0 +1,42 @@
+.moyenne{
+    width: 99%;
+	height: 99%;
+    display: flex;
+	border: 2px solid black;
+}
+
+
+
+input[type='number']{
+    width: 20%;
+    background-color: white;
+}
+
+h4{
+	text-align:center;
+    margin: 3%;
+    width: 90%;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #00A4E1;
+    color : white;
+}
+
+
+.ajout{
+	text-align:center;
+    width: 55%;
+    height: 99%;
+    border: 1px solid #DDDDDD;
+    margin-left: 1%;
+}
+
+#Autorisation{
+    width: 90%;
+    height: 25%;
+    border: 1px solid #DDDDDD;
+    margin-left: 5%;
+	overflow:auto;
+	text-align:center;
+}

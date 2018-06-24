@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+}
+
+#full{
+    display: flex;
+    margin: 2% 0 0 0;
+}
+
+#selectionPage{
+    width: 15%;
+    height: 20%;
+    margin: 6% 1% 2% 2% ;
+    text-align: center;
+}
+
+#affichagePage{
+    width: 75%;
+    height: 74vh;
+    margin-left: 2%;
+    background-color: #00A4E1;
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+}
+

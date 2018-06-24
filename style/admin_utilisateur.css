@@ -1,0 +1,67 @@
+*{
+    font-family: "Raleway";
+}
+
+@font-face{
+    font-family: 'Raleway';
+    src: url('Raleway-Regular.ttf');
+}
+
+body{
+    margin: 0;
+}
+
+#full{
+    display: flex;
+    flex-wrap: wrap;
+}
+.utilisateurs{
+    width: 50%;
+    border: 1px solid #00A4E1;
+    margin: 1% 2% 2%;
+    overflow: auto;
+}
+
+.newadministrateur{
+    margin: 1% 2% 2%;
+    width: 40%;
+    border: 1px solid #00A4E1;
+    margin: 2%;
+    text-align: center;
+}
+
+.administrateur{
+    width: 94%;
+    border: 1px solid #00A4E1;
+    margin-top: 0%;
+    margin-left: 2%;
+
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+h3, h1{
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+label{
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    float: left;
+    text-align: center;
+}
+
+input[type="text"], input[type="password"], input[type="email"]{
+    width: 200px;
+    margin-left: -10%;
+}

@@ -1,0 +1,41 @@
+#scenario{
+    display: flex;
+}
+
+.ajout{
+    width: 40%;
+    height: 99%;
+    border: 1px solid #5e5e5e;
+    text-align: center;
+    margin-right: 5%;
+    margin-left: 2%;
+}
+
+
+.autorisationBlock
+{
+    width: 35%;
+    height: 3%;
+    border: 1px solid #5e5e5e;
+    text-align: center;
+    margin-left:30%;
+}
+
+
+.horaire{
+    width: 70%;
+    height: 51%;
+    border: 1px solid #5e5e5e;
+    text-align: center;
+    margin-left:15%;
+    
+}
+
+
+.calendrier{
+    width: 55%;
+    height: 99%;
+    border: 1px solid #5e5e5e;
+    text-align: center;
+    margin-right: 1%;
+}
