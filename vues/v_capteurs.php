@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style/capteur.css">
+<link rel="stylesheet" href="style/actionneur.css">
 
 <!-- Nom de la page -->
 <?php $nom_page = "Mes capteurs"; ?>
@@ -54,7 +54,10 @@
 					$requeteTriPC3= getAllCaptorTypes($db,"WHERE CaptorTypeID=".$idcapteur);
 					foreach($requeteTriPC3 as $triPC3){
 						$idimg= $triPC3['url_img'];
-						echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/>'.$triPC2['Value'].' '.$triPC3['Unit'].'</div>';
+						if (isset($triPC2['link']) && isset($triPC2['captorlink']))
+							echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/><div class='.$triPC2['link'].''.$triPC2['captorlink'].'></div>'.$triPC3['Unit'].'</div>';
+						else
+							echo '<div class="actionneurM">'.$triPC3['CaptorName'].'<br/><img src='."$idimg".'><br/>No value'.$triPC3['Unit'].'</div>';
 					}
 				}
                 $requeteTriPC5= getAllActuators($db,"WHERE RoomID=".$idroom);
@@ -63,7 +66,10 @@
                     $requeteTriPC4 = getAllActuatorType($db,"WHERE ActuatorTypeID=".$idactionneur);
 					foreach($requeteTriPC4 as $triPC4){
                         $idimg2 = $triPC4['url_img'];
-                        echo '<div class="actionneurM">'.$triPC4['ActuatorName'].'<br/><img src='."$idimg2".'><br/>'.$triPC5['State'].' '.$triPC4['Unit'].'</div>';
+						if (isset($triPC5['link']) && isset($triPC5['captlorlink']))
+							echo '<div class="actionneurM">'.$triPC4['ActuatorName'].'<br/><img src='."$idimg2".'><br/><button onclick="sendData(\'0001\',\''.$triPC5['link'].'\',\''.$triPC5['captlorlink'].'\')">monter</button><button onclick="sendData(\'0010\',\''.$triPC5['link'].'\',\''.$triPC5['captlorlink'].'\')">arreter</button><button onclick="sendData(\'0100\',\''.$triPC5['link'].'\',\''.$triPC5['captlorlink'].'\')">descendre</button>'.$triPC5['State'].''.$triPC4['Unit'].'</div>';
+						else
+							echo '<div class="actionneurM">'.$triPC4['ActuatorName'].'<br/><img src='."$idimg2".'><br/>'.$triPC5['State'].''.$triPC4['Unit'].'</div>';
                     }
                 }
 				echo '</div>';
